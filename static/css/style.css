@@ -1,0 +1,29 @@
+.item tr{
+    opacity:0;
+}
+.item tr:nth-child(1) {
+    -webkit-animation: example 0.5s ease 0.5s 1 forwards;
+    animation: example 0.5s ease 0.5s 1 forwards;
+}
+.item tr:nth-child(2) {
+    -webkit-animation: example 0.5s ease 1.5s 1 forwards;
+    animation: example 0.5s ease 1.5s 1 forwards;
+}
+.item tr:nth-child(3) {
+    -webkit-animation: example 0.5s ease 2.5s 1 forwards;
+    animation: example 0.5s ease 2.5s 1 forwards;
+}
+.item tr:nth-child(4) {
+    -webkit-animation: example 0.5s ease 3.5s 1 forwards;
+    animation: example 0.5s ease 3.5s 1 forwards;
+}
+@-webkit-keyframes example {
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes example {
+    100% {
+        opacity: 1;
+    }
+}
