@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head lang="ja">
+        <meta charset="UTF-8">
+        <title>ゲーム画面</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/game.css' %}">
+    </head>
+    <body>
+        <h1>{{hoge2}}</h1>
+        <div class="button">
+            {% load static%}
+            {{hoge}}
+            {% if attack1 %}
+            <img src="{% static "game/sample1.gif"%}">
+            {% elif attack2 %}
+            <img src="{% static "game/sample2.gif"%}">
+            {% else %}
+            <img src="{% static "game/charactar5.png"%}">
+            {% endif %}
+            <form action="" method="get">
+                <input type="submit"  value="こうげきボタン" name="attack" class="btn">
+        </div>
+    </body>
+</html>
