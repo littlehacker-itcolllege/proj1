@@ -3,8 +3,14 @@
   <head lang="ja">
         <meta charset="UTF-8">
             <title></title>
+            {% load static %}
+            <link rel="stylesheet" type="text/css" href="{% static 'css/head.css' %}">
   </head>
   <body>
     <h1>1-1 始まりの森</h1>
+    <div class="button">
+    <input type="button" value="前のページへ戻る" onclick="history.back()">
+    <input type="button" value="マップ" onclick="location.href='http://www.it-college.ac.jp/'">
+    </div>
   </body>
 </html>

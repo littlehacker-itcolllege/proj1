@@ -1,0 +1,16 @@
+body {
+    background-image: url("../game/family.jpg");
+}
+
+
+h1 {
+    width: 500px;
+    background-color: red;
+    float: left;
+}
+
+.button {
+    text-align:right;
+    float:right;
+}
+
