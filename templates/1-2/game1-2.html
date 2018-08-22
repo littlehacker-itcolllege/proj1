@@ -1,0 +1,19 @@
+<!DOQTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/game.css' %}">
+        <script type="text/javascript" src="{% static 'js/game.js' %}"></script>
+    </head>
+    <body>
+        <div class="box">
+            <p class="attack">
+                <button onclick="countUpA();" style="width:100px;height:50px"><font size="4">ボタン</font></button><br>
+                クリック回数<span id="sampleOutputA" style="margin-left: 10px;">0</span> 回<br>
+                <img alt="" src="{% static 'game/charactar5.png' %}" id="img1"><br>
+                <a href="http://localhost:8080/stage1-2/nextstory1-2" target="story1-2">Next-Story</a>
+            </p>
+        </div>
+    </body>
+</html>
