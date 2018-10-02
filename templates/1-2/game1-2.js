@@ -1,0 +1,1 @@
+../../static/js/game1-2.js
