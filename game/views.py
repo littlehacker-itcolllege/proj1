@@ -4,25 +4,40 @@ from django.http.response import HttpResponse
 # Create your views here.
 def map(request):
     return render(request,'map.html')
-def stage(request):
+
+def stage1_1(request):
     return render(request,'1-1/stage1-1.html')
-def story_html(request):
+def story_html1_1(request):
     return render(request,'1-1/story1-1.html')
-def game_html(request):
+def game_html1_1(request):
     return render(request,'1-1/game1-1.html')
-def head_html(request):
+def head_html1_1(request):
     return render(request,'1-1/head1-1.html')
-def nextstory_html(request):
+def nextstory_html1_1(request):
     return render(request,'1-1/nextstory1-1.html')
-#stage1-2
-def stage2(request):
+#stage1_2
+def stage1_2(request):
     return render(request,'1-2/stage1-2.html')
-def story_html2(request):
+def story_html1_2(request):
     return render(request,'1-2/story1-2.html')
-def game_html2(request):
+def game_html1_2(request):
     return render(request,'1-2/game1-2.html')
-def head_html2(request):
+def head_html1_2(request):
     return render(request,'1-2/head1-2.html')
-def nextstory_html2(request):
+def nextstory_html1_2(request):
     return render(request,'1-2/nextstory1-2.html')
 
+def stage4_1(request):
+    return render(request,'4-1/stage4-1.html')
+def story_html4_1(request):
+    return render(request,'4-1/story4-1.html')
+def game_html4_1(request):
+    return render(request,'4-1/game4-1.html')
+def head_html4_1(request):
+    return render(request,'4-1/head4-1.html')
+def nextstory_html4_1(request):
+    return render(request,'4-1/nextstory4-1.html')
+def see_html4_1(request):
+    return render(request,'4-1/see4-1.html')
+def input_html4_1(request):
+    return render(request,'4-1/input4-1.html')
