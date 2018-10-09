@@ -1,0 +1,46 @@
+body{
+	margin:0px;
+	padding:0px;
+}
+body::-webkit-scrollbar{
+	display:none;
+}
+.box{
+    height:300vh;
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-image: url("../game/sea.png");
+    background-size:cover;
+    postion: relative;
+    justify-content: center; /*左右中央揃え*/
+    align-items: center;     /*上下中央揃え*/
+}
+#test{
+  width:130px;
+  position: fixed;
+  top:35%;
+  left:40%;
+  color:#FFF;
+  padding:10px;
+
+}
+#next{
+	position:fixed;
+	top:55%;
+	left:65%;
+}
+#attack{
+	position:fixed;
+	top:55%;
+	left:65%;
+}
+#enemy-img{
+	position:absolute;
+	left:37%;
+	top:70%;
+}
+#enemy-meter{
+	position:absolute;
+	left:46%;
+	top:70%;
+}

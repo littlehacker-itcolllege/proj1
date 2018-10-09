@@ -22,12 +22,14 @@ def story_html2(request):
     return render(request,'1-2/story1-2.html')
 def game_html2(request):
     return render(request,'1-2/game1-2.html')
+def game_wepon(request):
+    return render(request,'1-2/wepon.html')
 def head_html2(request):
     return render(request,'1-2/head1-2.html')
 def nextstory_html2(request):
     return render(request,'1-2/nextstory1-2.html')
 
-#stage1-2
+#stage1-3
 def stage3(request):
     return render(request,'1-3/stage1-3.html')
 def story_html3(request):
@@ -38,4 +40,28 @@ def head_html3(request):
     return render(request,'1-3/head1-3.html')
 def nextstory_html3(request):
     return render(request,'1-3/nextstory1-3.html')
+
+#stage1-4
+def stage4(request):
+    return render(request,'1-4/stage1-4.html')
+def story_html4(request):
+    return render(request,'1-4/story1-4.html')
+def game_html4(request):
+    return render(request,'1-4/game1-4.html')
+def head_html4(request):
+    return render(request,'1-4/head1-4.html')
+def nextstory_html4(request):
+    return render(request,'1-4/nextstory1-4.html')
+
+#stage1-4
+def stage5(request):
+    return render(request,'2-1/stage2-1.html')
+def story_html5(request):
+    return render(request,'2-1/story2-1.html')
+def game_html5(request):
+    return render(request,'2-1/game2-1.html')
+def head_html5(request):
+    return render(request,'2-1/head2-1.html')
+def nextstory_html5(request):
+    return render(request,'2-1/nextstory2-1.html')
 
