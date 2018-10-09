@@ -1,0 +1,45 @@
+.column{
+	cursor:move;
+}
+.dragwrapper{
+	width:100px;
+	height:100px;
+	padding:5px;
+	margin:5px;
+	background-color:gray;
+}
+.dragimg{
+	width:100px;
+	height:100px;
+}
+.drop{
+	width:100px;
+	height:100px;
+	background-color:blue;
+	padding:5px;
+	margin:5px;
+}
+
+.drop2{
+	width:100px;
+	height:100px;
+	background-color:yellow;
+	padding:5px;
+	margin:5px;
+}
+.drop3{
+	width:100px;
+	height:100px;
+	background-color:red;
+	padding:5px;
+	margin:5px;
+}
+.item{
+	float:left;
+}
+.itemContainer{
+	overflow:hidden;
+}
+#next{
+	display:none;
+}

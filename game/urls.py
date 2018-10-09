@@ -25,5 +25,16 @@ urlpatterns = [
     url(r'^stage4-1/input4-1/$',views.input_html4_1,name='input4-1'),
 
 
+    url(r'^stage1-2/$',views.stage2,name='stage1-2'),
+    url(r'^stage1-2/story1-2/$',views.story_html2,name='story1-2'),
+    url(r'^stage1-2/game1-2/$',views.game_html2,name='game1-2'),
+    url(r'^stage1-2/head1-2/$',views.head_html2,name='head1-2'),
+    url(r'^stage1-2/nextstory1-2/$',views.nextstory_html2,name='nextstory1-2'),
+    #stage1-3
+    url(r'^stage1-3/$',views.stage3,name='stage1-3'),
+    url(r'^stage1-3/story1-3/$',views.story_html3,name='story1-3'),
+    url(r'^stage1-3/game1-3/$',views.game_html3,name='game1-3'),
+    url(r'^stage1-3/head1-3/$',views.head_html3,name='head1-3'),
+    url(r'^stage1-3/nextstory1-3/$',views.nextstory_html3,name='nextstory1-3'),
 
     ]

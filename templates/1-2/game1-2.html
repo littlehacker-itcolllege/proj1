@@ -3,17 +3,36 @@
     <head>
         <title></title>
         {% load static %}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/game.css' %}">
-        <script type="text/javascript" src="{% static 'js/game.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/game1-2.css' %}">
+        <script type="text/javascript" src="{% static 'js/game1-2.js' %}"></script>
     </head>
     <body>
         <div class="box">
-            <p class="attack">
-                <button onclick="countUpA();" style="width:100px;height:50px"><font size="4">ボタン</font></button><br>
-                クリック回数<span id="sampleOutputA" style="margin-left: 10px;">0</span> 回<br>
-                <img alt="" src="{% static 'game/charactar5.png' %}" id="img1"><br>
-                <a href="http://localhost:8080/stage1-2/nextstory1-2" target="story1-2">Next-Story</a>
-            </p>
+					<div itemContainer>
+						<div class="item">
+							<div  class="dragwrapper" id="drop" ondragover="DragOver(event)" ondrop="Drop(event)" >
+								<img src="{% static 'game/1-1enemy.gif' %}" class="dragimg" id="a" draggable="true" ondragstart="DragStart(event)">
+							</div>
+								<div id="drop1" class="drop" ondragover="DragOver(event)" ondrop="Drop1(event)"></div>
+								<div id="drop2" class="drop" ondragover="DragOver(event)" ondrop="Drop2(event)"></div>
+								<div id="drop3" class="drop" ondragover="DragOver(event)" ondrop="Drop3(event)"></div>
+						</div>
+
+						<div class="item">
+							<div  class="dragwrapper" id="drop" ondragover="DragOver(event)" ondrop="Drop(event)" >
+								<img src="{% static 'game/charaGIF2.gif' %}" class="dragimg" id="b" draggable="true" ondragstart="DragStart(event)">
+							</div>
+						</div>
+
+						<div class="item">
+							<div  class="dragwrapper" id="drop" ondragover="DragOver(event)" ondrop="Drop(event)" >
+								<img src="{% static 'game/batu.png' %}" class="dragimg" id="c" draggable="true" ondragstart="DragStart(event)">
+							</div>
+						</div>
+						<a href="http://localhost:8080/stage1-2/nextstory1-2" target="story1-2" ><button id="next" style="width:100px;height:50px"><font size="4">Next</font></button></a>
+					</div>
+
+
         </div>
     </body>
 </html>

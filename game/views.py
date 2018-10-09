@@ -17,6 +17,9 @@ def nextstory_html1_1(request):
     return render(request,'1-1/nextstory1-1.html')
 #stage1_2
 def stage1_2(request):
+
+#stage1-2
+def stage2(request):
     return render(request,'1-2/stage1-2.html')
 def story_html1_2(request):
     return render(request,'1-2/story1-2.html')
@@ -41,3 +44,16 @@ def see_html4_1(request):
     return render(request,'4-1/see4-1.html')
 def input_html4_1(request):
     return render(request,'4-1/input4-1.html')
+
+#stage1-2
+def stage3(request):
+    return render(request,'1-3/stage1-3.html')
+def story_html3(request):
+    return render(request,'1-3/story1-3.html')
+def game_html3(request):
+    return render(request,'1-3/game1-3.html')
+def head_html3(request):
+    return render(request,'1-3/head1-3.html')
+def nextstory_html3(request):
+    return render(request,'1-3/nextstory1-3.html')
+
