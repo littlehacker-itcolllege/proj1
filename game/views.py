@@ -17,6 +17,7 @@ def nextstory_html1_1(request):
     return render(request,'1-1/nextstory1-1.html')
 #stage1_2
 def stage1_2(request):
+    return render(request,'1-2/stage1-2.html')
 
 #stage1-2
 def stage2(request):
