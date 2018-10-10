@@ -5,31 +5,6 @@ from django.http.response import HttpResponse
 def map(request):
     return render(request,'map.html')
 
-def stage1_1(request):
-    return render(request,'1-1/stage1-1.html')
-def story_html1_1(request):
-    return render(request,'1-1/story1-1.html')
-def game_html1_1(request):
-    return render(request,'1-1/game1-1.html')
-def head_html1_1(request):
-    return render(request,'1-1/head1-1.html')
-def nextstory_html1_1(request):
-    return render(request,'1-1/nextstory1-1.html')
-#stage1_2
-def stage1_2(request):
-    return render(request,'1-2/stage1-2.html')
-
-#stage1-2
-def stage2(request):
-    return render(request,'1-2/stage1-2.html')
-def story_html1_2(request):
-    return render(request,'1-2/story1-2.html')
-def game_html1_2(request):
-    return render(request,'1-2/game1-2.html')
-def head_html1_2(request):
-    return render(request,'1-2/head1-2.html')
-def nextstory_html1_2(request):
-    return render(request,'1-2/nextstory1-2.html')
 
 def stage4_1(request):
     return render(request,'4-1/stage4-1.html')
@@ -46,15 +21,36 @@ def see_html4_1(request):
 def input_html4_1(request):
     return render(request,'4-1/input4-1.html')
 
-#stage1-2
-def stage3(request):
-    return render(request,'1-3/stage1-3.html')
-def story_html3(request):
-    return render(request,'1-3/story1-3.html')
-def game_html3(request):
-    return render(request,'1-3/game1-3.html')
-def head_html3(request):
-    return render(request,'1-3/head1-3.html')
-def nextstory_html3(request):
-    return render(request,'1-3/nextstory1-3.html')
+def stage4_2(request):
+    return render(request,'4-2/stage4-2.html')
+def story_html4_2(request):
+    return render(request,'4-2/story4-2.html')
+def game_html4_2(request):
+    return render(request,'4-2/game4-2.html')
+def head_html4_2(request):
+    return render(request,'4-2/head4-2.html')
+def nextstory_html4_2(request):
+    return render(request,'4-2/nextstory4-2.html')
+def see_html4_2(request):
+    return render(request,'4-2/see4-2.html')
+def see_html4_2_1(request):
+    return render(request,'4-2/see4-2-1.html')
+
+def input_html4_2(request):
+    return render(request,'4-2/input4-2.html')
+
+def stage4_3(request):
+    return render(request,'4-3/stage4-3.html')
+def story_html4_3(request):
+    return render(request,'4-3/story4-3.html')
+def game_html4_3(request):
+    return render(request,'4-3/game4-3.html')
+def head_html4_3(request):
+    return render(request,'4-3/head4-3.html')
+def nextstory_html4_3(request):
+    return render(request,'4-3/nextstory4-3.html')
+def see_html4_3(request):
+    return render(request,'4-3/see4-3.html')
+def input_html4_3(request):
+    return render(request,'4-3/input4-3.html')
 
