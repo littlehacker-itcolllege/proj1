@@ -42,7 +42,7 @@ meter{
 }
 #hp{
 }
-#batu{
+#enemy-down{
 	display:none;
 	position: absolute;
 	left:37.5%;
@@ -50,10 +50,14 @@ meter{
 #enemy-img{
 	position: relative;
 }
+#attack{
+	display:block;
+	position:absolute;
+	left:43%;
+}
 #next{
 	display:none;
-	margin-left:40%;
-}
-#block{
-	visibility:hidden;
+	position:absolute;
+	top:40%;
+	left:43%;
 }

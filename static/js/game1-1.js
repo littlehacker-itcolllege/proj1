@@ -22,16 +22,16 @@ function onClick(){
 	ene.value -= attack ;
 	var hp = ene.value;
 	document.getElementById("hp").textContent=hp;
-	document.getElementById("block").style.visibility="visible";
 	//敵のHPが0になったときの処理//
 	if(ene.value<=0){
 		//メータやボタンなどの非表示//
-		document.getElementById("batu").style.display="block";
+		document.getElementById("enemy-down").style.display="block";
+		document.getElementById("enemy-img").style.display="none";
 		document.getElementById("meter").style.display="none";
-		document.getElementById("attack").style.display="none";
 		document.getElementById("power").style.display="none";
 		document.getElementById("power").style.display="none";
 		document.getElementById("str").style.display="none";
+		document.getElementById("attack").style.display="none";
 		document.getElementById("next").style.display="block";
 		fin();
 	}else{
