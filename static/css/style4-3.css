@@ -1,0 +1,45 @@
+#stelth{
+float: left;
+}
+
+
+
+.item{
+  float: right;
+  margin-right: 10px;
+  padding: 10px;
+  width: 60px;
+  height: 60px;
+  background: #EF5F5D;
+  color: #fff;
+  list-style: none;
+  text-align: center;
+  line-height: 60px;
+  opacity: 0;    
+}
+.item:nth-child(1) {
+    -webkit-animation: example 0.5s ease 0.5s 1 forwards;
+    animation: example 0.5s ease 0.5s 1 forwards;
+}
+.item:nth-child(2) {
+    -webkit-animation: example 0.5s ease 1.5s 1 forwards;
+    animation: example 0.5s ease 1.5s 1 forwards;
+}
+.item:nth-child(3) {
+    -webkit-animation: example 0.5s ease 2.5s 1 forwards;
+    animation: example 0.5s ease 2.5s 1 forwards;
+}
+.item:nth-child(4) {
+    -webkit-animation: example 0.5s ease 3.5s 1 forwards;
+    animation: example 0.5s ease 3.5s 1 forwards;
+}
+@-webkit-keyframes example {
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes example {
+    100% {
+        opacity: 1;
+    }
+}
