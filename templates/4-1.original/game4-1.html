@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+
+
+<html>
+    <head>
+        {% load static %}
+        <meta charset="utf-8">
+        <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+        <script type='text/javascript'>
+
+            function top2(idname){
+                //方向キー入力時キャラ移動
+                var h = $('#maru').css('grid-row');
+                h = (parseInt(h) - 1).toString();
+                $('#maru').css('grid-row', h);
+                //方向キー入力時のキャラの画像変更&座標出力
+                document.maru.src="{% static "game/character/top.gif" %}";
+                var obj = document.getElementById(idname);
+                var leftandright = $('#maru').css('grid-row');
+                var upanddown = $('#maru').css('grid-column');
+                obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
+                //調べるボタンの入力切り替え
+                if ($("#input1").val() == '2 9') {
+                    $("#action").prop("disabled", false);
+                } else {
+                    $("#action").prop("disabled", true);
+                }
+if ($("#input1").val() == '3 9') {
+                        $("#action2").prop("disabled", false);
+                    } else {
+                        $("#action2").prop("disabled", true);
+                    }
+            }
+            function bottom(idname){
+                var h = $('#maru').css('grid-row');
+                h = (parseInt(h) + 1).toString();
+                $('#maru').css('grid-row', h);
+                document.maru.src="{% static "game/character/bottom.gif" %}"
+                var obj = document.getElementById(idname);
+                var leftandright = $('#maru').css('grid-row');
+                var upanddown = $('#maru').css('grid-column');
+                obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
+                if ($("#input1").val() == '2 9') {
+                    $("#action").prop("disabled", false);
+                } else {
+                    $("#action").prop("disabled", true);
+                }
+if ($("#input1").val() == '3 9') {
+                        $("#action2").prop("disabled", false);
+                    } else {
+                        $("#action2").prop("disabled", true);
+                    }
+            }
+            function right(idname){
+                var w = $('#maru').css('grid-column');
+                w = (parseInt(w) + 1).toString();
+                $('#maru').css('grid-column', w);
+                document.maru.src="{% static "game/character/right.gif" %}"
+                var obj = document.getElementById(idname);
+                var leftandright = $('#maru').css('grid-row');
+                var upanddown = $('#maru').css('grid-column');
+                obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
+                if ($("#input1").val() == '2 9') {
+                    $("#action").prop("disabled", false);
+                } else {
+                    $("#action").prop("disabled", true);
+                }
+if ($("#input1").val() == '3 9') {
+                        $("#action2").prop("disabled", false);
+                    } else {
+                        $("#action2").prop("disabled", true);
+                    }
+            }
+            function left(idname){
+                var h = $('#maru').css('grid-column');
+                h = (parseInt(h) - 1).toString();
+                $('#maru').css('grid-column', h);
+                document.maru.src="{% static "game/character/left.gif" %}"
+                var obj = document.getElementById(idname);
+                var leftandright = $('#maru').css('grid-row');
+                var upanddown = $('#maru').css('grid-column');
+                obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
+                if ($("#input1").val() == '2 9') {
+                    $("#action").prop("disabled", false);
+                } else {
+                    $("#action").prop("disabled", true);
+                }
+if ($("#input1").val() == '3 9') {
+                        $("#action2").prop("disabled", false);
+                    } else {
+                        $("#action2").prop("disabled", true);
+                    }
+            }
+     
+            $(function(){
+                if ($("#input1").val() == $("#input1").val() ) {
+                    $("#action").prop("disabled", true);
+                }
+                $("#top").on("keyup", function() {
+                    if ($("#input1").val() == '2 9') {
+                        $("#action").prop("disabled", false);
+                    } else {
+                        $("#action").prop("disabled", true);
+                    }
+                });
+            });
+            $(function(){
+                if ($("#input1").val() == $("#input1").val() ) {
+                    $("#action2").prop("disabled", true);
+                }
+                $("#top").on("keyup", function() {
+                    if ($("#input1").val() == '3 9') {
+                        $("#action2").prop("disabled", false);
+                    } else {
+                        $("#action2").prop("disabled", true);
+                    }
+                });
+            });
+
+
+
+                // キーコード(どのキーが押されたか)を取得
+            window.addEventListener("keydown", handleKeydown);
+            function handleKeydown(event){
+                var keyCode = event.keyCode;
+                // 条件文で制御する
+                if (keyCode == 39) {
+                    // 右
+                    var w = $('#maru').css('grid-column');
+                    w = (parseInt(w) + 1).toString();
+                    $('#maru').css('grid-column', w);
+
+                    document.maru.src="{% static "game/character/right.gif" %}"
+                    var obj = document.getElementById('input1');
+                    var leftandright = $('#maru').css('grid-row');
+                    var upanddown = $('#maru').css('grid-column');
+                    obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
+                    if ($("#input1").val() == '2 9') {
+                        $("#action").prop("disabled", false);
+                    } else {
+                        $("#action").prop("disabled", true);
+                    }
+if ($("#input1").val() == '3 9') {
+                        $("#action2").prop("disabled", false);
+                    } else {
+                        $("#action2").prop("disabled", true);
+                    }
+                }
+                if (keyCode == 37) {
+                    // 左    
+                    var h = $('#maru').css('grid-column');
+                    h = (parseInt(h) - 1).toString();
+                    $('#maru').css('grid-column', h);
+                    document.maru.src="{% static "game/character/left.gif" %}"
+                    var obj = document.getElementById('input1');
+                    var leftandright = $('#maru').css('grid-row');
+                    var upanddown = $('#maru').css('grid-column');
+                    obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
+                    if ($("#input1").val() == '2 9') {
+                        $("#action").prop("disabled", false);
+                    } else {
+                        $("#action").prop("disabled", true);
+                    }
+if ($("#input1").val() == '3 9') {
+                        $("#action2").prop("disabled", false);
+                    } else {
+                        $("#action2").prop("disabled", true);
+                    }
+                }
+                if (keyCode == 38) {
+                    // 上
+                    var h = $('#maru').css('grid-row');
+                    h = (parseInt(h) - 1).toString();
+                    $('#maru').css('grid-row', h);
+                    //方向キー入力時のキャラの画像変更&座標出力
+                    document.maru.src="{% static "game/character/top.gif" %}";
+                    var obj = document.getElementById('input1');
+                    var leftandright = $('#maru').css('grid-row');
+                    var upanddown = $('#maru').css('grid-column');
+                    obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
+                    if ($("#input1").val() == '2 9') {
+                        $("#action").prop("disabled", false);
+                    } else {
+                        $("#action").prop("disabled", true);
+                    }
+if ($("#input1").val() == '3 9') {
+                        $("#action2").prop("disabled", false);
+                    } else {
+                        $("#action2").prop("disabled", true);
+                    }
+                }
+                if (keyCode == 40) {
+                    // 下
+                    var h = $('#maru').css('grid-row');
+                    h = (parseInt(h) + 1).toString();
+                    $('#maru').css('grid-row', h);
+                    document.maru.src="{% static "game/character/bottom.gif" %}"
+                    var obj = document.getElementById('input1');
+                    var leftandright = $('#maru').css('grid-row');
+                    var upanddown = $('#maru').css('grid-column');
+                    obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
+                    if ($("#input1").val() == '2 9') {
+                        $("#action").prop("disabled", false);
+                    } else {
+                        $("#action").prop("disabled", true);
+                    }
+                    if ($("#input1").val() == '3 9') {
+                        $("#action2").prop("disabled", false);
+                    } else {
+                        $("#action2").prop("disabled", true);
+                    }
+                }
+            }
+
+                    //調べるボタンのHTML表示とサイズ指定
+            function win_open(){
+                    window.open("http://localhost:8080/stage4-1/see4-1","","width=200,height=200");
+            }
+                    //入力ボタンのHTML表示とサイズ指定
+            function input(){
+                    window.open("http://localhost:8080/stage4-1/input4-1","","width=200,height=200");
+            }
+
+
+        </script>
+        <!--
+
+
+            <sccript type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+        <script type='text/javascript'>
+            $(function(){
+                $('#top').click(function () {
+                    $('#maru').css('grid-row', '5');
+                });
+            });
+        </script>
+        -->
+        <style type="text/css">
+body {
+    margin: 0px;
+}
+.canvas{
+    width: 608px;
+    background:#999;
+    display: grid;
+    grid-template-columns: 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px;
+    grid-template-rows:32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px 32px;
+}
+#canvas1{
+    background:#000;
+    grid-row: 1;
+    grid-column: 2;
+}
+#canvas2{
+    background:#000;
+    grid-row: 1;
+    grid-column: 3;
+}
+
+
+#canvas3{
+    background:#000;
+    grid-row: 1;
+    grid-column: 4;
+}
+#canvas4{
+    background:#000;
+    grid-row: 1;
+    grid-column: 5;
+}
+#canvas5{
+    background:#000;
+    grid-row: 1;
+    grid-column: 6;
+}
+#canvas6{
+    background:#000;
+    grid-row: 1;
+    grid-column: 7;
+}
+#canvas7{
+    background:#000;
+    grid-row: 1;
+    grid-column: 8;
+}
+#canvas8{
+    background:#000;
+    grid-row: 1;
+    grid-column: 9;
+}
+#canvas9{
+    background:#000;
+    grid-row: 1;
+    grid-column: 10;
+}
+#canvas10{
+    background:#000;
+    grid-row: 3;
+    grid-column: 1;
+}
+#canvas11{
+    background:#000;
+    grid-row: 3;
+    grid-column: 2;
+}
+#canvas12{
+    background:#000;
+    grid-row: 3;
+    grid-column: 3;
+}
+#canvas13{
+    background:#000;
+    grid-row: 3;
+    grid-column: 4;
+}
+#canvas14{
+    background:#000;
+    grid-row: 3;
+    grid-column: 5;
+}
+#canvas15{
+    background:#000;
+    grid-row: 3;
+    grid-column: 6;
+}
+#canvas16{
+    background:#000;
+    grid-row: 3;
+    grid-column: 7;
+}
+#canvas17{
+    background:#000;
+    grid-row: 3;
+    grid-column: 8;
+}
+#canvas18{
+    background:#000;
+    grid-row: 3;
+    grid-column: 9;
+}
+#canvas19{
+    background:#000;
+    grid-row: 3;
+    grid-column: 10;
+}
+#canvas20{
+    background:red;
+    grid-row: 2;
+    grid-column: 10;
+}
+#canvas21{
+    background:#000;
+    grid-row: 3;
+    grid-column: 1;
+}
+#canvas22{
+    background:#000;
+    grid-row: 3;
+    grid-column: 1;
+}
+#canvas23{
+    background:#000;
+    grid-row: 3;
+    grid-column: 1;
+}
+#canvas24{
+    background:#000;
+    grid-row: 3;
+    grid-column: 1;
+}
+#canvas25{
+    background:#000;
+    grid-row: 3;
+    grid-column: 1;
+}
+#canvas26{
+    background:#000;
+    grid-row: 3;
+    grid-column: 1;
+}
+#canvas27{
+    background:#000;
+    grid-row: 3;
+    grid-column: 1;
+}
+#canvas28{
+    background:#000;
+    grid-row: 3;
+    grid-column: 1;
+}
+#canvas29{
+    background:#000;
+    grid-row: 3;
+    grid-column: 1;
+}
+#canvas30{
+    background:#000;
+    grid-row: 3;
+    grid-column: 1;
+}
+#canvas31{
+    background:#000;
+    grid-row: 3;
+    grid-column: 1;
+}
+#canvas32{
+    background:#000;
+    grid-row: 3;
+    grid-column: 1;
+}
+#canvas33{
+    background:#000;
+    grid-row: 3;
+    grid-column: 1;
+}
+#maru {
+    grid-row: 1;
+    grid-column: 1;
+}
+.cross-layout {
+    display: grid;
+    grid-template-columns: 50px 50px 50px 100px 100px;
+    grid-template-rows: 50px 50px;
+}
+#top {
+    grid-row: 1;
+    grid-column: 2;
+}
+#left {
+    grid-row: 2;
+    grid-column: 1;
+}
+#bottom{
+    grid-row: 2;
+    grid-column: 2;
+}
+#right {
+    grid-row: 2;
+    grid-column: 3;
+}
+#input1 {
+    grid-row: 1;
+    grid-column: 5;
+}
+#action{
+    grid-row:1;
+    grid-column:4;
+}
+#action2{
+    grid-row:2;
+    grid-column:4;
+}
+        </style> 
+    </head>
+    <body>
+        <div class="canvas">
+            <div id="maru">
+                <img src="{% static "game/character/bottom.gif" %}" name="maru">
+            </div>
+            <div id="canvas1" bgcolor=#000></div>
+            <div id="canvas2" bgcolor=#000></div>
+            <div id="canvas3" bgcolor=#000></div>
+            <div id="canvas4" bgcolor=#000></div>
+            <div id="canvas5" bgcolor=#000></div>
+            <div id="canvas6" bgcolor=#000></div>
+            <div id="canvas7" bgcolor=#000></div>
+            <div id="canvas8" bgcolor=#000></div>
+            <div id="canvas9" bgcolor=#000></div>
+            <div id="canvas10" bgcolor=#000></div>
+            <div id="canvas11" bgcolor=#000></div>
+            <div id="canvas12" bgcolor=#000></div>
+            <div id="canvas13" bgcolor=#000></div>
+            <div id="canvas14" bgcolor=#000></div>
+            <div id="canvas15" bgcolor=#000></div>
+            <div id="canvas16" bgcolor=#000></div>
+            <div id="canvas17" bgcolor=#000></div>
+            <div id="canvas18" bgcolor=#000></div>
+            <div id="canvas19" bgcolor=#000></div>
+            <div id="canvas20" bgcolor=#000><img src="{% static "game/pc.png" %}"></div>
+            <div id="canvas21" bgcolor=#000></div>
+            <div id="canvas22" bgcolor=#000></div>
+            <div id="canvas23" bgcolor=#000></div>
+            <div id="canvas24" bgcolor=#000></div>
+            <div id="canvas25" bgcolor=#000></div>
+            <div id="canvas26" bgcolor=#000></div>
+            <div id="canvas27" bgcolor=#000></div>
+            <div id="canvas28" bgcolor=#000></div>
+            <div id="canvas29" bgcolor=#000></div>
+            <div id="canvas30" bgcolor=#000></div>
+            <div id="canvas31" bgcolor=#000></div>
+            <div id="canvas32" bgcolor=#000></div>
+            <div id="canvas33" bgcolor=#000></div>
+        </div>
+        <div id='button' class="cross-layout">
+            <button id="top" onclick="top2('input1')">￪</button>
+            <button id="left" onclick="left('input1')">￩</button>
+            <button id="bottom" onclick="bottom('input1')">￬</button>
+            <button id="right" onclick="right('input1')">￫</button>
+            <input type="text" id="input1" autocomplete="off" value="1 1">
+            <input type="submit" id="action" value="調べる" onclick="win_open()">
+            <input type="submit" id="action2" value="入力" onclick="input()">
+        </div>
+
+</body>
+</html>
