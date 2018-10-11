@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head lang="ja">
+        <meta charset="UTF-8">
+        {% load static %}
+        <title>パスワードを見つけて</title>
+        <link rel="stylesheet" type="text/css" href="{% static "css/style4-3.css" %}" />
+
+
+    </head>
+    <body>
+        <img id="stealth"  src="{% static "game/stealth.png" %}" >
+
+
+
+        <div class="textboard">
+            <p class="test1" ><font color="red">がいこつ1:</font>なぁなぁ　ここのパスワードって「4321」だっけ？</p>
+            <p class="test2" ><font color="blue">がいこつ2:</font>まちがってるよ</p>
+            <p class="test3" ><font color="red">がいこつ1:</font>正解は？</p>
+            <p class="test4" ><font color="blue">がいこつ2:</font>「1234]だよ</p>
+        </div>
+
+        <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+        <script type='text/javascript'>
+            function open(){
+                $('.test1').remove();
+            }
+
+                setTimeout("open()" , 8000);
+        </script>
+
+
+
+
+
+
+    </body>
+</html>

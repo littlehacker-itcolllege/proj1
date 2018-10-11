@@ -1,0 +1,84 @@
+#stealth{
+    top: 0px;
+    left: 10px;
+    padding: 0px;
+    margin: 0px;
+    position: absolute;
+}
+
+
+
+
+
+
+
+.textboard {
+    width: 750px;
+    height: 140px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #FFF;
+    border: 2px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 0 0 4px #FFF inset;
+    background-color: rgba(0,0,0,0.9);
+    position:absolute;
+    top: 390px;
+    left: 32px;
+}
+.test1 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+    /* プロパティは順に name, duration, timing-function です */
+}
+.test2 {
+    height: 30px;
+    top:5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-delay:4s;
+    /* プロパティは順に name, duration, timing-function です */
+}
+.test3 {
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-delay:6s;
+    /* プロパティは順に name, duration, timing-function です */
+}
+.test4 {
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-delay:8s;
+    /* プロパティは順に name, duration, timing-function です */
+}
+
+@-webkit-keyframes ozDq {
+    from { width: 0;}
+0% {opacity: 1;}
+100%{opacity: 1;}
+} /* 開始地点の指定 */
+
+@-moz-keyframes ozDq {
+from { width: 0 ;}
+0% {opacity: 1;}
+100%{opacity: 1;}
+ }
