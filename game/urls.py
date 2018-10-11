@@ -59,4 +59,13 @@ urlpatterns = [
     url(r'^stage4-3/nextstory4-3/$',views.nextstory4_3,name='nextstory4-3'),
     url(r'^stage4-3/see4-3/$',views.see4_3,name='see4-3'),
     url(r'^stage4-3/input4-3/$',views.input4_3,name='input4-3'),
+
+    url(r'^stage4-4/$',views.stage4_4,name='stage4-4'),
+    url(r'^stage4-4/story4-4/$',views.story4_4,name='story4-4'),
+    url(r'^stage4-4/game4-4/$',views.game4_4,name='game4-4'),
+    url(r'^stage4-4/head4-4/$',views.head4_4,name='head4-4'),
+    url(r'^stage4-4/nextstory4-4/$',views.nextstory4_4,name='nextstory4-4'),
+    url(r'^stage4-4/see4-4/$',views.see4_4,name='see4-4'),
+    url(r'^stage4-4/input4-4/$',views.input4_4,name='input4-4'),
+
 ]
