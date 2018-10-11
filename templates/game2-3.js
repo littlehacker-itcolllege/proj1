@@ -61,7 +61,7 @@ function typeGame(evt)
     //入力されたセルの文字色を灰色にする
     var idName = "word"+cnt;
     document.getElementById(idName).style.color="#dddddd";
-		document.getElementById("escape"+esc).style.display="inline-block";
+		document.getElementById("escape"+esc).style.display="inline";
     cnt++; //カウント数を＋１にする
 		esc++;
     //全文字入力したか確認

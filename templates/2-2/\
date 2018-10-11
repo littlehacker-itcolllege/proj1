@@ -1,0 +1,36 @@
+<!DOQTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/game2-2.css' %}">
+        <script type="text/javascript" src="{% static 'js/game2-2.js' %}"></script>
+    </head>
+    <body>
+			<div class="box">
+				<button onclick="gameSet()">start</button>
+				<div id="waku">
+					<p id="breath" onload="count()">30</p>
+					<table id="treasure">
+						<tr>
+							<td id="word0">T</td>
+							<td id="word1">R</td>
+							<td id="word2">E</td>
+							<td id="word3">A</td>
+							<td id="word4">S</td>
+							<td id="word5">U</td>
+							<td id="word6">R</td>
+							<td id="word7">E</td>
+						</tr>
+					</table>
+					<table id="key">
+						<tr>
+							<td id="word20">K</td>
+							<td id="word21">E</td>
+							<td id="word22">Y</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+    </body>
+</html>
