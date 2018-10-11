@@ -15,31 +15,18 @@ td{
     justify-content: center; /*左右中央揃え*/
     align-items: center;     /*上下中央揃え*/
 }
-#typing{
+#waku{
+	display:none;
+}
+#treasure{
 	height:30vh;
 	width:100vh;
 	font-size:5em;
 }
-#escape{
+#key{
+	display:none;
 	height:30vh;
 	width:100vh;
 	font-size:5em;
-}
-#escape1{
-	display:none;
-}
-#escape2{
-	display:none;
-}
-#escape3{
-	display:none;
-}
-#escape4{
-	display:none;
-}
-#escape5{
-	display:none;
-}
-#escape6{
-	display:none;
+
 }
