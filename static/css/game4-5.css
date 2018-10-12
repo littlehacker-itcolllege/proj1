@@ -13,6 +13,11 @@ body {
     grid-row: 1;
     grid-column: 1;
 }
+#canvas2{
+    background:url("../game/wall.png");
+    grid-row: 1;
+    grid-column: 2;
+}
 #canvas3{
     background:url("../game/wall.png");
     grid-row: 1;
@@ -52,11 +57,6 @@ body {
     background:url("../game/wall.png");
     grid-row: 1;
     grid-column: 10;
-}
-#canvas11{
-    background:url("../game/wall.png");
-    grid-row: 1;
-    grid-column: 11;
 }
 #canvas12{
     background:url("../game/wall.png");
@@ -111,6 +111,21 @@ body {
     grid-row: 2;
     grid-column: 1;
 }
+#canvas22{
+    background:url("../game/wall.png");
+    grid-row: 2;
+    grid-column: 2;
+}
+#canvas23{
+    background:url("../game/wall.png");
+    grid-row: 2;
+    grid-column: 3;
+}
+#canvas24{
+    background:url("../game/wall.png");
+    grid-row: 2;
+    grid-column: 4;
+}
 #canvas25{
     background:url("../game/wall.png");
     grid-row: 2;
@@ -122,9 +137,54 @@ body {
     grid-column: 6;
 }
 #canvas27{
-    background:url("../game/dustbox1.png");
+    background:url("../game/wall.png");
     grid-row: 2;
     grid-column: 7;
+}
+#canvas28{
+    background:url("../game/wall.png");
+    grid-row: 2;
+    grid-column: 8;
+}
+#canvas29{
+    background:url("../game/wall.png");
+    grid-row: 2;
+    grid-column: 9;
+}
+#canvas33{
+    background:url("../game/wall.png");
+    grid-row: 2;
+    grid-column: 13;
+}
+#canvas34{
+    background:url("../game/wall.png");
+    grid-row: 2;
+    grid-column: 14;
+}
+#canvas35{
+    background:url("../game/wall.png");
+    grid-row: 2;
+    grid-column: 15;
+}
+#canvas36{
+    background:url("../game/wall.png");
+    grid-row: 2;
+    grid-column: 16;
+}
+#canvas37{
+    background:url("../game/wall.png");
+    grid-row: 2;
+    grid-column: 17;
+}
+#canvas38{
+    background:url("../game/wall.png");
+    grid-row: 2;
+    grid-column: 18;
+}
+#canvas39{
+    background:url("../game/wall.png");
+    grid-row: 2;
+    grid-column: 19;
 }
 #canvas40{
     background:url("../game/wall.png");
@@ -145,30 +205,45 @@ body {
     grid-row: 3;
     grid-column: 2;
 }
-#canvas46{
+#canvas43{
     background:url("../game/wall.png");
     grid-row: 3;
-    grid-column: 6;
+    grid-column: 3;
 }
-#canvas47{
+#canvas44{
     background:url("../game/wall.png");
     grid-row: 3;
-    grid-column: 7;
+    grid-column: 4;
 }
-#canvas48{
-    background:url("../game/pc.png");
+#canvas53{
+    background:url("../game/wall.png");
     grid-row: 3;
-    grid-column: 8;
+    grid-column: 13;
 }
-#canvas57{
-    background:url("../game/pc.png");
+#canvas54{
+    background:url("../game/wall.png");
     grid-row: 3;
-    grid-column: 17;
+    grid-column: 14;
+}
+#canvas55{
+    background:url("../game/wall.png");
+    grid-row: 3;
+    grid-column: 15;
+}
+#canvas56{
+    background:url("../game/wall.png");
+    grid-row: 3;
+    grid-column: 16;
 }
 #canvas58{
     background:url("../game/wall.png");
     grid-row: 3;
     grid-column: 18;
+}
+#canvas59{
+    background:url("../game/wall.png");
+    grid-row: 3;
+    grid-column: 19;
 }
 #canvas70{
     background:url("../game/wall.png");
@@ -194,6 +269,16 @@ body {
     grid-row: 4;
     grid-column: 3;
 }
+#canvas74{
+    background:url("../game/wall.png");
+    grid-row: 4;
+    grid-column: 4;
+}
+#canvas76{
+    background:url("../game/wall.png");
+    grid-row: 4;
+    grid-column: 6;
+}
 #canvas77{
     background:url("../game/wall.png");
     grid-row: 4;
@@ -205,19 +290,29 @@ body {
     grid-column: 8;
 }
 #canvas79{
-    background:url("../game/pc.png");
+    background:url("../game/wall.png");
     grid-row: 4;
     grid-column: 9;
 }
-#canvas87{
-    background:url("../game/pc.png");
-    grid-row: 4;
-    grid-column: 17;
-}
-#canvas88{
+#canvas83{
     background:url("../game/wall.png");
     grid-row: 4;
-    grid-column: 18;
+    grid-column: 13;
+}
+#canvas84{
+    background:url("../game/wall.png");
+    grid-row: 4;
+    grid-column: 14;
+}
+#canvas85{
+    background:url("../game/wall.png");
+    grid-row: 4;
+    grid-column: 15;
+}
+#canvas89{
+    background:url("../game/wall.png");
+    grid-row: 4;
+    grid-column: 19;
 }
 #canvas90{
     background:url("../game/wall.png");
@@ -242,10 +337,10 @@ body {
     grid-row: 5;
     grid-column: 3;
 }
-#canvas94{
+#canvas97{
     background:url("../game/wall.png");
     grid-row: 5;
-    grid-column: 4;
+    grid-column: 7;
 }
 #canvas98{
     background:url("../game/wall.png");
@@ -257,21 +352,17 @@ body {
     grid-row: 5;
     grid-column: 9;
 }
-#canvas100{
-    background:url("../game/pc.png");
-    grid-row: 5;
-    grid-column: 10;
-}
-#canvas107{
-    background:url("../game/pc.png");
-    grid-row: 5;
-    grid-column: 17;
-}
-#canvas108{
+#canvas103{
     background:url("../game/wall.png");
     grid-row: 5;
-    grid-column: 18;
+    grid-column: 13;
 }
+#canvas104{
+    background:url("../game/wall.png");
+    grid-row: 5;
+    grid-column: 14;
+}
+
 #canvas110{
     background:url("../game/wall.png");
     grid-row: 5;
@@ -290,45 +381,25 @@ body {
     grid-row: 6;
     grid-column: 2;
 }
-#canvas113{
+#canvas118{
     background:url("../game/wall.png");
     grid-row: 6;
-    grid-column: 3;
-}
-#canvas114{
-    background:url("../game/wall.png");
-    grid-row: 6;
-    grid-column: 4;
-}
-#canvas115{
-    background:url("../game/wall.png");
-    grid-row: 6;
-    grid-column: 5;
+    grid-column: 8;
 }
 #canvas119{
     background:url("../game/wall.png");
     grid-row: 6;
     grid-column: 9;
 }
-#canvas120{
+#canvas123{
     background:url("../game/wall.png");
     grid-row: 6;
-    grid-column: 10;
+    grid-column: 13;
 }
-#canvas121{
-    background:url("../game/pc.png");
-    grid-row: 6;
-    grid-column: 11;
-}
-#canvas127{
-    background:url("../game/pc.png");
-    grid-row: 6;
-    grid-column: 17;
-}
-#canvas128{
+#canvas124{
     background:url("../game/wall.png");
     grid-row: 6;
-    grid-column: 18;
+    grid-column: 14;
 }
 #canvas130{
     background:url("../game/wall.png");
@@ -343,30 +414,20 @@ body {
     grid-row: 7;
     grid-column: 1;
 }
-#canvas140{
+#canvas139{
     background:url("../game/wall.png");
     grid-row: 7;
-    grid-column: 10;
+    grid-column: 9;
 }
-#canvas141{
+#canvas143{
     background:url("../game/wall.png");
     grid-row: 7;
-    grid-column: 11;
+    grid-column: 13;
 }
-#canvas142{
-    background:url("../game/pc.png");
-    grid-row: 7;
-    grid-column: 12;
-}
-#canvas147{
-    background:url("../game/pc.png");
-    grid-row: 7;
-    grid-column: 17;
-}
-#canvas148{
+#canvas144{
     background:url("../game/wall.png");
     grid-row: 7;
-    grid-column: 18;
+    grid-column: 14;
 }
 #canvas150{
     background:url("../game/wall.png");
@@ -381,55 +442,20 @@ body {
     grid-row: 8;
     grid-column: 1;
 }
-#canvas153{
+#canvas159{
     background:url("../game/wall.png");
     grid-row: 8;
-    grid-column: 3;
-}
-#canvas154{
-    background:url("../game/wall.png");
-    grid-row: 8;
-    grid-column: 4;
-}
-#canvas155{
-    background:url("../game/wall.png");
-    grid-row: 8;
-    grid-column: 5;
-}
-#canvas156{
-    background:url("../game/wall.png");
-    grid-row: 8;
-    grid-column: 6;
-}
-#canvas157{
-    background:url("../game/wall.png");
-    grid-row: 8;
-    grid-column: 7;
-}
-#canvas161{
-    background:url("../game/wall.png");
-    grid-row: 8;
-    grid-column: 11;
-}
-#canvas162{
-    background:url("../game/wall.png");
-    grid-row: 8;
-    grid-column: 12;
+    grid-column: 9;
 }
 #canvas163{
-    background:url("../game/pc.png");
+    background:url("../game/wall.png");
     grid-row: 8;
     grid-column: 13;
 }
-#canvas167{
-    background:url("../game/pc.png");
-    grid-row: 8;
-    grid-column: 17;
-}
-#canvas168{
+#canvas164{
     background:url("../game/wall.png");
     grid-row: 8;
-    grid-column: 18;
+    grid-column: 14;
 }
 #canvas170{
     background:url("../game/wall.png");
@@ -444,40 +470,10 @@ body {
     grid-row: 9;
     grid-column: 1;
 }
-#canvas173{
-    background:url("../game/dustbox1.png");
-    grid-row: 9;
-    grid-column: 3;
-}
-#canvas174{
-    background:url("../game/dustbox1.png");
-    grid-row: 9;
-    grid-column: 4;
-}
-#canvas175{
-    background:url("../game/dustbox1.png");
-    grid-row: 9;
-    grid-column: 5;
-}
-#canvas176{
-    background:url("../game/dustbox1.png");
-    grid-row: 9;
-    grid-column: 6;
-}
-#canvas177{
+#canvas179{
     background:url("../game/wall.png");
     grid-row: 9;
-    grid-column: 7;
-}
-#canvas178{
-    background:url("../game/wall.png");
-    grid-row: 9;
-    grid-column: 8;
-}
-#canvas182{
-    background:url("../game/wall.png");
-    grid-row: 9;
-    grid-column: 12;
+    grid-column: 9;
 }
 #canvas183{
     background:url("../game/wall.png");
@@ -485,19 +481,19 @@ body {
     grid-column: 13;
 }
 #canvas184{
-    background:url("../game/dustbox1.png");
+    background:url("../game/wall.png");
     grid-row: 9;
     grid-column: 14;
 }
-#canvas187{
-    background:url("../game/pc.png");
-    grid-row: 9;
-    grid-column: 17;
-}
-#canvas188{
+#canvas185{
     background:url("../game/wall.png");
     grid-row: 9;
-    grid-column: 18;
+    grid-column: 15;
+}
+#canvas189{
+    background:url("../game/wall.png");
+    grid-row: 9;
+    grid-column: 19;
 }
 #canvas190{
     background:url("../game/wall.png");
@@ -512,10 +508,10 @@ body {
     grid-row: 10;
     grid-column: 1;
 }
-#canvas197{
-    background:url("../game/dustbox1.png");
+#canvas192{
+    background:url("../game/wall.png");
     grid-row: 10;
-    grid-column: 7;
+    grid-column: 2;
 }
 #canvas198{
     background:url("../game/wall.png");
@@ -547,15 +543,15 @@ body {
     grid-row: 10;
     grid-column: 16;
 }
-#canvas207{
-    background:url("../game/wall.png");
-    grid-row: 10;
-    grid-column: 17;
-}
 #canvas208{
     background:url("../game/wall.png");
     grid-row: 10;
     grid-column: 18;
+}
+#canvas209{
+    background:url("../game/wall.png");
+    grid-row: 10;
+    grid-column: 19;
 }
 #canvas210{
     background:url("../game/wall.png");
@@ -571,8 +567,18 @@ body {
     grid-row: 11;
     grid-column: 1;
 }
+#canvas212{
+    background:url("../game/wall.png");
+    grid-row: 11;
+    grid-column: 2;
+}
+#canvas213{
+    background:url("../game/wall.png");
+    grid-row: 11;
+    grid-column: 3;
+}
 #canvas217{
-    background:url("../game/dustbox1.png");
+    background:url("../game/wall.png");
     grid-row: 11;
     grid-column: 7;
 }
@@ -585,6 +591,16 @@ body {
     background:url("../game/wall.png");
     grid-row: 11;
     grid-column: 9;
+}
+#canvas228{
+    background:url("../game/wall.png");
+    grid-row: 11;
+    grid-column: 18;
+}
+#canvas229{
+    background:url("../game/wall.png");
+    grid-row: 11;
+    grid-column: 19;
 }
 #canvas230{
     background:url("../game/wall.png");
@@ -600,27 +616,27 @@ body {
     grid-column: 1;
 }
 #canvas232{
-    background:url("../game/dustbox1.png");
+    background:url("../game/wall.png");
     grid-row: 12;
     grid-column: 2;
 }
 #canvas233{
-    background:url("../game/dustbox1.png");
+    background:url("../game/wall.png");
     grid-row: 12;
     grid-column: 3;
 }
 #canvas234{
-    background:url("../game/dustbox1.png");
+    background:url("../game/wall.png");
     grid-row: 12;
     grid-column: 4;
 }
-#canvas235{
-    background:url("../game/dustbox1.png");
+#canvas236{
+    background:url("../game/wall.png");
     grid-row: 12;
-    grid-column: 5;
+    grid-column: 6;
 }
 #canvas237{
-    background:url("../game/dustbox1.png");
+    background:url("../game/wall.png");
     grid-row: 12;
     grid-column: 7;
 }
@@ -633,16 +649,6 @@ body {
     background:url("../game/wall.png");
     grid-row: 12;
     grid-column: 9;
-}
-#canvas240{
-    background:url("../game/wall.png");
-    grid-row: 12;
-    grid-column: 10;
-}
-#canvas242{
-    background:url("../game/wall.png");
-    grid-row: 12;
-    grid-column: 12;
 }
 #canvas243{
     background:url("../game/wall.png");
@@ -737,7 +743,7 @@ body {
     grid-column: 10;
 }
 #canvas261{
-    background:url("../game/door1.png");
+    background:url("../game/wall.png");
     grid-row: 13;
     grid-column: 11;
 }
@@ -795,7 +801,11 @@ body {
 
 #maru {
     grid-row: 1;
-    grid-column: 2;
+    grid-column: 11;
+}
+#enemy{
+    grid-row: 5;
+    grid-column: 15;
 }
 .cross-layout {
     display: grid;

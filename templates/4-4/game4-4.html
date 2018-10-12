@@ -17,14 +17,19 @@
                 var $bottom = document.getElementById( "bottom" );
                 obj = document.getElementById('input1');
 
-
+                //上ボタンのクリック
                 $top.onmousedown = function ( $event ) {
-                    // 押したボタンが左ボタンの場合の処理
                     if( $event.button == 0 ){
                         $intervalID = setInterval(
                             function top2(idname){
                                 var input1 = $('#input1').val()
-                                if (input1 == '12 4') {
+                                if (input1 == '2 3'||input1 == '2 4'||input1 == '2 8'||input1 == '2 9'||input1 == '2 10'||input1 == '2 11'||input1 == '2 12'||input1 == '2 13'||input1 == '2 14'||input1 == '2 15'||input1 == '2 16'||input1 == '2 17'||input1 == '2 18'||input1 == '2 19'||
+                                    input1 == '3 5'||input1 == '4 6'||input1 == '5 7'||input1 == '6 8'||input1 == '7 9'||input1 == '8 10'||input1 == '9 11'||input1 == '10 12'||
+                                    input1 == '11 13'||input1 == '11 14'||input1 == '11 15'||input1 == '11 16'||input1 == '11 17'||input1 == '11 18'||
+                                    input1 == '7 2'||input1 == '7 3'||input1 == '7 4'||input1 == '7 5'||
+input1 == '10 3'||input1 == '10 4'||input1 == '10 5'||input1 == '10 6'
+
+                                ) {
                                     document.maru.src="{% static "game/character/top.gif" %}";
                                 } else {
                                     //方向キー入力時キャラ移動
@@ -37,12 +42,12 @@
                                     var upanddown = $('#maru').css('grid-column');
                                     obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
                                     //調べるボタンの入力切り替え
-                                    if ($("#input1").val() == '8 14') {
+                                    if ($("#input1").val() == '8 14' ||$("#input1").val() == '9 15') {
                                         $("#action").prop("disabled", false);
                                     } else {
                                         $("#action").prop("disabled", true);
                                     }
-                                    if ($("#input1").val() == '12 2') {
+                                    if ($("#input1").val() == '12 11') {
                                         $("#action2").prop("disabled", false);
                                     } else {
                                         $("#action2").prop("disabled", true);
@@ -60,13 +65,19 @@
                         clearInterval( $intervalID );
                     }
                 }
-
+                //下ボタンのクリック
                 $bottom.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
                         $intervalID = setInterval(
                             function bottom(idname){
                                 var input1 = $('#input1').val()
-                                if (input1 == '12 4' )  {
+                                if (input1 == '2 2'||input1 == '3 3'||input1 == '4 4'||input1 == '5 5'||
+                                    input1 == '7 3'||input1 == '7 4'||input1 == '7 5'||input1 == '7 6'||input1 == '7 7'||
+                                input1 == '11 2'||input1 == '11 3'||input1 == '11 4'||input1 == '11 5'||input1 == '12 6'||
+                                input1 == '8 8'||input1 == '9 9'||input1 == '11 10'||input1 == '12 11'||
+                                input1 == '11 12'||input1 == '11 13'||input1 == '11 14'||input1 == '11 15'||input1 == '11 16'||input1 == '11 17'||input1 == '11 18'||input1 == '11 19'||
+                                input1 == '2 17'||input1 == '2 18'||
+                                input1 == '2 8'||input1 == '3 9'||input1 == '4 10'||input1 == '5 11'||input1 == '6 12'||input1 == '7 13'||input1 == '8 14'||input1 == '9 15'||input1 == '9 16')  {
                                     document.maru.src="{% static "game/character/bottom.gif" %}";
                                 } else {
                                     var h = $('#maru').css('grid-row');
@@ -76,12 +87,12 @@
                                     var leftandright = $('#maru').css('grid-row');
                                     var upanddown = $('#maru').css('grid-column');
                                     obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
-                                    if ($("#input1").val() == '8 14') {
+                                    if ($("#input1").val() == '8 14' ||$("#input1").val() == '9 15') {
                                         $("#action").prop("disabled", false);
                                     } else {
                                         $("#action").prop("disabled", true);
                                     }
-                                    if ($("#input1").val() == '12 2') {
+                                    if ($("#input1").val() == '12 11') {
                                         $("#action2").prop("disabled", false);
                                     } else {
                                         $("#action2").prop("disabled", true);
@@ -97,13 +108,17 @@
                         clearInterval( $intervalID );
                     }
                 }
-
+                //右ボタンのクリック
                 $right.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
                         $intervalID = setInterval(
                             function right(){
                                 var input1 = $('#input1').val()
-                                if (input1 == '13 2') {
+                                if (input1 == '1 2'||input1 == '2 4'||input1 == '3 5'||input1 == '4 6'||input1 == '5 7'||input1 == '6 8'||input1 == '7 9'||input1 == '8 10'||input1 == '9 11'||input1 == '10 12'||
+                                input1 == '8 2'||input1 == '9 2'||
+                                input1 == '10 6'||input1 == '11 6'||input1 == '12 6'||input1 == '12 11'||
+                                input1 == '2 19'||input1 == '3 19'||input1 == '4 19'||input1 == '5 19'||input1 == '6 19'||input1 == '7 19'||input1 == '8 19'||input1 == '9 19'||input1 == '10 19'||input1 == '11 19'||
+                                input1 == '3 16'||input1 == '4 16'||input1 == '5 16'||input1 == '6 16'||input1 == '7 16'||input1 == '8 16'||input1 == '9 16') {
                                     document.maru.src="{% static "game/character/right.gif" %}";
                                 } else {
                                     var w = $('#maru').css('grid-column');
@@ -113,12 +128,12 @@
                                     var leftandright = $('#maru').css('grid-row');
                                     var upanddown = $('#maru').css('grid-column');
                                     obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
-                                    if ($("#input1").val() == '8 14') {
+                                    if ($("#input1").val() == '8 14' ||$("#input1").val() == '9 15') {
                                         $("#action").prop("disabled", false);
                                     } else {
                                         $("#action").prop("disabled", true);
                                     }
-                                    if ($("#input1").val() == '12 2') {
+                                    if ($("#input1").val() == '12 11') {
                                         $("#action2").prop("disabled", false);
                                     } else {
                                         $("#action2").prop("disabled", true);
@@ -134,13 +149,17 @@
                         clearInterval( $intervalID );
                     }
                 }
-
+                //左ボタンのクリック
                 $left.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
                         $intervalID = setInterval(
                             function left(){
                                 var input1 = $('#input1').val()
-                                if (input1 == '13 2') {
+                                if (input1 == '1 2'||input1 == '2 2'||input1 == '3 3'||input1 == '4 4'||input1 == '5 5'||input1 == '6 6'||
+                                input1 == '7 2'||input1 == '8 2'||input1 == '9 2'||input1 == '10 2'||input1 == '11 2'||
+                                input1 == '8 8'||input1 == '9 9'||input1 == '11 10'||input1 == '12 11'||
+                                input1 == '3 19'||input1 == '4 19'||input1 == '5 19'||input1 == '6 19'||input1 == '7 19'||input1 == '8 19'||input1 == '9 19'||input1 == '10 19'||
+                                input1 == '2 8'||input1 == '3 9'||input1 == '4 10'||input1 == '5 11'||input1 == '6 12'||input1 == '7 13'||input1 == '8 14'||input1 == '9 15') {
                                     document.maru.src="{% static "game/character/left.gif" %}";
                                 } else {
                                     var h = $('#maru').css('grid-column');
@@ -150,12 +169,12 @@
                                     var leftandright = $('#maru').css('grid-row');
                                     var upanddown = $('#maru').css('grid-column');
                                     obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
-                                    if ($("#input1").val() == '8 14') {
+                                    if ($("#input1").val() == '8 14' ||$("#input1").val() == '9 15') {
                                         $("#action").prop("disabled", false);
                                     } else {
                                         $("#action").prop("disabled", true);
                                     }
-                                    if ($("#input1").val() == '12 2') {
+                                    if ($("#input1").val() == '12 11') {
                                         $("#action2").prop("disabled", false);
                                     } else {
                                         $("#action2").prop("disabled", true);
@@ -191,7 +210,7 @@
                     $("#action2").prop("disabled", true);
                 }
                 $("#top").on("keyup", function() {
-                    if ($("#input1").val() == '12 2') {
+                    if ($("#input1").val() == '12 11') {
                         $("#action2").prop("disabled", false);
                     } else {
                         $("#action2").prop("disabled", true);
@@ -206,12 +225,18 @@
             function handleKeydown(event){
                 var keyCode = event.keyCode;
                 // 条件文で制御する
+
+                //上キーの入力
                 if (keyCode == 38) {
                     var input1 = $('#input1').val()
-                    if (input1 == '12 4') {
+                    if (input1 == '2 3'||input1 == '2 4'||input1 == '2 8'||input1 == '2 9'||input1 == '2 10'||input1 == '2 11'||input1 == '2 12'||input1 == '2 13'||input1 == '2 14'||input1 == '2 15'||input1 == '2 16'||input1 == '2 17'||input1 == '2 18'||input1 == '2 19'||
+                                    input1 == '3 5'||input1 == '4 6'||input1 == '5 7'||input1 == '6 8'||input1 == '7 9'||input1 == '8 10'||input1 == '9 11'||input1 == '10 12'||
+                                    input1 == '11 13'||input1 == '11 14'||input1 == '11 15'||input1 == '11 16'||input1 == '11 17'||input1 == '11 18'||
+                                    input1 == '7 2'||input1 == '7 3'||input1 == '7 4'||input1 == '7 5'||
+input1 == '10 3'||input1 == '10 4'||input1 == '10 5'||input1 == '10 6'
+) {
                         document.maru.src="{% static "game/character/top.gif" %}";
                     } else {
-                        // 上
                         var h = $('#maru').css('grid-row');
                         h = (parseInt(h) - 1).toString();
                         $('#maru').css('grid-row', h);
@@ -221,26 +246,30 @@
                         var leftandright = $('#maru').css('grid-row');
                         var upanddown = $('#maru').css('grid-column');
                         obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
-                        if ($("#input1").val() == '8 14') {
+                        if ($("#input1").val() == '8 14' ||$("#input1").val() == '9 15') {
                             $("#action").prop("disabled", false);
                         } else {
                             $("#action").prop("disabled", true);
                         }
-                        if ($("#input1").val() == '12 2') {
+                        if ($("#input1").val() == '12 11') {
                             $("#action2").prop("disabled", false);
                         } else {
                             $("#action2").prop("disabled", true);
                         }
                     }
                 }
-
+                //下キーの入力
                 if (keyCode == 40) {
                     var input1 = $('#input1').val()
-                    if (input1 == '12 4' )  {
+                    if (input1 == '2 2'||input1 == '3 3'||input1 == '4 4'||input1 == '5 5'||
+                                    input1 == '7 3'||input1 == '7 4'||input1 == '7 5'||input1 == '7 6'||input1 == '7 7'||
+                                input1 == '11 2'||input1 == '11 3'||input1 == '11 4'||input1 == '11 5'||input1 == '12 6'||
+                                input1 == '8 8'||input1 == '9 9'||input1 == '11 10'||input1 == '12 11'||
+                                input1 == '11 12'||input1 == '11 13'||input1 == '11 14'||input1 == '11 15'||input1 == '11 16'||input1 == '11 17'||input1 == '11 18'||input1 == '11 19'||
+                                input1 == '2 17'||input1 == '2 18'||
+                                input1 == '2 8'||input1 == '3 9'||input1 == '4 10'||input1 == '5 11'||input1 == '6 12'||input1 == '7 13'||input1 == '8 14'||input1 == '9 15'||input1 == '9 16' )  {
                         document.maru.src="{% static "game/character/bottom.gif" %}";
                     } else {
-
-                        // 下
                         var h = $('#maru').css('grid-row');
                         h = (parseInt(h) + 1).toString();
                         $('#maru').css('grid-row', h);
@@ -249,53 +278,60 @@
                         var leftandright = $('#maru').css('grid-row');
                         var upanddown = $('#maru').css('grid-column');
                         obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
-                        if ($("#input1").val() == '8 14') {
+                        if ($("#input1").val() == '8 14' ||$("#input1").val() == '9 15') {
                             $("#action").prop("disabled", false);
                         } else {
                             $("#action").prop("disabled", true);
                         }
-                        if ($("#input1").val() == '12 2') {
+                        if ($("#input1").val() == '12 11') {
                             $("#action2").prop("disabled", false);
                         } else {
                             $("#action2").prop("disabled", true);
                         }
                     }
                 }
+
+                //右キーの入力
                 if (keyCode == 39) {
                     var input1 = $('#input1').val()
-                    if (input1 == '13 2') {
+                    if (input1 == '1 2'||input1 == '2 4'||input1 == '3 5'||input1 == '4 6'||input1 == '5 7'||input1 == '6 8'||input1 == '7 9'||input1 == '8 10'||input1 == '9 11'||input1 == '10 12'||
+                                input1 == '8 2'||input1 == '9 2'||
+                                input1 == '10 6'||input1 == '11 6'||input1 == '12 6'||input1 == '12 11'||
+                                input1 == '2 19'||input1 == '3 19'||input1 == '4 19'||input1 == '5 19'||input1 == '6 19'||input1 == '7 19'||input1 == '8 19'||input1 == '9 19'||input1 == '10 19'||input1 == '11 19'||
+                                input1 == '3 16'||input1 == '4 16'||input1 == '5 16'||input1 == '6 16'||input1 == '7 16'||input1 == '8 16'||input1 == '9 16') {
                         document.maru.src="{% static "game/character/right.gif" %}";
                     } else {
-
-                        // 右
                         var w = $('#maru').css('grid-column');
                         w = (parseInt(w) + 1).toString();
                         $('#maru').css('grid-column', w);
-
                         document.maru.src="{% static "game/character/right.gif" %}"
                         var obj = document.getElementById('input1');
                         var leftandright = $('#maru').css('grid-row');
                         var upanddown = $('#maru').css('grid-column');
                         obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
-                        if ($("#input1").val() == '8 14') {
+                        if ($("#input1").val() == '8 14' ||$("#input1").val() == '9 15') {
                             $("#action").prop("disabled", false);
                         } else {
                             $("#action").prop("disabled", true);
                         }
-                        if ($("#input1").val() == '12 2') {
+                        if ($("#input1").val() == '12 11') {
                             $("#action2").prop("disabled", false);
                         } else {
                             $("#action2").prop("disabled", true);
                         }
                     }
                 }
+
+                //左キーの入力
                 if (keyCode == 37) {
                     var input1 = $('#input1').val()
-                    if (input1 == '13 2') {
+                    if (input1 == '1 2'||input1 == '2 2'||input1 == '3 3'||input1 == '4 4'||input1 == '5 5'||input1 == '6 6'||
+                                input1 == '7 2'||input1 == '8 2'||input1 == '9 2'||input1 == '10 2'||input1 == '11 2'||
+                                input1 == '8 8'||input1 == '9 9'||input1 == '11 10'||input1 == '12 11'||
+                                input1 == '3 19'||input1 == '4 19'||input1 == '5 19'||input1 == '6 19'||input1 == '7 19'||input1 == '8 19'||input1 == '9 19'||input1 == '10 19'||
+                                input1 == '2 8'||input1 == '3 9'||input1 == '4 10'||input1 == '5 11'||input1 == '6 12'||input1 == '7 13'||input1 == '8 14'||input1 == '9 15') {
                         document.maru.src="{% static "game/character/left.gif" %}";
                     } else {
-
-                        // 左
                         var h = $('#maru').css('grid-column');
                         h = (parseInt(h) - 1).toString();
                         $('#maru').css('grid-column', h);
@@ -304,12 +340,12 @@
                         var leftandright = $('#maru').css('grid-row');
                         var upanddown = $('#maru').css('grid-column');
                         obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
-                        if ($("#input1").val() == '8 14') {
+                        if ($("#input1").val() == '8 14' ||$("#input1").val() == '9 15') {
                             $("#action").prop("disabled", false);
                         } else {
                             $("#action").prop("disabled", true);
                         }
-                        if ($("#input1").val() == '12 2') {
+                        if ($("#input1").val() == '12 11') {
                             $("#action2").prop("disabled", false);
                         } else {
                             $("#action2").prop("disabled", true);
@@ -323,7 +359,7 @@
             }
             //入力ボタンのHTML表示とサイズ指定
             function input(){
-                window.open("http://localhost:8080/stage4-4/input4-4","","width=200,height=200");
+                window.open("http://localhost:8080/stage4-4/input4-4","","width=800,height=600");
             }
 
 
