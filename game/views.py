@@ -108,6 +108,7 @@ def see4_1_1(request):
 def input4_1(request):
     return render(request,'4-1/input4-1.html')
 
+
 def stage4_2(request):
     return render(request,'4-2/stage4-2.html')
 def story4_2(request):
@@ -122,7 +123,6 @@ def see4_2(request):
     return render(request,'4-2/see4-2.html')
 def see4_2_1(request):
     return render(request,'4-2/see4-2-1.html')
-
 def input4_2(request):
     return render(request,'4-2/input4-2.html')
 
