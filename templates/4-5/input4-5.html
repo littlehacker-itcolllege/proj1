@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head lang="ja">
+        <meta charset="UTF-8">
+        {% load static %}
+        <script  src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+        <script>
+            $(function(){
+                if ($("#input").val() == 0 ){
+                    $("#action").prop("disabled",true);
+                }
+                $("#input").on("keydown keyup keypress change",function() {
+                    if ($("#input").val() == "1234" ){
+                        $("#action").prop("disabled",false);
+                    } else {
+                        $("#action").prop("disabled",true);
+                    }
+                });
+            });
+
+
+        </script>
+
+        <title>パスワードを入力して</title>
+    </head>
+    <body>
+      <p>パスワードはひづけ</p>
+        <input type="text" id="input"  autocomplete="off">
+        <a type="button" href="http://localhost:8080/stage4-5/nextstory4-5" target="story4-5"><input type="button" id="action" value="入力" onclick="window.close();" ></a>
+        <a href="#" onClick="window.close();">ウィンドウを閉じる</a><br/>
+        <img id="stealth"  src="{% static "game/doorinput.png" %}" >
+    </body>
+</html>

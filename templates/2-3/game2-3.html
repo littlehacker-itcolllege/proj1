@@ -3,33 +3,42 @@
     <head>
         <title></title>
         {% load static %}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/game2-1.css' %}">
-        <script type="text/javascript" src="{% static 'js/game2-1.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/game2-3.css' %}">
+        <script type="text/javascript" src="{% static 'js/game2-3.js' %}"></script>
     </head>
-    <body onload="gameSet()">
+    <body>
 			<div class="box">
-				<div id="waku">
-					<table id="typing">
-						<tr>
-							<td id="word0">E</td>
-							<td id="word1">S</td>
-							<td id="word2">C</td>
-							<td id="word3">A</td>
-							<td id="word4">P</td>
-							<td id="word5">E</td>
-						</tr>
-					</table>
-				</div>
-					<table id="escape">
-						<tr>
-							<td id="escape1">E</td>
-							<td id="escape2">S</td>
-							<td id="escape3">C</td>
-							<td id="escape4">A</td>
-							<td id="escape5">P</td>
-							<td id="escape6">E</td>
-						</tr>
-					</table>
+				<button onclick="gameSet();count()" id="start">start</button>
+        <div id="waku">
+          <p id="breath">30</p>
+          <table id="treasure">
+            <tr>
+              <td id="word0">T</td>
+              <td id="word1">R</td>
+              <td id="word2">E</td>
+              <td id="word3">A</td>
+              <td id="word4">S</td>
+              <td id="word5">U</td>
+              <td id="word6">R</td>
+              <td id="word7">E</td>
+            </tr>
+          </table>
+          <table id="key">
+            <tr>
+              <td id="word20">K</td>
+              <td id="word21">E</td>
+              <td id="word22">Y</td>
+            </tr>
+          </table>
+					<table id="pass">
+            <tr>
+              <td id="word30">P</td>
+              <td id="word31">A</td>
+              <td id="word32">S</td>
+              <td id="word33">S</td>
+            </tr>
+          </table>
+        </div>
 			</div>
     </body>
 </html>

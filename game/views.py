@@ -92,3 +92,68 @@ def nextstory2_3(request):
     return render(request,'2-3/nextstory2-3.html')
 
 
+<<<<<<< HEAD
+=======
+def stage4_2(request):
+    return render(request,'4-2/stage4-2.html')
+def story4_2(request):
+    return render(request,'4-2/story4-2.html')
+def game4_2(request):
+    return render(request,'4-2/game4-2.html')
+def head4_2(request):
+    return render(request,'4-2/head4-2.html')
+def nextstory4_2(request):
+    return render(request,'4-2/nextstory4-2.html')
+def see4_2(request):
+    return render(request,'4-2/see4-2.html')
+def see4_2_1(request):
+    return render(request,'4-2/see4-2-1.html')
+
+def input4_2(request):
+    return render(request,'4-2/input4-2.html')
+
+def stage4_3(request):
+    return render(request,'4-3/stage4-3.html')
+def story4_3(request):
+    return render(request,'4-3/story4-3.html')
+def game4_3(request):
+    return render(request,'4-3/game4-3.html')
+def head4_3(request):
+    return render(request,'4-3/head4-3.html')
+def nextstory4_3(request):
+    return render(request,'4-3/nextstory4-3.html')
+def see4_3(request):
+    return render(request,'4-3/see4-3.html')
+def input4_3(request):
+    return render(request,'4-3/input4-3.html')
+
+def stage4_4(request):
+    return render(request,'4-4/stage4-4.html')
+def story4_4(request):
+    return render(request,'4-4/story4-4.html')
+def game4_4(request):
+    return render(request,'4-4/game4-4.html')
+def head4_4(request):
+    return render(request,'4-4/head4-4.html')
+def nextstory4_4(request):
+    return render(request,'4-4/nextstory4-4.html')
+def see4_4(request):
+    return render(request,'4-4/see4-4.html')
+def input4_4(request):
+    return render(request,'4-4/input4-4.html')
+
+def stage4_5(request):
+    return render(request,'4-5/stage4-5.html')
+def story4_5(request):
+    return render(request,'4-5/story4-5.html')
+def game4_5(request):
+    return render(request,'4-5/game4-5.html')
+def head4_5(request):
+    return render(request,'4-5/head4-5.html')
+def nextstory4_5(request):
+    return render(request,'4-5/nextstory4-5.html')
+def see4_5(request):
+    return render(request,'4-5/see4-5.html')
+def input4_5(request):
+    return render(request,'4-5/input4-5.html')
+>>>>>>> a27439e1263e0ad7b975da6f356f1dd7b42ae20a
