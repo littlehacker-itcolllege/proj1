@@ -8,36 +8,43 @@
     </head>
     <body>
 			<div class="box">
-				<button onclick="gameSet();count()" id="start">start</button>
+				<div id="select">
+					<button id="fire-button" onclick="gameSet()">火属性</button>
+					<button id="water-button" onclick="gameSet2()">水属性</button>
+					<button id="leaf-button" onclick="gameSet3()">草属性</button>
+				</div>
         <div id="waku">
-          <p id="breath">30</p>
-          <table id="treasure">
-            <tr>
-              <td id="word0">T</td>
-              <td id="word1">R</td>
-              <td id="word2">E</td>
-              <td id="word3">A</td>
-              <td id="word4">S</td>
-              <td id="word5">U</td>
-              <td id="word6">R</td>
-              <td id="word7">E</td>
-            </tr>
-          </table>
-          <table id="key">
-            <tr>
-              <td id="word20">K</td>
-              <td id="word21">E</td>
-              <td id="word22">Y</td>
-            </tr>
-          </table>
-					<table id="pass">
-            <tr>
-              <td id="word30">P</td>
-              <td id="word31">A</td>
-              <td id="word32">S</td>
-              <td id="word33">S</td>
-            </tr>
-          </table>
+					<div id="fire">
+						<table>
+							<tr>
+								<td id="word0">F</td>
+								<td id="word1">I</td>
+								<td id="word2">R</td>
+								<td id="word3">E</td>
+							</tr>
+						</table>
+					</div>
+					<div id="water">
+						<table>
+							<tr>
+								<td id="word20">W</td>
+								<td id="word21">A</td>
+								<td id="word22">T</td>
+								<td id="word23">E</td>
+								<td id="word24">R</td>
+							</tr>
+						</table>
+					</div>
+					<div id="leaf">
+						<table>
+							<tr>
+								<td id="word30">L</td>
+								<td id="word31">E</td>
+								<td id="word32">A</td>
+								<td id="word33">F</td>
+							</tr>
+						</table>
+					</div>
         </div>
 			</div>
     </body>

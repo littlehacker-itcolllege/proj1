@@ -17,15 +17,40 @@ var rnd = new Array();
 //グローバル変数群
 var mondai = "";       //問題の文字列を格納
 var cnt=0;             //何問目か格納
-
+var iki =0;
 var esc =1;
 var main = null;
+var left =30;
+var nam=10;
+
 //0～25までの乱数を200個作成して配列rndに格納する関数
 function ransu()
 {
   for ( var i = 0 ; i < 6 ; i++ )
   {
     rnd[i] = i;
+  }
+}
+
+function count(){
+  timer = setInterval('countDown()',500);
+  document.getElementById("start").style.display="none";
+  document.getElementById("box").style.display="block";
+  document.getElementById("key1").style.display="block";
+}
+
+function countDown(){
+  iki++;
+	document.getElementById("breath").textContent=iki;
+	if(iki == nam){
+		document.getElementById("enemy").style.left=nam+"%";
+		nam+=10;
+	}
+  if(nam == left){
+    clearInterval(timer);
+    var fin="GAME終了";
+    //問題枠にゲーム終了を表示
+    document.getElementById("waku").innerHTML = fin;
   }
 }
 
@@ -44,7 +69,6 @@ function gameSet()
 function typeGame(evt)
 {
   var kc;  //入力されたキーコードを格納する変数
-
   //入力されたキーのキーコードを取得
   if (document.all)
   {
@@ -61,13 +85,22 @@ function typeGame(evt)
     //入力されたセルの文字色を灰色にする
     var idName = "word"+cnt;
     document.getElementById(idName).style.color="#dddddd";
-		document.getElementById("escape"+esc).style.display="inline-block";
+		if(esc >=1){
+			document.getElementById("key"+esc).style.display="none";
+			esc++;
+			document.getElementById("chara").style.left=left+"%";
+			left+=10;
+			if(esc <=6){
+				document.getElementById("key"+esc).style.display="block";
+			}
+			esc--;
+		}
     cnt++; //カウント数を＋１にする
 		esc++;
     //全文字入力したか確認
     if ( cnt == 6)
     {
-
+			clearInterval(timer);
       //問題終了を告げる文字列を作成
       var fin="GAME終了";
 

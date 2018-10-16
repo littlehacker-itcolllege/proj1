@@ -91,9 +91,23 @@ def head2_3(request):
 def nextstory2_3(request):
     return render(request,'2-3/nextstory2-3.html')
 
+def stage4_1(request):
+    return render(request,'4-1/stage4-1.html')
+def story4_1(request):
+    return render(request,'4-1/story4-1.html')
+def game4_1(request):
+    return render(request,'4-1/game4-1.html')
+def head4_1(request):
+    return render(request,'4-1/head4-1.html')
+def nextstory4_1(request):
+    return render(request,'4-1/nextstory4-1.html')
+def see4_1(request):
+    return render(request,'4-1/see4-1.html')
+def see4_1_1(request):
+    return render(request,'4-1/see4-1-1.html')
+def input4_1(request):
+    return render(request,'4-1/input4-1.html')
 
-<<<<<<< HEAD
-=======
 def stage4_2(request):
     return render(request,'4-2/stage4-2.html')
 def story4_2(request):
@@ -156,4 +170,3 @@ def see4_5(request):
     return render(request,'4-5/see4-5.html')
 def input4_5(request):
     return render(request,'4-5/input4-5.html')
->>>>>>> a27439e1263e0ad7b975da6f356f1dd7b42ae20a
