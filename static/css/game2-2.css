@@ -15,6 +15,25 @@ td{
     justify-content: center; /*左右中央揃え*/
     align-items: center;     /*上下中央揃え*/
 }
+#dive{
+	height:20vh;
+  width:auto;
+  margin:0;
+  text-align:center;
+  margin-bottom:0.5em;
+}
+#chara{
+  position:absolute;
+  left:0%;
+  top:43%;
+  height:10vh;
+  width:10vh;
+}
+.back{
+	width:100%;
+	max-width:100%;
+	height:20vh;
+}
 #waku{
 	display:none;
 }

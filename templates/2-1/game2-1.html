@@ -7,8 +7,10 @@
         <script type="text/javascript" src="{% static 'js/game2-1.js' %}"></script>
     </head>
     <body onload="gameSet()">
-			<div class="box">
+			<button onclick="gameSet();count()" id="start">start</button>
+			<div id="box">
 				<div id="waku">
+					<p id="breath">0</p>
 					<table id="typing">
 						<tr>
 							<td id="word0">E</td>
@@ -20,16 +22,18 @@
 						</tr>
 					</table>
 				</div>
-					<table id="escape">
-						<tr>
-							<td id="escape1">E</td>
-							<td id="escape2">S</td>
-							<td id="escape3">C</td>
-							<td id="escape4">A</td>
-							<td id="escape5">P</td>
-							<td id="escape6">E</td>
-						</tr>
-					</table>
-			</div>
+				<div id="escape">
+					<img id="chara" src="{% static 'game/escape-chara.gif' %}">
+					<img class="back" src="{% static 'game/escape-back.png' %}">
+					<img id="enemy" src="{% static 'game/escape-enemy.gif' %}">
+				</div>
+					<div id='keybord'>
+						<img id="key1" src="{% static 'game/keybord-e.png' %}">
+						<img id="key2" src="{% static 'game/keybord-s.png' %}">
+						<img id="key3" src="{% static 'game/keybord-c.png' %}">
+						<img id="key4" src="{% static 'game/keybord-a.png' %}">
+						<img id="key5" src="{% static 'game/keybord-p.png' %}">
+						<img id="key6" src="{% static 'game/keybord-e.png' %}">
+					</div>
     </body>
 </html>

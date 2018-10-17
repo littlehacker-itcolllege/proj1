@@ -1,14 +1,13 @@
 document.onkeydown = typeGame;  //キー押下時に関数typeGame()を呼び出す
-var timer;
 //文字を格納する配列
 //var moji = new Array("Ａ","Ｂ","Ｃ","Ｄ","Ｅ","Ｆ","Ｇ","Ｈ","Ｉ",
 //                     "Ｊ","Ｋ","Ｌ","Ｍ","Ｎ","Ｏ","Ｐ","Ｑ","Ｒ",
 //                     "Ｓ","Ｔ","Ｕ","Ｖ","Ｗ","Ｘ","Ｙ","Ｚ");
 
 //キーコードを格納する配列
-var kcode = new Array(84,82,69,65,83,85,82,69);
-var kcode2 = new Array(75,69,89);
-var kcode3 = new Array(80,65,83,83);
+var kcode = new Array(70,73,82,69);
+var kcode2 = new Array(87,65,84,69,82);
+var kcode3 = new Array(76,69,65,70);
 //var kcode = new Array(65,66,67,68,69,70,71,72,73,
 //                      74,75,76,77,78,79,80,81,82,
 //                      83,84,85,86,87,88,89,90);
@@ -25,14 +24,14 @@ var cnt2=0;             //何問目か格納
 var cnt3=0;             //何問目か格納
 var que=0;
 var timer1;
-var iki=30;
+var dis=0;
 
 var esc =1;
 var main = null;
 //0～25までの乱数を200個作成して配列rndに格納する関数
 function ransu()
 {
-  for ( var i = 0 ; i < 8 ; i++ )
+  for ( var i = 0 ; i < 4 ; i++ )
   {
     rnd[i] = i;
   }
@@ -40,7 +39,7 @@ function ransu()
 
 function ransu2()
 {
-  for ( var i = 0 ; i < 3 ; i++ )
+  for ( var i = 0 ; i < 5 ; i++ )
   {
     rnd2[i] = i;
   }
@@ -54,26 +53,19 @@ function ransu3()
   }
 }
 
-function countDown(){
-	iki--;
-	document.getElementById("breath").textContent=iki;
-	if(iki ==0){
-		clearInterval(timer);
-		var fin="GAME終了";
-		//問題枠にゲーム終了を表示
-		document.getElementById("waku").innerHTML = fin;
-	}
-}
-function count(){
-	timer = setInterval('countDown()',1000);
-	document.getElementById("start").style.display="none";
-}
 //タイピングゲームの問題をセットする関数
 function gameSet()
 {
-	document.getElementById("waku").style.display="block";
+	document.getElementById("fire").style.display="inline";
+	document.getElementById("water").style.display="none";
+	document.getElementById("leaf").style.display="none";
+	document.getElementById("keybord-fire").style.display="block";
+	document.getElementById("keybord-water").style.display="none";
+	document.getElementById("keybord-leaf").style.display="none";
   //カウント数をクリアする
   cnt=0;
+	que=0;
+  esc=1;
 
   //まずは問題文を作る
   ransu();
@@ -82,18 +74,32 @@ function gameSet()
 
 function gameSet2()
 {
+	document.getElementById("water").style.display="inline";
+	document.getElementById("fire").style.display="none";
+	document.getElementById("leaf").style.display="none";
+	document.getElementById("keybord-water").style.display="block";
+	document.getElementById("keybord-fire").style.display="none";
+	document.getElementById("keybord-leaf").style.display="none";
   //カウント数をクリアする
   cnt2=0;
-
+  esc=1;
+	que=1;
   //まずは問題文を作る
   ransu2();
 }
 
 function gameSet3()
 {
+	document.getElementById("leaf").style.display="inline";
+	document.getElementById("fire").style.display="none";
+	document.getElementById("water").style.display="none";
+	document.getElementById("keybord-leaf").style.display="block";
+	document.getElementById("keybord-fire").style.display="none";
+	document.getElementById("keybord-water").style.display="none";
   //カウント数をクリアする
   cnt3=0;
-
+  esc=1;
+	que=2;
   //まずは問題文を作る
   ransu3();
 }
@@ -117,14 +123,32 @@ function typeGame(evt)
     //入力されたセルの文字色を灰色にする
     var idName = "word"+cnt;
     document.getElementById(idName).style.color="#dddddd";
+		document.getElementById("water-button").disabled="disabled";
+		document.getElementById("leaf-button").disabled="disabled";
+		 if(esc >=1){
+      document.getElementById("fire"+esc).style.display="none";
+				esc++;
+      if(esc <=4){
+        document.getElementById("fire"+esc).style.display="block";
+      }
+    }
     cnt++; //カウント数を＋１にする
     //全文字入力したか確認
-    if ( cnt == 8)
-    {
-			document.getElementById("key").style.display="table";
-			document.getElementById("treasure").style.display="none";
-			que =1;
-			gameSet2();
+		if(cnt==4){
+			dis+=1;
+			document.getElementById("fire-button").disabled="disabled";
+			document.getElementById("water-button").disabled="";
+			document.getElementById("leaf-button").disabled="";
+			if(dis==3){
+					document.getElementById("water-button").disabled="disabled";
+				}else if(dis==4){
+					document.getElementById("leaf-button").disabled="disabled";
+				}else if(dis==6){
+					document.getElementById("water-button").disabled="disabled";
+					document.getElementById("leaf-button").disabled="disabled";
+				}
+			document.getElementById("leaf-gobrin").style.display="none";
+			document.getElementById("leaf-gobrin-down").style.display="block";
 		}
   }
 	//2問目
@@ -144,14 +168,32 @@ function typeGame(evt)
 			//入力されたセルの文字色を灰色にする
 			var idName = "word2"+cnt2;
 			document.getElementById(idName).style.color="#dddddd";
+			document.getElementById("fire-button").disabled="disabled";
+			document.getElementById("leaf-button").disabled="disabled";
+		if(esc >=1){
+      document.getElementById("water"+esc).style.display="none";
+				esc++;
+      if(esc <=5){
+        document.getElementById("water"+esc).style.display="block";
+      }
+    }
 			cnt2++; //カウント数を＋１にする
 			//全文字入力したか確認
-			if ( cnt2 == 3){
-			document.getElementById("pass").style.display="table";
-			document.getElementById("key").style.display="none";
-			que =2;
-			gameSet3();
-
+			if ( cnt2 == 5){
+				dis+=2;
+				document.getElementById("water-button").disabled="disabled";
+				document.getElementById("fire-button").disabled="";
+				document.getElementById("leaf-button").disabled="";
+				if(dis==3){
+					document.getElementById("fire-button").disabled="disabled";
+				}else if(dis==5){
+					document.getElementById("leaf-button").disabled="disabled";
+				}else if(dis==6){
+					document.getElementById("fire-button").disabled="disabled";
+					document.getElementById("leaf-button").disabled="disabled";
+				}
+				document.getElementById("fire-gobrin").style.display="none";
+				document.getElementById("fire-gobrin-down").style.display="block";
 			}
 		}
 	}
@@ -172,15 +214,32 @@ function typeGame(evt)
 			//入力されたセルの文字色を灰色にする
 			var idName = "word3"+cnt3;
 			document.getElementById(idName).style.color="#dddddd";
+			document.getElementById("water-button").disabled="disabled";
+			document.getElementById("fire-button").disabled="disabled";
+		if(esc >=1){
+      document.getElementById("leaf"+esc).style.display="none";
+				esc++;
+      if(esc <=4){
+        document.getElementById("leaf"+esc).style.display="block";
+      }
+    }
 			cnt3++; //カウント数を＋１にする
 			//全文字入力したか確認
 			if ( cnt3 == 4){
-				//問題終了を告げる文字列を作成
-				clearInterval(timer);
-				var fin="GAME終了";
-
-				//問題枠にゲーム終了を表示
-				document.getElementById("waku").innerHTML = fin;
+				dis+=3;
+				document.getElementById("leaf-button").disabled="sisabled";
+				document.getElementById("fire-button").disabled="";
+				document.getElementById("water-button").disabled="";
+				if(dis==4){
+					document.getElementById("fire-button").disabled="disabled";
+				}else if(dis==5){
+					document.getElementById("water-button").disabled="disabled";
+				}else if(dis==6){
+					document.getElementById("fire-button").disabled="disabled";
+					document.getElementById("water-button").disabled="disabled";
+				}
+				document.getElementById("water-gobrin").style.display="none";
+				document.getElementById("water-gobrin-down").style.display="block";
 			}
 		}
 	}

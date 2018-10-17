@@ -5,15 +5,24 @@ body{
 td{
 	text-align:center;
 }
-.box{
-    height:100vh;
-    background-repeat:no-repeat;
-    background-position:center center;
-    background-image: url("");
-    background-size:cover;
-    postion: relative;
-    justify-content: center; /*左右中央揃え*/
-    align-items: center;     /*上下中央揃え*/
+.back{
+	width:100%;
+	max-width:100%;
+	height:20vh;
+}
+#box{
+	display:none;
+	height:100vh;
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-image: url("");
+	background-size:cover;
+	postion: relative;
+	justify-content: center; /*左右中央揃え*/
+	align-items: center;     /*上下中央揃え*/
+}
+#breath{
+	margin:0;
 }
 #typing{
 	height:30vh;
@@ -21,25 +30,70 @@ td{
 	font-size:5em;
 }
 #escape{
-	height:30vh;
+	height:20vh;
+	width:auto;
+	margin:0;
+	text-align:center;
+	margin-bottom:0.5em;
+}
+#chara{
+	position:absolute;
+	left:20%;
+	top:43%;
+	height:10vh;
+	width:10vh;
+}
+#enemy{
+	position:absolute;
+	left:10%;
+	top:43%;
+	height:10vh;
+	width:10vh;
+}
+#key1{
+	margin:0 auto;
+	padding:0px;
+	display:none;
+	height:40vh;
 	width:100vh;
-	font-size:5em;
 }
-#escape1{
+#key2{
 	display:none;
+	margin:0 auto;
+	padding:0px;
+	display:none;
+	height:40vh;
+	width:100vh;
 }
-#escape2{
+#key3{
 	display:none;
+	margin:0 auto;
+	padding:0px;
+	display:none;
+	height:40vh;
+	width:100vh;
 }
-#escape3{
+#key4{
 	display:none;
+	margin:0 auto;
+	padding:0px;
+	display:none;
+	height:40vh;
+	width:100vh;
 }
-#escape4{
+#key5{
 	display:none;
+	margin:0 auto;
+	padding:0px;
+	display:none;
+	height:40vh;
+	width:100vh;
 }
-#escape5{
+#key6{
 	display:none;
-}
-#escape6{
+	margin:0 auto;
+	padding:0px;
 	display:none;
+	height:40vh;
+	width:100vh;
 }

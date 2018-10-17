@@ -23,6 +23,7 @@ var cnt2=0;             //何問目か格納
 var que=0;
 var timer1;
 var iki=30;
+var chara=10;
 
 var esc =1;
 var main = null;
@@ -46,10 +47,6 @@ function countDown(){
 	iki--;
 	document.getElementById("breath").textContent=iki;
 	if(iki ==0){
-		clearInterval(timer);
-		var fin="GAME終了";
-		//問題枠にゲーム終了を表示
-		document.getElementById("waku").innerHTML = fin;
 	}
 }
 function count(){
@@ -102,10 +99,6 @@ function typeGame(evt)
 			if ( cnt2 == 3){
 				//問題終了を告げる文字列を作成
 				clearInterval(timer);
-				var fin="GAME終了";
-
-				//問題枠にゲーム終了を表示
-				document.getElementById("waku").innerHTML = fin;
 			}
 		}
 	}
@@ -125,6 +118,8 @@ function typeGame(evt)
     //入力されたセルの文字色を灰色にする
     var idName = "word"+cnt;
     document.getElementById(idName).style.color="#dddddd";
+		document.getElementById("chara").style.left=chara+"%";
+		chara+=10;
     cnt++; //カウント数を＋１にする
     //全文字入力したか確認
     if ( cnt == 8)
