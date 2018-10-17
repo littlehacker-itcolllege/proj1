@@ -18,6 +18,9 @@ td{
     justify-content: center; /*左右中央揃え*/
     align-items: center;     /*上下中央揃え*/
 }
+#enemy-zone{
+	height:23vh;
+}
 #fire{
   display:none;
   }
@@ -52,4 +55,149 @@ td{
 	height:5vh;
 	margin:0 auto;
 	left:75%;
+}
+#fire-gobrin{
+	position:absolute;
+	top:30%;
+	left:14%;
+}
+#water-gobrin{
+	position:absolute;
+	top:30%;
+	left:44%;
+}
+#leaf-gobrin{
+	position:absolute;
+	top:30%;
+	left:74%;
+}
+#fire-gobrin-down{
+	position:absolute;
+	top:30%;
+	left:14%;
+	display:none;
+}
+#water-gobrin-down{
+	position:absolute;
+	top:30%;
+	left:44%;
+	display:none;
+}
+#leaf-gobrin-down{
+	position:absolute;
+	top:30%;
+	left:74%;
+	display:none;
+}
+#keybord-fire{
+	display:none;
+	height:40vh;
+	padding-top:5%;
+}
+#keybord-water{
+	display:none;
+	height:40vh;
+	padding-top:5%;
+}
+#keybord-leaf{
+	display:none;
+	height:40vh;
+	padding-top:5%;
+}
+#fire1{
+  margin:0 auto;
+  padding:0px;
+  display:block;
+  height:40vh;
+  width:100vh;
+}
+#fire2{
+  display:none;
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#fire3{
+  display:none;
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#fire4{
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#water1{
+  margin:0 auto;
+  padding:0px;
+  display:block;
+  height:40vh;
+  width:100vh;
+}
+#water2{
+  display:none;
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#water3{
+  display:none;
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#water4{
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#water5{
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#leaf1{
+  margin:0 auto;
+  padding:0px;
+  display:block;
+  height:40vh;
+  width:100vh;
+}
+#leaf2{
+  display:none;
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#leaf3{
+  display:none;
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#leaf4{
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
 }

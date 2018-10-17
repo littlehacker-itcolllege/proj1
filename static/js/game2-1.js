@@ -20,7 +20,7 @@ var cnt=0;             //何問目か格納
 var iki =0;
 var esc =1;
 var main = null;
-var left =30;
+var left =20;
 var nam=10;
 
 //0～25までの乱数を200個作成して配列rndに格納する関数
@@ -43,14 +43,11 @@ function countDown(){
   iki++;
 	document.getElementById("breath").textContent=iki;
 	if(iki == nam){
-		document.getElementById("enemy").style.left=nam+"%";
 		nam+=10;
+		document.getElementById("enemy").style.left=nam+"%";
 	}
   if(nam == left){
     clearInterval(timer);
-    var fin="GAME終了";
-    //問題枠にゲーム終了を表示
-    document.getElementById("waku").innerHTML = fin;
   }
 }
 
@@ -88,8 +85,8 @@ function typeGame(evt)
 		if(esc >=1){
 			document.getElementById("key"+esc).style.display="none";
 			esc++;
-			document.getElementById("chara").style.left=left+"%";
 			left+=10;
+			document.getElementById("chara").style.left=left+"%";
 			if(esc <=6){
 				document.getElementById("key"+esc).style.display="block";
 			}
@@ -102,10 +99,6 @@ function typeGame(evt)
     {
 			clearInterval(timer);
       //問題終了を告げる文字列を作成
-      var fin="GAME終了";
-
-      //問題枠にゲーム終了を表示
-      document.getElementById("waku").innerHTML = fin;
     }
   }
 }

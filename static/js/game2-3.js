@@ -24,6 +24,7 @@ var cnt2=0;             //何問目か格納
 var cnt3=0;             //何問目か格納
 var que=0;
 var timer1;
+var dis=0;
 
 var esc =1;
 var main = null;
@@ -58,8 +59,13 @@ function gameSet()
 	document.getElementById("fire").style.display="inline";
 	document.getElementById("water").style.display="none";
 	document.getElementById("leaf").style.display="none";
+	document.getElementById("keybord-fire").style.display="block";
+	document.getElementById("keybord-water").style.display="none";
+	document.getElementById("keybord-leaf").style.display="none";
   //カウント数をクリアする
   cnt=0;
+	que=0;
+  esc=1;
 
   //まずは問題文を作る
   ransu();
@@ -71,8 +77,12 @@ function gameSet2()
 	document.getElementById("water").style.display="inline";
 	document.getElementById("fire").style.display="none";
 	document.getElementById("leaf").style.display="none";
+	document.getElementById("keybord-water").style.display="block";
+	document.getElementById("keybord-fire").style.display="none";
+	document.getElementById("keybord-leaf").style.display="none";
   //カウント数をクリアする
   cnt2=0;
+  esc=1;
 	que=1;
   //まずは問題文を作る
   ransu2();
@@ -83,8 +93,12 @@ function gameSet3()
 	document.getElementById("leaf").style.display="inline";
 	document.getElementById("fire").style.display="none";
 	document.getElementById("water").style.display="none";
+	document.getElementById("keybord-leaf").style.display="block";
+	document.getElementById("keybord-fire").style.display="none";
+	document.getElementById("keybord-water").style.display="none";
   //カウント数をクリアする
   cnt3=0;
+  esc=1;
 	que=2;
   //まずは問題文を作る
   ransu3();
@@ -109,10 +123,32 @@ function typeGame(evt)
     //入力されたセルの文字色を灰色にする
     var idName = "word"+cnt;
     document.getElementById(idName).style.color="#dddddd";
+		document.getElementById("water-button").disabled="disabled";
+		document.getElementById("leaf-button").disabled="disabled";
+		 if(esc >=1){
+      document.getElementById("fire"+esc).style.display="none";
+				esc++;
+      if(esc <=4){
+        document.getElementById("fire"+esc).style.display="block";
+      }
+    }
     cnt++; //カウント数を＋１にする
     //全文字入力したか確認
 		if(cnt==4){
+			dis+=1;
 			document.getElementById("fire-button").disabled="disabled";
+			document.getElementById("water-button").disabled="";
+			document.getElementById("leaf-button").disabled="";
+			if(dis==3){
+					document.getElementById("water-button").disabled="disabled";
+				}else if(dis==4){
+					document.getElementById("leaf-button").disabled="disabled";
+				}else if(dis==6){
+					document.getElementById("water-button").disabled="disabled";
+					document.getElementById("leaf-button").disabled="disabled";
+				}
+			document.getElementById("leaf-gobrin").style.display="none";
+			document.getElementById("leaf-gobrin-down").style.display="block";
 		}
   }
 	//2問目
@@ -132,10 +168,32 @@ function typeGame(evt)
 			//入力されたセルの文字色を灰色にする
 			var idName = "word2"+cnt2;
 			document.getElementById(idName).style.color="#dddddd";
+			document.getElementById("fire-button").disabled="disabled";
+			document.getElementById("leaf-button").disabled="disabled";
+		if(esc >=1){
+      document.getElementById("water"+esc).style.display="none";
+				esc++;
+      if(esc <=5){
+        document.getElementById("water"+esc).style.display="block";
+      }
+    }
 			cnt2++; //カウント数を＋１にする
 			//全文字入力したか確認
 			if ( cnt2 == 5){
+				dis+=2;
 				document.getElementById("water-button").disabled="disabled";
+				document.getElementById("fire-button").disabled="";
+				document.getElementById("leaf-button").disabled="";
+				if(dis==3){
+					document.getElementById("fire-button").disabled="disabled";
+				}else if(dis==5){
+					document.getElementById("leaf-button").disabled="disabled";
+				}else if(dis==6){
+					document.getElementById("fire-button").disabled="disabled";
+					document.getElementById("leaf-button").disabled="disabled";
+				}
+				document.getElementById("fire-gobrin").style.display="none";
+				document.getElementById("fire-gobrin-down").style.display="block";
 			}
 		}
 	}
@@ -156,10 +214,32 @@ function typeGame(evt)
 			//入力されたセルの文字色を灰色にする
 			var idName = "word3"+cnt3;
 			document.getElementById(idName).style.color="#dddddd";
+			document.getElementById("water-button").disabled="disabled";
+			document.getElementById("fire-button").disabled="disabled";
+		if(esc >=1){
+      document.getElementById("leaf"+esc).style.display="none";
+				esc++;
+      if(esc <=4){
+        document.getElementById("leaf"+esc).style.display="block";
+      }
+    }
 			cnt3++; //カウント数を＋１にする
 			//全文字入力したか確認
 			if ( cnt3 == 4){
+				dis+=3;
 				document.getElementById("leaf-button").disabled="sisabled";
+				document.getElementById("fire-button").disabled="";
+				document.getElementById("water-button").disabled="";
+				if(dis==4){
+					document.getElementById("fire-button").disabled="disabled";
+				}else if(dis==5){
+					document.getElementById("water-button").disabled="disabled";
+				}else if(dis==6){
+					document.getElementById("fire-button").disabled="disabled";
+					document.getElementById("water-button").disabled="disabled";
+				}
+				document.getElementById("water-gobrin").style.display="none";
+				document.getElementById("water-gobrin-down").style.display="block";
 			}
 		}
 	}
