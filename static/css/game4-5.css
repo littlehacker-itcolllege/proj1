@@ -2,6 +2,8 @@ body {
     margin: 0px;
 }
 .canvas{
+    z-index:2;
+    position: absolute;
     width: 640px;
     background:#999;
     display: grid;
@@ -235,6 +237,7 @@ body {
     grid-row: 3;
     grid-column: 16;
 }
+
 #canvas58{
     background:url("../game/wall.png");
     grid-row: 3;
@@ -308,6 +311,11 @@ body {
     background:url("../game/wall.png");
     grid-row: 4;
     grid-column: 15;
+}
+#canvas87{
+    background:url("../game/character/enemybottom.gif");
+    grid-row: 4;
+    grid-column: 17;
 }
 #canvas89{
     background:url("../game/wall.png");
@@ -413,6 +421,16 @@ body {
     background:url("../game/wall.png");
     grid-row: 7;
     grid-column: 1;
+}
+#canvas132{
+    background:url("../game/flowerpot.png");
+    grid-row: 7;
+    grid-column: 2;
+}
+#canvas138{
+    background:url("../game/locker.png");
+    grid-row: 7;
+    grid-column: 8;
 }
 #canvas139{
     background:url("../game/wall.png");
@@ -630,6 +648,11 @@ body {
     grid-row: 12;
     grid-column: 4;
 }
+#canvas235{
+    background:url("../game/vase.png");
+    grid-row: 12;
+    grid-column: 5;
+}
 #canvas236{
     background:url("../game/wall.png");
     grid-row: 12;
@@ -738,17 +761,19 @@ body {
     grid-column: 9;
 }
 #canvas260{
-    background:url("../game/wall.png");
+    background:url("../game/door4-5.png");
     grid-row: 13;
     grid-column: 10;
 }
 #canvas261{
-    background:url("../game/wall.png");
+    background:url("../game/door4-5.png");
+    background-position-x: 64px;
     grid-row: 13;
     grid-column: 11;
 }
 #canvas262{
-    background:url("../game/wall.png");
+    background:url("../game/door4-5.png");
+    background-position-x: 32px;
     grid-row: 13;
     grid-column: 12;
 }
@@ -808,6 +833,9 @@ body {
     grid-column: 15;
 }
 .cross-layout {
+    position: absolute;
+    z-index:2;
+    top:416px;
     display: grid;
     grid-template-columns: 60px 60px 60px 120px 120px;
     grid-template-rows: 60px 60px;
@@ -833,10 +861,283 @@ body {
     grid-column: 5;
 }
 #action{
+    z-index:2;
     grid-row:1;
     grid-column:4;
 }
 #action2{
-    grid-row:2;
+    z-index:1;
+    grid-row:1;
     grid-column:4;
+}
+
+
+.textboard.ck{
+    z-index:2;
+}
+.text1-1.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+}
+.text1-2.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-delay:4s;
+}
+.text1-3.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-delay:6s;
+}
+
+
+.textboard {
+    z-index:1;
+    width: 580px;
+    height: 140px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #FFF;
+    border: 2px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 0 0 4px #FFF inset;
+    background-color: rgba(0,0,0,0.9);
+    top: 270px;
+    left: 32px;
+    position:absolute;
+}
+.text1-1 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+.text1-2 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+.text1-3 {
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+
+@-webkit-keyframes ozDq {
+    from { width: 0;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
+} /* 開始地点の指定 */
+
+@-moz-keyframes ozDq {
+    from { width: 0 ;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
+}
+
+
+.textboard2.ck{
+    z-index:2;
+}
+.text2-1.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+}
+.text2-2.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-delay:5s;
+}
+.text2-3.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-delay:8s;
+}
+
+
+.textboard2 {
+    z-index:1;
+    width: 580px;
+    height: 140px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #FFF;
+    border: 2px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 0 0 4px #FFF inset;
+    background-color: rgba(0,0,0,0.9);
+    top: 270px;
+    left: 32px;
+    position:absolute;
+}
+.text2-1 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+.text2-2 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+.text2-3 {
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+
+@-webkit-keyframes ozDq {
+    from { width: 0;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
+} /* 開始地点の指定 */
+
+@-moz-keyframes ozDq {
+    from { width: 0 ;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
+}
+
+
+.textboard3.ck{
+    z-index:2;
+}
+.text3-1.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+}
+.text3-2.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-delay:4s;
+}
+
+
+.textboard3 {
+    z-index:1;
+    width: 580px;
+    height: 140px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #FFF;
+    border: 2px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 0 0 4px #FFF inset;
+    background-color: rgba(0,0,0,0.9);
+    top: 270px;
+    left: 32px;
+    position:absolute;
+}
+.text3-1 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+.text3-2 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+
+@-webkit-keyframes ozDq {
+    from { width: 0;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
+} /* 開始地点の指定 */
+
+@-moz-keyframes ozDq {
+    from { width: 0 ;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
+}
+
+.textboard4.ck{
+    z-index:2;
+}
+.text4-1.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+}
+.text4-2.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-delay:4s;
+}
+
+
+.textboard4 {
+    z-index:1;
+    width: 580px;
+    height: 140px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #FFF;
+    border: 2px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 0 0 4px #FFF inset;
+    background-color: rgba(0,0,0,0.9);
+    top: 270px;
+    left: 32px;
+    position:absolute;
+}
+.text4-1 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+.text4-2 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+
+@-webkit-keyframes ozDq {
+    from { width: 0;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
+} /* 開始地点の指定 */
+
+@-moz-keyframes ozDq {
+    from { width: 0 ;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
 }

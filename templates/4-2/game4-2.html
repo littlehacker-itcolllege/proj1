@@ -40,12 +40,10 @@
                                     //調べるボタンの入力切り替え
                                     if ($("#input1").val() == '6 11' || $("#input1").val() == '5 12') {
                                         $("#action").prop("disabled", false);
-                                        $('#action').css('z-index', 2)
-                                        $('#action1').css('z-index', 1)
                                     } else {
                                         $("#action").prop("disabled", true);
                                     }
-                                    if ($("#input1").val() == '2 18') {
+                                    if ($("#input1").val() == '10 17') {
                                         $("#action1").prop("disabled", false);
                                         $('#action').css('z-index', 1)
                                         $('#action1').css('z-index', 2)
@@ -415,7 +413,7 @@
             }
             function win_open1(){
                 window.open("http://localhost:8080/stage4-2/see4-2-1","","width=200,height=200");
-                $('#canvas33').css({'background' : 'url("../../static/game/dustbox2.png")'});
+                $('#canvas39').css({'background' : 'url("../../static/game/dustbox2.png")'});
             }
             //入力ボタンのHTML表示とサイズ指定
             function input(){

@@ -8,22 +8,28 @@
         <meta charset="utf-8">
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
         <script type='text/javascript'>
+
+            var enemymove = 0;
+            var enemymove2 = 0;
+            var vasecrash = 0;
             // ページ読み込み時に実行
             window.onload = function () {
+
                 // 矢印ボタンのを各、値に代入
                 var $left = document.getElementById( "left" );
                 var $right = document.getElementById( "right" );
                 var $top = document.getElementById( "top" );
+                var $top2 = document.getElementById( "top2" );
                 var $bottom = document.getElementById( "bottom" );
                 obj = document.getElementById('input1');
-
+                enemy = setInterval( "enemyfast()",500);
                 //上ボタンのクリック
                 $top.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
                         $intervalID = setInterval(
                             function top2(idname){
                                 var input1 = $('#input1').val()
-                                if (input1 == '2 3') {
+                                if (input1 == '2 10'||input1 == '2 12'||input1 == '3 5'||input1 == '3 6'||input1 == '3 7'||input1 == '3 8'||input1 == '3 9'||input1 == '5 4'||input1 == '6 3'||input1 == '7 2'||input1 == '5 6'||input1 == '6 7'||input1 == '7 8'||input1 == '11 13'||input1 == '11 14'||input1 == '11 15'||input1 == '11 16'||input1 == '9 17') {
                                     document.maru.src="{% static "game/character/top.gif" %}";
                                 } else {
                                     //方向キー入力時キャラ移動
@@ -38,12 +44,20 @@
                                     //調べるボタンの入力切り替え
                                     if ($("#input1").val() == '8 14' ||$("#input1").val() == '9 15') {
                                         $("#action").prop("disabled", false);
-                                    } else {
-                                        $("#action").prop("disabled", true);
-                                    }
-                                    if ($("#input1").val() == '12 11') {
+                                    }else if ($("#input1").val() == '12 11') {
                                         $("#action2").prop("disabled", false);
-                                    } else {
+                                    }else if (input1 == '10 17'){
+                                        $(".canvas").css("z-index" , 1);
+                                        $(".textboard").toggleClass("ck");
+                                        $(".text1-1").toggleClass("ck");
+                                        $(".text1-2").toggleClass("ck");
+                                        $(".text1-3").toggleClass("ck");
+                                        $("#enemy").css({"grid-row":'6' ,"grid-column": '17'});
+                                        document.enemy.src="{% static "game/character/enemybottom.gif" %}";
+                                        clearInterval(enemy);
+                                        setTimeout("location.reload()",10000);
+                                    }else {
+                                        $("#action").prop("disabled", true);
                                         $("#action2").prop("disabled", true);
                                     }
                                 }
@@ -65,7 +79,7 @@
                         $intervalID = setInterval(
                             function bottom(idname){
                                 var input1 = $('#input1').val()
-                                if (input1 == '2 2')  {
+                                if (input1 == '3 6'||input1 == '3 7'||input1 == '3 8'||input1 == '3 9'||input1 == '9 2'||input1 == '10 3'||input1 == '11 4'||input1 == '11 5'||input1 == '11 6'||input1 == '10 7'||input1 == '9 8'||input1 == '12 10'||input1 == '12 11'||input1 == '12 12'||input1 == '11 13'||input1 == '11 14'||input1 == '11 15'||input1 == '11 16'||input1 == '11 17')  {
                                     document.maru.src="{% static "game/character/bottom.gif" %}";
                                 } else {
                                     var h = $('#maru').css('grid-row');
@@ -79,9 +93,8 @@
                                         $("#action").prop("disabled", false);
                                     } else {
                                         $("#action").prop("disabled", true);
-                                    }
-                                    if ($("#input1").val() == '12 11') {
-                                        $("#action2").prop("disabled", false);
+                                    }if ($("#input1").val() == '12 10'||$("#input1").val() == '12 11'||$("#input1").val() == '12 12') {
+                                        $("#action").prop("disabled", false);
                                     } else {
                                         $("#action2").prop("disabled", true);
                                     }
@@ -102,7 +115,7 @@
                         $intervalID = setInterval(
                             function right(){
                                 var input1 = $('#input1').val()
-                                if (input1 == '1 2') {
+                                if (input1 == '1 11'||input1 == '4 5'||input1 == '5 6'||input1 == '6 7'||input1 == '7 8'||input1 == '8 8'||input1 == '9 8'||input1 == '10 7'||input1 == '11 6'||input1 == '12 5'||input1 == '2 12'||input1 == '3 12'||input1 == '4 12'||input1 == '5 12'||input1 == '6 12'||input1 == '7 12'||input1 == '8 12'||input1 == '9 12'||input1 == '10 12'||input1 == '12 12'||input1 == '11 17'||input1 == '10 17'||input1 == '9 17') {
                                     document.maru.src="{% static "game/character/right.gif" %}";
                                 } else {
                                     var w = $('#maru').css('grid-column');
@@ -139,7 +152,7 @@
                         $intervalID = setInterval(
                             function left(){
                                 var input1 = $('#input1').val()
-                                if (input1 == '1 2') {
+                                if (input1 == '1 11'||input1 == '2 10'||input1 == '3 5'||input1 == '4 5'||input1 == '5 4'||input1 == '6 3'||input1 == '7 2'||input1 == '8 2'||input1 == '9 2'||input1 == '10 3'||input1 == '11 4'||input1 == '12 5'||input1 == '4 10'||input1 == '5 10'||input1 == '6 10'||input1 == '7 10'||input1 == '8 10'||input1 == '9 10'||input1 == '10 10'||input1 == '12 10'||input1 == '11 10'||input1 == '10 17'||input1 == '9 17') {
                                     document.maru.src="{% static "game/character/left.gif" %}";
                                 } else {
                                     var h = $('#maru').css('grid-column');
@@ -170,6 +183,7 @@
                         clearInterval( $intervalID );
                     }
                 }
+
             }
 
 
@@ -209,7 +223,7 @@
                 //上キーの入力
                 if (keyCode == 38) {
                     var input1 = $('#input1').val()
-                    if (input1 == '2 3') {
+                    if (input1 == '2 10'||input1 == '2 12'||input1 == '3 5'||input1 == '3 6'||input1 == '3 7'||input1 == '3 8'||input1 == '3 9'||input1 == '5 4'||input1 == '6 3'||input1 == '7 2'||input1 == '5 6'||input1 == '6 7'||input1 == '7 8'||input1 == '11 13'||input1 == '11 14'||input1 == '11 15'||input1 == '11 16'||input1 == '9 17') {
                         document.maru.src="{% static "game/character/top.gif" %}";
                     } else {
                         var h = $('#maru').css('grid-row');
@@ -223,12 +237,20 @@
                         obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
                         if ($("#input1").val() == '8 14' ||$("#input1").val() == '9 15') {
                             $("#action").prop("disabled", false);
-                        } else {
-                            $("#action").prop("disabled", true);
-                        }
-                        if ($("#input1").val() == '12 11') {
+                        }else if ($("#input1").val() == '12 11') {
                             $("#action2").prop("disabled", false);
-                        } else {
+                        }else if (input1 == '10 17'){
+                            $(".canvas").css("z-index" , 1);
+                            $(".textboard").toggleClass("ck");
+                            $(".test1").toggleClass("ck");
+                            $(".test2").toggleClass("ck");
+                            $(".test3").toggleClass("ck");
+                            $("#enemy").css({"grid-row":'6' ,"grid-column": '17'});
+                            document.enemy.src="{% static "game/character/enemybottom.gif" %}";
+                            clearInterval(enemy);
+                            setTimeout("location.reload()",10000);
+                        }else {
+                            $("#action").prop("disabled", true);
                             $("#action2").prop("disabled", true);
                         }
                     }
@@ -236,7 +258,7 @@
                 //下キーの入力
                 if (keyCode == 40) {
                     var input1 = $('#input1').val()
-                    if (input1 == '2 2' )  {
+                    if (input1 == '3 6'||input1 == '3 7'||input1 == '3 8'||input1 == '3 9'||input1 == '9 2'||input1 == '10 3'||input1 == '11 4'||input1 == '11 5'||input1 == '11 6'||input1 == '10 7'||input1 == '9 8'||input1 == '12 10'||input1 == '12 11'||input1 == '12 12'||input1 == '11 13'||input1 == '11 14'||input1 == '11 15'||input1 == '11 16'||input1 == '11 17' )  {
                         document.maru.src="{% static "game/character/bottom.gif" %}";
                     } else {
                         var h = $('#maru').css('grid-row');
@@ -263,7 +285,7 @@
                 //右キーの入力
                 if (keyCode == 39) {
                     var input1 = $('#input1').val()
-                    if (input1 == '1 2') {
+                    if (input1 == '1 11'||input1 == '4 5'||input1 == '5 6'||input1 == '6 7'||input1 == '7 8'||input1 == '8 8'||input1 == '9 8'||input1 == '10 7'||input1 == '11 6'||input1 == '12 5'||input1 == '2 12'||input1 == '3 12'||input1 == '4 12'||input1 == '5 12'||input1 == '6 12'||input1 == '7 12'||input1 == '8 12'||input1 == '9 12'||input1 == '10 12'||input1 == '12 12'||input1 == '11 17'||input1 == '10 17'||input1 == '9 17') {
                         document.maru.src="{% static "game/character/right.gif" %}";
                     } else {
                         var w = $('#maru').css('grid-column');
@@ -290,7 +312,7 @@
                 //左キーの入力
                 if (keyCode == 37) {
                     var input1 = $('#input1').val()
-                    if (input1 == '1 2') {
+                    if (input1 == '1 11'||input1 == '2 10'||input1 == '3 5'||input1 == '4 5'||input1 == '5 4'||input1 == '6 3'||input1 == '7 2'||input1 == '8 2'||input1 == '9 2'||input1 == '10 3'||input1 == '11 4'||input1 == '12 5'||input1 == '4 10'||input1 == '5 10'||input1 == '6 10'||input1 == '7 10'||input1 == '8 10'||input1 == '9 10'||input1 == '10 10'||input1 == '12 10'||input1 == '11 10'||input1 == '10 17'||input1 == '9 17') {
                         document.maru.src="{% static "game/character/left.gif" %}";
                     } else {
                         var h = $('#maru').css('grid-column');
@@ -314,61 +336,158 @@
                     }
                 }
             }
-            //調べるボタンのHTML表示とサイズ指定
+
+
+            function remove(){
+                $(".textboard2").remove();
+            }
+            function remove2(){
+                $(".textboard3").remove();
+            }
+            function remove3(){
+                $(".textboard4").remove();
+            }
+            function text(){
+                $(".textboard4").toggleClass("ck");
+                $(".text4-1").toggleClass("ck");
+                $(".text4-2").toggleClass("ck");
+                $(".text4-3").toggleClass("ck");
+                setTimeout("remove3()" ,15000);
+            }
+            //調べるボタンの動き
             function win_open(){
-                window.open("http://localhost:8080/stage4-5/see4-5","","width=800,height=600");
+                $(".textboard2").toggleClass("ck"),
+                    $(".text2-1").toggleClass("ck"),
+                    $(".text2-2").toggleClass("ck"),
+                    $(".text2-3").toggleClass("ck"),
+                    $("#enemy").css({"grid-row":'6' ,"grid-column": '17'}),
+                    document.enemy.src="{% static "game/character/enemybottom.gif" %}",
+                    setTimeout("remove()" ,15000),
+                    clearInterval(enemy);
+                setInterval("enemysecond()" ,1000);
             }
+
             //入力ボタンのHTML表示とサイズ指定
-            function input(){
-                window.open("http://localhost:8080/stage4-5/input4-5","","width=800,height=600");
-            }
+            function action2(){
+                vasecrash =+ 1
+                $('#canvas235').css({'background' : 'url("../../static/game/vasecrash.png")'});
+                setTimeout("text()" , 2000);
+                            }
 
 
-            //enemyの動き
-            var enemymove = 0
-            window.onload =  function (){
-                setInterval( "newdate()",500);
-            }
-
-            function newdate(){
+            //enemyの動き初期動作
+            function enemyfast(){
                 if (enemymove <= 2) {
-                document.enemy.src="{% static "game/character/enemybottom.gif" %}"
-                var h = $('#enemy').css('grid-row');
-                h = (parseInt(h) + 1).toString();
-                $('#enemy').css('grid-row', h);
-                enemymove = (enemymove + 1);
+                    document.enemy.src="{% static "game/character/enemybottom.gif" %}"
+                    var h = $('#enemy').css('grid-row');
+                    h = (parseInt(h) + 1).toString();
+                    $('#enemy').css('grid-row', h);
+                    enemymove = (enemymove + 1);
                 } else if (enemymove <= 6){
-                document.enemy.src="{% static "game/character/enemyright.gif" %}"
-                var h = $('#enemy').css('grid-column');
-                h = (parseInt(h) + 1).toString();
-                $('#enemy').css('grid-column', h);
-                enemymove = (enemymove + 1);
+                    document.enemy.src="{% static "game/character/enemyright.gif" %}"
+                    var h = $('#enemy').css('grid-column');
+                    h = (parseInt(h) + 1).toString();
+                    $('#enemy').css('grid-column', h);
+                    enemymove = (enemymove + 1);
                 } else if (enemymove <=9) {
-                document.enemy.src="{% static "game/character/enemytop.gif" %}"
-                var h = $('#enemy').css('grid-row');
-                h = (parseInt(h) - 1).toString();
-                $('#enemy').css('grid-row', h);
-                enemymove = (enemymove + 1);
+                    document.enemy.src="{% static "game/character/enemytop.gif" %}"
+                    var h = $('#enemy').css('grid-row');
+                    h = (parseInt(h) - 1).toString();
+                    $('#enemy').css('grid-row', h);
+                    enemymove = (enemymove + 1);
                 }else if(enemymove <= 12) {
-                document.enemy.src="{% static "game/character/enemyleft.gif" %}"
-                var h = $('#enemy').css('grid-column');
-                h = (parseInt(h) - 1).toString();
-                $('#enemy').css('grid-column', h);
-                enemymove = (enemymove + 1);
+                    document.enemy.src="{% static "game/character/enemyleft.gif" %}"
+                    var h = $('#enemy').css('grid-column');
+                    h = (parseInt(h) - 1).toString();
+                    $('#enemy').css('grid-column', h);
+                    enemymove = (enemymove + 1);
                 }else{
-                document.enemy.src="{% static "game/character/enemyleft.gif" %}"
-                var h = $('#enemy').css('grid-column');
-                h = (parseInt(h) - 1).toString();
-                $('#enemy').css('grid-column', h);
-                enemymove = 0;
-
+                    document.enemy.src="{% static "game/character/enemyleft.gif" %}"
+                    var h = $('#enemy').css('grid-column');
+                    h = (parseInt(h) - 1).toString();
+                    $('#enemy').css('grid-column', h);
+                    enemymove = 0;
                 }
             }
 
+            //主人公が扉を調べたあとのenemyの動き
+            function enemysecond(){
+                if(vasecrash == 0){
+                    if(enemymove2 < 15){
+                        document.enemy.src="{% static "game/character/enemybottom.gif" %}"
+                        enemymove2 = (enemymove2 + 1);
+                    }else if( enemymove2 < 20){
+                        document.enemy.src="{% static "game/character/enemybottom.gif" %}"
+                        var h = $('#enemy').css('grid-row');
+                        h = (parseInt(h) + 1).toString();
+                        $('#enemy').css('grid-row', h);
+                        enemymove2 = (enemymove2 + 1);
+                    }else if(enemymove2 < 26) {
+                        document.enemy.src="{% static "game/character/enemyleft.gif" %}"
+                        var h = $('#enemy').css('grid-column');
+                        h = (parseInt(h) - 1).toString();
+                        $('#enemy').css('grid-column', h);
+                        enemymove2 = (enemymove2 + 1);
+                    }else if (enemymove2 < 27){
+                        document.enemy.src="{% static "game/character/enemybottom.gif" %}"
+                        var h = $('#enemy').css('grid-row');
+                        h = (parseInt(h) + 1).toString();
+                        $('#enemy').css('grid-row', h);
+                        enemymove2 = (enemymove2 + 1);
+                    }else if(enemymove2 < 28){
+                        $('#canvas260').css({'background' : 'url("")'});
+                        $('#canvas261').css({'background' : 'url("")'});
+                        $('#canvas262').css({'background' : 'url("")'});
+                        enemymove2 = (enemymove2 + 1);
+                        $(".textboard3").toggleClass("ck");
+                        $(".text3-1").toggleClass("ck");
+                        $(".text3-2").toggleClass("ck");
+                        setTimeout("remove2()" ,10000);
+                    }else if ( enemymove2 < 29 && $("#input1").val() == '11 5'){
+                        $("#action2").prop("disabled", false);
+                        $("#action2").css("z-index", 2 );
+                        $("#action").css("z-index", 1 );
+                    }}else if (vasecrash == 1){
+                if(enemymove2 < 40 ){
+                document.enemy.src="{% static "game/character/enemybottom.gif" %}"
+                enemymove2 = (enemymove2 + 1);
+                }else if(enemymove2 < 49 ){
+                            document.enemy.src="{% static "game/character/enemytop.gif" %}"
+                            var h = $('#enemy').css('grid-row');
+                            h = (parseInt(h) - 1).toString();
+                            $('#enemy').css('grid-row', h);
+                            enemymove2 = (enemymove2 + 1);
+                            $("#action2").prop("disabled", true);
+                            $("#action2").css("z-index", 1 );
+                            $("#action").css("z-index", 2 );
+                        }else if(enemymove2 < 55){
+                            document.enemy.src="{% static "game/character/enemyleft.gif" %}"
+                            var h = $('#enemy').css('grid-column');
+                            h = (parseInt(h) - 1).toString();
+                            $('#enemy').css('grid-column', h);
+                            enemymove2 = (enemymove2 + 1);
+                        }else if(enemymove2 < 61 ){
+                            document.enemy.src="{% static "game/character/enemybottom.gif" %}"
+                            var h = $('#enemy').css('grid-row');
+                            h = (parseInt(h) + 1).toString();
+                            $('#enemy').css('grid-row', h);
+                            enemymove2 = (enemymove2 + 1);
+                        }else if(enemymove2 == 61 ) {
+                            document.enemy.src="{% static "game/character/enemyleft.gif" %}"
+                            enemymove2 = (enemymove2 + 1);
+                        }else if(enemymove2 == 62) {
+                            document.enemy.src="{% static "game/character/enemybottom.gif" %}"
+                            enemymove2 = (enemymove2 + 1);
+                        }else if(enemymove2 == 63){
+                            document.enemy.src="{% static "game/character/enemyright.gif" %}"
+                            enemymove2 = (enemymove2 + 1);
+                        }else{
+                            document.enemy.src="{% static "game/character/enemybottom.gif" %}"
+                            enemymove2 = (enemymove2 - 3);
 
-
-
-
+                        }
+                    }
+            }
         </script>
     </head>
     <body>
@@ -650,6 +769,25 @@
             <div id="canvas269"></div>
             <div id="canvas270"></div>
         </div>
+        <div class="textboard">
+            <p class="text1-1" ><font color="red">がいこつ:</font>なんだ！お前侵入者だな！！</p>
+            <p class="text1-2" ><font color="blue">フェアリー:</font>見つかってしまった</p>
+            <p class="text1-3" ><font color="red">がいこつ:</font>この野郎！</p>
+        </div>
+        <div class="textboard2">
+            <p class="text2-1" ><font color="blue">フェアリー:</font>この扉は鍵で開くみたいね</p>
+            <p class="text2-2" ><font color="red">がいこつ:</font>おっと、見回りの時間だな</p>
+            <p class="text2-3" ><font color="blue">フェアリー:</font>がいこつがくるわ、左の部屋に隠れましょう</p>
+        </div>
+        <div class="textboard3">
+            <p class="text3-1" ><font color="blue">フェアリー:</font>扉がひらいたわ</p>
+            <p class="text3-2" ><font color="blue">フェアリー:</font>音をだしておびき寄せましょう</p>
+        </div>
+        <div class="textboard4">
+            <p class="text4-1" ><font color="red">がいこつ:</font>むっ？なんの音だ？？</p>
+            <p class="text4-2" ><font color="blue">フェアリー:</font>がいこつがくるわ、右上のロッカーに隠れましょう</p>
+        </div>
+
         <div id='button' class="cross-layout">
             <button id="top" >￪</button>
             <button id="left" >￩</button>
@@ -657,7 +795,8 @@
             <button id="right" >￫</button>
             <input type="text" id="input1" autocomplete="off" value="1 2">
             <input type="submit" id="action" value="調べる" onclick="win_open()">
-            <input type="submit" id="action2" value="入力" onclick="input()">
+            <input type="submit" id="action2" value="音を立てる" onclick="action2()">
         </div>
+
     </body>
 </html>
