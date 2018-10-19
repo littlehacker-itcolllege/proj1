@@ -161,7 +161,7 @@ body {
     grid-column: 8;
 }
 #canvas57{
-    background:url("../game/pc.png");
+    background:url("../game/safebox.png");
     grid-row: 3;
     grid-column: 17;
 }
@@ -263,7 +263,7 @@ body {
     grid-column: 10;
 }
 #canvas107{
-    background:url("../game/pc.png");
+    background:url("../game/table.png");
     grid-row: 5;
     grid-column: 17;
 }
@@ -359,7 +359,7 @@ body {
     grid-column: 12;
 }
 #canvas147{
-    background:url("../game/pc.png");
+    background:url("../game/table.png");
     grid-row: 7;
     grid-column: 17;
 }
@@ -485,12 +485,12 @@ body {
     grid-column: 13;
 }
 #canvas184{
-    background:url("../game/dustbox1.png");
+    background:url("../game/calendar.png");
     grid-row: 9;
     grid-column: 14;
 }
 #canvas187{
-    background:url("../game/pc.png");
+    background:url("../game/table.png");
     grid-row: 9;
     grid-column: 17;
 }

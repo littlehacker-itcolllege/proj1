@@ -11,8 +11,14 @@
             //上ボタンの処理
             function topbutton (){
                 var input1 = $('#input1').val()
-                if (input1 == '2 3'||input1 == '2 4'||input1 == '2 5'||input1 == '2 6'||input1 == '2 7'||input1 == '2 8'||input1 == '2 9'||input1 == '2 10'||input1 == '2 11'||input1 == '2 12'||input1 == '2 13'||input1 == '2 14'||input1 == '2 15'||input1 == '2 16'||input1 == '2 17'||input1 == '2 18'||input1 == '2 19'||input1 == '9 2'||input1 == '9 3'||input1 == '9 4'||input1 == '9 5'||input1 == '9 6'||input1 == '9 7'||input1 == '9 8'||input1 == '9 9'||input1 == '9 10'||input1 == '9 11'||input1 == '9 12'||input1 == '9 13'||input1 == '9 14'||input1 == '9 15'||input1 == '9 16'||input1 == '9 17'||input1 == '12 4') {
+                if(input1 == "12 4"){
+                        $("#action").prop("disabled", false);
+                     document.maru.src="{% static "game/character/top.gif" %}";
+                }else if (input1 == '2 3'||input1 == '2 4'||input1 == '2 5'||input1 == '2 6'||input1 == '2 7'||input1 == '2 8'||input1 == '2 9'||input1 == '2 10'||input1 == '2 11'||input1 == '2 12'||input1 == '2 13'||input1 == '2 14'||input1 == '2 15'||input1 == '2 16'||input1 == '2 17'||input1 == '2 18'||input1 == '2 19'||input1 == '9 2'||input1 == '9 3'||input1 == '9 4'||input1 == '9 5'||input1 == '9 6'||input1 == '9 7'||input1 == '9 8'||input1 == '9 9'||input1 == '9 10'||input1 == '9 11'||input1 == '9 12'||input1 == '9 13'||input1 == '9 14'||input1 == '9 15'||input1 == '9 16'||input1 == '9 17'||input1 == '12 4') {
                     document.maru.src="{% static "game/character/top.gif" %}";
+                        $("#action").prop("disabled", true);
+                        $("#action2").prop("disabled", true);
+
                 } else {
                     //方向キー入力時キャラ移動
                     var h = $('#maru').css('grid-row');
@@ -28,10 +34,6 @@
                         $("#action").prop("disabled", false);
                     } else {
                         $("#action").prop("disabled", true);
-                    }
-                    if ($("#input1").val() == '12 2') {
-                        $("#action2").prop("disabled", false);
-                    } else {
                         $("#action2").prop("disabled", true);
                     }
                 }
@@ -39,9 +41,14 @@
             //下ボタンの処理
             function bottombutton(){
                 var input1 = $('#input1').val()
-                if (input1 == '3 2'||input1 == '3 3'||input1 == '3 4'||input1 == '3 5'||input1 == '3 6'||input1 == '3 7'||input1 == '3 8'||input1 == '3 9'||input1 == '3 10'||input1 == '3 11'||input1 == '3 12'||input1 == '3 13'||input1 == '3 14'||input1 == '3 15'||input1 == '3 16'||input1 == '3 17'||
-                    input1 == '10 4'||input1 == '10 5'||input1 == '10 6'||input1 == '10 7'||input1 == '10 8'||input1 == '10 9'||input1 == '10 10'||input1 == '10 11'||input1 == '10 12'||input1 == '10 13'||input1 == '10 14'||input1 == '10 15'||input1 == '10 16'||input1 == '10 17'||input1 == '10 18'||input1 == '10 19'||input1 == '12 2'||input1 == '12 3'||input1 == '12 4' )  {
+           if(input1 == '12 2') {
                     document.maru.src="{% static "game/character/bottom.gif" %}";
+                        $("#action2").prop("disabled", false);
+            }else  if (input1 == '3 2'||input1 == '3 3'||input1 == '3 4'||input1 == '3 5'||input1 == '3 6'||input1 == '3 7'||input1 == '3 8'||input1 == '3 9'||input1 == '3 10'||input1 == '3 11'||input1 == '3 12'||input1 == '3 13'||input1 == '3 14'||input1 == '3 15'||input1 == '3 16'||input1 == '3 17'||
+                    input1 == '10 4'||input1 == '10 5'||input1 == '10 6'||input1 == '10 7'||input1 == '10 8'||input1 == '10 9'||input1 == '10 10'||input1 == '10 11'||input1 == '10 12'||input1 == '10 13'||input1 == '10 14'||input1 == '10 15'||input1 == '10 16'||input1 == '10 17'||input1 == '10 18'||input1 == '10 19'||input1 == '12 3'||input1 == '12 4' )  {
+                    document.maru.src="{% static "game/character/bottom.gif" %}";
+                        $("#action").prop("disabled", true);
+                        $("#action2").prop("disabled", true);
                 } else {
                     var h = $('#maru').css('grid-row');
                     h = (parseInt(h) + 1).toString();
@@ -50,14 +57,10 @@
                     var leftandright = $('#maru').css('grid-row');
                     var upanddown = $('#maru').css('grid-column');
                     obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
-                    if ($("#input1").val() == '12 4') {
-                        $("#action").prop("disabled", false);
-                    } else {
-                        $("#action").prop("disabled", true);
-                    }
                     if ($("#input1").val() == '12 2') {
                         $("#action2").prop("disabled", false);
                     } else {
+                        $("#action").prop("disabled", true);
                         $("#action2").prop("disabled", true);
                     }
                 }
@@ -68,6 +71,8 @@
                 if (input1 == '1 2'||input1 == '2 19'||input1 == '3 19'||input1 == '4 19'||input1 == '5 19'||input1 == '6 19'||input1 == '7 19'||input1 == '8 19'||input1 == '9 19'||input1 == '10 19'
                     ||input1 == '11 3'||input1 == '12 4'||input1 == '13 2') {
                     document.maru.src="{% static "game/character/right.gif" %}";
+                        $("#action").prop("disabled", true);
+                        $("#action2").prop("disabled", true);
                 } else {
                     var w = $('#maru').css('grid-column');
                     w = (parseInt(w) + 1).toString();
@@ -76,16 +81,9 @@
                     var leftandright = $('#maru').css('grid-row');
                     var upanddown = $('#maru').css('grid-column');
                     obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
-                    if ($("#input1").val() == '12 4') {
-                        $("#action").prop("disabled", false);
-                    } else {
                         $("#action").prop("disabled", true);
-                    }
-                    if ($("#input1").val() == '12 2') {
-                        $("#action2").prop("disabled", false);
-                    } else {
                         $("#action2").prop("disabled", true);
-                    }
+
                 }
             }
             //左ボタンの処理
@@ -93,6 +91,8 @@
                 var input1 = $('#input1').val()
                 if (input1 == '1 2'||input1 == '2 2'||input1 == '3 2'||input1 == '4 18'||input1 == '5 18'||input1 == '6 18'||input1 == '7 18'||input1 == '8 18'||input1 == '9 2'||input1 == '10 2'||input1 == '11 2'||input1 == '12 2'||input1 == '13 2') {
                     document.maru.src="{% static "game/character/left.gif" %}";
+                        $("#action").prop("disabled", true);
+                        $("#action2").prop("disabled", true);
                 } else {
                     var h = $('#maru').css('grid-column');
                     h = (parseInt(h) - 1).toString();
@@ -101,16 +101,9 @@
                     var leftandright = $('#maru').css('grid-row');
                     var upanddown = $('#maru').css('grid-column');
                     obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
-                    if ($("#input1").val() == '12 4') {
-                        $("#action").prop("disabled", false);
-                    } else {
                         $("#action").prop("disabled", true);
-                    }
-                    if ($("#input1").val() == '12 2') {
-                        $("#action2").prop("disabled", false);
-                    } else {
                         $("#action2").prop("disabled", true);
-                    }
+
                 }
             }
 
@@ -438,8 +431,8 @@
             <button id="bottom" >￬</button>
             <button id="right" >￫</button>
             <input type="text" id="input1" autocomplete="off" value="1 2">
-            <input type="submit" id="action" value="調べる" onclick="win_open()">
-            <input type="submit" id="action2" value="入力" onclick="input()">
+            <input type="submit" id="action" value="調べる" onclick="win_open()" disabled>
+            <input type="submit" id="action2" value="入力" onclick="input()" disabled>
         </div>
     </body>
 </html>

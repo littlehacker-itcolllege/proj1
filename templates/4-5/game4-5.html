@@ -54,6 +54,11 @@
                 if ((input1 == '12 10'||input1 == '12 11'||input1 == '12 12')&&actionvalue=='5'){
                     $("#action").prop("disabled", false);
                     $("#action").val("すすむ");
+                    $('#action').wrap('<a class="actionelement" />');
+                    $(".actionelement").attr({href:'http://localhost:8080/stage4-5/nextstory4-5',
+                        target:'story4-5'});
+
+
                 }else if (input1 == '7 8'||input1 == '3 6'||input1 == '3 7'||input1 == '3 8'||input1 == '3 9'||input1 == '9 2'||input1 == '10 3'||input1 == '11 4'||input1 == '11 5'||input1 == '11 6'||input1 == '10 7'||input1 == '9 8'||input1 == '12 10'||input1 == '12 11'||input1 == '12 12'||input1 == '11 13'||input1 == '11 14'||input1 == '11 15'||input1 == '11 16'||input1 == '11 17')  {
                     document.maru.src="{% static "game/character/bottom.gif" %}";
                 } else {
@@ -249,11 +254,12 @@
             }
 
 
-
+            //ロッカーから出る時のボタンの出現
             function exit (){
                 $("#action").prop("disabled", false);
                 $("#action").val("でる");
             }
+            //壺を壊した時のセリフ
             function text(){
                 $(".textboard4").toggleClass("ck");
                 $(".text4-1").toggleClass("ck");
@@ -301,6 +307,9 @@
                     var leftandright = $('#maru').css('grid-row');
                     var upanddown = $('#maru').css('grid-column');
                     obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
+                    actionvalue = (actionvalue + 1);
+                    $("#action").prop("disabled", true);
+                }else if (actionvalue == 5){
                     actionvalue = (actionvalue + 1);
                     $("#action").prop("disabled", true);
                 }
@@ -438,7 +447,7 @@
                             $(".text5-1").toggleClass("ck");
                             $(".text5-2").toggleClass("ck");
                             setTimeout("remove5()" ,12000);
-                            setTimeout("exit()" ,15000);
+                            setTimeout("exit()" ,14000);
 
                         }else if(enemymove2 == 61 ) {
                             document.enemy.src="{% static "game/character/enemyleft.gif" %}"
@@ -778,7 +787,7 @@
             <button id="bottom" >￬</button>
             <button id="right" >￫</button>
             <input type="text" id="input1" autocomplete="off" value="1 2">
-            <input type="submit" id="action" value="調べる" onclick="win_open()">
+            <input type="submit" id="action" value="調べる" href='' target='' onclick="win_open()" disabled>
         </div>
 
     </body>
