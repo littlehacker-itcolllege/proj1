@@ -200,6 +200,46 @@ body {
     grid-row: 3;
     grid-column: 1;
 }
+#canvas43{
+    background:url("../game/flowerpot.png");
+    grid-row: 3;
+    grid-column: 3;
+}
+#canvas45{
+    background:url("../game/flowerpot.png");
+    grid-row: 3;
+    grid-column: 5;
+}
+#canvas47{
+    background:url("../game/flowerpot.png");
+    grid-row: 3;
+    grid-column: 7;
+}
+#canvas49{
+    background:url("../game/flowerpot.png");
+    grid-row: 3;
+    grid-column: 9;
+}
+#canvas51{
+    background:url("../game/flowerpot.png");
+    grid-row: 3;
+    grid-column: 11;
+}
+#canvas53{
+    background:url("../game/flowerpot.png");
+    grid-row: 3;
+    grid-column: 13;
+}
+#canvas55{
+    background:url("../game/flowerpot.png");
+    grid-row: 3;
+    grid-column: 15;
+}
+#canvas57{
+    background:url("../game/flowerpot.png");
+    grid-row: 3;
+    grid-column: 17;
+}
 #canvas70{
     background:url("../game/wall.png");
     grid-row: 3;
@@ -352,42 +392,22 @@ body {
     grid-column: 4;
 }
 #canvas155{
-    background:url("../game/wall.png");
+    background:url("../game/pc.png");
     grid-row: 8;
     grid-column: 5;
 }
 #canvas156{
-    background:url("../game/wall.png");
+    background:url("../game/table.png");
     grid-row: 8;
     grid-column: 6;
 }
-#canvas157{
-    background:url("../game/wall.png");
-    grid-row: 8;
-    grid-column: 7;
-}
-#canvas158{
-    background:url("../game/wall.png");
-    grid-row: 8;
-    grid-column: 8;
-}
-#canvas159{
-    background:url("../game/wall.png");
-    grid-row: 8;
-    grid-column: 9;
-}
-#canvas160{
-    background:url("../game/wall.png");
-    grid-row: 8;
-    grid-column: 10;
-}
 #canvas161{
-    background:url("../game/wall.png");
+    background:url("../game/table.png");
     grid-row: 8;
     grid-column: 11;
 }
 #canvas162{
-    background:url("../game/wall.png");
+    background:url("../game/pc.png");
     grid-row: 8;
     grid-column: 12;
 }
@@ -395,6 +415,11 @@ body {
     background:url("../game/wall.png");
     grid-row: 8;
     grid-column: 13;
+}
+#canvas164{
+    background:url("../game/pc.png");
+    grid-row: 8;
+    grid-column: 14;
 }
 #canvas169{
     background:url("../game/dustbox2.png");
@@ -418,46 +443,6 @@ body {
     background:url("../game/wall.png");
     grid-row: 9;
     grid-column: 4;
-}
-#canvas175{
-    background:url("../game/wall.png");
-    grid-row: 9;
-    grid-column: 5;
-}
-#canvas176{
-    background:url("../game/wall.png");
-    grid-row: 9;
-    grid-column: 6;
-}
-#canvas177{
-    background:url("../game/wall.png");
-    grid-row: 9;
-    grid-column: 7;
-}
-#canvas178{
-    background:url("../game/wall.png");
-    grid-row: 9;
-    grid-column: 8;
-}
-#canvas179{
-    background:url("../game/wall.png");
-    grid-row: 9;
-    grid-column: 9;
-}
-#canvas180{
-    background:url("../game/wall.png");
-    grid-row: 9;
-    grid-column: 10;
-}
-#canvas181{
-    background:url("../game/wall.png");
-    grid-row: 9;
-    grid-column: 11;
-}
-#canvas182{
-    background:url("../game/wall.png");
-    grid-row: 9;
-    grid-column: 12;
 }
 #canvas183{
     background:url("../game/wall.png");
@@ -492,50 +477,20 @@ body {
     grid-row: 10;
     grid-column: 4;
 }
-#canvas195{
-    background:url("../game/wall.png");
+#canvas205{
+    background:url("../game/table.png");
     grid-row: 10;
-    grid-column: 5;
+    grid-column: 15;
 }
-#canvas196{
-    background:url("../game/wall.png");
+#canvas206{
+    background:url("../game/table.png");
     grid-row: 10;
-    grid-column: 6;
+    grid-column: 16;
 }
-#canvas197{
-    background:url("../game/wall.png");
+#canvas207{
+    background:url("../game/table.png");
     grid-row: 10;
-    grid-column: 7;
-}
-#canvas198{
-    background:url("../game/wall.png");
-    grid-row: 10;
-    grid-column: 8;
-}
-#canvas199{
-    background:url("../game/wall.png");
-    grid-row: 10;
-    grid-column: 9;
-}
-#canvas200{
-    background:url("../game/wall.png");
-    grid-row: 10;
-    grid-column: 10;
-}
-#canvas201{
-    background:url("../game/wall.png");
-    grid-row: 10;
-    grid-column: 11;
-}
-#canvas202{
-    background:url("../game/wall.png");
-    grid-row: 10;
-    grid-column: 12;
-}
-#canvas203{
-    background:url("../game/wall.png");
-    grid-row: 10;
-    grid-column: 13;
+    grid-column: 17;
 }
 #canvas210{
     background:url("../game/wall.png");
@@ -731,7 +686,10 @@ body {
 
 
 
-
+#enemy1{
+    grid-row: 9;
+    grid-column: 5;
+}
 
 #maru {
     grid-row: 1;

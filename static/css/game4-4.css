@@ -2,6 +2,8 @@ body {
     margin: 0px;
 }
 .canvas{
+    z-index: 2;
+    position: absolute;
     width: 640px;
     background:#999;
     display: grid;
@@ -446,8 +448,8 @@ body {
 }
 #canvas173{
     background:url("../game/dustbox1.png");
-    grid-row: 9;
-    grid-column: 3;
+    grid-row:9;
+    grid-column:3;
 }
 #canvas174{
     background:url("../game/dustbox1.png");
@@ -613,11 +615,6 @@ body {
     background:url("../game/dustbox1.png");
     grid-row: 12;
     grid-column: 4;
-}
-#canvas235{
-    background:url("../game/dustbox1.png");
-    grid-row: 12;
-    grid-column: 5;
 }
 #canvas237{
     background:url("../game/dustbox1.png");
@@ -798,6 +795,9 @@ body {
     grid-column: 2;
 }
 .cross-layout {
+    position:absolute;
+    z-index:2;
+    top:416px;
     display: grid;
     grid-template-columns: 60px 60px 60px 120px 120px;
     grid-template-rows: 60px 60px;
@@ -829,4 +829,135 @@ body {
 #action2{
     grid-row:2;
     grid-column:4;
+}
+
+
+.textboard1.ck{
+    z-index:2;
+}
+.text1-1.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+}
+
+.textboard1.ck2{
+    z-index:1;
+}
+.text1-1.ck2{
+    -webkit-animation: ;
+    animation-iteration-count: ;
+}
+.textboard1 {
+    z-index:1;
+    width: 580px;
+    height: 140px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #FFF;
+    border: 2px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 0 0 4px #FFF inset;
+    background-color: rgba(0,0,0,0.9);
+    top: 270px;
+    left: 32px;
+    position:absolute;
+}
+.text1-1 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+@-webkit-keyframes ozDq {
+    from { width: 0;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
+} /* 開始地点の指定 */
+
+@-moz-keyframes ozDq {
+    from { width: 0 ;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
+}
+
+.textboard2.ck{
+    z-index:2;
+}
+.text2-1.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+}
+
+.textboard2 {
+    z-index:1;
+    width: 580px;
+    height: 140px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #FFF;
+    border: 2px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 0 0 4px #FFF inset;
+    background-color: rgba(0,0,0,0.9);
+    top: 270px;
+    left: 32px;
+    position:absolute;
+}
+.text2-1 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+.textboard3.ck{
+    z-index:2;
+}
+.text3-1.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+}
+
+.textboard3 {
+    z-index:1;
+    width: 580px;
+    height: 140px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #FFF;
+    border: 2px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 0 0 4px #FFF inset;
+    background-color: rgba(0,0,0,0.9);
+    top: 270px;
+    left: 32px;
+    position:absolute;
+}
+.text3-1 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+@-webkit-keyframes ozDq {
+    from { width: 0;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
+} /* 開始地点の指定 */
+
+@-moz-keyframes ozDq {
+    from { width: 0 ;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
 }

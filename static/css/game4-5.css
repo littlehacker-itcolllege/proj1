@@ -1157,6 +1157,10 @@ body {
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-delay:4s;
 }
+.text5-3.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-delay:8s;
+}
 
 
 .textboard5 {
@@ -1194,7 +1198,14 @@ body {
     opacity: 0;
     /* プロパティは順に name, duration, timing-function です */
 }
-
+.text5-3 {
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
 @-webkit-keyframes ozDq {
     from { width: 0;}
     0% {opacity: 1;}
