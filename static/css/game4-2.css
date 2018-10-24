@@ -267,6 +267,16 @@ body {
     grid-row: 5;
     grid-column: 11;
 }
+#canvas108{
+    background:url("../game/locker.png");
+    grid-row: 5;
+    grid-column: 18;
+}
+#canvas109{
+    background:url("../game/locker.png");
+    grid-row: 5;
+    grid-column: 19;
+}
 #canvas110{
     background:url("../game/wall.png");
     grid-row: 5;
@@ -304,6 +314,21 @@ body {
     background:url("../game/wall.png");
     grid-row: 6;
     grid-column: 10;
+}
+#canvas124{
+    background:url("../game/table.png");
+    grid-row: 6;
+    grid-column: 14;
+}
+#canvas125{
+    background:url("../game/table.png");
+    grid-row: 6;
+    grid-column: 15;
+}
+#canvas126{
+    background:url("../game/table.png");
+    grid-row: 6;
+    grid-column: 16;
 }
 #canvas130{
     background:url("../game/wall.png");
@@ -380,6 +405,21 @@ body {
     background:url("../game/wall.png");
     grid-row: 8;
     grid-column: 10;
+}
+#canvas164{
+    background:url("../game/vase.png");
+    grid-row: 8;
+    grid-column: 14;
+}
+#canvas165{
+    background:url("../game/vase.png");
+    grid-row: 8;
+    grid-column: 15;
+}
+#canvas166{
+    background:url("../game/vase.png");
+    grid-row: 8;
+    grid-column: 16;
 }
 #canvas170{
     background:url("../game/wall.png");

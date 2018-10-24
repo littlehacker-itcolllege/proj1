@@ -88,4 +88,11 @@ urlpatterns = [
     url(r'^stage4-5/see4-5/$',views.see4_5,name='see4-5'),
     url(r'^stage4-5/input4-5/$',views.input4_5,name='input4-5'),
 
+    url(r'^stage4-6/$',views.stage4_6,name='stage4-6'),
+    url(r'^stage4-6/story4-6/$',views.story4_6,name='story4-6'),
+    url(r'^stage4-6/game4-6/$',views.game4_6,name='game4-6'),
+    url(r'^stage4-6/head4-6/$',views.head4_6,name='head4-6'),
+    url(r'^stage4-6/nextstory4-6/$',views.nextstory4_6,name='nextstory4-6'),
+    url(r'^stage4-6/see4-6/$',views.see4_6,name='see4-6'),
+    url(r'^stage4-6/input4-6/$',views.input4_6,name='input4-6'),
 ]
