@@ -1,0 +1,26 @@
+<!DOQTYPE HTML>
+<html>
+    <head>
+        <title></title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/game3-2.css' %}">
+        <script type="text/javascript" src="{% static 'js/game3-2.js' %}"></script>
+    </head>
+    <body>
+			<div class="box">
+				<div id="buttons">
+					<input type="image" src="{%static 'game/wall.png'%}" id="button1" onclick="onClick1()">
+					<input type="image" src="{%static 'game/wall.png'%}" id="mine1" onclick="mine(1)"><br>
+					<input type="image" src="{%static 'game/wall.png'%}" id="button2" onclick="onClick2()">
+					<input type="image" src="{%static 'game/wall.png'%}" id="button3" onclick="nat(1)"><br>
+					<input type="image" src="{%static 'game/wall.png'%}" id="button4" onclick="nat(2)">
+					<input type="image" src="{%static 'game/wall.png'%}" id="mine2" onclick="mine(2)"><br>
+					<input type="image" src="{%static 'game/wall.png'%}" id="button5" onclick="nat(3)">
+					<input type="image" src="{%static 'game/wall.png'%}" id="mine3" onclick="mine(3)">
+				</div>
+				<div id="clear"></div>
+				<div id="item1"><img src='{% static 'game/fireorb.png'%}'></div>
+				<div id="item2"><img src='{% static 'game/fireorb.png'%}'></div>
+			</div>
+    </body>
+</html>

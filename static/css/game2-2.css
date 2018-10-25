@@ -29,7 +29,7 @@ td{
   height:10vh;
   width:10vh;
 }
-.back{
+#back{
 	width:100%;
 	max-width:100%;
 	height:20vh;
@@ -48,4 +48,85 @@ td{
 	width:100vh;
 	font-size:5em;
 
+}
+#key1{
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#key2{
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#key3{
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#key4{
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#key5{
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#key6{
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#key7{
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#key8{
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#chest{
+	display:none;
+	margin:0 auto;
+}
+#key21{
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#key22{
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
+}
+#key23{
+  margin:0 auto;
+  padding:0px;
+  display:none;
+  height:40vh;
+  width:100vh;
 }

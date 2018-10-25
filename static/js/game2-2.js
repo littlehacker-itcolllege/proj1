@@ -52,6 +52,7 @@ function countDown(){
 function count(){
 	timer = setInterval('countDown()',1000);
 	document.getElementById("start").style.display="none";
+	document.getElementById("key1").style.display="block";
 }
 //タイピングゲームの問題をセットする関数
 function gameSet()
@@ -69,7 +70,7 @@ function gameSet2()
 {
   //カウント数をクリアする
   cnt2=0;
-
+	esc=1;
   //まずは問題文を作る
   ransu2();
 }
@@ -94,6 +95,13 @@ function typeGame(evt)
 			//入力されたセルの文字色を灰色にする
 			var idName = "word2"+cnt2;
 			document.getElementById(idName).style.color="#dddddd";
+			if(esc >=1){
+				document.getElementById("key2"+esc).style.display="none";
+				esc++;
+				if(esc <=3){
+					document.getElementById("key2"+esc).style.display="block";
+				}
+			}
 			cnt2++; //カウント数を＋１にする
 			//全文字入力したか確認
 			if ( cnt2 == 3){
@@ -119,6 +127,13 @@ function typeGame(evt)
     var idName = "word"+cnt;
     document.getElementById(idName).style.color="#dddddd";
 		document.getElementById("chara").style.left=chara+"%";
+			if(esc >=1){
+				document.getElementById("key"+esc).style.display="none";
+				esc++;
+				if(esc <=8){
+					document.getElementById("key"+esc).style.display="block";
+				}
+			}
 		chara+=10;
     cnt++; //カウント数を＋１にする
     //全文字入力したか確認
@@ -126,6 +141,10 @@ function typeGame(evt)
     {
 			document.getElementById("key").style.display="table";
 			document.getElementById("treasure").style.display="none";
+			document.getElementById("chara").style.display="none";
+			document.getElementById("back").style.display="none";
+			document.getElementById("chest").style.display="block";
+			document.getElementById("key21").style.display="block";
 			que =1;
 			gameSet2();
 		}
