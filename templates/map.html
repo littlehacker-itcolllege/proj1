@@ -28,17 +28,33 @@
 
 
 			<div class="stage-mori">
-				<div class="drop">
-					<li><a href="#"><img src="{% static 'game/1-1enemy.gif' %}" id="enemy-img" width="10%" height="auto" onmouseover="this.src='{% static 'game/map.png' %}'" onmouseout="this.src='{% static 'game/1-1enemy.gif' %}'"></a>
-						<ul>
-							<li><a href="#">stage1-1</a></li>
-							<li><a href="#">stage1-2</a></li>
-							<li><a href="#">stage1-3</a></li>
-							<li><a href="#">stage1-4</a></li>
-						</ul>
-					</li>
+
+				<div class="accbox">
+					<label for="label1"><img src="{% static 'game/1-1enemy.gif' %}" id="enemy-img" width="10%" height="auto" onmouseover="this.src='{% static 'game/map.png' %}'" onmouseout="this.src='{% static 'game/1-1enemy.gif' %}'"></label>
+				<input type="checkbox" id="label1" class="cssacc" />
+				<div class="accshow">
+					<p><a href="http://localhost:8080/stage1-1/" target="story">1-1</a></p>
+
+					<p><a href="http://localhost:8080/stage1-2/" target="story">1-2</a></p>
+					<p><a href="http://localhost:8080/stage1-3/" target="story">1-3</a></p>
+					<p><a href="http://localhost:8080/stage1-4/" target="story">1-4</a></p>
+				</div>
 				</div>
 			</div>
 
+
+<!--
+			<div class="wrap">
+				<button class="button">Click<br>Dungeon</button>
+				<div class="dropn">
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+				</ul>
+				</div>
+			</div>
+-->
 	</body>
 </html>
