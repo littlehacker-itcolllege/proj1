@@ -123,6 +123,7 @@ function typeGame(evt)
     //入力されたセルの文字色を灰色にする
     var idName = "word"+cnt;
     document.getElementById(idName).style.color="#dddddd";
+		document.getElementById("fire-button").disabled="disabled";
 		document.getElementById("water-button").disabled="disabled";
 		document.getElementById("leaf-button").disabled="disabled";
 		 if(esc >=1){
@@ -169,6 +170,7 @@ function typeGame(evt)
 			var idName = "word2"+cnt2;
 			document.getElementById(idName).style.color="#dddddd";
 			document.getElementById("fire-button").disabled="disabled";
+			document.getElementById("water-button").disabled="disabled";
 			document.getElementById("leaf-button").disabled="disabled";
 		if(esc >=1){
       document.getElementById("water"+esc).style.display="none";
@@ -216,6 +218,7 @@ function typeGame(evt)
 			document.getElementById(idName).style.color="#dddddd";
 			document.getElementById("water-button").disabled="disabled";
 			document.getElementById("fire-button").disabled="disabled";
+			document.getElementById("leaf-button").disabled="disabled";
 		if(esc >=1){
       document.getElementById("leaf"+esc).style.display="none";
 				esc++;

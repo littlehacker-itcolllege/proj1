@@ -46,6 +46,24 @@ urlpatterns = [
     url(r'^stage2-3/game2-3/$',views.game2_3,name='game2-3'),
     url(r'^stage2-3/head2-3/$',views.head2_3,name='head2-3'),
     url(r'^stage2-3/nextstory2-3/$',views.nextstory2_3,name='nextstory2-3'),
+    #stage3-1
+    url(r'^stage3-1/$',views.stage3_1,name='stage3-1'),
+    url(r'^stage3-1/story3-1/$',views.story3_1,name='story3-1'),
+    url(r'^stage3-1/game3-1/$',views.game3_1,name='game3-1'),
+    url(r'^stage3-1/head3-1/$',views.head3_1,name='head3-1'),
+    url(r'^stage3-1/nextstory3-1/$',views.nextstory3_1,name='nextstory3-1'),
+    #stage3-2
+    url(r'^stage3-2/$',views.stage3_2,name='stage3-2'),
+    url(r'^stage3-2/story3-2/$',views.story3_2,name='story3-2'),
+    url(r'^stage3-2/game3-2/$',views.game3_2,name='game3-2'),
+    url(r'^stage3-2/head3-2/$',views.head3_2,name='head3-2'),
+    url(r'^stage3-2/nextstory3-2/$',views.nextstory3_2,name='nextstory3-2'),
+    #stage3-3
+    url(r'^stage3-3/$',views.stage3_3,name='stage3-3'),
+    url(r'^stage3-3/story3-3/$',views.story3_3,name='story3-3'),
+    url(r'^stage3-3/game3-3/$',views.game3_3,name='game3-3'),
+    url(r'^stage3-3/head3-3/$',views.head3_3,name='head3-3'),
+    url(r'^stage3-3/nextstory3-3/$',views.nextstory3_3,name='nextstory3-3'),
     #stage4-1
     url(r'^stage4-1/$',views.stage4_1,name='stage4-1'),
     url(r'^stage4-1/story4-1/$',views.story4_1,name='story4-1'),
