@@ -1,6 +1,10 @@
 body {
     margin: 0px;
 }
+#pagestart{
+text-align: center;
+}
+
 .canvas{
     width: 640px;
     background:#999;
@@ -535,14 +539,6 @@ body {
     background:url("../game/door1.png");
     grid-row: 13;
     grid-column: 2;
-}
-#canvas156{
-    grid-row: 12;
-    grid-column: 3;
-}
-#canvas157{
-    grid-row: 12;
-    grid-column: 4;
 }
 #canvas158{
     background:url("../game/wall.png");

@@ -1,6 +1,9 @@
 body {
     margin: 0px;
 }
+#pagestart{
+text-align: center;
+}
 .canvas{
     width: 640px;
     background:#999;
