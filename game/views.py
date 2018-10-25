@@ -206,3 +206,18 @@ def see4_5(request):
     return render(request,'4-5/see4-5.html')
 def input4_5(request):
     return render(request,'4-5/input4-5.html')
+
+def stage4_6(request):
+    return render(request,'4-6/stage4-6.html')
+def story4_6(request):
+    return render(request,'4-6/story4-6.html')
+def game4_6(request):
+    return render(request,'4-6/game4-6.html')
+def head4_6(request):
+    return render(request,'4-6/head4-6.html')
+def nextstory4_6(request):
+    return render(request,'4-6/nextstory4-6.html')
+def see4_6(request):
+    return render(request,'4-6/see4-6.html')
+def input4_6(request):
+    return render(request,'4-6/input4-6.html')
