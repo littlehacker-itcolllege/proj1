@@ -6,7 +6,7 @@ body{
 	height:100vh;
 	background-repeat:no-repeat;
 	background-position:center center;
-	background-image: url("../game/stage3back.png");
+	background-image: url("../game/stage3-1back.png");
 	background-size:cover;
 	postion: relative;
 	justify-content: center; /*左右中央揃え*/
@@ -23,41 +23,41 @@ body{
 #button1{
 	position:absolute;
 	left:35%;
-	top:10%;
+	top:30%;
 	width:10%;
 	height:10%;
 }
 #button2{
 	position:absolute;
-	left:35%;
+	left:55%;
 	top:30%;
 	width:10%;
 	height:10%;
 }
 #button3{
 	position:absolute;
-	left:55%;
-	top:30%;
+	left:35%;
+	top:50%;
 	width:10%;
 	height:10%;
 }
 #button4{
 	position:absolute;
 	left:35%;
-	top:50%;
+	top:70%;
 	width:10%;
 	height:10%;
 }
 #button5{
 	position:absolute;
-	left:35%;
+	left:55%;
 	top:70%;
 	width:10%;
 	height:10%;
 }
 #mine1{
 	position:absolute;
-	left:55%;
+	left:35%;
 	top:10%;
 	width:10%;
 	height:10%;
@@ -65,14 +65,30 @@ body{
 #mine2{
 	position:absolute;
 	left:55%;
-	top:50%;
+	top:10%;
 	width:10%;
 	height:10%;
 }
 #mine3{
 	position:absolute;
 	left:55%;
-	top:70%;
+	top:50%;
 	width:10%;
 	height:10%;
+}
+#left{
+	display:none;
+	width:7%;
+	height:auto;
+	position:absolute;
+	left:35%;
+	top:12%;
+}
+#right{
+	display:none;
+	width:7%;
+	height:auto;
+	position:absolute;
+	left:58%;
+	top:12%;
 }
