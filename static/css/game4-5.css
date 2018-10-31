@@ -1,5 +1,7 @@
 body {
     margin: 0px;
+}#pagestart{
+text-align: center;
 }
 .canvas{
     z-index:2;
@@ -237,7 +239,11 @@ body {
     grid-row: 3;
     grid-column: 16;
 }
-
+#canvas57{
+    background:url("../game/pc.png");
+    grid-row: 3;
+    grid-column: 17;
+}
 #canvas58{
     background:url("../game/wall.png");
     grid-row: 3;
@@ -832,7 +838,7 @@ body {
     grid-row: 5;
     grid-column: 15;
 }
-.cross-layout {
+#button {
     position: absolute;
     z-index:2;
     top:416px;
@@ -861,18 +867,18 @@ body {
     grid-column: 5;
 }
 #action{
-    z-index:2;
+    width:120px;
+    height: 60px;
     grid-row:1;
     grid-column:4;
 }
-#action2{
-    z-index:1;
+.actionelement{
     grid-row:1;
     grid-column:4;
 }
 
 
-.textboard.ck{
+.textboard1.ck{
     z-index:2;
 }
 .text1-1.ck{
@@ -889,7 +895,7 @@ body {
 }
 
 
-.textboard {
+.textboard1 {
     z-index:1;
     width: 580px;
     height: 140px;
@@ -1130,6 +1136,78 @@ body {
     /* プロパティは順に name, duration, timing-function です */
 }
 
+@-webkit-keyframes ozDq {
+    from { width: 0;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
+} /* 開始地点の指定 */
+
+@-moz-keyframes ozDq {
+    from { width: 0 ;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
+}
+
+.textboard5.ck{
+    z-index:2;
+}
+.text5-1.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+}
+.text5-2.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-delay:4s;
+}
+.text5-3.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-delay:8s;
+}
+
+
+.textboard5 {
+    z-index:1;
+    width: 580px;
+    height: 140px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #FFF;
+    border: 2px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 0 0 4px #FFF inset;
+    background-color: rgba(0,0,0,0.9);
+    top: 270px;
+    left: 32px;
+    position:absolute;
+}
+.text5-1 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+.text5-2 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+.text5-3 {
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
 @-webkit-keyframes ozDq {
     from { width: 0;}
     0% {opacity: 1;}
