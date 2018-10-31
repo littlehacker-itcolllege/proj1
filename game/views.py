@@ -4,6 +4,8 @@ from django.http.response import HttpResponse
 # Create your views here.
 def map(request):
     return render(request,'map.html')
+def opening(request):
+    return render(request,'opening/opening.html')
 
 #stage1-1
 def stage1_1(request):
