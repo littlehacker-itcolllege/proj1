@@ -2,7 +2,12 @@ body{
     background-color: black;
 }
 
-.opening{
+img{
+    width: 500px;
+    height: 500px;
+}
+
+.movie{
     text-align: center;
 }
 
@@ -62,7 +67,7 @@ body{
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 12s;
+    animation-delay: 14s;
 }
 .text5 {
     height: 30px;
@@ -73,7 +78,7 @@ body{
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 16s;
+    animation-delay: 22s;
 }
 .text6 {
     height: 30px;
@@ -84,7 +89,7 @@ body{
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 20s;
+    animation-delay: 26s;
 }
 .text7 {
     height: 30px;
@@ -95,7 +100,7 @@ body{
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 25s;
+    animation-delay: 32s;
 }
 .text8 {
     height: 30px;
@@ -106,7 +111,7 @@ body{
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 30s;
+    animation-delay: 36s;
 }
 .text9 {
     height: 30px;
@@ -117,7 +122,7 @@ body{
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 32s;
+    animation-delay: 40s;
 }
 .text10 {
     height: 30px;
@@ -128,73 +133,7 @@ body{
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 36s;
-}
-.text11 {
-    height: 30px;
-    top: 5px;
-    left: 4px;
-    width: 100%;
-    overflow: hidden;
-    opacity: 0;
-    -webkit-animation: ozDq 6s steps(70, end) forwards;
-    animation-iteration-count:1;
-    animation-delay: 40s;
-}
-.text12 {
-    height: 30px;
-    top: 5px;
-    left: 4px;
-    width: 100%;
-    overflow: hidden;
-    opacity: 0;
-    -webkit-animation: ozDq 6s steps(70, end) forwards;
-    animation-iteration-count:1;
     animation-delay: 44s;
-}
-.text13 {
-    height: 30px;
-    top: 5px;
-    left: 4px;
-    width: 100%;
-    overflow: hidden;
-    opacity: 0;
-    -webkit-animation: ozDq 6s steps(70, end) forwards;
-    animation-iteration-count:1;
-    animation-delay: 48s;
-}
-.text14 {
-    height: 30px;
-    top: 5px;
-    left: 4px;
-    width: 100%;
-    overflow: hidden;
-    opacity: 0;
-    -webkit-animation: ozDq 6s steps(70, end) forwards;
-    animation-iteration-count:1;
-    animation-delay: 52s;
-}
-.text15 {
-    height: 30px;
-    top: 5px;
-    left: 4px;
-    width: 100%;
-    overflow: hidden;
-    opacity: 0;
-    -webkit-animation: ozDq 6s steps(70, end) forwards;
-    animation-iteration-count:1;
-    animation-delay: 56s;
-}
-.text16 {
-    height: 30px;
-    top: 5px;
-    left: 4px;
-    width: 100%;
-    overflow: hidden;
-    opacity: 0;
-    -webkit-animation: ozDq 6s steps(70, end) forwards;
-    animation-iteration-count:1;
-    animation-delay: 62s;
 }
 
 @-webkit-keyframes ozDq {
@@ -207,9 +146,4 @@ body{
     from { width: 0;}
     0% {opacity: 1;}
     100% {opacity: 1;}
-}
-
-.kyoku{
-    visibility: hidden;
-    position: absolute;
 }

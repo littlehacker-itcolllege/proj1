@@ -6,19 +6,24 @@
 		<link rel='stylesheet' type='text/css' href="{% static 'css/opening.css' %}">
 	</head>
 	<body>
-
-		
+        <div class="kyoku"><iframe id="music" src="" ></iframe></div>
 		<div class='opening'>
             <img id="open" src=''>
 		</div>
 
 		<div class='textboard'>
-			<p class='text1' id='text1'><font color='green'>主人公:</font>僕の名前は○○ ごく普通の小学四年生！</p>
-			<p class='text2' id='text2'><font color='green'>主人公:</font>10歳の誕生日プレゼントにお父さん、お母さんからパソコンを買ってもらうんだ！</p>
+			<p class='text1' id='text1'><font color='green'>リト:</font>僕の名前はリト、ごく普通の小学四年生！</p>
+			<p class='text2' id='text2'><font color='green'>リト:</font>10歳の誕生日プレゼントにお父さん、お母さんからパソコンを買ってもらうんだ！</p>
 		</div>
         <script>
 
 			one();
+            roop();
+
+            function roop(){
+                document.getElementById("music").src="{% static 'game/opening.m4a' %}";
+                setTimeout(roop,17000);
+            }
 
 			function one(){
                 document.getElementById("open").src="{% static 'game/opening/main-actor500.gif' %}";
@@ -39,16 +44,16 @@
 				document.getElementById("text1").className="text5";
 				document.getElementById("text1").innerHTML="<font color='white'>白猫宅配便:</font>こちら荷物になりますね〜！";
 				document.getElementById("text2").className="text6";
-				document.getElementById("text2").innerHTML="<font color='green'>主人公:</font>はい、ありがとうございます！";
+				document.getElementById("text2").innerHTML="<font color='green'>リト:</font>はい、ありがとうございます！";
 
 				setTimeout(four,8000);
 			}
 			function four(){
 				document.getElementById("open").src="{% static 'game/opening/black-display.png' %}";
 				document.getElementById("text1").className="text7";
-				document.getElementById("text1").innerHTML="<font color='green'>主人公:</font>やった！　パソコンだ！　早速電源つけてみよう！";
+				document.getElementById("text1").innerHTML="<font color='green'>リト:</font>やった！　パソコンだ！　早速電源つけてみよう！";
 				document.getElementById("text2").className="text8";
-				document.getElementById("text2").innerHTML="<font color='green'>主人公:</font>ん？様子が変・・";
+				document.getElementById("text2").innerHTML="<font color='green'>リト:</font>ん？様子が変・・";
 
 				setTimeout(five,6000);
 			}
@@ -74,7 +79,7 @@
 			function eight(){
 				document.getElementById("open").src="{% static 'game/opening/black-display.png' %}";
 				document.getElementById("text1").className="text11";
-				document.getElementById("text1").innerHTML="<font color='green'>主人公:</font>ん？　今変な声が聞こえたような・・・";
+				document.getElementById("text1").innerHTML="<font color='green'>リト:</font>ん？　今変な声が聞こえたような・・・";
 				document.getElementById("text2").innerHTML="";
 
 				setTimeout(nine,4000);
@@ -82,9 +87,9 @@
 			function nine(){
 				document.getElementById("open").src="{% static 'game/opening/black.png' %}";
 				document.getElementById("text1").className="text12";
-				document.getElementById("text1").innerHTML="<font color='orange'>お母さん:</font>〇〇ーご飯よー降りてきなさーい";
+				document.getElementById("text1").innerHTML="<font color='orange'>お母さん:</font>リトーご飯よー降りてきなさーい";
 				document.getElementById("text2").className="text13";
-				document.getElementById("text2").innerHTML="<font color='green'>主人公:</font>はーい！　うーん。。まぁ気にしなくていっか・・・";
+				document.getElementById("text2").innerHTML="<font color='green'>リト:</font>はーい！　うーん。。まぁ気にしなくていっか・・・";
 				setTimeout(ten,9000);
 			}
 			function ten(){
@@ -92,14 +97,14 @@
 				document.getElementById("text1").className="text14";
 				document.getElementById("text1").innerHTML="<font color='orange'>お母さん:</font>ご飯食べたら今日はもう寝なさい。";
 				document.getElementById("text2").className="text15";
-				document.getElementById("text2").innerHTML="<font color='green'>主人公:</font>うん！おやすみなさい！";
+				document.getElementById("text2").innerHTML="<font color='green'>リト:</font>うん！おやすみなさい！";
 
 				setTimeout(eleven,8000);
 			}
 			function eleven(){
 				document.getElementById("open").src="{% static 'game/opening/sleep.png' %}";
 				document.getElementById("text1").className="text16";
-				document.getElementById("text1").innerHTML="<font color='green'>主人公:</font>zzZ   zzZ   ";
+				document.getElementById("text1").innerHTML="<font color='green'>リト:</font>zzZ   zzZ   ";
 				document.getElementById("text2").innerHTML="";
 
 				setTimeout(twelve,3000);
