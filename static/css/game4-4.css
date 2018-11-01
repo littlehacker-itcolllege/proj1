@@ -1,6 +1,9 @@
 body {
     margin: 0px;
 }
+#pagestart{
+text-align: center;
+}
 .canvas{
     z-index: 2;
     position: absolute;
@@ -794,7 +797,7 @@ body {
     grid-row: 1;
     grid-column: 2;
 }
-.cross-layout {
+#button {
     position:absolute;
     z-index:2;
     top:416px;

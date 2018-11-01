@@ -179,6 +179,17 @@
 
             // ページ読み込み時に実行
             window.onload = function () {
+$("#pagestart").show();
+                    $("#pageplaying").hide();
+                    $("#pagestart a").on('click',function(){
+
+                        $("#pagestart").hide();
+                        $("#pageplaying").show();
+
+
+                        return false;
+                    });
+
                 // 矢印ボタンのを各、値に代入
                 var $left = document.getElementById( "left" );
                 var $right = document.getElementById( "right" );
@@ -304,6 +315,10 @@
     </head>
 
     <body>
+            <div id='pagestart'>
+                    <a><input type='button' value='start' ></a>
+            </div>
+        <div  id='pageplaying'>
         <div class="canvas">
             <div id="maru">
                 <img src="{% static "game/character/bottom.gif" %}" name="maru">
@@ -588,6 +603,7 @@
             <input type="submit" id="action" value="調べる" onclick="win_open()" disabled>
             <input type="submit" id="action1" value="調べる" onclick="win_open1()" disabled>
             <input type="submit" id="action2" value="入力" onclick="input()" disabled>
+        </div>
         </div>
     </body>
 </html>
