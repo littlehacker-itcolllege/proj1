@@ -12,6 +12,9 @@ body{
 	justify-content: center; /*左右中央揃え*/
 	align-items: center;     /*上下中央揃え*/
 }
+#next{
+	display:none;
+}
 #buttons{
 }
 #item1{

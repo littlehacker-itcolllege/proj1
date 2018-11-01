@@ -116,6 +116,8 @@ def head3_2(request):
     return render(request,'3-2/head3-2.html')
 def nextstory3_2(request):
     return render(request,'3-2/nextstory3-2.html')
+def gameover3_2(request):
+    return render(request,'3-2/gameover3-2.html')
 
 #stage3-3
 def stage3_3(request):
