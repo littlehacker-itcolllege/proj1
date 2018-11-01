@@ -2,121 +2,238 @@ body {
     margin: 0px;
 }
 #pagestart{
-text-align: center;
+    text-align: center;
 }
-.canvas{
+#hpbar{
     width: 640px;
-    background:#999;
+    background-color:#aaa;
     display: grid;
-    grid-template-columns:107px 107px 107px 107px 107px 107px;
-    grid-template-rows:139px 140px 140px ;
+    grid-template-columns: 301px 40px 301px;
+    grid-template-rows: 60px ;
+}
+#hp1{
+    grid-row: 1;
+    grid-column: 1;
+    position:relative;
+}
+#hero-meter{
+display:block;
+    position:absolute;
+    right:0;
+    bottom:0;
+    transform: scale(-1,1);
+    width:85%;
+    height:30px;
+}
+#hp1 > p{
+    position:absolute;
+    height:30px;
+    width:85%;
+    right:0;
+    bottom:30px;
+    margin: 0px;
+    font-weight: bold;
+    font-size: 25px;
+}
+#hp2{
+    grid-row: 1;
+    grid-column: 3;
+    position:relative;
+}
+
+#enemy-meter{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:85%;
+    height:30px;
+}
+#hp2 > p{
+    position:absolute;
+    height:30px;
+    width:85%;
+    left:0;
+    bottom:30px;
+    margin: 0px;
+    text-align:right;
+    font-weight: bold;
+    font-size: 25px;
+}
+#vs{
+    text-align:center;
+    font-weight: bold;
+    font-size: 25px;
+}
+#wall{
+    width: 640px;
+    background:url("../game/4-6wall.png");
+    display: grid;
+    grid-template-columns: 640px;
+    grid-template-rows: 60px ;
+}
+
+.canvas{
+    position:absolute;
+    width: 640px;
+    background-color:#999;
+    display: grid;
+    grid-template-columns: 107px 107px 107px 107px 107px 107px;
+    grid-template-rows: 100px 100px 100px ;
 }
 #canvas1{
-    
+    border: 1px solid black;
     grid-row: 1;
     grid-column: 1;
 }
 #canvas2{
-    
+    border: 1px solid black;
     grid-row: 1;
     grid-column: 2;
 }
 #canvas3{
-    
+    border: 1px solid black;
     grid-row: 1;
     grid-column: 3;
 }
 #canvas4{
-    
     grid-row: 1;
+     border: 1px solid black;
     grid-column: 4;
 }
 #canvas5{
-    
+     border: 1px solid black;
     grid-row: 1;
     grid-column: 5;
 }
 #canvas6{
-    
+     border: 1px solid black;
     grid-row: 1;
     grid-column: 6;
 }
 #canvas7{
-    
+     border: 1px solid black;
     grid-row: 2;
     grid-column: 1;
 }
 #canvas8{
-    
+     border: 1px solid black;
     grid-row: 2;
     grid-column: 2;
 }
 #canvas9{
-    
+    border: 1px solid black;
     grid-row: 2;
     grid-column: 3;
 }
 #canvas10{
-    
+    border: 1px solid black;
     grid-row: 2;
     grid-column: 4;
 }
 #canvas11{
-    
+    border: 1px solid black;
     grid-row: 2;
     grid-column: 5;
 }
 #canvas12{
-    
+    border: 1px solid black;
     grid-row: 2;
     grid-column: 6;
 }
 #canvas13{
-    
     grid-row: 3;
     grid-column: 1;
+     border: 1px solid black;
 }
 #canvas14{
-    
+    border: 1px solid black;
     grid-row: 3;
     grid-column: 2;
 }
 #canvas15{
-    
+    border: 1px solid black;
     grid-row: 3;
     grid-column: 3;
 }
 #canvas16{
-    
+    border: 1px solid black;
     grid-row: 3;
     grid-column: 4;
 }
 #canvas17{
-    
+    border: 1px solid black;
     grid-row: 3;
     grid-column: 5;
 }
 #canvas18{
-    
+    border: 1px solid black;
     grid-row: 3;
     grid-column: 6;
 }
 
 
-
-
-
-
-
-
 #maru {
+    position:absolute;
+    top:33px;
+    left:35px;
+    height:37px;
+    width: 37px;
     grid-row: 1;
     grid-column: 1;
 }
+#patinko1 {
+    position:absolute;
+    top:33px;
+    left:35px;
+    height:37px;
+    width: 37px;
+    grid-row: 1;
+    grid-column: 1;
+    display:none;
+}
+#patinko2 {
+    position:absolute;
+    top:33px;
+    left:35px;
+    height:37px;
+    width: 37px;
+    grid-row: 1;
+    grid-column: 1;
+    display:none;
+}
+#patinko3 {
+    position:absolute;
+    top:33px;
+    left:35px;
+    height:37px;
+    width: 37px;
+    grid-row: 1;
+    grid-column: 1;
+    display:none;
+}
+#enemy{
+    position:absolute;
+    grid-row: 2;
+    grid-column: 5;
+    top:-40px;
+    left:0px;
+}
+#enemyattack{
+    position:absolute;
+    top:33px;
+    left:35px;
+    height:37px;
+    width: 37px;
+    grid-row: 1;
+    grid-column: 6;
+    display:none;
+}
 #button {
+    position:absolute;
     display: grid;
     grid-template-columns: 60px 60px 60px 120px 120px;
-    grid-template-rows: 60px 60px;
+    grid-template-rows: 59px 59px;
+    top:420px;
 }
 #top {
     grid-row: 1;
