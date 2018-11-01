@@ -1,0 +1,68 @@
+<!DOQTYPE HTML>
+<html>
+	<head>
+		<title></title>
+		{% load static %}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/map.css' %}">
+		<!--<iframe width="0" height="0" src="{% static 'sound/map.m4a' %}" frameborder="0" allowfullscreen></iframe> -->
+			<div class="kyoku"><iframe id="music" src="" ></iframe></div>
+
+	</head>
+	<body>
+			<a href="http://localhost:8080/map/" target="map">map</a>
+			<a href="http://localhost:8080/stage1-1/" target="story">1-1</a>
+			<a href="http://localhost:8080/stage1-2/" target="story">1-2</a>
+			<a href="http://localhost:8080/stage1-3/" target="story">1-3</a>
+			<a href="http://localhost:8080/stage1-4/" target="story">1-4</a>
+			<a href="http://localhost:8080/stage2-1/" target="story">2-1</a>
+			<a href="http://localhost:8080/stage2-2/" target="story">2-2</a>
+			<a href="http://localhost:8080/stage2-3/" target="story">2-3</a>
+			<a href="http://localhost:8080/stage2-4/" target="story">2-4</a>
+			<a href="http://localhost:8080/stage3-1/" target="story">3-1</a>
+			<a href="http://localhost:8080/stage3-2/" target="story">3-2</a>
+			<a href="http://localhost:8080/stage3-3/" target="story">3-2</a>
+			<a href="http://localhost:8080/stage4-1/" target="story">4-1</a>
+			<a href="http://localhost:8080/stage4-2/" target="story">4-2</a>
+			<a href="http://localhost:8080/stage4-3/" target="story">4-3</a>
+			<a href="http://localhost:8080/stage4-4/" target="story">4-4</a>
+			<a href="http://localhost:8080/stage4-5/" target="story">4-5</a>
+			<a href="http://localhost:8080/stage4-6/" target="story">4-6</a>
+
+
+			<div class="stage-mori">
+				<div class="main">
+					<img src="{% static 'game/stagemori.png' %}" id="enemy-img" width="10%" height="auto" onmouseover="this.src='{% static 'game/1-1enemy.gif' %}'" onmouseout="this.src='{% static 'game/stagemori.png' %}'">
+
+					<div class="show">
+						<button>Click<br>Dungeon</button>
+					<ul>
+						<li><a href="http://localhost:8080/stage1-1/" target="story">ステージ１</a></li>
+						<li><a href="http://localhost:8080/stage1-2/" target="story">ステージ２</a></li>
+						<li><a href="http://localhost:8080/stage1-3/" target="story">ステージ３</a></li>
+						<li><a href="http://localhost:8080/stage1-4/" target="story">ステージ４</a></li>
+					</ul>
+				</div>
+				<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+				<script type="text/javascript">
+					$(document).ready(function(){
+						$('button').click(function(){
+							$('ul').toggleClass('active')
+						})
+					})
+				</script>
+				</div>
+			</div>
+
+
+
+
+			<script>
+			roop();
+
+			function roop(){
+			document.getElementById("music").src="{% static 'sound/Ending.m4a' %}";
+			setTimeout(roop, 120000);
+			}
+			</script>
+	</body>
+</html>

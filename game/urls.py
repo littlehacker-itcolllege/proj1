@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     url(r'^map/$',views.map,name='map'),
+    url(r'^opening/$' ,views.opening,name='opening'),
     #stage1-1
     url(r'^stage1-1/$',views.stage1_1,name='stage1-1'),
     url(r'^stage1-1/story1-1/$',views.story1_1,name='story1-1'),
@@ -115,4 +116,5 @@ urlpatterns = [
     url(r'^stage4-6/nextstory4-6/$',views.nextstory4_6,name='nextstory4-6'),
     url(r'^stage4-6/see4-6/$',views.see4_6,name='see4-6'),
     url(r'^stage4-6/input4-6/$',views.input4_6,name='input4-6'),
+    url(r'^stage4-6/movie4-6/$',views.movie4_6,name='movie4-6')
 ]

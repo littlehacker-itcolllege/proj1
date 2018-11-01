@@ -4,7 +4,9 @@
 		<title></title>
 		{% load static %}
 		<link rel="stylesheet" type="text/css" href="{% static 'css/map.css' %}">
-		<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+		<!--<iframe width="0" height="0" src="{% static 'sound/map.m4a' %}" frameborder="0" allowfullscreen></iframe> -->
+			<div class="kyoku"><iframe id="music" src="" ></iframe></div>
+
 	</head>
 	<body>
 			<a href="http://localhost:8080/map/" target="map">map</a>
@@ -28,17 +30,39 @@
 
 
 			<div class="stage-mori">
-				<div class="drop">
-					<li><a href="#"><img src="{% static 'game/1-1enemy.gif' %}" id="enemy-img" width="10%" height="auto" onmouseover="this.src='{% static 'game/map.png' %}'" onmouseout="this.src='{% static 'game/1-1enemy.gif' %}'"></a>
-						<ul>
-							<li><a href="#">stage1-1</a></li>
-							<li><a href="#">stage1-2</a></li>
-							<li><a href="#">stage1-3</a></li>
-							<li><a href="#">stage1-4</a></li>
-						</ul>
-					</li>
+				<div class="main">
+					<img src="{% static 'game/stagemori.png' %}" id="enemy-img" width="10%" height="auto" onmouseover="this.src='{% static 'game/1-1enemy.gif' %}'" onmouseout="this.src='{% static 'game/stagemori.png' %}'">
+
+					<div class="show">
+						<button>Click<br>Dungeon</button>
+					<ul>
+						<li><a href="http://localhost:8080/stage1-1/" target="story">ステージ１</a></li>
+						<li><a href="http://localhost:8080/stage1-2/" target="story">ステージ２</a></li>
+						<li><a href="http://localhost:8080/stage1-3/" target="story">ステージ３</a></li>
+						<li><a href="http://localhost:8080/stage1-4/" target="story">ステージ４</a></li>
+					</ul>
+				</div>
+				<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+				<script type="text/javascript">
+					$(document).ready(function(){
+						$('button').click(function(){
+							$('ul').toggleClass('active')
+						})
+					})
+				</script>
 				</div>
 			</div>
 
+
+
+
+			<script>
+			roop();
+
+			function roop(){
+			document.getElementById("music").src="{% static 'sound/map.m4a' %}";
+			setTimeout(roop, 131000);
+			}
+			</script>
 	</body>
 </html>
