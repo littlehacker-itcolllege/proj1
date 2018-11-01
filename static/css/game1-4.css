@@ -14,4 +14,23 @@ body{
 }
 #button{
 	display:none;
+	position:absolute;
+	top:65%;
+	left:10%;
+}
+#enemy{
+	position:absolute;
+	left:50%;
+	top:10%;
+}
+#enemy-down{
+	display:none;
+	position:absolute;
+	left:50%;
+	top:10%;
+}
+#magic{
+	position:absolute;
+	top:50%;
+	left:10%;
 }

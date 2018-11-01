@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head lang='ja'>
+		<meta charset='UTF-8'>
+		{% load static %}
+		<link rel='stylesheet' type='text/css' href="{% static 'css/movie4-6.css' %}">
+	</head>
+	<body>
+
+		
+		<div class='movie'>
+            <img id="movie" src="">
+		</div>
+
+		<div class='textboard'>
+			<p class='text1' id='text1'><font color='red'>ボーンソルジャー:</font>おまえら何をしている！</p>
+			<p class='text2' id='text2'><font color='red'>ボーンソルジャー:</font>生きてここから出られると思うなよ！</p>
+		</div>
+        <script>
+
+			one();
+
+			function one(){
+                document.getElementById("movie").src="{% static 'game/first-talk.png' %}";
+
+				setTimeout(two,11000);
+			}
+			function two(){
+				document.getElementById("text1").className="text3";
+                document.getElementById("text1").innerHTML="<font color='green'>リト:</font>まずい！みつかっちゃった！";
+				document.getElementById("text2").className="text4";
+                document.getElementById("text2").innerHTML="<font color='lightblue'>フェアリー:</font>あそこのエレベーターで逃げましょう！";
+
+				setTimeout(three,7000);
+			}
+			function three(){
+				document.getElementById("movie").src="{% static 'game/born/born1.png' %}";
+
+				setTimeout(three2,308);
+			}
+			function three2(){
+				document.getElementById("movie").src="{% static 'game/born/born2.png' %}";
+
+				setTimeout(three3,308);
+			}
+			function three3(){
+				document.getElementById("movie").src="{% static 'game/born/born3.png' %}";
+
+				setTimeout(three4,308);
+			}
+			function three4(){
+				document.getElementById("movie").src="{% static 'game/born/born4.png' %}";
+
+				setTimeout(three5,308);
+			}
+			function three5(){
+				document.getElementById("movie").src="{% static 'game/born/born5.png' %}";
+
+				setTimeout(three6,308);
+			}
+			function three6(){
+				document.getElementById("movie").src="{% static 'game/born/born6.png' %}";
+
+				setTimeout(three7,308);
+			}
+			function three7(){
+				document.getElementById("movie").src="{% static 'game/born/born7.png' %}";
+
+				setTimeout(three8,308);
+			}
+			function three8(){
+				document.getElementById("movie").src="{% static 'game/born/born8.png' %}";
+
+				setTimeout(three9,308);
+			}
+			function three9(){
+				document.getElementById("movie").src="{% static 'game/born/born9.png' %}";
+
+				setTimeout(three10,308);
+			}
+			function three10(){
+				document.getElementById("movie").src="{% static 'game/born/born10.png' %}";
+
+				setTimeout(three11,308);
+			}
+			function three11(){
+				document.getElementById("movie").src="{% static 'game/born/born11.png' %}";
+
+				setTimeout(three12,308);
+			}
+			function three12(){
+				document.getElementById("movie").src="{% static 'game/born/born12.png' %}";
+
+				setTimeout(three13,308);
+			}
+			function three13(){
+				document.getElementById("movie").src="{% static 'game/born/born13.png' %}";
+
+				setTimeout(four,304);
+			}
+
+			function four(){
+				//document.getElementById("movie").src="{% static 'game/one-floor.png' %}";
+				document.getElementById("text1").className="text5";
+				document.getElementById("text1").innerHTML="<font color='lightblue'>フェアリー:</font>一階に着いたわ！　さっさと逃げましょう！";
+				document.getElementById("text2").className="text6";
+				document.getElementById("text2").innerHTML="<font color='green'>リト:</font>うん！　急ごう！";
+
+				setTimeout(five,6000);
+			}
+			function five(){
+				document.getElementById("movie").src="{% static 'game/born-appear.gif' %}";
+
+				setTimeout(six,3000);
+			}
+			function six(){
+				document.getElementById("movie").src="{% static 'game/second-talk.png' %}";
+				document.getElementById("text1").className="text7";
+                document.getElementById("text1").innerHTML="<font color='red'>ボーンソルジャー:</font>逃げられるとでも思ったか？";
+				document.getElementById("text2").className="text8";
+                document.getElementById("text2").innerHTML="<font color='red'>ボーンソルジャー:</font>ギタギタにしてやる！";
+
+				setTimeout(seven,9000);
+			}
+			function seven(){
+                document.getElementById("text1").className="text9";
+                document.getElementById("text1").innerHTML="<font color='green'>リト:</font>床を割って降りてきたのか！　なんて奴だ..";
+                document.getElementById("text2").className="text10";
+                document.getElementById("text2").innerHTML="<font color='lightblue'>フェアリー:</font>戦うしかないようね..がんばりましょう！";
+			}
+
+		</script>
+
+	</body>
+</html>
+

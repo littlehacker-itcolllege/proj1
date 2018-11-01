@@ -3,6 +3,7 @@ from . import views
 
 urlpatterns = [
     url(r'^map/$',views.map,name='map'),
+    url(r'^opening/$' ,views.opening,name='opening'),
     #stage1-1
     url(r'^stage1-1/$',views.stage1_1,name='stage1-1'),
     url(r'^stage1-1/story1-1/$',views.story1_1,name='story1-1'),
@@ -52,12 +53,14 @@ urlpatterns = [
     url(r'^stage3-1/game3-1/$',views.game3_1,name='game3-1'),
     url(r'^stage3-1/head3-1/$',views.head3_1,name='head3-1'),
     url(r'^stage3-1/nextstory3-1/$',views.nextstory3_1,name='nextstory3-1'),
+    url(r'^stage3-1/gameover3-1/$',views.gameover3_1,name='gameover3-1'),
     #stage3-2
     url(r'^stage3-2/$',views.stage3_2,name='stage3-2'),
     url(r'^stage3-2/story3-2/$',views.story3_2,name='story3-2'),
     url(r'^stage3-2/game3-2/$',views.game3_2,name='game3-2'),
     url(r'^stage3-2/head3-2/$',views.head3_2,name='head3-2'),
     url(r'^stage3-2/nextstory3-2/$',views.nextstory3_2,name='nextstory3-2'),
+    url(r'^stage3-2/gameover3-2/$',views.gameover3_2,name='gameover3-2'),
     #stage3-3
     url(r'^stage3-3/$',views.stage3_3,name='stage3-3'),
     url(r'^stage3-3/story3-3/$',views.story3_3,name='story3-3'),
@@ -113,4 +116,5 @@ urlpatterns = [
     url(r'^stage4-6/nextstory4-6/$',views.nextstory4_6,name='nextstory4-6'),
     url(r'^stage4-6/see4-6/$',views.see4_6,name='see4-6'),
     url(r'^stage4-6/input4-6/$',views.input4_6,name='input4-6'),
+    url(r'^stage4-6/movie4-6/$',views.movie4_6,name='movie4-6')
 ]
