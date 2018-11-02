@@ -216,30 +216,38 @@
                 var $bottom = document.getElementById( "bottom" );
                 obj = document.getElementById('input1');
                 enemy = setInterval( "enemyfast()",500);
-
-                //上ボタンのクリック
+                keyvalue = 0;
                 $top.onmousedown = function ( $event ) {
+
+                    //上ボタンのクリック
                     if( $event.button == 0 ){
+                        keyvalue = 0;
                         $intervalID = setInterval(
                             function top2(idname){
-                                topbutton();
+                                keyvalue ++
+                                topbutton()
                             },
                             108//1秒間に108/120回繰り返す
                         );
                     }
                 }
                 // マウスアップイベント（ボタンを放した時のイベント）にイベントハンドラをバインド
-                $top.onmouseup = function( $event ){
-                    if( $event.button == 0 ){
+                $top.onmouseup = function ( $event ) {
+                    if( $event.button == 0 && keyvalue == 0){
+                        // 繰り返しタイマーを中止
+                        clearInterval( $intervalID );
+                        topbutton()
+                    }else{
                         clearInterval( $intervalID );
                     }
                 }
-
                 //下ボタンのクリック
                 $bottom.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
+                        keyvalue = 0;
                         $intervalID = setInterval(
                             function bottom(idname){
+                                keyvalue ++
                                 bottombutton()
                             },
                             108
@@ -247,7 +255,11 @@
                     }
                 }
                 $bottom.onmouseup = function ( $event ) {
-                    if( $event.button == 0 ){
+                    if( $event.button == 0 && keyvalue == 0){
+                        // 繰り返しタイマーを中止
+                        clearInterval( $intervalID );
+                        bottombutton()
+                    }else{
                         clearInterval( $intervalID );
                     }
                 }
@@ -255,8 +267,10 @@
                 //右ボタンのクリック
                 $right.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
+                        keyvalue = 0;
                         $intervalID = setInterval(
                             function right(){
+                                keyvalue ++
                                 rightbutton()
                             },
                             108
@@ -264,7 +278,11 @@
                     }
                 }
                 $right.onmouseup = function ( $event ) {
-                    if( $event.button == 0 ){
+                    if( $event.button == 0 && keyvalue == 0){
+                        // 繰り返しタイマーを中止
+                        clearInterval( $intervalID );
+                        rightbutton()
+                    }else{
                         clearInterval( $intervalID );
                     }
                 }
@@ -272,8 +290,10 @@
                 //左ボタンのクリック
                 $left.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
+                        keyvalue = 0;
                         $intervalID = setInterval(
                             function left(){
+                                keyvalue ++
                                 leftbutton()
                             },
                             108
@@ -281,13 +301,15 @@
                     }
                 }
                 $left.onmouseup = function ( $event ) {
-                    if( $event.button == 0 ){
+                    if( $event.button == 0 && keyvalue == 0){
+                        // 繰り返しタイマーを中止
+                        clearInterval( $intervalID );
+                        leftbutton()
+                    }else{
                         clearInterval( $intervalID );
                     }
                 }
-
             }
-
             // キーコード(どのキーが押されたか)を取得
             window.addEventListener("keydown", handleKeydown);
             function handleKeydown(event){
@@ -296,7 +318,6 @@
                     $('#button').filter(function(){
                         return this.className =="disabled";
                     });
-                console.log(go.length)
                 if(go.length=='0' ){
                     // 条件文で制御する
                     //上キーの入力
