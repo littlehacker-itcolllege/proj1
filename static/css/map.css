@@ -1,16 +1,11 @@
 
 body {
-	height:100vh;
+	height: 100vh;
 	background-repeat:no-repeat;
 	background-position:center center;
-	background-image: url("../game/map.png");
+	background-image: url("../game/map6.png");
 }
 
-.stage-mori {
-	position: relative;
-	top: 370px;
-	left: -120px;
-}
 
 .main {
 	display: inline-block;
@@ -73,9 +68,6 @@ body {
 .show ul li a:hover {
 	background: #0d7ad0;
 }
-.main img {
-	width: 100px;
-}
 
 .show a {
 	display: block;
@@ -93,5 +85,99 @@ body {
 .kyoku {
 	visibility: hidden;
 	position: absolute;
+}
+
+
+/*--------------Mori----------------*/
+.stage-mori {
+	position: relative;
+	top: 360px;
+	right: 130px;
+}
+.stage-mori img {
+	width: 100px;
+}
+
+.stage-mori img:hover {
+	width: 105px;
+}
+
+/*--------------BOSS----------------*/
+.stage-boss {
+	position: relative;
+	top: 161px;
+	right: 120px;
+}
+.stage-boss img {
+	width: 120px;
+}
+.stage-boss img:hover {
+	width: 125px;
+}
+
+/*--------------tower-----------------*/
+.stage-tower {
+	position:relative;
+	top: 200px;
+	left: 165px;
+}
+.stage-tower img {
+	width: 55px;
+}
+.stage-tower img:hover {
+	width: 60px;
+}
+
+/*--------------Volcano---------------*/
+.stage-volcano {
+	position:relative;
+	top: 320px;
+	left: 130px;
+}
+
+.stage-volcano img {
+	width: 100px;
+}
+
+.stage-volcano img:hover {
+	width: 105px;
+}
+
+.stage-volcano button {
+	top: -145px;
+	right: 50px;
+}
+
+.stage-volcano ul {
+	top: 0px;
+	right: 50px;
+}
+
+
+
+
+/*------------lake-------------------*/
+.stage-lake {
+	position:relative;
+	top: 445px;
+	left: 20px;
+}
+
+.stage-lake img {
+	width: 190px;
+}
+
+.stage-lake img:hover {
+	width: 185px;
+}
+
+.stage-lake button {
+	top: -155px;
+	right: 10px;
+}
+
+.stage-lake ul {
+	top: 9px;
+	right: 10px;
 }
 

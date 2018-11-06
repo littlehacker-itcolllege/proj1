@@ -29,31 +29,97 @@
 			<a href="http://localhost:8080/stage4-6/" target="story">4-6</a>
 
 
-			<div class="stage-mori">
+
+			<div class="stage-tower">
 				<div class="main">
-					<img src="{% static 'game/stagemori.png' %}" id="enemy-img" width="10%" height="auto" onmouseover="this.src='{% static 'game/1-1enemy.gif' %}'" onmouseout="this.src='{% static 'game/stagemori.png' %}'">
+					<img src="{% static 'game/tower.png' %}" id="mori" width="10%" height="auto" onmouseover="this.src='{% static 'game/tower.png' %}'" onmouseout="this.src='{% static 'game/tower.png' %}'">
 
 					<div class="show">
 						<button>Click<br>Dungeon</button>
+						<ul>
+							<li><a href="http://localhost:8080/stage1-1/" target="story">ステージ１</a></li>
+							<li><a href="http://localhost:8080/stage1-2/" target="story">ステージ２</a></li>
+							<li><a href="http://localhost:8080/stage1-3/" target="story">ステージ３</a></li>
+							<li><a href="http://localhost:8080/stage1-4/" target="story">ステージ４</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="stage-volcano">
+				<div class="main">
+					<img src="{% static 'game/volcano.png' %}" id="enemy-img" width="10%" height="auto" onmouseover="this.src='{% static 'game/volcano.png' %}'" onmouseout="this.src='{% static 'game/volcano.png' %}'">
+
+					<div class="show">
+					<button>Click<br>Dungeon</button>
 					<ul>
 						<li><a href="http://localhost:8080/stage1-1/" target="story">ステージ１</a></li>
 						<li><a href="http://localhost:8080/stage1-2/" target="story">ステージ２</a></li>
 						<li><a href="http://localhost:8080/stage1-3/" target="story">ステージ３</a></li>
 						<li><a href="http://localhost:8080/stage1-4/" target="story">ステージ４</a></li>
 					</ul>
+					</div>
 				</div>
-				<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-				<script type="text/javascript">
+			</div>
+
+			<div class="stage-lake">
+				<div class="main">
+					<img src="{% static 'game/lake.png' %}" id="enemy-img" width="10%" height="auto" onmouseover="this.src='{% static 'game/lake.png' %}'" onmouseout="this.src='{% static 'game/lake.png' %}'">
+
+					<div class="show">
+					<button>Click<br>Dungeon</button>
+					<ul>
+						<li><a href="http://localhost:8080/stage1-1/" target="story">ステージ１</a></li>
+						<li><a href="http://localhost:8080/stage1-2/" target="story">ステージ２</a></li>
+						<li><a href="http://localhost:8080/stage1-3/" target="story">ステージ３</a></li>
+						<li><a href="http://localhost:8080/stage1-4/" target="story">ステージ４</a></li>
+					</ul>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="stage-boss">
+				<div class="main">
+					<img src="{% static 'game/boss.png' %}" id="enemy-img" width="30%" height="auto" onmouseover="this.src='{% static 'game/boss.png' %}'" onmouseout="this.src='{% static 'game/boss.png' %}'">
+
+					<div class="show">
+						<button>Click<br>Dungeon</button>
+						<ul>
+							<li><a href="http://localhost:8080/stage1-1/" target="story">ステージ１</a></li>
+							<li><a href="http://localhost:8080/stage1-2/" target="story">ステージ２</a></li>
+							<li><a href="http://localhost:8080/stage1-3/" target="story">ステージ３</a></li>
+							<li><a href="http://localhost:8080/stage1-4/" target="story">ステージ４</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="stage-mori">
+				<div class="main">
+					<img src="{% static 'game/stagemori.png' %}" id="mori" width="10%" height="auto" onmouseover="this.src='{% static 'game/stagemori.png' %}'" onmouseout="this.src='{% static 'game/stagemori.png' %}'">
+
+					<div class="show">
+						<button>Click<br>Dungeon</button>
+						<ul>
+							<li><a href="http://localhost:8080/stage1-1/" target="story">ステージ１</a></li>
+							<li><a href="http://localhost:8080/stage1-2/" target="story">ステージ２</a></li>
+							<li><a href="http://localhost:8080/stage1-3/" target="story">ステージ３</a></li>
+							<li><a href="http://localhost:8080/stage1-4/" target="story">ステージ４</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+
+
+			<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+			<script type="text/javascript">
 					$(document).ready(function(){
 						$('button').click(function(){
 							$('ul').toggleClass('active')
 						})
 					})
 				</script>
-				</div>
-			</div>
-
-
 
 
 			<script>
