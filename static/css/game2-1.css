@@ -5,6 +5,15 @@ body{
 td{
 	text-align:center;
 }
+#start{
+	background-color:gray;
+	height:100vh;
+}
+.start{
+	position:absolute;
+	top:60%;
+	left:50%;
+}
 .back{
 	width:100%;
 	max-width:100%;

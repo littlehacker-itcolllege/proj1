@@ -2,7 +2,19 @@ body{
   margin:0px;
   padding:0px;
 }
-.box{
+
+#back{
+  background-color:gray;
+  opacity:0.5;
+	z-index:0;
+}
+#start{
+  position:absolute;
+  top:60%;
+	left:50%;
+	z-index:1;
+}
+#box{
 	height:100vh;
 	background-repeat:no-repeat;
 	background-position:center center;
@@ -13,6 +25,12 @@ body{
 	align-items: center;     /*上下中央揃え*/
 }
 #next{
+	display:none;
+}
+#mine{
+	position:absolute;
+	top:55%;
+	left:60%;
 	display:none;
 }
 #buttons{

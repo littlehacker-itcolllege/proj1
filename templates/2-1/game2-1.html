@@ -7,7 +7,9 @@
         <script type="text/javascript" src="{% static 'js/game2-1.js' %}"></script>
     </head>
     <body onload="gameSet()">
-			<button onclick="gameSet();count()" id="start">start</button>
+			<div id="start">
+				<button onclick="gameSet();count();start()" class="start">start</button>
+			</div>
 			<div id="box">
 				<div id="waku">
 					<p id="breath">0</p>

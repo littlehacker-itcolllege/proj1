@@ -1,4 +1,23 @@
 var item=0;
+function load(){
+	for (var i=1;i!=6;i++){
+		document.getElementById("button"+i).disabled="disabled"
+		if(i<4){
+			document.getElementById("mine"+i).disabled="disabled"
+		}
+	}
+}
+function start(){
+  document.getElementById("back").style.opacity="1";
+  document.getElementById("start").style.display="none";
+	for (var i=1;i!=6;i++){
+    document.getElementById("button"+i).disabled=""
+    if(i<4){
+      document.getElementById("mine"+i).disabled=""
+    }
+  }
+}
+
 function onClick1(){
 	document.getElementById("item1").style.display="block";
 	document.getElementById("button2").style.left="65%";

@@ -1,4 +1,22 @@
 var item = 0;
+function load(){
+  for (var i=1;i!=6;i++){
+    document.getElementById("button"+i).disabled="disabled"
+    if(i<4){
+      document.getElementById("mine"+i).disabled="disabled"
+    }
+  }
+}
+function start(){
+  document.getElementById("back").style.opacity="1";
+  document.getElementById("start").style.display="none";
+	for (var i=1;i!=6;i++){
+    document.getElementById("button"+i).disabled=""
+    if(i<4){
+      document.getElementById("mine"+i).disabled=""
+    }
+  }
+}
 function onClick1(){
 	document.getElementById("item1").style.display="block";
 	document.getElementById("button1").style.left="25%";
@@ -29,6 +47,9 @@ function mine(a){
 		document.getElementById("right").style.display="block";
 		document.getElementById("left").style.display="none";
 		document.getElementById("right").style.top="10%";
+		document.getElementById("mine").style.display="block";
+		document.getElementById("mine").style.top="15%";
+		document.getElementById("mine").style.left="55%";
 		setTimeout("trap()",10);
 	}
 	if(a==2){
@@ -36,6 +57,9 @@ function mine(a){
 		document.getElementById("right").style.display="block";
 		document.getElementById("left").style.display="none";
 		document.getElementById("right").style.top="50%";
+		document.getElementById("mine").style.display="block";
+		document.getElementById("mine").style.top="55%";
+		document.getElementById("mine").style.left="60%";
 		setTimeout("trap()",10);
 	}
 	if(a==3){
@@ -43,6 +67,9 @@ function mine(a){
 		document.getElementById("right").style.display="block";
 		document.getElementById("left").style.display="none";
 		document.getElementById("right").style.top="70%";
+		document.getElementById("mine").style.display="block";
+		document.getElementById("mine").style.top="75%";
+		document.getElementById("mine").style.left="60%";
 		setTimeout("trap()",10);
 	}
 }
