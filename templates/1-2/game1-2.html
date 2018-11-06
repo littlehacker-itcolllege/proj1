@@ -10,29 +10,33 @@
         <div class="box">
 					<div itemContainer>
 						<div class="item">
-							<div  class="dragwrapper" id="drop" ondragover="DragOver(event)" ondrop="Drop(event)" >
+							<div  class="dragwrapper" id="drop" ondragover="DragOver(event)" ondrop="Drop(1)" >
 								<img src="{% static 'game/wepon1.png' %}" class="dragimg" id="a" draggable="true" ondragstart="DragStart(event)">
 							</div>
-								<div id="drop1" class="drop" ondragover="DragOver(event)" ondrop="Drop1(event)"></div>
-								<div id="drop2" class="drop" ondragover="DragOver(event)" ondrop="Drop2(event)"></div>
-								<div id="drop3" class="drop" ondragover="DragOver(event)" ondrop="Drop3(event)"></div>
+								<div id="droppoint1">
+									<div id="drop1" class="drop" ondragover="DragOver(event)" ondrop="Drop1(event)"></div>
+								</div>
 						</div>
 
 						<div class="item">
 							<div  class="dragwrapper" id="drop" ondragover="DragOver(event)" ondrop="Drop(event)" >
 								<img src="{% static 'game/wepon2.png' %}" class="dragimg" id="b" draggable="true" ondragstart="DragStart(event)">
 							</div>
+								<div id="droppoint2">
+									<div id="drop2" class="drop" ondragover="DragOver(event)" ondrop="Drop2(event)"></div>
+								</div>
 						</div>
 
 						<div class="item">
 							<div  class="dragwrapper" id="drop" ondragover="DragOver(event)" ondrop="Drop(event)" >
 								<img src="{% static 'game/wepon3.png' %}" class="dragimg" id="c" draggable="true" ondragstart="DragStart(event)">
 							</div>
+								<div id="droppoint3">
+									<div id="drop3" class="drop" ondragover="DragOver(event)" ondrop="Drop3(event)"></div>
+								</div>
 						</div>
 						<a href="http://localhost:8080/stage1-2/wepon" target="game1-2" ><button id="next" style="width:100px;height:50px"><font size="4">完成！</font></button></a>
 					</div>
-
-
         </div>
     </body>
 </html>
