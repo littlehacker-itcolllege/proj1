@@ -6,7 +6,7 @@ body {
 }
 #hpbar{
     width: 640px;
-    background-color:#aaa;
+    background-color:#8a4b08;
     display: grid;
     grid-template-columns: 301px 40px 301px;
     grid-template-rows: 60px ;
@@ -174,16 +174,16 @@ display:block;
 
 #maru {
     position:absolute;
-    top:33px;
-    left:35px;
     height:37px;
     width: 37px;
-    grid-row: 1;
-    grid-column: 1;
+    top:0px;
+    left:0px;
+    grid-row: 2;
+    grid-column: 2;
 }
 #patinko1 {
     position:absolute;
-    top:33px;
+    top:15px;
     left:35px;
     height:37px;
     width: 37px;
@@ -193,7 +193,7 @@ display:block;
 }
 #patinko2 {
     position:absolute;
-    top:33px;
+    top:15px;
     left:35px;
     height:37px;
     width: 37px;
@@ -203,7 +203,7 @@ display:block;
 }
 #patinko3 {
     position:absolute;
-    top:33px;
+    top:15px;
     left:35px;
     height:37px;
     width: 37px;
@@ -215,12 +215,12 @@ display:block;
     position:absolute;
     grid-row: 2;
     grid-column: 5;
-    top:-40px;
+    top:0px;
     left:0px;
 }
 #enemyattack{
     position:absolute;
-    top:33px;
+    top:15px;
     left:35px;
     height:37px;
     width: 37px;
@@ -262,4 +262,11 @@ display:block;
 #action2{
     grid-row:2;
     grid-column:4;
+}
+#pagerestart{
+    text-align: center;
+}
+#pagerestart > p{
+    font-weight: bold;
+    font-size: 40px;
 }

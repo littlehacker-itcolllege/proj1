@@ -1,5 +1,36 @@
 <!DOQTYPE HTML>
 <html>
+<<<<<<< HEAD
+  <head>
+    <title></title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/game3-2.css' %}">
+    <script type="text/javascript" src="{% static 'js/game3-2.js' %}"></script>
+  </head>
+  <body>
+    <div class="box">
+      <div id="buttons">
+        <input type="image" src="{%static 'game/pushblock.png'%}" id="mine1" onclick="mine(1);gameover()">
+        <input type="image" src="{%static 'game/pushblock2.png'%}" id="mine2" onclick="mine(2);gameover()"><br>
+        <input type="image" src="{%static 'game/pushblock.png'%}" id="button1" onclick="nat(1)">
+        <input type="image" src="{%static 'game/pushblock2.png'%}" id="button2" onclick="onClick1()"><br>
+        <input type="image" src="{%static 'game/pushblock2.png'%}" id="button3" onclick="nat(2)">
+        <input type="image" src="{%static 'game/pushblock.png'%}" id="mine3" onclick="mine(3);gameover()"><br>
+        <input type="image" src="{%static 'game/pushblock.png'%}" id="button4" onclick="nat(3)">
+        <input type="image" src="{%static 'game/pushblock2.png'%}" id="button5" onclick="onClick2()">
+      </div>
+      <div id="chara">
+        <img id="left" src="{% static 'game/pushleft.gif' %}">
+        <img id="right" src="{% static 'game/pushright.gif' %}">
+      </div>
+      <div id="item1"><img src='{% static 'game/orbpice3.png'%}'></div>
+      <div id="item2"><img src='{% static 'game/orbpice4.png'%}'></div>
+      <div id="next">
+        <a href="http://localhost:8080/stage3-2/nextstory3-2" target="story3-2" ><button style="width:100px;height:50px"><font size="4">Next</font></button></a>
+      </div>
+     </div>
+  </body>
+=======
     <head>
         <title></title>
         {% load static %}
@@ -15,12 +46,15 @@
 					<input type="image" src="{%static 'game/pushblock2.png'%}" id="button2" onclick="onClick1()"><br>
 					<input type="image" src="{%static 'game/pushblock2.png'%}" id="button3" onclick="nat(2)">
 					<input type="image" src="{%static 'game/pushblock.png'%}" id="mine3" onclick="mine(3);gameover()"><br>
+<<<<<<< HEAD
 					<input type="image" src="{%static 'game/pushblock.png'%}" id="mine1" onclick="mine(1)">
 					<input type="image" src="{%static 'game/pushblock2.png'%}" id="mine2" onclick="mine(2)"><br>
 					<input type="image" src="{%static 'game/pushblock.png'%}" id="button1" onclick="nat(1)">
 					<input type="image" src="{%static 'game/pushblock2.png'%}" id="button2" onclick="onClick1()"><br>
 					<input type="image" src="{%static 'game/pushblock2.png'%}" id="button3" onclick="nat(2)">
 					<input type="image" src="{%static 'game/pushblock.png'%}" id="mine3" onclick="mine(3)"><br>
+=======
+>>>>>>> 8da1b16ffec0d0f7060b073d97880aeba8475eae
 					<input type="image" src="{%static 'game/pushblock.png'%}" id="button4" onclick="nat(3)">
 					<input type="image" src="{%static 'game/pushblock2.png'%}" id="button5" onclick="onClick2()">
 				</div>
@@ -33,9 +67,13 @@
 			 <div id="next">
 				<a href="http://localhost:8080/stage3-2/nextstory3-2" target="story3-2" ><button style="width:100px;height:50px"><font size="4">Next</font></button></a>
 				</div>
+<<<<<<< HEAD
 				</div>
 				<div id="item1"><img src='{% static 'game/fireorb.png'%}'></div>
 				<div id="item2"><img src='{% static 'game/fireorb.png'%}'></div>
+=======
+>>>>>>> 8da1b16ffec0d0f7060b073d97880aeba8475eae
 			</div>
     </body>
+>>>>>>> e7998f849860140858c17c23ea0264f94ff343d5
 </html>
