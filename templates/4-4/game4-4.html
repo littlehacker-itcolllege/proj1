@@ -75,7 +75,10 @@
                             &&  $.curCSS(this,"grid-column",true)==x
                             &&  $.curCSS(this,"background",true)!=undefined
                     }).attr('value','1');
-                if(input1 == '8 14'){
+                if(input1 == '12 11'){
+                    $("#action2").prop("disabled", false);
+                    document.maru.src="{% static "game/character/bottom.gif" %}";
+                }else if(input1 == '8 14'){
                     $("#action").prop("disabled", false);
                     document.maru.src="{% static "game/character/bottom.gif" %}";
                     actionvalue = 'calendar';
@@ -320,19 +323,19 @@
             function handleKeydown(event){
                 var keyCode = event.keyCode;
                 // 条件文で制御する
-               var go =
+                var go =
                     $('#button').filter(function(){
                         return this.className =="disabled";
                     });
-               if(go.length=='0' ){
-                //上キーの入力
-                if (keyCode == 38) {topbutton()}
-                //下キーの入力
-                if (keyCode == 40) {bottombutton()}
-                //右キーの入力
-                if (keyCode == 39) {rightbutton()}
-                //左キーの入力
-                if (keyCode == 37) {leftbutton()}
+                if(go.length=='0' ){
+                    //上キーの入力
+                    if (keyCode == 38) {topbutton()}
+                    //下キーの入力
+                    if (keyCode == 40) {bottombutton()}
+                    //右キーの入力
+                    if (keyCode == 39) {rightbutton()}
+                    //左キーの入力
+                    if (keyCode == 37) {leftbutton()}
                 }
             }
 
@@ -389,35 +392,47 @@
 
 
             //調べるボタンのHTML表示とサイズ指定
+            var w;
             function win_open(){
-                //  window.open("http://localhost:8080/stage4-4/see4-4","","width=800,height=600");
-                $('#button >*').attr("disabled",true);
-                $('#button').attr("class",'disabled');
-                setTimeout(function () {
-                    $("#button >*").attr("disabled",false);
-                    $('#button').attr("class",'');
-                $('#action').attr("disabled",true);
-                $('#action2').attr("disabled",true);
+                if(!w||w.closed){
+                    $('#button >*').attr("disabled",true);
+                    $('#button').attr("class",'disabled');
+                    setTimeout(function () {
+                        $("#button >*").attr("disabled",false);
+                        $('#button').attr("class",'');
+                        $('#action').attr("disabled",true);
+                        $('#action2').attr("disabled",true);
 
-                }, 5000);
+                    }, 5000);
 
-                if(actionvalue =='dustbox'){
-                    dustbox()
-                }
-                if(actionvalue == 'pc'){
-                    pc()
-                }
-               if(actionvalue == 'calendar'){
-                    calendar()
-
-                    setTimeout( function (){
-                        window.open("http://localhost:8080/stage4-4/see4-4","","width=800,height=600");
-                    },6000);
+                    if(actionvalue =='dustbox'){
+                        dustbox()
+                    }
+                    if(actionvalue == 'pc'){
+                        pc()
+                    }
+                    if(actionvalue == 'calendar'){
+                        calendar();
+                        setTimeout( function (){
+                           w =  window.open("http://localhost:8080/stage4-4/see4-4","","width=800,height=600");
+                        },5500);
+                        v.close();
+                    }else{
+                        w.focus()
+                    }
+                }else{
+                w.focus();
                 }
             }
             //入力ボタンのHTML表示とサイズ指定
+            var v;
             function input(){
-                window.open("http://localhost:8080/stage4-4/input4-4","","width=800,height=600");
+                if(!v||v.closed){
+                    v = window.open("http://localhost:8080/stage4-4/input4-4","","width=800,height=600");
+                    w.close();
+                }else{
+                    v.focus();
+                }
             }
 
 

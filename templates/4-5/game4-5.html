@@ -31,6 +31,7 @@
                             &&  $.curCSS(this,"background",true)!=undefined
                     }).attr('value','1');
                 if(input1 == '8 8'&& vasecrash == '1') {
+                    document.maru.src="{% static "game/character/top.gif" %}";
                     $("#action").prop("disabled", false);
                     $("#action").val("隠れる");
                 }else if (go.length=='1') {
@@ -90,7 +91,7 @@
                     $('#action').wrap('<a class="actionelement" />');
                     $(".actionelement").attr({href:'http://localhost:8080/stage4-5/nextstory4-5',
                         target:'story4-5'});
-                }else if(input1 == '12 10'||input1 == '12 11'||input1 == '12 12'&&actionvalue =='1'){
+                }else if((input1 == '12 10'||input1 == '12 11'||input1 == '12 12')&&actionvalue =='1'){
                     $("#action").prop("disabled", false);
                     document.maru.src="{% static "game/character/bottom.gif" %}";
                 }else if (go.length=='1')  {
@@ -380,7 +381,7 @@
                     setTimeout("remove2()" ,15000);
                     clearInterval(enemy);
                     enemysecondmove = setInterval("enemysecond()" ,1000);
-                    actionvalue =(actionvalue + 1);
+                    actionvalue ++
                     $("#action").prop("disabled", true);
                 }else if (actionvalue == 2){
                     $('#button >*').attr("disabled",true);

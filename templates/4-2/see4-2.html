@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head lang="ja">
-    <meta charset="UTF-8">
-    {% load static %}
+    <head lang="ja">
+        <meta charset="UTF-8">
+        {% load static %}
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+        <script type='text/javascript'>
+            $(function(){
+                $("#gomi>*").draggable();
+            });
 
+        </script>
+        <style>
+#gomi > img{
+}
+        </style>
 
-    <title>パスワードを見つけて</title>
-  </head>
-  <body>
-      <p>ハズレ</p>
-      <a href="#" onclick="window.close();">ウィンドウを閉じる</a>
-      </body>
+        <title>パスワードを見つけて</title>
+    </head>
+    <body>
+        <div id="gomi">
+            <img  src="{% static "game/4-2gomi.png" %}" >
+            <img  src="{% static "game/4-2gomi.png" %}" >
+        </div>
+
+            <a href="#" onclick="window.close();">ウィンドウを閉じる</a>
+    </body>
 </html>

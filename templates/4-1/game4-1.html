@@ -155,16 +155,16 @@
 
             // ページ読み込み時に実行
             window.onload = function () {
-                    $("#pagestart").show();
-                    $("#pageplaying").hide();
-                    $("#pagestart a").on('click',function(){
+                $("#pagestart").show();
+                $("#pageplaying").hide();
+                $("#pagestart a").on('click',function(){
 
-                        $("#pagestart").hide();
-                        $("#pageplaying").show();
+                    $("#pagestart").hide();
+                    $("#pageplaying").show();
 
 
-                        return false;
-                    });
+                    return false;
+                });
 
 
                 // 矢印ボタンのを各、値に代入
@@ -370,21 +370,32 @@
             }
             var actionvalue = 1;
             //調べるボタンのHTML表示とサイズ指定
+            var w;
             function win_open(){
-                window.open("http://localhost:8080/stage4-1/see4-1","","width=200,height=200");
+                if(!w||w.closed){
+                    w = window.open("http://localhost:8080/stage4-1/see4-1","","width=650,height=650");
+                    v.close();
+                }else{
+                    w.focus();
+                }
             }
             //入力ボタンのHTML表示とサイズ指定
+            var v;
             function input(){
-                window.open("http://localhost:8080/stage4-1/input4-1","","width=200,height=200");
+                if(!v||v.closed){
+                    v = window.open("http://localhost:8080/stage4-1/input4-1","","width=200,height=200");
+                    w.close();
+                }else{
+                    v.focus();
+                }
             }
-
 
         </script>
     </head>
     <body>
-           <div id='pagestart'>
-                    <a><input type='button' value='start' ></a>
-            </div>
+        <div id='pagestart'>
+            <a><input type='button' value='start' ></a>
+        </div>
         <div  id='pageplaying'>
             <div class="canvas">
                 <div id="maru">

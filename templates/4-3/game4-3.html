@@ -273,24 +273,13 @@
                 // 条件文で制御する
 
                 //上キーの入力
-                if (keyCode == 38) {
-                    topbutton()
-                }
-
+                if (keyCode == 38) {topbutton()}
                 //下キーの入力
-                if (keyCode == 40) {
-                    bottombutton()
-                }
-
+                if (keyCode == 40) {bottombutton()}
                 //右キーの入力
-                if (keyCode == 39) {
-                    rightbutton()
-                }
-
+                if (keyCode == 39) {rightbutton()}
                 //左キーの入力
-                if (keyCode == 37) {
-                    leftbutton()
-                }
+                if (keyCode == 37) {leftbutton()}
             }
 
             var enemymove = 0
@@ -322,13 +311,21 @@
             }
 
             //調べるボタンのHTML表示とサイズ指定
+                var w;
             function win_open(){
                 $('#button >*').attr("disabled",true);
                 setTimeout(function () {
-                    $("#button >*").attr("disabled",false);
+                    e("#button >*").attr("disabled",false);
                 $('#action2').attr("disabled",true);
                 },10000);
-                window.open("http://localhost:8080/stage4-3/see4-3","","width=820,height=600");
+                if(!w||w.closed){
+                w = window.open("http://localhost:8080/stage4-3/see4-3","","width=820,height=600","resizable=yes","scrollbars=yes");
+                w.focus();
+                }else{
+                w.close();
+                w = window.open("http://localhost:8080/stage4-3/see4-3","","width=820,height=600","resizable=yes","scrollbars=yes");
+                w.focus();
+                }
             }
             //入力ボタンのHTML表示とサイズ指定
             function input(){
