@@ -73,11 +73,20 @@
             // ページ読み込み時に実行
             window.onload = function () {
                 $("#pagestart").show();//スタートボタンの表示
-                $("#pageplaying").hide();//ゲームプレイ画面の非表示
+                $("#pageplaying").show();//ゲームプレイ画面の非表示
                 $('#pageclear').hide();//
                 $('#pagerestart').hide();//
                 $("#pagestart a").on('click',function(){
-                    $("#pagestart").hide();
+                    start = '1';
+                    $("#top").prop('disabled',false);
+                    $("#bottom").prop('disabled',false);
+                    $("#right").prop('disabled',false);
+                    $("#left").prop('disabled',false);
+                    $("#action").prop('disabled',false);
+                    $("#action2").prop('disabled',false);
+                    $("#pagestart a").hide();
+                    $("#back").css('opacity','1');
+                    $("#back").css('background-color','#fff');
                     $("#pageplaying").show();
                     return false;
                 });
@@ -194,21 +203,23 @@
                 var keyCode = event.keyCode;
                 // 条件文で制御する
                 //上キーの入力
-                if (keyCode == 38) {topbutton()}
-                //下キーの入力
-                if (keyCode == 40) {bottombutton()}
-                //右キーの入力
-                if (keyCode == 39) {rightbutton()}
-                //左キーの入力
-                if (keyCode == 37) {leftbutton()}
+                if(start == '1'){
+                    if (keyCode == 38) {topbutton()}
+                    //下キーの入力
+                    if (keyCode == 40) {bottombutton()}
+                    //右キーの入力
+                    if (keyCode == 39) {rightbutton()}
+                    //左キーの入力
+                    if (keyCode == 37) {leftbutton()}
 
-                if (keyCode == offkey) {
-                    offkey = 'none';
-                    setTimeout(
-                        function(){
-                            offkey = '32';
-                        },1100)
-                    win_open();
+                    if (keyCode == offkey) {
+                        offkey = 'none';
+                        setTimeout(
+                            function(){
+                                offkey = '32';
+                            },1100)
+                        win_open();
+                    }
                 }
             }
 
@@ -383,79 +394,82 @@
                 enemymove = setInterval(function(){//enemyのランダムな攻撃
                     var randomattack =  Math.floor( Math.random() * 0 );
                     var random =  Math.floor( Math.random() * 2 );
-                    if(randomattack == '0' && $('#enemyattack').css('display')=='none' && attackout == 0 && bossdamage == 0){
-                        attackout = 1;
-                        document.enemy.src="{% static "game/character/top.gif" %}";
-                        enemyattack();
-                        enemyvalue();
-                        clearInterval(enemymove);
-                        setTimeout(startTimer(),2000);
-                        setTimeout(function(){
-                            attackout = 0;
-                            document.enemy.src="{% static "game/character/4-6boss.png" %}";
-                        } ,2000);
-                    }else if(random == '0'){//enemy縦の移動
-                        var y = $('#enemy').css('grid-row');
-                        y = parseInt(y);
-                        if(y=='1'){
-                            var y = $('#enemy').css('grid-row');
-                            y = (parseInt(y)+1).toString();
-                            $('#enemy').css('grid-row', y);
+                    if(start == '1'){
+                        if( randomattack == '0' && $('#enemyattack').css('display')=='none' && attackout == 0 && bossdamage == 0){
+                            attackout = 1;
+                            document.enemy.src="{% static "game/character/top.gif" %}";
+                            enemyattack();
                             enemyvalue();
-                        }else if(y=='3'){
+                            clearInterval(enemymove);
+                            setTimeout(startTimer(),2000);
+                            setTimeout(function(){
+                                attackout = 0;
+                                document.enemy.src="{% static "game/character/4-6boss.png" %}";
+                            } ,2000);
+                        }else if(random == '0'){//enemy縦の移動
                             var y = $('#enemy').css('grid-row');
-                            y = (parseInt(y)-1).toString();
-                            $('#enemy').css('grid-row', y);
-                            enemyvalue();
-                        }else{
-                            random =  Math.floor( Math.random() * 2 );
-                            if(random == '0'){
+                            y = parseInt(y);
+                            if(y=='1'){
+                                var y = $('#enemy').css('grid-row');
+                                y = (parseInt(y)+1).toString();
+                                $('#enemy').css('grid-row', y);
+                                enemyvalue();
+                            }else if(y=='3'){
                                 var y = $('#enemy').css('grid-row');
                                 y = (parseInt(y)-1).toString();
                                 $('#enemy').css('grid-row', y);
                                 enemyvalue();
                             }else{
-                                var y = $('#enemy').css('grid-row');
-                                y = (parseInt(y)+1).toString();
-                                $('#enemy').css('grid-row', y);
-                                enemyvalue();
+                                random =  Math.floor( Math.random() * 2 );
+                                if(random == '0'){
+                                    var y = $('#enemy').css('grid-row');
+                                    y = (parseInt(y)-1).toString();
+                                    $('#enemy').css('grid-row', y);
+                                    enemyvalue();
+                                }else{
+                                    var y = $('#enemy').css('grid-row');
+                                    y = (parseInt(y)+1).toString();
+                                    $('#enemy').css('grid-row', y);
+                                    enemyvalue();
+                                }
                             }
-                        }
-                    }else{//enemy横の移動
-                        var x = $('#enemy').css('grid-column');
-                        x = parseInt(x);
-                        if( x == '4'){
+                        }else{//enemy横の移動
                             var x = $('#enemy').css('grid-column');
-                            x = (parseInt(x)+1).toString();
-                            $('#enemy').css('grid-column', x);
-                            enemyvalue();
-                        }else if(x == '6'){
-                            var x = $('#enemy').css('grid-column');
-                            x = (parseInt(x)-1).toString();
-                            $('#enemy').css('grid-column', x);
-                            enemyvalue();
-                        }else{
-                            random =  Math.floor( Math.random() * 2 );
-                            if(random == '0'){
+                            x = parseInt(x);
+                            if( x == '4'){
                                 var x = $('#enemy').css('grid-column');
                                 x = (parseInt(x)+1).toString();
                                 $('#enemy').css('grid-column', x);
                                 enemyvalue();
-                            }else{
+                            }else if(x == '6'){
                                 var x = $('#enemy').css('grid-column');
                                 x = (parseInt(x)-1).toString();
                                 $('#enemy').css('grid-column', x);
                                 enemyvalue();
+                            }else{
+                                random =  Math.floor( Math.random() * 2 );
+                                if(random == '0'){
+                                    var x = $('#enemy').css('grid-column');
+                                    x = (parseInt(x)+1).toString();
+                                    $('#enemy').css('grid-column', x);
+                                    enemyvalue();
+                                }else{
+                                    var x = $('#enemy').css('grid-column');
+                                    x = (parseInt(x)-1).toString();
+                                    $('#enemy').css('grid-column', x);
+                                    enemyvalue();
+                                }
                             }
                         }
                     }
                 },2000);
             });
+
             //enemyの攻撃
             function enemyattack(){
                 document.enemy.src="{% static "game/character/4-6bossatk.png" %}";
                 setTimeout(function(){
-                document.enemy.src="{% static "game/character/4-6boss.png" %}";
+                    document.enemy.src="{% static "game/character/4-6boss.png" %}";
                 },1000)
                 var x = $('#enemy').css('grid-column');
                 var y = $('#enemy').css('grid-row');
@@ -587,7 +601,7 @@
             function win_open(){
                 document.maru.src="{% static "game/character/4-6heroatk.png" %}";
                 setTimeout(function(){
-                document.maru.src="{% static "game/character/4-6hero.png" %}";
+                    document.maru.src="{% static "game/character/4-6hero.png" %}";
                 },1000)
                 //ボタンのOFFとONの切り替え
                 if($('#patinko1').css('display')=='none' && number == 0){
@@ -642,71 +656,73 @@
     </head>
     <body>
         <div id='pagestart'>
-            <a><input type='button' value='start' ></a>
-        </div>
-        <div  id='pageplaying'>
-            <div id='hpbar'>
-                <div id='hp1'><p>コウタ</p><meter id='hero-meter' max='200' low='40' high='140' optimum='200' value='200'></div>
-                <div id='hp2'><p>BOSS</p><meter id='enemy-meter' max='200' low='40' high='140' optimum='200' value='200'></div>
-                <div id='vs'><p>VS</p></div>
+            <a><input id='start' type='button' value='start' ></a>
+            <div id='back'>
+                <div  id='pageplaying'>
+                    <div id='hpbar'>
+                        <div id='hp1'><p>コウタ</p><meter id='hero-meter' max='200' low='40' high='140' optimum='200' value='200'></div>
+                        <div id='hp2'><p>BOSS</p><meter id='enemy-meter' max='200' low='40' high='140' optimum='200' value='200'></div>
+                        <div id='vs'><p>VS</p></div>
+                    </div>
+                    <div id='wall'>
+                        <div id='wall1'></div>
+                    </div>
+                    <div class="canvas">
+                        <div id="maru">
+                            <img src="{% static "game/character/4-6hero.png" %}" name="maru">
+                        </div>
+                        <div id="patinko1" value='1 1'>
+                            <img src="{% static "game/heroattack.png" %}" disabled>
+                        </div>
+                        <div id="patinko2" value='1 1'>
+                            <img src="{% static "game/heroattack.png" %}" disabled>
+                        </div>
+                        <div id="patinko3" value='1 1'>
+                            <img src="{% static "game/heroattack.png" %}" disabled>
+                        </div>
+                        <div id="enemy" value="2 5">
+                            <img src="{% static "game/character/4-6boss.png" %}" name='enemy'>
+                        </div>
+                        <div id="enemyattack" value="1 6">
+                            <img src="{% static "game/bossattack.png" %}"disabled>
+                        </div>
+                        <div id="canvas1"></div>
+                        <div id="canvas2"></div>
+                        <div id="canvas3"></div>
+                        <div id="canvas4"></div>
+                        <div id="canvas5"></div>
+                        <div id="canvas6"></div>
+                        <div id="canvas7"></div>
+                        <div id="canvas8"></div>
+                        <div id="canvas9"></div>
+                        <div id="canvas10"></div>
+                        <div id="canvas11"></div>
+                        <div id="canvas12"></div>
+                        <div id="canvas13"></div>
+                        <div id="canvas14"></div>
+                        <div id="canvas15"></div>
+                        <div id="canvas16"></div>
+                        <div id="canvas17"></div>
+                        <div id="canvas18"></div>
+                    </div>
+                    <div id='button' class="cross-layout">
+                        <button id="top"onclick="top" disabled>￪</button>
+                        <button id="left" disabled>￩</button>
+                        <button id="bottom" disabled>￬</button>
+                        <button id="right" disabled>￫</button>
+                        <input type="text" id="input1" autocomplete="off" value="2 2">
+                        <input type="submit" id="action" value="パチンコ" onclick="win_open()"disabled>
+                        <input type="submit" id="action2" value="魔法" onclick="input()"disabled>
+                    </div>
+                </div>
+                <div id='pageclear'>
+                    <p>倒した</p>
+                </div>
+                <div id='pagerestart'>
+                    <p>ゲームオーバー</p>
+                    <a><input type='button' value='リスタート' ></a>
+                </div>
             </div>
-            <div id='wall'>
-                <div id='wall1'></div>
-            </div>
-            <div class="canvas">
-                <div id="maru">
-                    <img src="{% static "game/character/4-6hero.png" %}" name="maru">
-                </div>
-                <div id="patinko1" value='1 1'>
-                    <img src="{% static "game/heroattack.png" %}" disabled>
-                </div>
-                <div id="patinko2" value='1 1'>
-                    <img src="{% static "game/heroattack.png" %}" disabled>
-                </div>
-                <div id="patinko3" value='1 1'>
-                    <img src="{% static "game/heroattack.png" %}" disabled>
-                </div>
-                <div id="enemy" value="2 5">
-                    <img src="{% static "game/character/4-6boss.png" %}" name='enemy'>
-                </div>
-                <div id="enemyattack" value="1 6">
-                    <img src="{% static "game/bossattack.png" %}"disabled>
-                </div>
-                <div id="canvas1"></div>
-                <div id="canvas2"></div>
-                <div id="canvas3"></div>
-                <div id="canvas4"></div>
-                <div id="canvas5"></div>
-                <div id="canvas6"></div>
-                <div id="canvas7"></div>
-                <div id="canvas8"></div>
-                <div id="canvas9"></div>
-                <div id="canvas10"></div>
-                <div id="canvas11"></div>
-                <div id="canvas12"></div>
-                <div id="canvas13"></div>
-                <div id="canvas14"></div>
-                <div id="canvas15"></div>
-                <div id="canvas16"></div>
-                <div id="canvas17"></div>
-                <div id="canvas18"></div>
-            </div>
-            <div id='button' class="cross-layout">
-                <button id="top"onclick="top" >￪</button>
-                <button id="left" >￩</button>
-                <button id="bottom" >￬</button>
-                <button id="right" >￫</button>
-                <input type="text" id="input1" autocomplete="off" value="2 2">
-                <input type="submit" id="action" value="パチンコ" onclick="win_open()">
-                <input type="submit" id="action2" value="魔法" onclick="input()">
-            </div>
-        </div>
-        <div id='pageclear'>
-            <p>倒した</p>
-        </div>
-        <div id='pagerestart'>
-            <p>ゲームオーバー</p>
-            <a><input type='button' value='リスタート' ></a>
         </div>
     </body>
 </html>
