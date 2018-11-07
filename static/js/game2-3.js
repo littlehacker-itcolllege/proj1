@@ -28,6 +28,20 @@ var dis=0;
 
 var esc =1;
 var main = null;
+
+function load(){
+	document.getElementById("fire-button").disabled="disabled";
+	document.getElementById("water-button").disabled="disabled";
+	document.getElementById("leaf-button").disabled="disabled";
+}
+
+function start(){
+	document.getElementById("back").style.opacity="1";
+	document.getElementById("start").style.display="none";
+	document.getElementById("fire-button").disabled="";
+	document.getElementById("water-button").disabled="";
+	document.getElementById("leaf-button").disabled="";
+}
 //0～25までの乱数を200個作成して配列rndに格納する関数
 function ransu()
 {

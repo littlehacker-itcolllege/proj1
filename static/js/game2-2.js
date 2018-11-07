@@ -47,7 +47,12 @@ function countDown(){
 	iki--;
 	document.getElementById("breath").textContent=iki;
 	if(iki ==0){
+		setTimeout("jump()",10)
+		alert("ブクブクブク...");
 	}
+}
+function jump(){
+	location.href="http://localhost:8080/stage2-2/gameover2-2";
 }
 function count(){
 	timer = setInterval('countDown()',1000);
@@ -57,7 +62,7 @@ function count(){
 //タイピングゲームの問題をセットする関数
 function gameSet()
 {
-	document.getElementById("waku").style.display="block";
+	document.getElementById("back").style.opacity="1";
   //カウント数をクリアする
   cnt=0;
 
@@ -142,7 +147,7 @@ function typeGame(evt)
 			document.getElementById("key").style.display="table";
 			document.getElementById("treasure").style.display="none";
 			document.getElementById("chara").style.display="none";
-			document.getElementById("back").style.display="none";
+			document.getElementById("water-back").style.display="none";
 			document.getElementById("chest").style.display="block";
 			document.getElementById("key21").style.display="block";
 			que =1;
