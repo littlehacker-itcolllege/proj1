@@ -6,12 +6,33 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/game3-3.css' %}">
         <script type="text/javascript" src="{% static 'js/game3-3.js' %}"></script>
     </head>
-    <body oncontextmenu="return false;">
-			<div class="box">
-				<p>呪文:<input method="post" type="text" name="password" size="40" id="jumon"></p>
-				<input type="submit" value="唱える" onclick="check();">
-				<div id="button">
-					<a href="http://localhost:8080/stage3-3/nextstory3-3" target="story3-3" ><button id="next" style="width:100px;height:50px"><font size="4">Next</font></button></a>
+    <body oncontextmenu="return false;"onload="load();">
+			<button onclick="start();" id="start">start</button>
+			<div id="back">
+				<div id="box">
+					<p id="timer">30</p>
+					<div id="item">
+						<img src="{%static 'game/orbpice3.png'%}" id="pice1">
+						<img src="{%static 'game/orbpice1.png'%}" id="pice2">
+						<img src="{%static 'game/orbpice4.png'%}" id="pice3">
+						<img src="{%static 'game/orbpice2.png'%}" id="pice4">
+					</div>
+
+					<!--!>一回目の入力<!--!>
+					<div id="input">
+						<p>呪文:<input method="post" type="text" name="password" size="40" id="jumon"></p>
+						<input id="in" type="submit" value="唱える" onclick="check();">
+					</div>
+					<!--!><!--!>
+
+					<div id="input2">
+						<p>呪文:<input method="post" type="text" name="password" size="40" id="jumon"></p>
+						<input type="submit" value="唱える" onclick="check2();">
+					</div>
+
+					<div id="button">
+						<a href="http://localhost:8080/stage3-3/nextstory3-3" target="story3-3" ><button id="next" style="width:100px;height:50px"><font size="4">Next</font></button></a>
+					</div>
 				</div>
 			</div>
     </body>

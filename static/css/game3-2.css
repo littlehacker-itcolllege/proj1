@@ -2,7 +2,18 @@ body{
   margin:0px;
   padding:0px;
 }
-.box{
+#back{
+  background-color:gray;
+  opacity:0.5;
+	z-index:0;
+}
+#start{
+  position:absolute;
+  top:60%;
+  left:50%;
+	z-index:1;
+}
+#box{
 	height:100vh;
 	background-repeat:no-repeat;
 	background-position:center center;

@@ -23,6 +23,9 @@ var main = null;
 var left =20;
 var nam=10;
 
+function start(){
+	document.getElementById("start").style.display="none";
+}
 //0～25までの乱数を200個作成して配列rndに格納する関数
 function ransu()
 {
