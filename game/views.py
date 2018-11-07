@@ -68,6 +68,8 @@ def head2_1(request):
     return render(request,'2-1/head2-1.html')
 def nextstory2_1(request):
     return render(request,'2-1/nextstory2-1.html')
+def gameover2_1(request):
+    return render(request,'2-1/gameover2-1.html')
 
 #stage2-2
 def stage2_2(request):
@@ -80,6 +82,8 @@ def head2_2(request):
     return render(request,'2-2/head2-2.html')
 def nextstory2_2(request):
     return render(request,'2-2/nextstory2-2.html')
+def gameover2_2(request):
+    return render(request,'2-2/gameover2-2.html')
 
 #stage2-3
 def stage2_3(request):
@@ -92,6 +96,8 @@ def head2_3(request):
     return render(request,'2-3/head2-3.html')
 def nextstory2_3(request):
     return render(request,'2-3/nextstory2-3.html')
+def gameover2_3(request):
+    return render(request,'2-3/gameover2-3.html')
 
 #stage3-1
 def stage3_1(request):

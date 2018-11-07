@@ -25,6 +25,7 @@ var nam=10;
 
 function start(){
 	document.getElementById("start").style.display="none";
+	document.getElementById("back").style.opacity="1";
 }
 //0～25までの乱数を200個作成して配列rndに格納する関数
 function ransu()
@@ -51,9 +52,13 @@ function countDown(){
 	}
   if(nam == left){
     clearInterval(timer);
+		setTimeout("jump()",10)
   }
 }
-
+function jump(){
+	alert("つかまってしまった...")
+	location.href="http://localhost:8080/stage2-1/gameover2-1"
+}
 //タイピングゲームの問題をセットする関数
 function gameSet()
 {

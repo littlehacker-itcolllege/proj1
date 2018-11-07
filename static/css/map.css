@@ -115,6 +115,15 @@ body {
     width: 125px;
 }
 
+.stage-boss button {
+	top: -138px;
+	right: 40px;
+}
+
+.stage-boss ul {
+	top: 2px;
+	right: 40px;
+}
 /*--------------tower-----------------*/
 .stage-tower {
     position:relative;
@@ -128,6 +137,15 @@ body {
     width: 60px;
 }
 
+.stage-tower button {
+	top: -145px;
+	right: 70px;
+}
+
+.stage-tower ul {
+	top: 2px;
+	right: 70px;
+}
 /*--------------Volcano---------------*/
 .stage-volcano {
     position:relative;
@@ -144,7 +162,7 @@ body {
 }
 
 .stage-volcano button {
-    top: -145px;
+    top: -143px;
     right: 50px;
 }
 
@@ -173,7 +191,7 @@ body {
 }
 
 .stage-lake button {
-    top: -155px;
+    top: -154px;
     right: 10px;
 }
 
