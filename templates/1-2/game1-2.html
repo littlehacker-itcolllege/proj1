@@ -6,11 +6,17 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/game1-2.css' %}">
         <script type="text/javascript" src="{% static 'js/game1-2.js' %}"></script>
     </head>
-    <body>
+    <body onload="load();">
+			<button id="start" onclick="start();">start</button>
+			<div id="back">
         <div class="box">
+					<img src="{% static 'game/wepon1.png' %}" id="damy-a">
+					<img src="{% static 'game/wepon2.png' %}" id="damy-b">
+					<img src="{% static 'game/wepon3.png' %}" id="damy-c">
 					<div itemContainer>
-						<div class="item">
-							<div  class="dragwrapper" id="drop" ondragover="DragOver(event)" ondrop="Drop(1)" >
+
+						<div id="item1">
+							<div  class="dragwrapper1"  ondragover="DragOver(event)" ondrop="Drop(1)" >
 								<img src="{% static 'game/wepon1.png' %}" class="dragimg" id="a" draggable="true" ondragstart="DragStart(event)">
 							</div>
 								<div id="droppoint1">
@@ -18,8 +24,8 @@
 								</div>
 						</div>
 
-						<div class="item">
-							<div  class="dragwrapper" id="drop" ondragover="DragOver(event)" ondrop="Drop(event)" >
+						<div id="item2">
+							<div  class="dragwrapper2"  ondragover="DragOver(event)" ondrop="Drop(event)" >
 								<img src="{% static 'game/wepon2.png' %}" class="dragimg" id="b" draggable="true" ondragstart="DragStart(event)">
 							</div>
 								<div id="droppoint2">
@@ -27,16 +33,18 @@
 								</div>
 						</div>
 
-						<div class="item">
-							<div  class="dragwrapper" id="drop" ondragover="DragOver(event)" ondrop="Drop(event)" >
+						<div id="item3">
+							<div  class="dragwrapper3"  ondragover="DragOver(event)" ondrop="Drop(event)" >
 								<img src="{% static 'game/wepon3.png' %}" class="dragimg" id="c" draggable="true" ondragstart="DragStart(event)">
 							</div>
 								<div id="droppoint3">
 									<div id="drop3" class="drop" ondragover="DragOver(event)" ondrop="Drop3(event)"></div>
 								</div>
 						</div>
-						<a href="http://localhost:8080/stage1-2/wepon" target="game1-2" ><button id="next" style="width:100px;height:50px"><font size="4">完成！</font></button></a>
+
+						<a href=""><button id="next" style="width:100px;height:50px"><font size="4">完成！</font></button></a>
 					</div>
         </div>
+			</div>
     </body>
 </html>
