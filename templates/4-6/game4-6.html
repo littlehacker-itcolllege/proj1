@@ -72,10 +72,10 @@
 
             // ページ読み込み時に実行
             window.onload = function () {
-                $("#pagestart").show();//スタートボタンの表示
-                $("#pageplaying").show();//ゲームプレイ画面の非表示
-                $('#pageclear').hide();//
-                $('#pagerestart').hide();//
+                $('#pageclear').hide();
+                $('#q1').hide();
+                $('#q2').hide();
+                $('#pagerestart').hide();
                 $("#pagestart a").on('click',function(){
                     start = '1';
                     $("#top").prop('disabled',false);
@@ -88,6 +88,7 @@
                     $("#back").css('opacity','1');
                     $("#back").css('background-color','#fff');
                     $("#pageplaying").show();
+                    $('#maru').val('2 2').change();
                     return false;
                 });
                 $("#pagerestart a").on('click',function(){
@@ -604,17 +605,15 @@
                     attack3();
                 }
             }
-            //入力ボタンのHTML表示とサイズ指定
-            function input(){
-                window.open("http://localhost:8080/stage4-1/input4-1","","width=200,height=200");
-            }
             //enemyとheroのhpがゼロになったとき
             $(function(){
                 $('#enemy-meter').change(function(){
                     var enevalue = $(this).val();
                     if(enevalue <= 0){
-                        $('#pageclear').show();
-                        $('#pageclear>a').show();
+                        //$('#pageclear').show();
+                        //$('#pageclear>a').show();
+                        $('#q1').show();
+                        $('#q1>a').show();
                         start = '0';
                         $("#top").prop('disabled',true);
                         $("#bottom").prop('disabled',true);
@@ -648,7 +647,74 @@
                     }
                 });
             });
+            $(function(){
+                $("#q1").find("#answer").on('click',function(){
+                    $('#q1').hide();
+                    $('#q2').show();
+                });
+                $("#q1").find("#notanswer").on('click',function(){
+                    $('#q1').hide();
+                    $('#q2').hide();
+                    $("#back").css('opacity','1');
+                    $("#back").css('background-color','#fff');
+                    $("#pageplaying").show();
+                    $('#maru').val('2 2').change();
+                    var damage=0;
+                    setInterval(function(){
+                        damage = damage + 20;
+                        if(damage <= 100){
+                            $('#enemy-meter').val(damage).change();
+                        }
+                    },500);
+                    setTimeout(function(){
+                        $('#pageclear').hide();
+                        start = '1';
+                        $("#top").prop('disabled',false);
+                        $("#bottom").prop('disabled',false);
+                        $("#right").prop('disabled',false);
+                        $("#left").prop('disabled',false);
+                        $("#action").prop('disabled',false);
+                        $("#action2").prop('disabled',false);
+                        return false;
+                    },2500);
+                });
+                $("#q2").find("#answer").on('click',function(){
+                    $('#q2').hide();
+                    $('#pageclear').show();
+                    $('#pageclear a').show();
+                    $("#top").prop('disabled',false);
+                    $("#bottom").prop('disabled',false);
+                    $("#right").prop('disabled',false);
+                    $("#left").prop('disabled',false);
 
+                });
+                $("#q2").find("#notanswer").on('click',function(){
+                    $('#q1').hide();
+                    $('#q2').hide();
+                    $("#back").css('opacity','1');
+                    $("#back").css('background-color','#fff');
+                    $("#pageplaying").show();
+                    $('#maru').val('2 2').change();
+                    var damage=0;
+                    setInterval(function(){
+                        damage = damage + 20;
+                        if(damage <= 100){
+                            $('#enemy-meter').val(damage).change();
+                        }
+                    },500);
+                    setTimeout(function(){
+                        $('#pageclear').hide();
+                        start = '1';
+                        $("#top").prop('disabled',false);
+                        $("#bottom").prop('disabled',false);
+                        $("#right").prop('disabled',false);
+                        $("#left").prop('disabled',false);
+                        $("#action").prop('disabled',false);
+                        $("#action2").prop('disabled',false);
+                        return false;
+                    },2500);
+                });
+            });
         </script>
     </head>
     <body>
@@ -716,15 +782,47 @@
                         <input type="submit" id="action2" value="魔法" onclick="input()"disabled>
                     </div>
                 </div>
-                <div id='pageclear'>
-                    <p>倒した</p>
-                    <a><input type='button' value='リスタート'></a>
-                </div>
-                <div id='pagerestart'>
-                    <p>ゲームオーバー</p>
-                    <a><input type='button' value='リスタート'></a>
-                </div>
             </div>
+        </div>
+        <div id='pageclear'>
+            <p>クリア</p>
+            <a href="http://localhost:8080/stage4-6/nextstory4-6" target="story4-6">
+                <button style="width:100px;height:50px">
+                    <font size='4'>next</font>
+                </button>
+                </a>
+        </div>
+        <div id='pagerestart'>
+            <p>ゲームオーバー</p>
+            <a onclick='location.reload()'>
+                <button style="width:100px;height:50px">
+                    <font size='4'>next</font>
+                </button>
+                </a>
+        </div>
+        <div id='q1'>
+            <p>問題１</p>
+            <a>
+                <button id='answer' style="width:100px;height:50px">
+                    <font size='4'>○</font>
+                </button>
+                <button id='notanswer' style="width:100px;height:50px">
+                    <font size='4'>✕</font>
+                </button>
+            </a>
+        </div>
+        <div id='q2'>
+            <p>問題２</p>
+            <a>
+                <button id='answer' style="width:100px;height:50px">
+                    <font size='4'>○</font>
+                </button>
+            </a>
+            <a>
+                <button id='notanswer' style="width:100px;height:50px">
+                    <font size='4'>✕</font>
+                </button>
+            </a>
         </div>
     </body>
 </html>
