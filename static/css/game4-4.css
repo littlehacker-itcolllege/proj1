@@ -1,8 +1,27 @@
 body {
     margin: 0px;
 }
+#back{
+    background-color:gray;
+    opacity:0.5;
+    z-index:0;
+}
+#start{
+    position:absolute;
+    top:60%;
+    left:40%;
+    z-index:1;
+}
 #pagestart{
-text-align: center;
+    text-align: center;
+}
+#pageclear{
+    position:absolute;
+    z-index:1;
+    top:40%;
+    left:35%;
+    font-weight: bold;
+    font-size: 40px;
 }
 .canvas{
     z-index: 2;
@@ -851,6 +870,7 @@ text-align: center;
     animation-iteration-count: ;
 }
 .textboard1 {
+    text-align: left;
     z-index:1;
     width: 580px;
     height: 140px;
@@ -896,6 +916,7 @@ text-align: center;
 }
 
 .textboard2 {
+    text-align: left;
     z-index:1;
     width: 580px;
     height: 140px;
@@ -929,6 +950,7 @@ text-align: center;
 }
 
 .textboard3 {
+    text-align: left;
     z-index:1;
     width: 580px;
     height: 140px;
