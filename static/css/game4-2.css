@@ -9,11 +9,19 @@ body {
 #start{
     position:absolute;
     top:60%;
-    left:50%;
+    left:40%;
     z-index:1;
 }
 #pagestart{
     text-align: center;
+}
+#pageclear{
+    position:absolute;
+    z-index:1;
+    top:40%;
+    left:35%;
+    font-weight: bold;
+    font-size: 40px;
 }
 .canvas{
     width: 640px;

@@ -88,9 +88,6 @@
                 if ((input1 == '12 10'||input1 == '12 11'||input1 == '12 12')&&actionvalue=='5'){
                     $("#action").prop("disabled", false);
                     $("#action").val("すすむ");
-                    $('#action').wrap('<a class="actionelement" />');
-                    $(".actionelement").attr({href:'http://localhost:8080/stage4-5/nextstory4-5',
-                        target:'story4-5'});
                 }else if((input1 == '12 10'||input1 == '12 11'||input1 == '12 12')&&actionvalue =='1'){
                     $("#action").prop("disabled", false);
                     document.maru.src="{% static "game/character/bottom.gif" %}";
@@ -199,8 +196,7 @@
             var actionvalue2 = 0;
             // ページ読み込み時に実行
             window.onload = function () {
-                $("#pagestart").show();
-                $("#pageplaying").show();
+                $("#pageclear").hide();
                 $("#pagestart a").on('click',function(){
                     start = '1';
                     $("#top").prop('disabled',false);
@@ -211,8 +207,6 @@
                     $("#back").css('opacity','1');
                     $("#back").css('background-color','#fff');
                     $("#pageplaying").show();
-
-
                     return false;
                 });
                 // 矢印ボタンのを各、値に代入
@@ -224,100 +218,73 @@
                 obj = document.getElementById('input1');
                 enemy = setInterval( "enemyfast()",500);
                 keyvalue = 0;
+                var $intervalID;
                 $top.onmousedown = function ( $event ) {
-
                     //上ボタンのクリック
                     if( $event.button == 0 ){
                         keyvalue = 0;
+                        clearInterval( $intervalID );
                         $intervalID = setInterval(
                             function top2(idname){
                                 keyvalue ++
                                 topbutton()
-                            },
-                            108//1秒間に108/120回繰り返す
-                        );
-                    }
-                }
+                            },108//1秒間に108/120回繰り返す
+                        );}}
                 // マウスアップイベント（ボタンを放した時のイベント）にイベントハンドラをバインド
                 $top.onmouseup = function ( $event ) {
                     if( $event.button == 0 && keyvalue == 0){
                         // 繰り返しタイマーを中止
                         clearInterval( $intervalID );
                         topbutton()
-                    }else{
-                        clearInterval( $intervalID );
-                    }
-                }
+                    }else{clearInterval( $intervalID );}}
                 //下ボタンのクリック
                 $bottom.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
                         keyvalue = 0;
+                        clearInterval( $intervalID );
                         $intervalID = setInterval(
                             function bottom(idname){
                                 keyvalue ++
                                 bottombutton()
-                            },
-                            108
-                        );
-                    }
-                }
+                            },108);}}
                 $bottom.onmouseup = function ( $event ) {
                     if( $event.button == 0 && keyvalue == 0){
                         // 繰り返しタイマーを中止
                         clearInterval( $intervalID );
                         bottombutton()
-                    }else{
-                        clearInterval( $intervalID );
-                    }
-                }
-
+                    }else{clearInterval( $intervalID );}}
                 //右ボタンのクリック
                 $right.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
                         keyvalue = 0;
+                        clearInterval( $intervalID );
                         $intervalID = setInterval(
                             function right(){
                                 keyvalue ++
                                 rightbutton()
-                            },
-                            108
-                        );
-                    }
-                }
+                            },108);}}
                 $right.onmouseup = function ( $event ) {
                     if( $event.button == 0 && keyvalue == 0){
                         // 繰り返しタイマーを中止
                         clearInterval( $intervalID );
                         rightbutton()
-                    }else{
-                        clearInterval( $intervalID );
-                    }
-                }
-
+                    }else{clearInterval( $intervalID );}}
                 //左ボタンのクリック
                 $left.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
                         keyvalue = 0;
+                        clearInterval( $intervalID );
                         $intervalID = setInterval(
                             function left(){
                                 keyvalue ++
                                 leftbutton()
-                            },
-                            108
-                        );
-                    }
-                }
+                            },108);}}
                 $left.onmouseup = function ( $event ) {
                     if( $event.button == 0 && keyvalue == 0){
                         // 繰り返しタイマーを中止
                         clearInterval( $intervalID );
                         leftbutton()
-                    }else{
-                        clearInterval( $intervalID );
-                    }
-                }
-            }
-            // キーコード(どのキーが押されたか)を取得
+                    }else{clearInterval( $intervalID );}}}            // キーコード(どのキーが押されたか)を取得
             window.addEventListener("keydown", handleKeydown);
             function handleKeydown(event){
                 var keyCode = event.keyCode;
@@ -426,7 +393,16 @@
                     $("#action").prop("disabled", true);
                 }else if (actionvalue == 5){
                     actionvalue = (actionvalue + 1);
-                    $("#action").prop("disabled", true);
+                    $('#back').css({'opacity':'0.5','background-color':'gray'});
+                    start = '0';
+                    $("#top").prop('disabled',true);
+                    $("#bottom").prop('disabled',true);
+                    $("#right").prop('disabled',true);
+                    $("#left").prop('disabled',true);
+                    $("#action").prop('disabled',true);
+                    $("#action2").prop('disabled',true);
+                    $('#pageclear').show();
+                    $('#pageclear>a').show();
                 }
             }
 
@@ -600,7 +576,11 @@
     </head>
     <body>
         <div id='pagestart'>
-            <a><input id='start' type='button' value='start' ></a>
+            <a>
+                <button id='start' style="width:100px;height:50px">
+                    <font size='4'>スタート</font>
+                </button>
+            </a>
             <div id='back'>
                 <div  id='pageplaying'>
                     <div class="canvas">
@@ -915,6 +895,14 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div id='pageclear'>
+            <p>クリア</p>
+            <a href="http://localhost:8080/stage4-5/nextstory4-5" target="story4-5">
+                <button style="width:100px;height:50px">
+                    <font size='4'>next</font>
+                </button>
+            </a>
         </div>
     </body>
 </html>

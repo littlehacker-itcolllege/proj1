@@ -9,7 +9,7 @@ body {
 #start{
     position:absolute;
     top:60%;
-    left:50%;
+    left:40%;
     z-index:1;
 }
 #pagestart{
@@ -41,6 +41,7 @@ body {
     height:30px;
     width:85%;
     right:0;
+    text-align:left;
     bottom:30px;
     margin: 0px;
     font-weight: bold;
@@ -275,9 +276,26 @@ body {
     grid-column:4;
 }
 #pagerestart{
-    text-align: center;
+    z-index:1;
 }
 #pagerestart > p{
+    position:absolute;
+    top:40%;
+    left:35%;
+    font-weight: bold;
+    font-size: 40px;
+}
+#pagerestart > a{
+    position:absolute;
+    text-align: center;
+    top:60%;
+    left:40%;
+}
+#pageclear{
+    z-index:1;
+    position:absolute;
+    top:40%;
+    left:35%;
     font-weight: bold;
     font-size: 40px;
 }

@@ -5,16 +5,27 @@
         {% load static %}
         <script  src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
         <script>
-            
+
             function keyEvent(c) {
                 if($("#input").val().length < 4) {
                     var getdate = $("#input").val();
                     $("#input").val(getdate+c).change();
                     $('#input').change(function(){
                         if ($("#input").val() == '1347' && $("#input").val().length == 4 ){
-                            $("#action").wrap('<a type="button" id="a" href="http://localhost:8080/stage4-4/nextstory4-4" target="story4-4"} ></a>').change();
-                        }else if($("#a").length){
-                            $("#action").unwrap();
+                            $('#action').click(function(){
+                                window.opener.$('#back').css({'opacity':'0.5','background-color':'gray'}).change();
+                                window.opener.start = '0';
+                                window.opener.$("#top").prop('disabled',true);
+                                window.opener.$("#bottom").prop('disabled',true);
+                                window.opener.$("#right").prop('disabled',true);
+                                window.opener.$("#left").prop('disabled',true);
+                                window.opener.$("#action").prop('disabled',true);
+                                window.opener.$("#action2").prop('disabled',true);
+                                window.opener.$('#pageclear').show();
+                                window.opener.$('#pageclear>a').show();
+                                window.close()
+                            });
+                            //  $("#action").wrap('<a type="button" id="a" href="http://localhost:8080/stage4-1/nextstory4-1" target="story4-1"} ></a>').change();
                         }
                         if ($("#input").val().length == 4 ){
                             $("#action").prop("disabled",false);
@@ -54,8 +65,8 @@ body {
             border:solid 3px black;
         }
         #close{
-position:absolute;
-       top:550px;
+            position:absolute;
+            top:550px;
         }
         </style>
 
