@@ -26,8 +26,6 @@ def story1_2(request):
     return render(request,'1-2/story1-2.html')
 def game1_2(request):
     return render(request,'1-2/game1-2.html')
-def game_wepon(request):
-    return render(request,'1-2/wepon.html')
 def head1_2(request):
     return render(request,'1-2/head1-2.html')
 def nextstory1_2(request):

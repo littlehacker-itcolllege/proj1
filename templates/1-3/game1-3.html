@@ -6,13 +6,16 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/game1-3.css' %}">
         <script type="text/javascript" src="{% static 'js/game1-3.js' %}"></script>
     </head>
-    <body>
-			<div class="box">
-					<meter id="enemy-meter" max="5" low="1" high="3" optimum="5" value="5"></meter>
-					<img src="{% static 'game/1-1enemy.gif' %}" id="enemy-img" width="30%" height="auto">
-				<img src="{% static 'game/target-mark.png' %}"id="test">
-				<div id="change"><button onClick='onClick();' id="attack" style="width:100px;height:50px"><font size="4">ボタン</font></button></div>
+    <body onload="load();">
+			<button id="start" onclick="start()">start</button>
+			<div id="back">
+				<div class="box">
+						<meter id="enemy-meter" max="5" low="1" high="3" optimum="5" value="5"></meter>
+						<img src="{% static 'game/1-1enemy.gif' %}" id="enemy-img" width="30%" height="auto">
+					<img src="{% static 'game/target-mark.png' %}"id="test">
+					<div id="change"><button onClick='onClick();' id="attack" style="width:100px;height:50px"><font size="4">ボタン</font></button></div>
 
+				</div>
 			</div>
     </body>
 </html>

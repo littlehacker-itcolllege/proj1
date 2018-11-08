@@ -14,7 +14,6 @@ urlpatterns = [
     url(r'^stage1-2/$',views.stage1_2,name='stage1-2'),
     url(r'^stage1-2/story1-2/$',views.story1_2,name='story1-2'),
     url(r'^stage1-2/game1-2/$',views.game1_2,name='game1-2'),
-    url(r'^stage1-2/wepon/$',views.game_wepon,name='wepon'),
     url(r'^stage1-2/head1-2/$',views.head1_2,name='head1-2'),
     url(r'^stage1-2/nextstory1-2/$',views.nextstory1_2,name='nextstory1-2'),
     #stage1-3
