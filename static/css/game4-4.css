@@ -9,11 +9,19 @@ body {
 #start{
     position:absolute;
     top:60%;
-    left:50%;
+    left:40%;
     z-index:1;
 }
 #pagestart{
     text-align: center;
+}
+#pageclear{
+    position:absolute;
+    z-index:1;
+    top:40%;
+    left:35%;
+    font-weight: bold;
+    font-size: 40px;
 }
 .canvas{
     z-index: 2;
@@ -862,6 +870,7 @@ body {
     animation-iteration-count: ;
 }
 .textboard1 {
+    text-align: left;
     z-index:1;
     width: 580px;
     height: 140px;
@@ -907,6 +916,7 @@ body {
 }
 
 .textboard2 {
+    text-align: left;
     z-index:1;
     width: 580px;
     height: 140px;
@@ -940,6 +950,7 @@ body {
 }
 
 .textboard3 {
+    text-align: left;
     z-index:1;
     width: 580px;
     height: 140px;

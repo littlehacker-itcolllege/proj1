@@ -1,4 +1,5 @@
 var time=30;
+var count;
 function load(){
 	document.getElementById("in").disabled="disaled";
 }
@@ -7,7 +8,7 @@ function start(){
 	document.getElementById("box").style.display="block";
 	document.getElementById("start").style.display="none";
 	document.getElementById("in").disabled="";
-	setInterval("timer()",1000);
+	count=setInterval("timer()",1000);
 }
 function check(){
 	if (document.getElementById("jumon").value=="44GZ44GU44GEIeOCiOOBj+OCj+OBi+OBo+OBn+OBrQ=="){
@@ -26,6 +27,7 @@ function check2(){
 		document.getElementById("pice2").style.left="44.5%";
 		document.getElementById("pice3").style.left="41%";
 		document.getElementById("pice4").style.left="45%";
+		clearInterval(count);
 	}else{
 		alert("呪文が違うよ...")	}
 }

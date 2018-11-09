@@ -9,11 +9,54 @@ body {
 #start{
     position:absolute;
     top:60%;
-    left:50%;
+    left:40%;
     z-index:1;
 }
 #pagestart{
     text-align: center;
+}
+
+#pageclear{
+    z-index:1;
+    position:absolute;
+    top:40%;
+    left:35%;
+    font-weight: bold;
+    font-size: 40px;
+}
+#q1{
+    text-align: center;
+    z-index:1;
+    position:absolute;
+    top:40%;
+    left:35%;
+    font-weight: bold;
+    font-size: 40px;
+}
+#q2{
+    text-align: center;
+    z-index:1;
+    position:absolute;
+    top:40%;
+    left:35%;
+    font-weight: bold;
+    font-size: 40px;
+}
+#pagerestart{
+    z-index:1;
+}
+#pagerestart > p{
+    position:absolute;
+    top:40%;
+    left:35%;
+    font-weight: bold;
+    font-size: 40px;
+}
+#pagerestart > a{
+    position:absolute;
+    text-align: center;
+    top:60%;
+    left:40%;
 }
 #hpbar{
     width: 640px;
@@ -41,6 +84,7 @@ body {
     height:30px;
     width:85%;
     right:0;
+    text-align:left;
     bottom:30px;
     margin: 0px;
     font-weight: bold;
@@ -274,10 +318,4 @@ body {
     grid-row:2;
     grid-column:4;
 }
-#pagerestart{
-    text-align: center;
-}
-#pagerestart > p{
-    font-weight: bold;
-    font-size: 40px;
-}
+
