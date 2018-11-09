@@ -2,6 +2,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
+    url(r'^title/$',views.title,name='title'),
     url(r'^map/$',views.map,name='map'),
     url(r'^opening/$' ,views.opening,name='opening'),
     #stage1-1

@@ -2,6 +2,8 @@ from django.shortcuts import render
 import time
 from django.http.response import HttpResponse
 # Create your views here.
+def title(request):
+    return render(request,'title/title.html')
 def map(request):
     return render(request,'map.html')
 def opening(request):
