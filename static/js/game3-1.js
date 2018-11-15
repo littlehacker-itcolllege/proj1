@@ -26,7 +26,8 @@ function onClick1(){
 	document.getElementById("left").style.top="10%";
 	item+=1;
 	if(item==2){
-		document.getElementById("next").style.display="block"
+		document.getElementById("clear").style.display="block";
+		document.getElementById("back").style.opacity="0.5";
 	}
 }
 function onClick2(){
@@ -38,7 +39,8 @@ function onClick2(){
 	document.getElementById("left").style.top="30%";
 	item+=1;
 	if(item==2){
-		document.getElementById("next").style.display="block"
+		document.getElementById("clear").style.display="block";
+		document.getElementById("back").style.opacity="0.5";
 	}
 }
 function mine(a){

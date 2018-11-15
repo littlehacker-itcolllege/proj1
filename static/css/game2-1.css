@@ -11,6 +11,13 @@ td{
 	left:50%;
 	z-index:1;
 }
+#clear{
+	position:absolute;
+	top:60%;
+	left:50%;
+	z-index:1;
+	display:none;
+}
 #back{
 	background-color:gray;
 	height:100vh;

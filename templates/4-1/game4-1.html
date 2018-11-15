@@ -5,6 +5,7 @@
     <head>
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static "css/game4-1.css" %}">
+				<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
         <meta charset="utf-8">
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
         <script type='text/javascript'>
@@ -584,7 +585,7 @@
         <div id='pageclear'>
             <p>クリア</p>
             <a href="http://localhost:8080/stage4-1/nextstory4-1" target="story4-1">
-                <button style="width:100px;height:50px">
+                <button style="width:100px;height:50px" onclick="mapclick2(11);">
                     <font size='4'>next</font>
                 </button>
             </a>
