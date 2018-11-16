@@ -12,23 +12,14 @@
 			<a href="http://localhost:8080/stage1-1/nextstory1-1" target="story1-1" ><button id="clear" onclick="mapclick();">clear</button></a>
 				<div id="back">
 					<div class="box">
-						<table class="table" width="100%">
-							<tr>
-								<td width="30%" heigh="auto"></td>
-								<td class="enemy" width="40%">
-									<img src="{% static 'game/enemy-down.png' %}" id="enemy-down" width="30%" height="auto">
-									<img src="{% static 'game/1-1enemy.gif' %}" id="enemy-img" width="100%" height="auto">
-								</td>
-								<td width="30%"><meter id="enemy-meter" max="200" low="40" high="140" optimum="200" value="200" ></meter><p id="hp">200</p></td>
-							</tr>
-						</table>
-					<br clear="left">
-					<div class="meter">
-						<meter id="meter" max="100" low="50" high="80" optimum="0" value="0"></meter><p id="str">パワー:<nobr id="power">0</nobr></p>
-					</div>
-						<div class="button">
-							<button onclick='onClick();' id="attack" style="width:100px;height:50px"><font size="4">ボタン</font></button>
-								<div id="next">
+					<img src="{% static 'game/enemy-down.png' %}" id="enemy-down" width="25%" height="auto">
+					<img src="{% static 'game/1-1enemy.gif' %}" id="enemy-img" width="30%" height="auto">
+					<!--!>敵HPメーター<!--!>
+					<meter id="enemy-meter" max="200" low="40" high="140" optimum="200" value="200" ></meter><p id="hp">200</p>
+
+					<!--!>攻撃用メーター<!--!>
+					<meter id="meter" max="100" low="50" high="80" optimum="0" value="0"></meter><p id="str">パワー:<nobr id="power">0</nobr></p>
+					<button onclick='onClick();' id="attack" style="width:100px;height:50px"><font size="4">ボタン</font></button>
 								</div>
 							</div>
 					</div>
