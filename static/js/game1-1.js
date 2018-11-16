@@ -17,6 +17,7 @@ function meterUp(){
 }
 //クリック時//
 function onClick(){
+
 	var ene = document.getElementById('enemy-meter');
 	clearInterval(timer);
 	ene.value -= attack ;
@@ -40,6 +41,7 @@ function onClick(){
 		//攻撃ボタンを押せなくする//
 	document.getElementById("attack").disabled="disabled";
 }
+
 //メータ一時停止後の再開//
 function reload(){
 	var pus = document.getElementById('meter');
@@ -50,3 +52,12 @@ function reload(){
 function fin(){
 	clearInterval(timer);
 }
+
+//ヒット音//
+function se() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/1-1button.m4a";
+	audioElem.play();
+}
+
+
