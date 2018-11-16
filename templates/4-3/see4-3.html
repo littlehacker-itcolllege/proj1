@@ -14,19 +14,34 @@
 
 
         <div class="textboard">
-            <p class="test1" ><font color="red">がいこつ1:</font>なぁなぁ　ここのパスワードって「4321」だっけ？</p>
-            <p class="test2" ><font color="blue">がいこつ2:</font>まちがってるよ</p>
-            <p class="test3" ><font color="red">がいこつ1:</font>正解は？</p>
-            <p class="test4" ><font color="blue">がいこつ2:</font>「1234]だよ</p>
+            <p class="text1" id='text1'><font color="red">がいこつ1:</font>なぁなぁ　ここのパスワードって「4321」だっけ？</p>
+            <p class="text2" id='text2'><font color="blue">がいこつ2:</font>まちがってるよ</p>
         </div>
 
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
         <script type='text/javascript'>
-            function open(){
-                $('.test1').remove();
+            $(function(){
+            var val = Math.round( Math.random()*8192);
+                for(var a=0; val != 0; a++){
+            var val = Math.round( Math.random()*8192);
+                }
+            console.log(a);
+            });
+
+            setTimeout(one,8000);
+            function one(){
+                document.getElementById("text1").innerHTML="<font color='blue'>がいこつ2:</font>まちがってるよ";
+                document.getElementById("text2").className="text3";
+                document.getElementById("text2").innerHTML="<font color='red'>がいこつ1:</font>正解は？";
+                setTimeout(two,3000);
             }
 
-                setTimeout("open()" , 8000);
+            function two(){
+                document.getElementById("text1").innerHTML="<font color='red'>がいこつ1:</font>正解は？";
+                document.getElementById("text2").className="text4";
+                document.getElementById("text2").innerHTML="<font color='blue'>がいこつ2:</font>「1234」だよ";
+            }
+
         </script>
 
 

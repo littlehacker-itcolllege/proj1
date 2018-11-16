@@ -13,7 +13,7 @@
             //上ボタンの処理
             function topbutton (){
                 //現在のキャラの座標
-                var input1 = $('#input1').val()
+                var input1 = $('#input1').val();
                 //キャラの上の座標の取得
                 if (input1 == '1 1'||input1 == '1 2'){
                 } else {
@@ -27,10 +27,11 @@
                     $('#maru').val(String(parseInt(leftandright))+" "+String(parseInt(upanddown))).change();
                     obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
                 }
-            }
+            };
             //下ボタンの処理
             function bottombutton(){
-                var input1 = $('#input1').val()
+                bottom =  $('#input1').val();
+                var input1 = $('#input1').val();
                 if(input1 == '3 1'||input1 == '3 2'||input1 == '3 3') {
                 } else {
                     var h = $('#maru').css('grid-row');
@@ -44,7 +45,7 @@
             }
             //右ボタンの処理
             function rightbutton(){
-                var input1 = $('#input1').val()
+                var input1 = $('#input1').val();
                 if(input1 == '1 3'||input1 == '2 3'||input1 == '3 3'){
                 } else {
                     var w = $('#maru').css('grid-column');
@@ -58,7 +59,7 @@
             }
             //左ボタンの処理
             function leftbutton(){
-                var input1 = $('#input1').val()
+                var input1 = $('#input1').val();
                 if (input1 == '1 1'||input1 == '2 1'||input1 == '3 1') {
                 } else {
                     var h = $('#maru').css('grid-column');
@@ -103,9 +104,11 @@
                 obj = document.getElementById('input1');
                 keyvalue = 0;
                 var $intervalID;
+                past = $('#input1').val();
                 $top.onmousedown = function ( $event ) {
                     //上ボタンのクリック
                     if( $event.button == 0 ){
+                        past = $('#input1').val();
                         keyvalue = 0;
                         clearInterval( $intervalID );
                         $intervalID = setInterval(
@@ -124,6 +127,7 @@
                 //下ボタンのクリック
                 $bottom.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
+                        past = $('#input1').val();
                         keyvalue = 0;
                         clearInterval( $intervalID );
                         $intervalID = setInterval(
@@ -140,6 +144,7 @@
                 //右ボタンのクリック
                 $right.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
+                        past = $('#input1').val();
                         keyvalue = 0;
                         clearInterval( $intervalID );
                         $intervalID = setInterval(
@@ -156,6 +161,7 @@
                 //左ボタンのクリック
                 $left.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
+                        past = $('#input1').val();
                         keyvalue = 0;
                         clearInterval( $intervalID );
                         $intervalID = setInterval(
@@ -176,13 +182,21 @@
                 // 条件文で制御する
                 //上キーの入力
                 if(start == '1'){
-                    if (keyCode == 38) {topbutton()}
+                    if (keyCode == 38) {
+                        past = $('#input1').val();
+                        topbutton()}
                     //下キーの入力
-                    if (keyCode == 40) {bottombutton()}
+                    if (keyCode == 40) {
+                        past = $('#input1').val();
+                        bottombutton()}
                     //右キーの入力
-                    if (keyCode == 39) {rightbutton()}
+                    if (keyCode == 39) {
+                        past = $('#input1').val();
+                        rightbutton()}
                     //左キーの入力
-                    if (keyCode == 37) {leftbutton()}
+                    if (keyCode == 37) {
+                        past = $('#input1').val();
+                        leftbutton()}
 
                     if (keyCode == offkey) {
                         offkey = 'none';
@@ -304,7 +318,21 @@
                     var xleft = parseInt($('#enemyattack').css('left'));
                     var enemyattack = $('#enemyattack').val();
                     if(start == '1'){
-                        if (x == enemyattack && $('#enemyattack').css('display') == 'block' && xleft <= 30 && herodamage == 0){
+                        console.log(past.slice(0,1))
+                        console.log(x.slice(0,1))
+                        if (past.slice(0,1) == x.slice(0,1)  && x == enemyattack && $('#enemyattack').css('display') == 'block' && xleft < 30 && herodamage == 0){
+                            var damage = $('#hero-meter').val();
+                            damage = damage - 80;
+                            $('#hero-meter').val(damage).change();
+                            $('#enemyattack').hide();
+                            document.maru.src="{% static "game/character/4-6herodamage.gif" %}";
+                            herodamage = 1;
+                            setTimeout(function(){
+                                document.maru.src="{% static "game/character/4-6hero.png" %}";
+                                herodamage = 0;
+                            } ,2000);
+
+                        }else if (x == enemyattack && $('#enemyattack').css('display') == 'block' && xleft > 30 && herodamage == 0){
                             var damage = $('#hero-meter').val();
                             damage = damage - 80;
                             $('#hero-meter').val(damage).change();
@@ -649,11 +677,11 @@
                 });
             });
             $(function(){
-                $("#q1").find("#answer").on('click',function(){
+                $("#q1").find("#notanswer").on('click',function(){
                     $('#q1').hide();
                     $('#q2').show();
                 });
-                $("#q1").find("#notanswer").on('click',function(){
+                $("#q1").find("#answer").on('click',function(){
                     $('#q1').hide();
                     $('#q2').hide();
                     $("#back").css('opacity','1');
@@ -679,7 +707,7 @@
                         return false;
                     },2500);
                 });
-                $("#q2").find("#answer").on('click',function(){
+                $("#q2").find("#notanswer").on('click',function(){
                     $('#q2').hide();
                     $('#pageclear').show();
                     $('#pageclear a').show();
@@ -689,7 +717,7 @@
                     $("#left").prop('disabled',false);
 
                 });
-                $("#q2").find("#notanswer").on('click',function(){
+                $("#q2").find("#answer").on('click',function(){
                     $('#q1').hide();
                     $('#q2').hide();
                     $("#back").css('opacity','1');
@@ -780,7 +808,6 @@
                         <button id="right" disabled>￫</button>
                         <input type="text" id="input1" autocomplete="off" value="2 2">
                         <input type="submit" id="action" value="パチンコ" onclick="win_open()"disabled>
-                        <input type="submit" id="action2" value="魔法" onclick="input()"disabled>
                     </div>
                 </div>
             </div>
@@ -791,7 +818,7 @@
                 <button style="width:100px;height:50px" onclick="mapclick2(16);">
                     <font size='4'>next</font>
                 </button>
-                </a>
+            </a>
         </div>
         <div id='pagerestart'>
             <p>ゲームオーバー</p>
@@ -799,10 +826,10 @@
                 <button style="width:100px;height:50px">
                     <font size='4'>next</font>
                 </button>
-                </a>
+            </a>
         </div>
         <div id='q1'>
-            <p>問題１</p>
+            <p>パスワードをパソコンに<br>はるのは正しいか？</p>
             <a>
                 <button id='answer' style="width:100px;height:50px">
                     <font size='4'>○</font>
@@ -813,7 +840,7 @@
             </a>
         </div>
         <div id='q2'>
-            <p>問題２</p>
+            <p>パスワードを忘れないように<br>自分の誕生日にするのは正しいか？</p>
             <a>
                 <button id='answer' style="width:100px;height:50px">
                     <font size='4'>○</font>
