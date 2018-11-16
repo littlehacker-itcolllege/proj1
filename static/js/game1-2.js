@@ -36,7 +36,8 @@ function Drop1(event) {
 		document.getElementById("droppoint1").innerHTML="<div id=\"drop1\" class=\"drop\"><img src=\"/static/game/wepon3.png\" class=\"dragimg\" id=\"a\" draggable=\"false\" style=\"display\:block\";></div>"
 	}
 	if(drop1 !=null && drop2 !=null && drop3!=null){
-		document.getElementById("next").style.display="block";
+		document.getElementById("clear").style.display="block";
+		document.getElementById("back").style.opacity="0.5";
 	}
 }
 function Drop2(event) {
@@ -56,7 +57,8 @@ function Drop2(event) {
 	}
 	if(drop1 !=null && drop2 !=null && drop3!=null){
 		if(drop1 !=null && drop2 !=null && drop3!=null){
-		document.getElementById("next").style.display="block";
+		document.getElementById("clear").style.display="block";
+		document.getElementById("back").style.opacity="0.5";
 		}
 	}
 }
@@ -76,7 +78,8 @@ function Drop3(event) {
 		document.getElementById("droppoint3").innerHTML="<div id=\"drop3\" class=\"drop\"><img src=\"/static/game/wepon3.png\" class=\"dragimg\" id=\"a\" draggable=\"false\" style=\"display\:block\";></div>"
 	}
 	if(drop1 !=null && drop2 !=null && drop3!=null){
-		document.getElementById("next").style.display="block";
+		document.getElementById("clear").style.display="block";
+		document.getElementById("back").style.opacity="0.5";
 	}
 }
 

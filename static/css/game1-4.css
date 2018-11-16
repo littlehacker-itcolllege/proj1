@@ -24,6 +24,13 @@ body{
 	left:50%;
 	z-index:1;
 }
+#clear{
+	position:absolute;
+	top:60%;
+	left:50%;
+	z-index:1;
+	display:none;
+}
 #button{
 	display:none;
 	position:absolute;

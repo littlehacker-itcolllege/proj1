@@ -41,7 +41,8 @@ function onClick(){
 		document.getElementById("power").style.display="none";
 		document.getElementById("str").style.display="none";
 		document.getElementById("attack").style.display="none";
-		document.getElementById("next").style.display="block";
+		document.getElementById("clear").style.display="block";
+		document.getElementById("back").style.opacity="0.5";
 		fin();
 	}else{
 		setTimeout(reload,2000);

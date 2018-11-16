@@ -8,9 +8,10 @@ function start(){
 }
 function check(){
 	if (document.getElementById("jumon").value=="pass"){
-		document.getElementById("button").style.display="block";
 		document.getElementById("enemy-down").style.display="block";
 		document.getElementById("enemy").style.display="none";
+		document.getElementById("clear").style.display="block";
+	document.getElementById("back").style.opacity="0.5";
 	}else{
 		alert("呪文が違うよ...")	}
 }
