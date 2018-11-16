@@ -19,19 +19,19 @@
     top: 390px;
     left: 32px;
 }
-.test1 {
+.text1 {
     height: 30px;
     top: 5px;
     width: 100%;
     margin: 2%;
+    opacity: 1;
     white-space: pre;
     overflow: hidden;
-    opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
     /* プロパティは順に name, duration, timing-function です */
 }
-.test2 {
+.text2 {
     height: 30px;
     top: 5px;
     width: 100%;
@@ -40,20 +40,12 @@
     overflow: hidden;
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
-    animation-delay:4s;
+    animation-delay:5s;
     /* プロパティは順に name, duration, timing-function です */
 }
-.test3 {
-    width: 100%;
-    margin: 2%;
-    white-space: pre;
-    overflow: hidden;
-    opacity: 0;
-    -webkit-animation: ozDq 6s steps(70, end) forwards;
-    animation-delay:6s;
-    /* プロパティは順に name, duration, timing-function です */
-}
-.test4 {
+.text3 {
+    height: 30px;
+    top: 5px;
     width: 100%;
     margin: 2%;
     white-space: pre;
@@ -61,6 +53,18 @@
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-delay:8s;
+    /* プロパティは順に name, duration, timing-function です */
+}
+.text4 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-delay:11s;
     /* プロパティは順に name, duration, timing-function です */
 }
 

@@ -1,0 +1,141 @@
+body {
+    margin: 0px;
+}
+#hpbar{
+    background-color:#8a4b08;
+    display: grid;
+    grid-template-columns: 46vw 8vw 46vw;
+    grid-template-rows: auto;
+}
+#hp1{
+    grid-row: 1;
+    grid-column: 1;
+    position:relative;
+}
+#hero-meter{
+    position:absolute;
+    right:0;
+    bottom:0;
+    transform: scale(-1,1);
+    width:85%;
+    height:50%;
+}
+#hp1 > p{
+    position:absolute;
+    height:auto;
+    width:85%;
+    right:0;
+    text-align:left;
+    bottom:40%;
+    margin: 0px;
+    font-weight: bold;
+    font-size: 25px;
+}
+#hp2{
+    grid-row: 1;
+    grid-column: 3;
+    position:relative;
+}
+
+#enemy-meter{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:85%;
+    height:50%;
+}
+#hp2 > p{
+    position:absolute;
+    height:auto;
+    width:85%;
+    left:0;
+    bottom:40%;
+    margin: 0px;
+    text-align:right;
+    font-weight: bold;
+    font-size: 25px;
+}
+#vs p{
+    text-align:center;
+    font-weight: bold;
+    font-size: 100%;
+}
+#wall{
+    display: grid;
+    grid-template-columns: 100vw;
+    grid-template-rows: auto;
+}
+#wall img{
+    width:100%;
+    height:60px;
+
+}
+.canvas{
+    background-color:#999;
+    display: grid;
+    grid-template-columns: 100vw ;
+    grid-template-rows: 61vh ;
+}
+#canvas1{
+    border: 1px solid black;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+
+#maru {
+    grid-row: 1;
+    grid-column: 1;
+}
+#maru img{
+    position:relative;
+    width:10vw;
+    height:10vh;
+    top:60%;
+    left:10%;
+}
+#enemy{
+    grid-row: 1;
+    grid-column: 1;
+}
+#enemy img{
+    position:relative;
+    width:10vw;
+    height:10vh;
+    top:60%;
+    left:80%;
+}
+#button {
+    display: grid;
+    grid-template-columns: 8vw 8vw 8vw 16vw 16vw;
+    grid-template-rows: 10vh 10vh ;
+}
+#top {
+    grid-row: 1;
+    grid-column: 2;
+}
+#left {
+    grid-row: 2;
+    grid-column: 1;
+}
+#bottom{
+    grid-row: 2;
+    grid-column: 2;
+}
+#right {
+    grid-row: 2;
+    grid-column: 3;
+}
+#input1 {
+    grid-row: 1;
+    grid-column: 5;
+}
+#action{
+    grid-row:1;
+    grid-column:4;
+}
+#action2{
+    grid-row:2;
+    grid-column:4;
+}
+
