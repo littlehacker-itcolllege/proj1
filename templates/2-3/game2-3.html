@@ -5,74 +5,79 @@
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/game2-3.css' %}">
         <script type="text/javascript" src="{% static 'js/game2-3.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
     </head>
-    <body>
-			<div class="box">
-				<div id="select">
-					<button id="fire-button" onclick="gameSet()">火属性</button>
-					<button id="water-button" onclick="gameSet2()">水属性</button>
-					<button id="leaf-button" onclick="gameSet3()">草属性</button>
-				</div>
-        <div id="waku">
-					<div id="fire">
-						<table>
-							<tr>
-								<td id="word0">F</td>
-								<td id="word1">I</td>
-								<td id="word2">R</td>
-								<td id="word3">E</td>
-							</tr>
-						</table>
+    <body onload="load();">
+			<button onclick="start();" id="start">start</button>
+			<a href="http://localhost:8080/stage2-3/nextstory2-3/" target="story2-3"><button  onclick="mapclick2(7);" id="clear">clear</button></a>
+			<div id="back">
+				<div class="box">
+					<div id="select">
+						<button id="fire-button" onclick="gameSet()">火属性</button>
+						<button id="water-button" onclick="gameSet2()">水属性</button>
+						<button id="leaf-button" onclick="gameSet3()">草属性</button>
 					</div>
-					<div id="water">
-						<table>
-							<tr>
-								<td id="word20">W</td>
-								<td id="word21">A</td>
-								<td id="word22">T</td>
-								<td id="word23">E</td>
-								<td id="word24">R</td>
-							</tr>
-						</table>
+					<div id="waku">
+						<div id="fire">
+							<table>
+								<tr>
+									<td id="word0">F</td>
+									<td id="word1">I</td>
+									<td id="word2">R</td>
+									<td id="word3">E</td>
+								</tr>
+							</table>
+						</div>
+						<div id="water">
+							<table>
+								<tr>
+									<td id="word20">W</td>
+									<td id="word21">A</td>
+									<td id="word22">T</td>
+									<td id="word23">E</td>
+									<td id="word24">R</td>
+								</tr>
+							</table>
+						</div>
+						<div id="leaf">
+							<table>
+								<tr>
+									<td id="word30">L</td>
+									<td id="word31">E</td>
+									<td id="word32">A</td>
+									<td id="word33">F</td>
+								</tr>
+							</table>
+						</div>
 					</div>
-					<div id="leaf">
-						<table>
-							<tr>
-								<td id="word30">L</td>
-								<td id="word31">E</td>
-								<td id="word32">A</td>
-								<td id="word33">F</td>
-							</tr>
-						</table>
-					</div>
-        </div>
-				<div id="enemy-zone">
-					<img src="{% static 'game/firegobrin.gif' %}" id="fire-gobrin">
-					<img src="{% static 'game/watergobrin.gif' %}" id="water-gobrin">
-					<img src="{% static 'game/gobrin.gif' %}" id="leaf-gobrin">
+					<div id="enemy-zone">
+						<img src="{% static 'game/firegobrin.gif' %}" id="fire-gobrin">
+						<img src="{% static 'game/watergobrin.gif' %}" id="water-gobrin">
+						<img src="{% static 'game/gobrin.gif' %}" id="leaf-gobrin">
 
-					<img src="{% static 'game/firegobrin-down.png' %}" id="fire-gobrin-down">
-					<img src="{% static 'game/watergobrin-down.png' %}" id="water-gobrin-down">
-					<img src="{% static 'game/gobrin-down.png' %}" id="leaf-gobrin-down">
-				</div>
-				<div id='keybord-fire'>
-					<img id="fire1" src="{% static 'game/keybord-f.png' %}">
-					<img id="fire2" src="{% static 'game/keybord-i.png' %}">
-					<img id="fire3" src="{% static 'game/keybord-r.png' %}">
-					<img id="fire4" src="{% static 'game/keybord-e.png' %}">
-				</div>
-				<div id='keybord-water'>
-					<img id="water1" src="{% static 'game/keybord-w.png' %}">
-					<img id="water2" src="{% static 'game/keybord-a.png' %}">
-					<img id="water3" src="{% static 'game/keybord-t.png' %}">
-					<img id="water4" src="{% static 'game/keybord-e.png' %}">
-					<img id="water5" src="{% static 'game/keybord-r.png' %}">
-				</div>
-				<div id='keybord-leaf'>
-					<img id="leaf1" src="{% static 'game/keybord-l.png' %}">
-					<img id="leaf2" src="{% static 'game/keybord-e.png' %}">
-					<img id="leaf3" src="{% static 'game/keybord-a.png' %}">
-					<img id="leaf4" src="{% static 'game/keybord-f.png' %}">
+						<img src="{% static 'game/firegobrin-down.png' %}" id="fire-gobrin-down">
+						<img src="{% static 'game/watergobrin-down.png' %}" id="water-gobrin-down">
+						<img src="{% static 'game/gobrin-down.png' %}" id="leaf-gobrin-down">
+					</div>
+					<div id='keybord-fire'>
+						<img id="fire1" src="{% static 'game/keybord-f.png' %}">
+						<img id="fire2" src="{% static 'game/keybord-i.png' %}">
+						<img id="fire3" src="{% static 'game/keybord-r.png' %}">
+						<img id="fire4" src="{% static 'game/keybord-e.png' %}">
+					</div>
+					<div id='keybord-water'>
+						<img id="water1" src="{% static 'game/keybord-w.png' %}">
+						<img id="water2" src="{% static 'game/keybord-a.png' %}">
+						<img id="water3" src="{% static 'game/keybord-t.png' %}">
+						<img id="water4" src="{% static 'game/keybord-e.png' %}">
+						<img id="water5" src="{% static 'game/keybord-r.png' %}">
+					</div>
+					<div id='keybord-leaf'>
+						<img id="leaf1" src="{% static 'game/keybord-l.png' %}">
+						<img id="leaf2" src="{% static 'game/keybord-e.png' %}">
+						<img id="leaf3" src="{% static 'game/keybord-a.png' %}">
+						<img id="leaf4" src="{% static 'game/keybord-f.png' %}">
+					</div>
 				</div>
 			</div>
     </body>

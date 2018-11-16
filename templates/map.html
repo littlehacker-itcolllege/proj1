@@ -3,6 +3,7 @@
     <head>
         <title></title>
         {% load static %}
+				<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
         <script type='text/javascript'>
             $(function(){
@@ -27,7 +28,7 @@
         <div class="kyoku"><iframe id="music" src="" ></iframe></div>
 
     </head>
-    <body>
+    <body onload="mapload()">
         <a href="http://localhost:8080/map/" target="map">map</a>
         <a href="http://localhost:8080/stage1-1/" target="story">1-1</a>
         <a href="http://localhost:8080/stage1-2/" target="story">1-2</a>
@@ -56,12 +57,12 @@
                 <div class="show">
                     <button>Click<br>Dungeon</button>
                     <ul>
-                        <li><a href="http://localhost:8080/stage4-1/" target="story">クエスト4-1</a></li>
-                        <li><a href="http://localhost:8080/stage4-2/" target="story">クエスト4-2</a></li>
-                        <li><a href="http://localhost:8080/stage4-3/" target="story">クエスト4-3</a></li>
-                        <li><a href="http://localhost:8080/stage4-4/" target="story">クエスト4-4</a></li>
-                        <li><a href="http://localhost:8080/stage4-5/" target="story">クエスト4-5</a></li>
-                        <li><a href="http://localhost:8080/stage4-6/" target="story">クエスト4-6</a></li>
+                        <li id="stage11"><a href="http://localhost:8080/stage4-1/" target="story">クエスト4-1</a></li>
+                        <li id="stage12"><a href="http://localhost:8080/stage4-2/" target="story">クエスト4-2</a></li>
+                        <li id="stage13"><a href="http://localhost:8080/stage4-3/" target="story">クエスト4-3</a></li>
+                        <li id="stage14"><a href="http://localhost:8080/stage4-4/" target="story">クエスト4-4</a></li>
+                        <li id="stage15"><a href="http://localhost:8080/stage4-5/" target="story">クエスト4-5</a></li>
+                        <li id="stage16"><a href="http://localhost:8080/stage4-6/" target="story">クエスト4-6</a></li>
                     </ul>
                 </div>
             </div>
@@ -74,9 +75,9 @@
                 <div class="show">
                     <button>Click<br>Dungeon</button>
                     <ul>
-                        <li><a href="http://localhost:8080/stage3-1/" target="story">クエスト3-1</a></li>
-                        <li><a href="http://localhost:8080/stage3-2/" target="story">クエスト3-2</a></li>
-                        <li><a href="http://localhost:8080/stage3-3/" target="story">クエスト3-3</a></li>
+                        <li id="stage8"><a href="http://localhost:8080/stage3-1/" target="story">クエスト3-1</a></li>
+                        <li id="stage9"><a href="http://localhost:8080/stage3-2/" target="story">クエスト3-2</a></li>
+                        <li id="stage10"><a href="http://localhost:8080/stage3-3/" target="story">クエスト3-3</a></li>
                     </ul>
                 </div>
             </div>
@@ -89,9 +90,9 @@
                 <div class="show">
                     <button>Click<br>Dungeon</button>
                     <ul>
-                        <li><a href="http://localhost:8080/stage2-1/" target="story">クエスト2-1</a></li>
-                        <li><a href="http://localhost:8080/stage2-2/" target="story">クエスト2-2</a></li>
-                        <li><a href="http://localhost:8080/stage2-3/" target="story">クエスト2-3</a></li>
+                        <li id="stage5"><a href="http://localhost:8080/stage2-1/" target="story">クエスト2-1</a></li>
+                        <li id="stage6"><a href="http://localhost:8080/stage2-2/" target="story">クエスト2-2</a></li>
+                        <li id="stage7"><a href="http://localhost:8080/stage2-3/" target="story">クエスト2-3</a></li>
                     </ul>
                 </div>
             </div>
@@ -105,10 +106,10 @@
                 <div class="show">
                     <button>Click<br>Dungeon</button>
                     <ul>
-                        <li><a href="http://localhost:8080/stage1-1/" target="story">ボス1-1</a></li>
-                        <li><a href="http://localhost:8080/stage1-2/" target="story">ボス1-2</a></li>
-                        <li><a href="http://localhost:8080/stage1-3/" target="story">ボス1-3</a></li>
-                        <li><a href="http://localhost:8080/stage1-4/" target="story">ボス1-4</a></li>
+                        <li id="stage17"><a href="http://localhost:8080/stage1-1/" target="story">ボス1-1</a></li>
+                        <li id="stage18"><a href="http://localhost:8080/stage1-2/" target="story">ボス1-2</a></li>
+                        <li id="stage19"><a href="http://localhost:8080/stage1-3/" target="story">ボス1-3</a></li>
+                        <li id="stage20"><a href="http://localhost:8080/stage1-4/" target="story">ボス1-4</a></li>
                     </ul>
                 </div>
             </div>
@@ -121,10 +122,10 @@
                 <div class="show">
                     <button>Click<br>Dungeon</button>
                     <ul>
-                        <li><a href="http://localhost:8080/stage1-1/" target="story">クエスト1-1</a></li>
-                        <li><a href="http://localhost:8080/stage1-2/" target="story">クエスト1-2</a></li>
-                        <li><a href="http://localhost:8080/stage1-3/" target="story">クエスト1-3</a></li>
-                        <li><a href="http://localhost:8080/stage1-4/" target="story">クエスト1-4</a></li>
+                        <li id="stage1"><a href="http://localhost:8080/stage1-1/" target="story">クエスト1-1</a></li>
+                        <li id="stage2" style="display:block"><a href="http://localhost:8080/stage1-2/" target="story">クエスト1-2</a></li>
+                        <li id="stage3"><a href="http://localhost:8080/stage1-3/" target="story">クエスト1-3</a></li>
+                        <li id="stage4"><a href="http://localhost:8080/stage1-4/" target="story">クエスト1-4</a></li>
                     </ul>
                 </div>
             </div>
@@ -145,7 +146,7 @@
             roop();
 
             function roop(){
-                document.getElementById("music").src="{% static 'sound/map.m4a' %}";
+                document.getElementById("").src="{% static 'sound/map.m4a' %}";
                 setTimeout(roop, 131000);
             }
         </script>

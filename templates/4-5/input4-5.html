@@ -1,33 +1,94 @@
-<!DOCTYPE html>
+<!DOCTYPE htmle
 <html>
     <head lang="ja">
         <meta charset="UTF-8">
         {% load static %}
         <script  src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
         <script>
-            $(function(){
-                if ($("#input").val() == 0 ){
-                    $("#action").prop("disabled",true);
+            function keyEvent(c) {
+                if($("#input").val().length < 4) {
+                    var getdate = $("#input").val();
+                    $("#input").val(getdate+c).change();
+                    $('#input').change(function(){
+                        if ($("#input").val() == '1025' && $("#input").val().length == 4 ){
+                            $("#action").wrap('<a type="button" id="a" href="http://localhost:8080/stage4-5/nextstory4-5" target="story4-5"} ></a>').change();
+                        }else if($("#a").length){
+                            $("#action").unwrap();
+                        }
+                        if ($("#input").val().length == 4 ){
+                            $("#action").prop("disabled",false);
+                        } else {
+                            $("#action").prop("disabled",true);
+                        }
+                    });
+                };
+            };
+            function window_close(){
+                if($("#input").val()=='1025'){
+                }else{
+                    $('#input').val('間違い').change();
                 }
-                $("#input").on("keydown keyup keypress change",function() {
-                    if ($("#input").val() == "1234" ){
-                        $("#action").prop("disabled",false);
-                    } else {
-                        $("#action").prop("disabled",true);
-                    }
-                });
-            });
 
+            }
 
+            function allClear() {
+                $("#input").val('').change();
+            }
+            function oneClear() {
+                $("#input").val( $("#input").val().substring(0,$("#input").val().length-1)).change();
+            }
         </script>
+        <style type="text/css">
+
+body {
+    background-repeat: no-repeat;
+}
+        table {border:0px;margin:0 auto;border-collapse:collapse;}
+        div#cc {background:#999;padding:10px 0 0 0; position:absolute;width:400px;left:0px;top:60px;}
+        input#input {text-align:center;font-family:monospace;font-size:20px;font-weight:900;height:50px;border:solid 3px black;}
+        input.key {width:120px;height:50px;font-family:monospace;font-size:20px;border:solid 3px black;}
+        #action{
+            font-size:20px;
+            width:120px;height:50px;
+            border:solid 3px black;
+        }
+        #close{
+position:absolute;
+       top:550px;
+        }
+        </style>
 
         <title>パスワードを入力して</title>
     </head>
-    <body>
-      <p>パスワードはひづけ</p>
-        <input type="text" id="input"  autocomplete="off">
-        <a type="button" href="http://localhost:8080/stage4-5/nextstory4-5" target="story4-5"><input type="button" id="action" value="入力" onclick="window.close();" ></a>
-        <a href="#" onClick="window.close();">ウィンドウを閉じる</a><br/>
-        <img id="stealth"  src="{% static "game/doorinput.png" %}" >
+    <body background="{% static "game/doorinput.png" %}">
+        <div id='cc' align='center'>
+            <form name='myForm' action="#">
+                <input id="input" size="20" tabindex="1" maxlength="4" value="">
+                <table><tbody><tr>
+                            <td><input type="button" class="key" value="7" onclick="keyEvent('7')"></td>
+                            <td><input type="button" class="key" value="8" onclick="keyEvent('8')"></td>
+                            <td><input type="button" class="key" value="9" onclick="keyEvent('9')"></td>
+                        </tr></tbody></table>
+                        <table><tbody><tr>
+                                    <td><input type="button" class="key" value="4" onclick="keyEvent('4')"></td>
+                                    <td><input type="button" class="key" value="5" onclick="keyEvent('5')"></td>
+                                    <td><input type="button" class="key" value="6" onclick="keyEvent('6')"></td>
+                                </tr></tbody></table>
+                                <table><tbody><tr>
+                                            <td><input type="button" class="key" value="3" onclick="keyEvent('3')"></td>
+                                            <td><input type="button" class="key" value="2" onclick="keyEvent('2')"></td>
+                                            <td><input type="button" class="key" value="1" onclick="keyEvent('1')"></td>
+                                        </tr></tbody></table>
+                                        <table><tbody><tr>
+                                                    <td><input type="button" class="key" value="1文字クリア" onclick="oneClear()"></td>
+                                                    <td><input type="button" class="key" value="0" onclick="keyEvent('0')"></td>
+                                                    <td><input type="button" class="key" value="全てクリア" onclick="allClear()"></td>
+                                                </tr></tbody></table>
+                                                <table><tbody><tr>
+                                                            <input type="button" id="action" value="入力" onclick="window_close();" disabled  >
+                                                        </tr></tbody></table>
+            </form>
+        </div>
+        <a id='close' href="#" onClick="window.close();"><input type="button"  value="ウィンドウを閉じる"></a><br/>
     </body>
 </html>

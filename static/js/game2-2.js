@@ -47,7 +47,12 @@ function countDown(){
 	iki--;
 	document.getElementById("breath").textContent=iki;
 	if(iki ==0){
+		setTimeout("jump()",10)
+		alert("ブクブクブク...");
 	}
+}
+function jump(){
+	location.href="http://localhost:8080/stage2-2/gameover2-2";
 }
 function count(){
 	timer = setInterval('countDown()',1000);
@@ -57,7 +62,7 @@ function count(){
 //タイピングゲームの問題をセットする関数
 function gameSet()
 {
-	document.getElementById("waku").style.display="block";
+	document.getElementById("back").style.opacity="1";
   //カウント数をクリアする
   cnt=0;
 
@@ -79,37 +84,6 @@ function gameSet2()
 function typeGame(evt)
 {
   var kc;  //入力されたキーコードを格納する変数
-	if(que == 1){
-		if (document.all)
-		{
-			kc = event.keyCode;
-		}
-		else
-		{
-			kc = evt.which;
-		}
-		//入力されたキーコードと、問題文のキーコードを比較
-		if (kc == kcode2[ rnd2[cnt2] ])
-		{
-			//以下、キーコードが一致した時の処理
-			//入力されたセルの文字色を灰色にする
-			var idName = "word2"+cnt2;
-			document.getElementById(idName).style.color="#dddddd";
-			if(esc >=1){
-				document.getElementById("key2"+esc).style.display="none";
-				esc++;
-				if(esc <=3){
-					document.getElementById("key2"+esc).style.display="block";
-				}
-			}
-			cnt2++; //カウント数を＋１にする
-			//全文字入力したか確認
-			if ( cnt2 == 3){
-				//問題終了を告げる文字列を作成
-				clearInterval(timer);
-			}
-		}
-	}
   //入力されたキーのキーコードを取得
   if (document.all)
   {
@@ -142,11 +116,45 @@ function typeGame(evt)
 			document.getElementById("key").style.display="table";
 			document.getElementById("treasure").style.display="none";
 			document.getElementById("chara").style.display="none";
-			document.getElementById("back").style.display="none";
+			document.getElementById("water-back").style.display="none";
 			document.getElementById("chest").style.display="block";
 			document.getElementById("key21").style.display="block";
 			que =1;
 			gameSet2();
 		}
   }
+	if(que == 1){
+		if (document.all)
+		{
+			kc = event.keyCode;
+		}
+		else
+		{
+			kc = evt.which;
+		}
+		//入力されたキーコードと、問題文のキーコードを比較
+		if (kc == kcode2[ rnd2[cnt2] ])
+		{
+			//以下、キーコードが一致した時の処理
+			//入力されたセルの文字色を灰色にする
+			var idName = "word2"+cnt2;
+			document.getElementById(idName).style.color="#dddddd";
+			if(esc >=1){
+				document.getElementById("key2"+esc).style.display="none";
+				esc++;
+				if(esc <=3){
+					document.getElementById("key2"+esc).style.display="block";
+				}
+			}
+			cnt2++; //カウント数を＋１にする
+			//全文字入力したか確認
+			if ( cnt2 == 3){
+				//問題終了を告げる文字列を作成
+				clearInterval(timer);
+			document.getElementById("start").style.display="none";
+      document.getElementById("clear").style.display="block";
+      document.getElementById("back").style.opacity="0.5";
+			}
+		}
+	}
 }

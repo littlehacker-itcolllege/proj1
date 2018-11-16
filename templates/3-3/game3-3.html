@@ -5,9 +5,11 @@
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/game3-3.css' %}">
         <script type="text/javascript" src="{% static 'js/game3-3.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
     </head>
     <body oncontextmenu="return false;"onload="load();">
 			<button onclick="start();" id="start">start</button>
+			<a href="http://localhost:8080/stage3-3/nextstory3-3/" target="story3-3"><button onclick="mapclick2(10);" id="clear">clear</button></a>
 			<div id="back">
 				<div id="box">
 					<p id="timer">30</p>
@@ -30,9 +32,6 @@
 						<input type="submit" value="唱える" onclick="check2();">
 					</div>
 
-					<div id="button">
-						<a href="http://localhost:8080/stage3-3/nextstory3-3" target="story3-3" ><button id="next" style="width:100px;height:50px"><font size="4">Next</font></button></a>
-					</div>
 				</div>
 			</div>
     </body>

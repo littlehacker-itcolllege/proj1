@@ -8,11 +8,30 @@ td{
   width:100vh;
   font-size:5em;
 }
+#back{
+	background-color:gray;
+	opacity:0.5;
+	height:100vh;
+	z-index:0;
+}
+#start{
+	position:absolute;
+	top:60%;
+	left:50%;
+	z-index:1;
+}
+#clear{
+	position:absolute;
+	top:60%;
+	left:50%;
+	z-index:1;
+	display:none;
+}
 .box{
     height:100vh;
     background-repeat:no-repeat;
     background-position:center center;
-    background-image: url("");
+    background-image: url("../game/stage3back.png");
     background-size:cover;
     postion: relative;
     justify-content: center; /*左右中央揃え*/

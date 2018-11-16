@@ -8,6 +8,13 @@ body{
 	left:50%;
 	z-index:1;
 }
+#clear{
+	position:absolute;
+	top:60%;
+	left:50%;
+	z-index:1;
+	display:none;
+}
 #back{
 	background-color:gray;
 	opacity:0.5;
@@ -17,7 +24,7 @@ body{
 	height:100vh;
 	background-repeat:no-repeat;
 	background-position:center center;
-	background-image: url("../game/sea.png");
+	background-image: url("../game/stage3back.png");
 	background-size:cover;
 	postion: relative;
 	justify-content: center; /*左右中央揃え*/

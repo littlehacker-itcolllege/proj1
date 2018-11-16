@@ -1,12 +1,10 @@
 from django.shortcuts import render
-import time
 from django.http.response import HttpResponse
 # Create your views here.
 def map(request):
     return render(request,'map.html')
 def opening(request):
     return render(request,'opening/opening.html')
-
 #stage1-1
 def stage1_1(request):
     return render(request,'1-1/stage1-1.html')
@@ -26,8 +24,6 @@ def story1_2(request):
     return render(request,'1-2/story1-2.html')
 def game1_2(request):
     return render(request,'1-2/game1-2.html')
-def game_wepon(request):
-    return render(request,'1-2/wepon.html')
 def head1_2(request):
     return render(request,'1-2/head1-2.html')
 def nextstory1_2(request):
@@ -68,6 +64,8 @@ def head2_1(request):
     return render(request,'2-1/head2-1.html')
 def nextstory2_1(request):
     return render(request,'2-1/nextstory2-1.html')
+def gameover2_1(request):
+    return render(request,'2-1/gameover2-1.html')
 
 #stage2-2
 def stage2_2(request):
@@ -80,6 +78,8 @@ def head2_2(request):
     return render(request,'2-2/head2-2.html')
 def nextstory2_2(request):
     return render(request,'2-2/nextstory2-2.html')
+def gameover2_2(request):
+    return render(request,'2-2/gameover2-2.html')
 
 #stage2-3
 def stage2_3(request):
@@ -92,6 +92,8 @@ def head2_3(request):
     return render(request,'2-3/head2-3.html')
 def nextstory2_3(request):
     return render(request,'2-3/nextstory2-3.html')
+def gameover2_3(request):
+    return render(request,'2-3/gameover2-3.html')
 
 #stage3-1
 def stage3_1(request):

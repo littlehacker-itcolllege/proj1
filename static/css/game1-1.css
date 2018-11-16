@@ -2,58 +2,76 @@ body{
 	margin:0px;
 	padding:0px;
 }
-table{
-	text-align:center;
-	border-collapse: separate;
-	border-spacing:0px;
-}
 meter{
 	width:40%;
 	height:1.5em;
 }
-.box{
-    height:100vh;
-    background-repeat:no-repeat;
-    background-position:center center;
-    background-image: url("../game/sea.png");
-    background-size:cover;
-    postion: relative;
-    justify-content: center; /*左右中央揃え*/
-    align-items: center;     /*上下中央揃え*/
+#back{
+	background-color:gray;
+	height:100vh;
+	opacity:0.5;
+	z-index:1;
 }
-.button{
-	text-align:center;
+#start{
+	position:absolute;
+	top:60%;
+	left:50%;
+	z-index:1;
 }
-.meter{
-	margin-top:5%;
-	text-align:center;
-}
-
-.enemy{
-	margin:0px;
-	padding:0px;
-}
-.story{
+#clear{
+	position:absolute;
+	top:60%;
+	left:50%;
+	z-index:1;
 	display:none;
 }
-#enemy-meter{
-	width:70%;
-	left:10%;
+.box{
+	height:100vh;
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-image: url("../game/stage1back.jpg");
+	background-size:cover;
+	postion: relative;
+	justify-content: center; /*左右中央揃え*/
+	align-items: center;     /*上下中央揃え*/
 }
-#hp{
+#meter{
+	position:absolute;
+	top:60%;
+	left:33%;
+	width:40%;
+}
+#enemy-meter{
+	position:absolute;
+	top:10%;
+	left:63%;
+	width:20%;
 }
 #enemy-down{
 	display:none;
 	position: absolute;
 	left:37.5%;
+	top:10%;
 }
 #enemy-img{
-	position: relative;
+	position: absolute;
+	left:37.5%;
 }
 #attack{
 	display:block;
 	position:absolute;
-	left:43%;
+	left:45%;
+	top:70%;
+}
+#str{
+	position:absolute;
+	top:62%;
+	left:35%;
+}
+#hp{
+	position:absolute;
+	top:12%;
+	left:70%;
 }
 #next{
 	display:none;

@@ -5,15 +5,34 @@ body{
 td{
 	text-align:center;
 }
-.box{
+#box{
     height:100vh;
     background-repeat:no-repeat;
     background-position:center center;
-    background-image: url("");
+    background-image: url("../game/stage2back.png");
     background-size:cover;
     postion: relative;
     justify-content: center; /*左右中央揃え*/
     align-items: center;     /*上下中央揃え*/
+}
+#start{
+	position:absolute;
+	top:60%;
+	left:50%;
+	z-index:1;
+}
+#clear{
+	position:absolute;
+	top:60%;
+	left:50%;
+	z-index:1;
+	display:none;
+}
+#back{
+	height:100vh;
+	background-color:gray;
+	opacity:0.5;
+	z-index:0;
 }
 #dive{
 	height:20vh;
@@ -29,13 +48,10 @@ td{
   height:10vh;
   width:10vh;
 }
-#back{
+#water-back{
 	width:100%;
 	max-width:100%;
 	height:20vh;
-}
-#waku{
-	display:none;
 }
 #treasure{
 	height:30vh;
@@ -52,7 +68,7 @@ td{
 #key1{
   margin:0 auto;
   padding:0px;
-  display:none;
+  display:block;
   height:40vh;
   width:100vh;
 }

@@ -5,6 +5,7 @@
     <head>
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static "css/game4-6.css" %}">
+				<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
         <meta charset="utf-8">
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
         <script type='text/javascript'>
@@ -72,13 +73,23 @@
 
             // ページ読み込み時に実行
             window.onload = function () {
-                $("#pagestart").show();//スタートボタンの表示
-                $("#pageplaying").hide();//ゲームプレイ画面の非表示
-                $('#pageclear').hide();//
-                $('#pagerestart').hide();//
+                $('#pageclear').hide();
+                $('#q1').hide();
+                $('#q2').hide();
+                $('#pagerestart').hide();
                 $("#pagestart a").on('click',function(){
-                    $("#pagestart").hide();
+                    start = '1';
+                    $("#top").prop('disabled',false);
+                    $("#bottom").prop('disabled',false);
+                    $("#right").prop('disabled',false);
+                    $("#left").prop('disabled',false);
+                    $("#action").prop('disabled',false);
+                    $("#action2").prop('disabled',false);
+                    $("#pagestart a").hide();
+                    $("#back").css('opacity','1');
+                    $("#back").css('background-color','#fff');
                     $("#pageplaying").show();
+                    $('#maru').val('2 2').change();
                     return false;
                 });
                 $("#pagerestart a").on('click',function(){
@@ -91,124 +102,96 @@
                 var $bottom = document.getElementById( "bottom" );
                 obj = document.getElementById('input1');
                 keyvalue = 0;
+                var $intervalID;
                 $top.onmousedown = function ( $event ) {
-
                     //上ボタンのクリック
                     if( $event.button == 0 ){
                         keyvalue = 0;
+                        clearInterval( $intervalID );
                         $intervalID = setInterval(
                             function top2(idname){
                                 keyvalue ++
                                 topbutton()
-                            },
-                            108//1秒間に108/120回繰り返す
-                        );
-                    }
-                }
+                            },108//1秒間に108/120回繰り返す
+                        );}}
                 // マウスアップイベント（ボタンを放した時のイベント）にイベントハンドラをバインド
                 $top.onmouseup = function ( $event ) {
                     if( $event.button == 0 && keyvalue == 0){
                         // 繰り返しタイマーを中止
                         clearInterval( $intervalID );
                         topbutton()
-                    }else{
-                        clearInterval( $intervalID );
-                    }
-                }
+                    }else{clearInterval( $intervalID );}}
                 //下ボタンのクリック
                 $bottom.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
                         keyvalue = 0;
+                        clearInterval( $intervalID );
                         $intervalID = setInterval(
                             function bottom(idname){
                                 keyvalue ++
                                 bottombutton()
-                            },
-                            108
-                        );
-                    }
-                }
+                            },108);}}
                 $bottom.onmouseup = function ( $event ) {
                     if( $event.button == 0 && keyvalue == 0){
                         // 繰り返しタイマーを中止
                         clearInterval( $intervalID );
                         bottombutton()
-                    }else{
-                        clearInterval( $intervalID );
-                    }
-                }
-
+                    }else{clearInterval( $intervalID );}}
                 //右ボタンのクリック
                 $right.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
                         keyvalue = 0;
+                        clearInterval( $intervalID );
                         $intervalID = setInterval(
                             function right(){
                                 keyvalue ++
                                 rightbutton()
-                            },
-                            108
-                        );
-                    }
-                }
+                            },108);}}
                 $right.onmouseup = function ( $event ) {
                     if( $event.button == 0 && keyvalue == 0){
                         // 繰り返しタイマーを中止
                         clearInterval( $intervalID );
                         rightbutton()
-                    }else{
-                        clearInterval( $intervalID );
-                    }
-                }
-
+                    }else{clearInterval( $intervalID );}}
                 //左ボタンのクリック
                 $left.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
                         keyvalue = 0;
+                        clearInterval( $intervalID );
                         $intervalID = setInterval(
                             function left(){
                                 keyvalue ++
                                 leftbutton()
-                            },
-                            108
-                        );
-                    }
-                }
+                            },108);}}
                 $left.onmouseup = function ( $event ) {
                     if( $event.button == 0 && keyvalue == 0){
                         // 繰り返しタイマーを中止
                         clearInterval( $intervalID );
                         leftbutton()
-                    }else{
-                        clearInterval( $intervalID );
-                    }
-                }
-            }
-
-
-
-            // キーコード(どのキーが押されたか)を取得
+                    }else{clearInterval( $intervalID );}}}            // キーコード(どのキーが押されたか)を取得
             window.addEventListener("keydown", handleKeydown);
             var offkey = 32;
             function handleKeydown(event){
                 var keyCode = event.keyCode;
                 // 条件文で制御する
                 //上キーの入力
-                if (keyCode == 38) {topbutton()}
-                //下キーの入力
-                if (keyCode == 40) {bottombutton()}
-                //右キーの入力
-                if (keyCode == 39) {rightbutton()}
-                //左キーの入力
-                if (keyCode == 37) {leftbutton()}
+                if(start == '1'){
+                    if (keyCode == 38) {topbutton()}
+                    //下キーの入力
+                    if (keyCode == 40) {bottombutton()}
+                    //右キーの入力
+                    if (keyCode == 39) {rightbutton()}
+                    //左キーの入力
+                    if (keyCode == 37) {leftbutton()}
 
-                if (keyCode == offkey) {
-                    offkey = 'none';
-                    setTimeout(
-                        function(){
-                            offkey = '32';
-                        },1100)
-                    win_open();
+                    if (keyCode == offkey) {
+                        offkey = 'none';
+                        setTimeout(
+                            function(){
+                                offkey = '32';
+                            },1100)
+                        win_open();
+                    }
                 }
             }
 
@@ -225,126 +208,132 @@
                     var patinko2left = parseInt($('#patinko2').css('left'));
                     var patinko3 = $('#patinko3').val();
                     var patinko3left = parseInt($('#patinko3').css('left'));
-                    if (x == patinko1 && $('#patinko1').css('display') == 'block' && patinko1left > 30 && bossdamage == 0){
-                        var damage = $('#enemy-meter').val();
-                        damage = damage - 20;
-                        $('#enemy-meter').val(damage).change();
-                        $('#patinko1').hide();
-                        document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
-                        bossdamage = 1;
-                        setTimeout(function(){
-                            document.enemy.src="{% static "game/character/4-6boss.png" %}";
-                            bossdamage = 0;
-                        } ,2000);
-                    }else if(x == patinko2 && $('#patinko2').css('display') == 'block' && patinko2left > 30 && bossdamage == 0){
-                        var damage = $('#enemy-meter').val();
-                        damage = damage - 20;
-                        $('#enemy-meter').val(damage).change();
-                        $('#patinko2').hide();
-                        document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
-                        bossdamage = 1;
-                        setTimeout(function(){
-                            document.enemy.src="{% static "game/character/4-6boss.png" %}";
-                            bossdamage = 0;
-                        } ,2000);
-                    }else if(x == patinko3 && $('#patinko3').css('display') == 'block' && patinko3left > 30 && bossdamage == 0){
-                        var damage = $('#enemy-meter').val();
-                        damage = damage - 20;
-                        $('#enemy-meter').val(damage).change();
-                        $('#patinko3').hide();
-                        document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
-                        bossdamage = 1;
-                        setTimeout(function(){
-                            document.enemy.src="{% static "game/character/4-6boss.png" %}";
-                            bossdamage = 0;
-                        } ,2000);
-                    }
+                    if(start == '1'){
+                        if (x == patinko1 && $('#patinko1').css('display') == 'block' && patinko1left > 30 && bossdamage == 0){
+                            var damage = $('#enemy-meter').val();
+                            damage = damage - 20;
+                            $('#enemy-meter').val(damage).change();
+                            $('#patinko1').hide();
+                            document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
+                            bossdamage = 1;
+                            setTimeout(function(){
+                                document.enemy.src="{% static "game/character/4-6boss.png" %}";
+                                bossdamage = 0;
+                            } ,2000);
+                        }else if(x == patinko2 && $('#patinko2').css('display') == 'block' && patinko2left > 30 && bossdamage == 0){
+                            var damage = $('#enemy-meter').val();
+                            damage = damage - 20;
+                            $('#enemy-meter').val(damage).change();
+                            $('#patinko2').hide();
+                            document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
+                            bossdamage = 1;
+                            setTimeout(function(){
+                                document.enemy.src="{% static "game/character/4-6boss.png" %}";
+                                bossdamage = 0;
+                            } ,2000);
+                        }else if(x == patinko3 && $('#patinko3').css('display') == 'block' && patinko3left > 30 && bossdamage == 0){
+                            var damage = $('#enemy-meter').val();
+                            damage = damage - 20;
+                            $('#enemy-meter').val(damage).change();
+                            $('#patinko3').hide();
+                            document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
+                            bossdamage = 1;
+                            setTimeout(function(){
+                                document.enemy.src="{% static "game/character/4-6boss.png" %}";
+                                bossdamage = 0;
+                            } ,2000);
+                        }}
                 });
                 $('#patinko1').change(function(){
                     var patinko1 = $(this).val();
                     var patinko1left = parseInt($(this).css('left'));
                     var x = $('#enemy').val();
-                    if(x == patinko1 && $('#patinko1').css('display') == 'block' && patinko1left > 30 && patinko1left < 70 && bossdamage == 0){
-                        var damage = $('#enemy-meter').val();
-                        damage = damage - 20;
-                        $('#enemy-meter').val(damage).change();
-                        $('#patinko1').hide();
-                        document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
-                        bossdamage = 1;
-                        setTimeout(function(){
-                            document.enemy.src="{% static "game/character/4-6boss.png" %}";
-                            bossdamage = 0;
-                        } ,2000);
-                    }
+                    if(start == '1'){
+                        if(x == patinko1 && $('#patinko1').css('display') == 'block' && patinko1left > 30 && patinko1left < 70 && bossdamage == 0){
+                            var damage = $('#enemy-meter').val();
+                            damage = damage - 20;
+                            $('#enemy-meter').val(damage).change();
+                            $('#patinko1').hide();
+                            document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
+                            bossdamage = 1;
+                            setTimeout(function(){
+                                document.enemy.src="{% static "game/character/4-6boss.png" %}";
+                                bossdamage = 0;
+                            } ,2000);
+                        }}
                 });
                 $('#patinko2').change(function(){
                     var patinko2 = $(this).val();
                     var patinko2left = parseInt($(this).css('left'));
                     var x = $('#enemy').val();
-                    if(x == patinko2 && $('#patinko2').css('display') == 'block' && patinko2left > 30 && patinko2left < 70 && bossdamage == 0){
-                        var damage = $('#enemy-meter').val();
-                        damage = damage - 20;
-                        $('#enemy-meter').val(damage).change();
-                        $('#patinko2').hide();
-                        document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
-                        bossdamage = 1;
-                        setTimeout(function(){
-                            document.enemy.src="{% static "game/character/4-6boss.png" %}";
-                            bossdamage = 0;
-                        } ,2000);
-                    }
+                    if(start == '1'){
+                        if(x == patinko2 && $('#patinko2').css('display') == 'block' && patinko2left > 30 && patinko2left < 70 && bossdamage == 0){
+                            var damage = $('#enemy-meter').val();
+                            damage = damage - 20;
+                            $('#enemy-meter').val(damage).change();
+                            $('#patinko2').hide();
+                            document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
+                            bossdamage = 1;
+                            setTimeout(function(){
+                                document.enemy.src="{% static "game/character/4-6boss.png" %}";
+                                bossdamage = 0;
+                            } ,2000);
+                        }}
                 });
                 $('#patinko3').change(function(){
                     var patinko3 = $(this).val();
                     var patinko3left = parseInt($(this).css('left'));
                     var x = $('#enemy').val();
-                    if(x == patinko3 && $('#patinko3').css('display') == 'block' && patinko3left > 30 && patinko3left < 70 && bossdamage == 0 ){
-                        var damage = $('#enemy-meter').val();
-                        damage = damage - 20;
-                        $('#enemy-meter').val(damage).change();
-                        $('#patinko3').hide();
-                        document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
-                        bossdamage = 1;
-                        setTimeout(function(){
-                            document.enemy.src="{% static "game/character/4-6boss.png" %}";
-                            bossdamage = 0;
-                        } ,2000);
-                    }
+                    if(start == '1'){
+                        if(x == patinko3 && $('#patinko3').css('display') == 'block' && patinko3left > 30 && patinko3left < 70 && bossdamage == 0 ){
+                            var damage = $('#enemy-meter').val();
+                            damage = damage - 20;
+                            $('#enemy-meter').val(damage).change();
+                            $('#patinko3').hide();
+                            document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
+                            bossdamage = 1;
+                            setTimeout(function(){
+                                document.enemy.src="{% static "game/character/4-6boss.png" %}";
+                                bossdamage = 0;
+                            } ,2000);
+                        }}
                 });
                 //heroへのダメージ計算
                 $('#maru').change(function(){
                     var x = $(this).val();
                     var xleft = parseInt($('#enemyattack').css('left'));
                     var enemyattack = $('#enemyattack').val();
-                    if (x == enemyattack && $('#enemyattack').css('display') == 'block' && xleft <= 30 && herodamage == 0){
-                        var damage = $('#hero-meter').val();
-                        damage = damage - 80;
-                        $('#hero-meter').val(damage).change();
-                        $('#enemyattack').hide();
-                        document.maru.src="{% static "game/character/4-6herodamage.gif" %}";
-                        herodamage = 1;
-                        setTimeout(function(){
-                            document.maru.src="{% static "game/character/4-6hero.png" %}";
-                            herodamage = 0;
-                        } ,2000);
-                    }
+                    if(start == '1'){
+                        if (x == enemyattack && $('#enemyattack').css('display') == 'block' && xleft <= 30 && herodamage == 0){
+                            var damage = $('#hero-meter').val();
+                            damage = damage - 80;
+                            $('#hero-meter').val(damage).change();
+                            $('#enemyattack').hide();
+                            document.maru.src="{% static "game/character/4-6herodamage.gif" %}";
+                            herodamage = 1;
+                            setTimeout(function(){
+                                document.maru.src="{% static "game/character/4-6hero.png" %}";
+                                herodamage = 0;
+                            } ,2000);
+                        }}
                 });
                 $('#enemyattack').change(function(){
                     var enemyattack = $(this).val();
                     var enemyattackleft = parseInt($(this).css('left'));
                     var x = $('#maru').val();
-                    if(x == enemyattack && $('#enemyattack').css('display') == 'block' && enemyattackleft > 30 && enemyattackleft < 70 && herodamage == 0){
-                        var damage = $('#hero-meter').val();
-                        damage = damage - 80;
-                        $('#hero-meter').val(damage).change();
-                        $('#enemyattack').hide();
-                        document.maru.src="{% static "game/character/4-6herodamage.gif" %}";
-                        herodamage = 1;
-                        setTimeout(function(){
-                            document.maru.src="{% static "game/character/4-6hero.png" %}";
-                            herodamage = 0;
-                        } ,2000);
-                    }
+                    if(start == '1'){
+                        if(x == enemyattack && $('#enemyattack').css('display') == 'block' && enemyattackleft > 30 && enemyattackleft < 70 && herodamage == 0){
+                            var damage = $('#hero-meter').val();
+                            damage = damage - 80;
+                            $('#hero-meter').val(damage).change();
+                            $('#enemyattack').hide();
+                            document.maru.src="{% static "game/character/4-6herodamage.gif" %}";
+                            herodamage = 1;
+                            setTimeout(function(){
+                                document.maru.src="{% static "game/character/4-6hero.png" %}";
+                                herodamage = 0;
+                            } ,2000);
+                        }}
                 });
             });
 
@@ -383,79 +372,82 @@
                 enemymove = setInterval(function(){//enemyのランダムな攻撃
                     var randomattack =  Math.floor( Math.random() * 0 );
                     var random =  Math.floor( Math.random() * 2 );
-                    if(randomattack == '0' && $('#enemyattack').css('display')=='none' && attackout == 0 && bossdamage == 0){
-                        attackout = 1;
-                        document.enemy.src="{% static "game/character/top.gif" %}";
-                        enemyattack();
-                        enemyvalue();
-                        clearInterval(enemymove);
-                        setTimeout(startTimer(),2000);
-                        setTimeout(function(){
-                            attackout = 0;
-                            document.enemy.src="{% static "game/character/4-6boss.png" %}";
-                        } ,2000);
-                    }else if(random == '0'){//enemy縦の移動
-                        var y = $('#enemy').css('grid-row');
-                        y = parseInt(y);
-                        if(y=='1'){
-                            var y = $('#enemy').css('grid-row');
-                            y = (parseInt(y)+1).toString();
-                            $('#enemy').css('grid-row', y);
+                    if(start == '1'){
+                        if( randomattack == '0' && $('#enemyattack').css('display')=='none' && attackout == 0 && bossdamage == 0){
+                            attackout = 1;
+                            document.enemy.src="{% static "game/character/top.gif" %}";
+                            enemyattack();
                             enemyvalue();
-                        }else if(y=='3'){
+                            clearInterval(enemymove);
+                            setTimeout(startTimer(),2000);
+                            setTimeout(function(){
+                                attackout = 0;
+                                document.enemy.src="{% static "game/character/4-6boss.png" %}";
+                            } ,2000);
+                        }else if(random == '0'){//enemy縦の移動
                             var y = $('#enemy').css('grid-row');
-                            y = (parseInt(y)-1).toString();
-                            $('#enemy').css('grid-row', y);
-                            enemyvalue();
-                        }else{
-                            random =  Math.floor( Math.random() * 2 );
-                            if(random == '0'){
+                            y = parseInt(y);
+                            if(y=='1'){
+                                var y = $('#enemy').css('grid-row');
+                                y = (parseInt(y)+1).toString();
+                                $('#enemy').css('grid-row', y);
+                                enemyvalue();
+                            }else if(y=='3'){
                                 var y = $('#enemy').css('grid-row');
                                 y = (parseInt(y)-1).toString();
                                 $('#enemy').css('grid-row', y);
                                 enemyvalue();
                             }else{
-                                var y = $('#enemy').css('grid-row');
-                                y = (parseInt(y)+1).toString();
-                                $('#enemy').css('grid-row', y);
-                                enemyvalue();
+                                random =  Math.floor( Math.random() * 2 );
+                                if(random == '0'){
+                                    var y = $('#enemy').css('grid-row');
+                                    y = (parseInt(y)-1).toString();
+                                    $('#enemy').css('grid-row', y);
+                                    enemyvalue();
+                                }else{
+                                    var y = $('#enemy').css('grid-row');
+                                    y = (parseInt(y)+1).toString();
+                                    $('#enemy').css('grid-row', y);
+                                    enemyvalue();
+                                }
                             }
-                        }
-                    }else{//enemy横の移動
-                        var x = $('#enemy').css('grid-column');
-                        x = parseInt(x);
-                        if( x == '4'){
+                        }else{//enemy横の移動
                             var x = $('#enemy').css('grid-column');
-                            x = (parseInt(x)+1).toString();
-                            $('#enemy').css('grid-column', x);
-                            enemyvalue();
-                        }else if(x == '6'){
-                            var x = $('#enemy').css('grid-column');
-                            x = (parseInt(x)-1).toString();
-                            $('#enemy').css('grid-column', x);
-                            enemyvalue();
-                        }else{
-                            random =  Math.floor( Math.random() * 2 );
-                            if(random == '0'){
+                            x = parseInt(x);
+                            if( x == '4'){
                                 var x = $('#enemy').css('grid-column');
                                 x = (parseInt(x)+1).toString();
                                 $('#enemy').css('grid-column', x);
                                 enemyvalue();
-                            }else{
+                            }else if(x == '6'){
                                 var x = $('#enemy').css('grid-column');
                                 x = (parseInt(x)-1).toString();
                                 $('#enemy').css('grid-column', x);
                                 enemyvalue();
+                            }else{
+                                random =  Math.floor( Math.random() * 2 );
+                                if(random == '0'){
+                                    var x = $('#enemy').css('grid-column');
+                                    x = (parseInt(x)+1).toString();
+                                    $('#enemy').css('grid-column', x);
+                                    enemyvalue();
+                                }else{
+                                    var x = $('#enemy').css('grid-column');
+                                    x = (parseInt(x)-1).toString();
+                                    $('#enemy').css('grid-column', x);
+                                    enemyvalue();
+                                }
                             }
                         }
                     }
                 },2000);
             });
+
             //enemyの攻撃
             function enemyattack(){
                 document.enemy.src="{% static "game/character/4-6bossatk.png" %}";
                 setTimeout(function(){
-                document.enemy.src="{% static "game/character/4-6boss.png" %}";
+                    document.enemy.src="{% static "game/character/4-6boss.png" %}";
                 },1000)
                 var x = $('#enemy').css('grid-column');
                 var y = $('#enemy').css('grid-row');
@@ -587,13 +579,13 @@
             function win_open(){
                 document.maru.src="{% static "game/character/4-6heroatk.png" %}";
                 setTimeout(function(){
-                document.maru.src="{% static "game/character/4-6hero.png" %}";
+                    document.maru.src="{% static "game/character/4-6hero.png" %}";
                 },1000)
                 //ボタンのOFFとONの切り替え
                 if($('#patinko1').css('display')=='none' && number == 0){
                     number ++
                     $('#action').attr("disabled",true);
-                    setTimeout( function(){
+                    bullet=setTimeout( function(){
                         $('#action').attr("disabled",false);
                     },1100);
                     //パチンコの発射
@@ -601,30 +593,40 @@
                 }else if($('#patinko2').css('display')=='none' && number == 1){
                     number ++
                     $('#action').attr("disabled",true);
-                    setTimeout( function(){
+                    bullet=setTimeout( function(){
                         $('#action').attr("disabled",false);
                     },1100);
                     attack2();
                 }else if($('#patinko3').css('display')=='none' && number == 2){
                     number = 0;
                     $('#action').attr("disabled",true);
-                    setTimeout( function(){
+                    bullet=setTimeout( function(){
                         $('#action').attr("disabled",false);
                     },1100);
                     attack3();
                 }
-            }
-            //入力ボタンのHTML表示とサイズ指定
-            function input(){
-                window.open("http://localhost:8080/stage4-1/input4-1","","width=200,height=200");
             }
             //enemyとheroのhpがゼロになったとき
             $(function(){
                 $('#enemy-meter').change(function(){
                     var enevalue = $(this).val();
                     if(enevalue <= 0){
-                        $('#pageclear').show();
-                        $("#pageplaying").hide();
+                        //$('#pageclear').show();
+                        //$('#pageclear>a').show();
+                        $('#q1').show();
+                        $('#q1>a').show();
+                        start = '0';
+                        $("#top").prop('disabled',true);
+                        $("#bottom").prop('disabled',true);
+                        $("#right").prop('disabled',true);
+                        $("#left").prop('disabled',true);
+                        if(bullet !== null){
+                            clearTimeout(bullet);
+                            bullet = null;
+                        }
+                        $("#action2").prop('disabled',true);
+                        $("#back").css('opacity','0.5');
+                        $("#back").css('background-color','gray');
                         return false;
                     }
                 });
@@ -632,81 +634,196 @@
                     var enevalue = $(this).val();
                     if(enevalue <= 0){
                         $('#pagerestart').show();
-                        $("#pageplaying").hide();
+                        $('#pagerestart>a').show();
+                        start = '0';
+                        $("#top").prop('disabled',true);
+                        $("#bottom").prop('disabled',true);
+                        $("#right").prop('disabled',true);
+                        $("#left").prop('disabled',true);
+                        $("#action").prop('disabled',true);
+                        $("#action2").prop('disabled',true);
+                        $("#back").css('opacity','0.5');
+                        $("#back").css('background-color','gray');
                         return false;
                     }
                 });
             });
+            $(function(){
+                $("#q1").find("#answer").on('click',function(){
+                    $('#q1').hide();
+                    $('#q2').show();
+                });
+                $("#q1").find("#notanswer").on('click',function(){
+                    $('#q1').hide();
+                    $('#q2').hide();
+                    $("#back").css('opacity','1');
+                    $("#back").css('background-color','#fff');
+                    $("#pageplaying").show();
+                    $('#maru').val('2 2').change();
+                    var damage=0;
+                    setInterval(function(){
+                        damage = damage + 20;
+                        if(damage <= 100){
+                            $('#enemy-meter').val(damage).change();
+                        }
+                    },500);
+                    setTimeout(function(){
+                        $('#pageclear').hide();
+                        start = '1';
+                        $("#top").prop('disabled',false);
+                        $("#bottom").prop('disabled',false);
+                        $("#right").prop('disabled',false);
+                        $("#left").prop('disabled',false);
+                        $("#action").prop('disabled',false);
+                        $("#action2").prop('disabled',false);
+                        return false;
+                    },2500);
+                });
+                $("#q2").find("#answer").on('click',function(){
+                    $('#q2').hide();
+                    $('#pageclear').show();
+                    $('#pageclear a').show();
+                    $("#top").prop('disabled',false);
+                    $("#bottom").prop('disabled',false);
+                    $("#right").prop('disabled',false);
+                    $("#left").prop('disabled',false);
 
+                });
+                $("#q2").find("#notanswer").on('click',function(){
+                    $('#q1').hide();
+                    $('#q2').hide();
+                    $("#back").css('opacity','1');
+                    $("#back").css('background-color','#fff');
+                    $("#pageplaying").show();
+                    $('#maru').val('2 2').change();
+                    var damage=0;
+                    setInterval(function(){
+                        damage = damage + 20;
+                        if(damage <= 100){
+                            $('#enemy-meter').val(damage).change();
+                        }
+                    },500);
+                    setTimeout(function(){
+                        $('#pageclear').hide();
+                        start = '1';
+                        $("#top").prop('disabled',false);
+                        $("#bottom").prop('disabled',false);
+                        $("#right").prop('disabled',false);
+                        $("#left").prop('disabled',false);
+                        $("#action").prop('disabled',false);
+                        $("#action2").prop('disabled',false);
+                        return false;
+                    },2500);
+                });
+            });
         </script>
     </head>
     <body>
         <div id='pagestart'>
-            <a><input type='button' value='start' ></a>
-        </div>
-        <div  id='pageplaying'>
-            <div id='hpbar'>
-                <div id='hp1'><p>コウタ</p><meter id='hero-meter' max='200' low='40' high='140' optimum='200' value='200'></div>
-                <div id='hp2'><p>BOSS</p><meter id='enemy-meter' max='200' low='40' high='140' optimum='200' value='200'></div>
-                <div id='vs'><p>VS</p></div>
-            </div>
-            <div id='wall'>
-                <div id='wall1'></div>
-            </div>
-            <div class="canvas">
-                <div id="maru">
-                    <img src="{% static "game/character/4-6hero.png" %}" name="maru">
+            <a>
+                <button id='start' style="width:100px;height:50px">
+                    <font size='4'>スタート</font>
+                </button>
+            </a>
+            <div id='back'>
+                <div  id='pageplaying'>
+                    <div id='hpbar'>
+                        <div id='hp1'><p>リト</p><meter id='hero-meter' max='200' low='40' high='140' optimum='200' value='200'></div>
+                        <div id='hp2'><p>BOSS</p><meter id='enemy-meter' max='200' low='40' high='140' optimum='200' value='200'></div>
+                        <div id='vs'><p>VS</p></div>
+                    </div>
+                    <div id='wall'>
+                        <div id='wall1'></div>
+                    </div>
+                    <div class="canvas">
+                        <div id="maru">
+                            <img src="{% static "game/character/4-6hero.png" %}" name="maru">
+                        </div>
+                        <div id="patinko1" value='1 1'>
+                            <img src="{% static "game/heroattack.png" %}" disabled>
+                        </div>
+                        <div id="patinko2" value='1 1'>
+                            <img src="{% static "game/heroattack.png" %}" disabled>
+                        </div>
+                        <div id="patinko3" value='1 1'>
+                            <img src="{% static "game/heroattack.png" %}" disabled>
+                        </div>
+                        <div id="enemy" value="2 5">
+                            <img src="{% static "game/character/4-6boss.png" %}" name='enemy'>
+                        </div>
+                        <div id="enemyattack" value="1 6">
+                            <img src="{% static "game/bossattack.png" %}"disabled>
+                        </div>
+                        <div id="canvas1"></div>
+                        <div id="canvas2"></div>
+                        <div id="canvas3"></div>
+                        <div id="canvas4"></div>
+                        <div id="canvas5"></div>
+                        <div id="canvas6"></div>
+                        <div id="canvas7"></div>
+                        <div id="canvas8"></div>
+                        <div id="canvas9"></div>
+                        <div id="canvas10"></div>
+                        <div id="canvas11"></div>
+                        <div id="canvas12"></div>
+                        <div id="canvas13"></div>
+                        <div id="canvas14"></div>
+                        <div id="canvas15"></div>
+                        <div id="canvas16"></div>
+                        <div id="canvas17"></div>
+                        <div id="canvas18"></div>
+                    </div>
+                    <div id='button' class="cross-layout">
+                        <button id="top"onclick="top" disabled>￪</button>
+                        <button id="left" disabled>￩</button>
+                        <button id="bottom" disabled>￬</button>
+                        <button id="right" disabled>￫</button>
+                        <input type="text" id="input1" autocomplete="off" value="2 2">
+                        <input type="submit" id="action" value="パチンコ" onclick="win_open()"disabled>
+                        <input type="submit" id="action2" value="魔法" onclick="input()"disabled>
+                    </div>
                 </div>
-                <div id="patinko1" value='1 1'>
-                    <img src="{% static "game/heroattack.png" %}" disabled>
-                </div>
-                <div id="patinko2" value='1 1'>
-                    <img src="{% static "game/heroattack.png" %}" disabled>
-                </div>
-                <div id="patinko3" value='1 1'>
-                    <img src="{% static "game/heroattack.png" %}" disabled>
-                </div>
-                <div id="enemy" value="2 5">
-                    <img src="{% static "game/character/4-6boss.png" %}" name='enemy'>
-                </div>
-                <div id="enemyattack" value="1 6">
-                    <img src="{% static "game/bossattack.png" %}"disabled>
-                </div>
-                <div id="canvas1"></div>
-                <div id="canvas2"></div>
-                <div id="canvas3"></div>
-                <div id="canvas4"></div>
-                <div id="canvas5"></div>
-                <div id="canvas6"></div>
-                <div id="canvas7"></div>
-                <div id="canvas8"></div>
-                <div id="canvas9"></div>
-                <div id="canvas10"></div>
-                <div id="canvas11"></div>
-                <div id="canvas12"></div>
-                <div id="canvas13"></div>
-                <div id="canvas14"></div>
-                <div id="canvas15"></div>
-                <div id="canvas16"></div>
-                <div id="canvas17"></div>
-                <div id="canvas18"></div>
-            </div>
-            <div id='button' class="cross-layout">
-                <button id="top"onclick="top" >￪</button>
-                <button id="left" >￩</button>
-                <button id="bottom" >￬</button>
-                <button id="right" >￫</button>
-                <input type="text" id="input1" autocomplete="off" value="2 2">
-                <input type="submit" id="action" value="パチンコ" onclick="win_open()">
-                <input type="submit" id="action2" value="魔法" onclick="input()">
             </div>
         </div>
         <div id='pageclear'>
-            <p>倒した</p>
+            <p>クリア</p>
+            <a href="http://localhost:8080/stage4-6/nextstory4-6" target="story4-6">
+                <button style="width:100px;height:50px" onclick="mapclick2(16);">
+                    <font size='4'>next</font>
+                </button>
+                </a>
         </div>
         <div id='pagerestart'>
             <p>ゲームオーバー</p>
-            <a><input type='button' value='リスタート' ></a>
+            <a onclick='location.reload()'>
+                <button style="width:100px;height:50px">
+                    <font size='4'>next</font>
+                </button>
+                </a>
+        </div>
+        <div id='q1'>
+            <p>問題１</p>
+            <a>
+                <button id='answer' style="width:100px;height:50px">
+                    <font size='4'>○</font>
+                </button>
+                <button id='notanswer' style="width:100px;height:50px">
+                    <font size='4'>✕</font>
+                </button>
+            </a>
+        </div>
+        <div id='q2'>
+            <p>問題２</p>
+            <a>
+                <button id='answer' style="width:100px;height:50px">
+                    <font size='4'>○</font>
+                </button>
+            </a>
+            <a>
+                <button id='notanswer' style="width:100px;height:50px">
+                    <font size='4'>✕</font>
+                </button>
+            </a>
         </div>
     </body>
 </html>

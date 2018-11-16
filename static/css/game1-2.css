@@ -1,41 +1,137 @@
+body{
+	margin:0px;
+	padding:0px;
+}
+#back{
+	background-color:gray;
+	opacity:0.5;
+	height:100vh;
+	z-index:0;
+}
+#start{
+	position:absolute;
+	top:60%;
+	left:50%;
+	z-index:1;
+}
+#clear{
+	position:absolute;
+	top:60%;
+	left:50%;
+	z-index:1;
+	display:none;
+}
+#a{
+	width:15vh;
+	height:auto;
+	display:none;
+}
+#b{
+	width:15vh;
+	height:auto;
+	display:none;
+}
+#c{
+	width:15vh;
+	height:auto;
+	display:none;
+}
+#damy-a{
+	position:absolute;
+	top:20%;
+	left:20%;
+	width:15vh;
+	height:auto;
+	padding:1%;
+}
+#damy-b{
+	position:absolute;
+	top:20%;
+	left:40%;
+	width:15vh;
+	height:auto;
+	padding:1%;
+}
+#damy-c{
+	position:absolute;
+	top:20%;
+	left:60%;
+	width:15vh;
+	height:auto;
+	padding:1%;
+}
+.box{
+	height:100vh;
+	background-repeat:no-repeat;
+	background-position:center center;
+	background-image: url("../game/stage1back.jpg");
+	background-size:cover;
+	postion: relative;
+	justify-content: center; /*左右中央揃え*/
+	align-items: center;     /*上下中央揃え*/
+}
 .column{
 	cursor:move;
 }
-.dragwrapper{
+.dragwrapper1{
+	position:absolute;
+	top:20%;
+	left:20%;
+	width:15vh;
+	height:auto;
+	padding:1%;
+}
+.dragwrapper2{
+	position:absolute;
+	top:20%;
+	left:40%;
+	width:15vh;
+	height:auto;
+	padding:1%;
+}
+.dragwrapper3{
+	position:absolute;
+	top:20%;
+	left:60%;
+	width:15vh;
+	height:auto;
+	padding:1%;
+}
+#drop{
 	width:100px;
 	height:100px;
 	padding:5px;
 	margin:5px;
+}
+#drop1{
+	position:absolute;
+	top:50%;
+	left:20%;
 	background-color:gray;
-}
-.dragimg{
 	width:100px;
 	height:100px;
-}
-.drop{
-	width:100px;
-	height:100px;
-	background-color:blue;
 	padding:5px;
 	margin:5px;
 }
-
-.drop2{
+#drop2{
+	position:absolute;
+	top:50%;
+	left:40%;
+	background-color:gray;
 	width:100px;
 	height:100px;
-	background-color:yellow;
 	padding:5px;
 	margin:5px;
 }
-.drop3{
+#drop3{
+	position:absolute;
+	top:50%;
+	left:60%;
+	background-color:gray;
 	width:100px;
 	height:100px;
-	background-color:red;
 	padding:5px;
 	margin:5px;
-}
-.item{
-	float:left;
 }
 .itemContainer{
 	overflow:hidden;

@@ -5,6 +5,7 @@
     <head>
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static "css/game4-5.css" %}">
+				<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
         <meta charset="utf-8">
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
         <script type='text/javascript'>
@@ -88,9 +89,6 @@
                 if ((input1 == '12 10'||input1 == '12 11'||input1 == '12 12')&&actionvalue=='5'){
                     $("#action").prop("disabled", false);
                     $("#action").val("すすむ");
-                    $('#action').wrap('<a class="actionelement" />');
-                    $(".actionelement").attr({href:'http://localhost:8080/stage4-5/nextstory4-5',
-                        target:'story4-5'});
                 }else if((input1 == '12 10'||input1 == '12 11'||input1 == '12 12')&&actionvalue =='1'){
                     $("#action").prop("disabled", false);
                     document.maru.src="{% static "game/character/bottom.gif" %}";
@@ -199,14 +197,17 @@
             var actionvalue2 = 0;
             // ページ読み込み時に実行
             window.onload = function () {
-                $("#pagestart").show();
-                $("#pageplaying").hide();
+                $("#pageclear").hide();
                 $("#pagestart a").on('click',function(){
-
-                    $("#pagestart").hide();
+                    start = '1';
+                    $("#top").prop('disabled',false);
+                    $("#bottom").prop('disabled',false);
+                    $("#right").prop('disabled',false);
+                    $("#left").prop('disabled',false);
+                    $("#pagestart a").hide();
+                    $("#back").css('opacity','1');
+                    $("#back").css('background-color','#fff');
                     $("#pageplaying").show();
-
-
                     return false;
                 });
                 // 矢印ボタンのを各、値に代入
@@ -218,100 +219,73 @@
                 obj = document.getElementById('input1');
                 enemy = setInterval( "enemyfast()",500);
                 keyvalue = 0;
+                var $intervalID;
                 $top.onmousedown = function ( $event ) {
-
                     //上ボタンのクリック
                     if( $event.button == 0 ){
                         keyvalue = 0;
+                        clearInterval( $intervalID );
                         $intervalID = setInterval(
                             function top2(idname){
                                 keyvalue ++
                                 topbutton()
-                            },
-                            108//1秒間に108/120回繰り返す
-                        );
-                    }
-                }
+                            },108//1秒間に108/120回繰り返す
+                        );}}
                 // マウスアップイベント（ボタンを放した時のイベント）にイベントハンドラをバインド
                 $top.onmouseup = function ( $event ) {
                     if( $event.button == 0 && keyvalue == 0){
                         // 繰り返しタイマーを中止
                         clearInterval( $intervalID );
                         topbutton()
-                    }else{
-                        clearInterval( $intervalID );
-                    }
-                }
+                    }else{clearInterval( $intervalID );}}
                 //下ボタンのクリック
                 $bottom.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
                         keyvalue = 0;
+                        clearInterval( $intervalID );
                         $intervalID = setInterval(
                             function bottom(idname){
                                 keyvalue ++
                                 bottombutton()
-                            },
-                            108
-                        );
-                    }
-                }
+                            },108);}}
                 $bottom.onmouseup = function ( $event ) {
                     if( $event.button == 0 && keyvalue == 0){
                         // 繰り返しタイマーを中止
                         clearInterval( $intervalID );
                         bottombutton()
-                    }else{
-                        clearInterval( $intervalID );
-                    }
-                }
-
+                    }else{clearInterval( $intervalID );}}
                 //右ボタンのクリック
                 $right.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
                         keyvalue = 0;
+                        clearInterval( $intervalID );
                         $intervalID = setInterval(
                             function right(){
                                 keyvalue ++
                                 rightbutton()
-                            },
-                            108
-                        );
-                    }
-                }
+                            },108);}}
                 $right.onmouseup = function ( $event ) {
                     if( $event.button == 0 && keyvalue == 0){
                         // 繰り返しタイマーを中止
                         clearInterval( $intervalID );
                         rightbutton()
-                    }else{
-                        clearInterval( $intervalID );
-                    }
-                }
-
+                    }else{clearInterval( $intervalID );}}
                 //左ボタンのクリック
                 $left.onmousedown = function ( $event ) {
                     if( $event.button == 0 ){
                         keyvalue = 0;
+                        clearInterval( $intervalID );
                         $intervalID = setInterval(
                             function left(){
                                 keyvalue ++
                                 leftbutton()
-                            },
-                            108
-                        );
-                    }
-                }
+                            },108);}}
                 $left.onmouseup = function ( $event ) {
                     if( $event.button == 0 && keyvalue == 0){
                         // 繰り返しタイマーを中止
                         clearInterval( $intervalID );
                         leftbutton()
-                    }else{
-                        clearInterval( $intervalID );
-                    }
-                }
-            }
-            // キーコード(どのキーが押されたか)を取得
+                    }else{clearInterval( $intervalID );}}}            // キーコード(どのキーが押されたか)を取得
             window.addEventListener("keydown", handleKeydown);
             function handleKeydown(event){
                 var keyCode = event.keyCode;
@@ -321,14 +295,16 @@
                     });
                 if(go.length=='0' ){
                     // 条件文で制御する
-                    //上キーの入力
-                    if (keyCode == 38){topbutton();}
-                    //下キーの入力
-                    if (keyCode == 40) {bottombutton()}
-                    //右キーの入力
-                    if (keyCode == 39) {rightbutton()}
-                    //左キーの入力
-                    if (keyCode == 37) {leftbutton()}
+                    if(start == '1'){
+                        //上キーの入力
+                        if (keyCode == 38){topbutton();}
+                        //下キーの入力
+                        if (keyCode == 40) {bottombutton()}
+                        //右キーの入力
+                        if (keyCode == 39) {rightbutton()}
+                        //左キーの入力
+                        if (keyCode == 37) {leftbutton()}
+                    }
                 }
             }
 
@@ -418,7 +394,16 @@
                     $("#action").prop("disabled", true);
                 }else if (actionvalue == 5){
                     actionvalue = (actionvalue + 1);
-                    $("#action").prop("disabled", true);
+                    $('#back').css({'opacity':'0.5','background-color':'gray'});
+                    start = '0';
+                    $("#top").prop('disabled',true);
+                    $("#bottom").prop('disabled',true);
+                    $("#right").prop('disabled',true);
+                    $("#left").prop('disabled',true);
+                    $("#action").prop('disabled',true);
+                    $("#action2").prop('disabled',true);
+                    $('#pageclear').show();
+                    $('#pageclear>a').show();
                 }
             }
 
@@ -592,319 +577,333 @@
     </head>
     <body>
         <div id='pagestart'>
-            <a><input type='button' value='start' ></a>
-        </div>
-        <div  id='pageplaying'>
-            <div class="canvas">
-                <div id="maru">
-                    <img src="{% static "game/character/bottom.gif" %}" name="maru">
-                </div>
-                <div id="enemy">
-                    <img src="{% static "game/character/enemybottom.gif" %}" name="enemy">
-                </div>
-                <div id="canvas1"></div>
-                <div id="canvas2"></div>
-                <div id="canvas3"></div>
-                <div id="canvas4"></div>
-                <div id="canvas5"></div>
-                <div id="canvas6"></div>
-                <div id="canvas7"></div>
-                <div id="canvas8"></div>
-                <div id="canvas9"></div>
-                <div id="canvas10"></div>
-                <div id="canvas11"></div>
-                <div id="canvas12"></div>
-                <div id="canvas13"></div>
-                <div id="canvas14"></div>
-                <div id="canvas15"></div>
-                <div id="canvas16"></div>
-                <div id="canvas17"></div>
-                <div id="canvas18"></div>
-                <div id="canvas19"></div>
-                <div id="canvas20"></div>
-                <div id="canvas21"></div>
-                <div id="canvas22"></div>
-                <div id="canvas23"></div>
-                <div id="canvas24"></div>
-                <div id="canvas25"></div>
-                <div id="canvas26"></div>
-                <div id="canvas27"></div>
-                <div id="canvas28"></div>
-                <div id="canvas29"></div>
-                <div id="canvas30"></div>
-                <div id="canvas31"></div>
-                <div id="canvas32"></div>
-                <div id="canvas33"></div>
-                <div id="canvas34"></div>
-                <div id="canvas35"></div>
-                <div id="canvas36"></div>
-                <div id="canvas37"></div>
-                <div id="canvas38"></div>
-                <div id="canvas39"></div>
-                <div id="canvas40"></div>
-                <div id="canvas41"></div>
-                <div id="canvas42"></div>
-                <div id="canvas43"></div>
-                <div id="canvas44"></div>
-                <div id="canvas45"></div>
-                <div id="canvas46"></div>
-                <div id="canvas47"></div>
-                <div id="canvas48"></div>
-                <div id="canvas49"></div>
-                <div id="canvas50"></div>
-                <div id="canvas51"></div>
-                <div id="canvas52"></div>
-                <div id="canvas53"></div>
-                <div id="canvas54"></div>
-                <div id="canvas55"></div>
-                <div id="canvas56"></div>
-                <div id="canvas57"></div>
-                <div id="canvas58"></div>
-                <div id="canvas59"></div>
-                <div id="canvas60"></div>
-                <div id="canvas61"></div>
-                <div id="canvas62"></div>
-                <div id="canvas63"></div>
-                <div id="canvas64"></div>
-                <div id="canvas65"></div>
-                <div id="canvas66"></div>
-                <div id="canvas67"></div>
-                <div id="canvas68"></div>
-                <div id="canvas69"></div>
-                <div id="canvas70"></div>
-                <div id="canvas71"></div>
-                <div id="canvas72"></div>
-                <div id="canvas73"></div>
-                <div id="canvas74"></div>
-                <div id="canvas75"></div>
-                <div id="canvas76"></div>
-                <div id="canvas77"></div>
-                <div id="canvas78"></div>
-                <div id="canvas79"></div>
-                <div id="canvas80"></div>
-                <div id="canvas81"></div>
-                <div id="canvas82"></div>
-                <div id="canvas83"></div>
-                <div id="canvas84"></div>
-                <div id="canvas85"></div>
-                <div id="canvas86"></div>
-                <div id="canvas87"></div>
-                <div id="canvas88"></div>
-                <div id="canvas89"></div>
-                <div id="canvas90"></div>
-                <div id="canvas91"></div>
-                <div id="canvas92"></div>
-                <div id="canvas93"></div>
-                <div id="canvas94"></div>
-                <div id="canvas95"></div>
-                <div id="canvas96"></div>
-                <div id="canvas97"></div>
-                <div id="canvas98"></div>
-                <div id="canvas99"></div>
-                <div id="canvas100"></div>
-                <div id="canvas101"></div>
-                <div id="canvas102"></div>
-                <div id="canvas103"></div>
-                <div id="canvas104"></div>
-                <div id="canvas105"></div>
-                <div id="canvas106"></div>
-                <div id="canvas107"></div>
-                <div id="canvas108"></div>
-                <div id="canvas109"></div>
-                <div id="canvas110"></div>
-                <div id="canvas111"></div>
-                <div id="canvas112"></div>
-                <div id="canvas113"></div>
-                <div id="canvas114"></div>
-                <div id="canvas115"></div>
-                <div id="canvas116"></div>
-                <div id="canvas117"></div>
-                <div id="canvas118"></div>
-                <div id="canvas119"></div>
-                <div id="canvas120"></div>
-                <div id="canvas121"></div>
-                <div id="canvas122"></div>
-                <div id="canvas123"></div>
-                <div id="canvas124"></div>
-                <div id="canvas125"></div>
-                <div id="canvas126"></div>
-                <div id="canvas127"></div>
-                <div id="canvas128"></div>
-                <div id="canvas129"></div>
-                <div id="canvas130"></div>
-                <div id="canvas131"></div>
-                <div id="canvas132"></div>
-                <div id="canvas133"></div>
-                <div id="canvas134"></div>
-                <div id="canvas135"></div>
-                <div id="canvas136"></div>
-                <div id="canvas137"></div>
-                <div id="canvas138"></div>
-                <div id="canvas139"></div>
-                <div id="canvas140"></div>
-                <div id="canvas141"></div>
-                <div id="canvas142"></div>
-                <div id="canvas143"></div>
-                <div id="canvas144"></div>
-                <div id="canvas145"></div>
-                <div id="canvas146"></div>
-                <div id="canvas147"></div>
-                <div id="canvas148"></div>
-                <div id="canvas149"></div>
-                <div id="canvas150"></div>
-                <div id="canvas151"></div>
-                <div id="canvas152"></div>
-                <div id="canvas153"></div>
-                <div id="canvas154"></div>
-                <div id="canvas155"></div>
-                <div id="canvas156"></div>
-                <div id="canvas157"></div>
-                <div id="canvas158"></div>
-                <div id="canvas159"></div>
-                <div id="canvas160"></div>
-                <div id="canvas161"></div>
-                <div id="canvas162"></div>
-                <div id="canvas163"></div>
-                <div id="canvas164"></div>
-                <div id="canvas165"></div>
-                <div id="canvas166"></div>
-                <div id="canvas167"></div>
-                <div id="canvas168"></div>
-                <div id="canvas169"></div>
-                <div id="canvas170"></div>
-                <div id="canvas171"></div>
-                <div id="canvas172"></div>
-                <div id="canvas173"></div>
-                <div id="canvas174"></div>
-                <div id="canvas175"></div>
-                <div id="canvas176"></div>
-                <div id="canvas177"></div>
-                <div id="canvas178"></div>
-                <div id="canvas179"></div>
-                <div id="canvas180"></div>
-                <div id="canvas181"></div>
-                <div id="canvas182"></div>
-                <div id="canvas183"></div>
-                <div id="canvas184"></div>
-                <div id="canvas185"></div>
-                <div id="canvas186"></div>
-                <div id="canvas187"></div>
-                <div id="canvas188"></div>
-                <div id="canvas189"></div>
-                <div id="canvas190"></div>
-                <div id="canvas191"></div>
-                <div id="canvas192"></div>
-                <div id="canvas193"></div>
-                <div id="canvas194"></div>
-                <div id="canvas195"></div>
-                <div id="canvas196"></div>
-                <div id="canvas197"></div>
-                <div id="canvas198"></div>
-                <div id="canvas199"></div>
-                <div id="canvas200"></div>
-                <div id="canvas201"></div>
-                <div id="canvas202"></div>
-                <div id="canvas203"></div>
-                <div id="canvas204"></div>
-                <div id="canvas205"></div>
-                <div id="canvas206"></div>
-                <div id="canvas207"></div>
-                <div id="canvas208"></div>
-                <div id="canvas209"></div>
-                <div id="canvas210"></div>
-                <div id="canvas211"></div>
-                <div id="canvas212"></div>
-                <div id="canvas213"></div>
-                <div id="canvas214"></div>
-                <div id="canvas215"></div>
-                <div id="canvas216"></div>
-                <div id="canvas217"></div>
-                <div id="canvas218"></div>
-                <div id="canvas219"></div>
-                <div id="canvas220"></div>
-                <div id="canvas221"></div>
-                <div id="canvas222"></div>
-                <div id="canvas223"></div>
-                <div id="canvas224"></div>
-                <div id="canvas225"></div>
-                <div id="canvas226"></div>
-                <div id="canvas227"></div>
-                <div id="canvas228"></div>
-                <div id="canvas229"></div>
-                <div id="canvas230"></div>
-                <div id="canvas231"></div>
-                <div id="canvas232"></div>
-                <div id="canvas233"></div>
-                <div id="canvas234"></div>
-                <div id="canvas235"></div>
-                <div id="canvas236"></div>
-                <div id="canvas237"></div>
-                <div id="canvas238"></div>
-                <div id="canvas239"></div>
-                <div id="canvas240"></div>
-                <div id="canvas241"></div>
-                <div id="canvas242"></div>
-                <div id="canvas243"></div>
-                <div id="canvas244"></div>
-                <div id="canvas245"></div>
-                <div id="canvas246"></div>
-                <div id="canvas247"></div>
-                <div id="canvas248"></div>
-                <div id="canvas249"></div>
-                <div id="canvas250"></div>
-                <div id="canvas251"></div>
-                <div id="canvas252"></div>
-                <div id="canvas253"></div>
-                <div id="canvas254"></div>
-                <div id="canvas255"></div>
-                <div id="canvas256"></div>
-                <div id="canvas257"></div>
-                <div id="canvas258"></div>
-                <div id="canvas259"></div>
-                <div id="canvas260"></div>
-                <div id="canvas261"></div>
-                <div id="canvas262"></div>
-                <div id="canvas263"></div>
-                <div id="canvas264"></div>
-                <div id="canvas265"></div>
-                <div id="canvas266"></div>
-                <div id="canvas267"></div>
-                <div id="canvas268"></div>
-                <div id="canvas269"></div>
-                <div id="canvas270"></div>
-            </div>
-            <div class="textboard1">
-                <p class="text1-1" ><font color="red">がいこつ:</font>なんだ！お前侵入者だな！！</p>
-                <p class="text1-2" ><font color="blue">フェアリー:</font>見つかってしまった</p>
-                <p class="text1-3" ><font color="red">がいこつ:</font>この野郎！</p>
-            </div>
-            <div class="textboard2">
-                <p class="text2-1" ><font color="blue">フェアリー:</font>この扉は鍵で開くみたいね</p>
-                <p class="text2-2" ><font color="red">がいこつ:</font>おっと、見回りの時間だな</p>
-                <p class="text2-3" ><font color="blue">フェアリー:</font>がいこつがくるわ、左の部屋に隠れましょう</p>
-            </div>
-            <div class="textboard3">
-                <p class="text3-1" ><font color="blue">フェアリー:</font>扉がひらいたわ</p>
-                <p class="text3-2" ><font color="blue">フェアリー:</font>壺を壊しておびき寄せましょう</p>
-            </div>
-            <div class="textboard4">
-                <p class="text4-1" ><font color="red">がいこつ:</font>むっ？なんの音だ？？</p>
-                <p class="text4-2" ><font color="blue">フェアリー:</font>がいこつがくるわ、右上のロッカーに隠れましょう</p>
-            </div>
-            <div class="textboard5">
-                <p class="text5-1" ><font color="red">がいこつ:</font>むっ！？これはなんだ？？</p>
-                <p class="text5-2" ><font color="blue">フェアリー:</font>今のうちにさっきの扉から進みましょう</p>
-                <p class="text5-3" ><font color="blue">フェアリー:</font>がいこつのがこちらを向いていない時に出るのよ</p>
-            </div>
+            <a>
+                <button id='start' style="width:100px;height:50px">
+                    <font size='4'>スタート</font>
+                </button>
+            </a>
+            <div id='back'>
+                <div  id='pageplaying'>
+                    <div class="canvas">
+                        <div id="maru">
+                            <img src="{% static "game/character/bottom.gif" %}" name="maru">
+                        </div>
+                        <div id="enemy">
+                            <img src="{% static "game/character/enemybottom.gif" %}" name="enemy">
+                        </div>
+                        <div id="canvas1"></div>
+                        <div id="canvas2"></div>
+                        <div id="canvas3"></div>
+                        <div id="canvas4"></div>
+                        <div id="canvas5"></div>
+                        <div id="canvas6"></div>
+                        <div id="canvas7"></div>
+                        <div id="canvas8"></div>
+                        <div id="canvas9"></div>
+                        <div id="canvas10"></div>
+                        <div id="canvas11"></div>
+                        <div id="canvas12"></div>
+                        <div id="canvas13"></div>
+                        <div id="canvas14"></div>
+                        <div id="canvas15"></div>
+                        <div id="canvas16"></div>
+                        <div id="canvas17"></div>
+                        <div id="canvas18"></div>
+                        <div id="canvas19"></div>
+                        <div id="canvas20"></div>
+                        <div id="canvas21"></div>
+                        <div id="canvas22"></div>
+                        <div id="canvas23"></div>
+                        <div id="canvas24"></div>
+                        <div id="canvas25"></div>
+                        <div id="canvas26"></div>
+                        <div id="canvas27"></div>
+                        <div id="canvas28"></div>
+                        <div id="canvas29"></div>
+                        <div id="canvas30"></div>
+                        <div id="canvas31"></div>
+                        <div id="canvas32"></div>
+                        <div id="canvas33"></div>
+                        <div id="canvas34"></div>
+                        <div id="canvas35"></div>
+                        <div id="canvas36"></div>
+                        <div id="canvas37"></div>
+                        <div id="canvas38"></div>
+                        <div id="canvas39"></div>
+                        <div id="canvas40"></div>
+                        <div id="canvas41"></div>
+                        <div id="canvas42"></div>
+                        <div id="canvas43"></div>
+                        <div id="canvas44"></div>
+                        <div id="canvas45"></div>
+                        <div id="canvas46"></div>
+                        <div id="canvas47"></div>
+                        <div id="canvas48"></div>
+                        <div id="canvas49"></div>
+                        <div id="canvas50"></div>
+                        <div id="canvas51"></div>
+                        <div id="canvas52"></div>
+                        <div id="canvas53"></div>
+                        <div id="canvas54"></div>
+                        <div id="canvas55"></div>
+                        <div id="canvas56"></div>
+                        <div id="canvas57"></div>
+                        <div id="canvas58"></div>
+                        <div id="canvas59"></div>
+                        <div id="canvas60"></div>
+                        <div id="canvas61"></div>
+                        <div id="canvas62"></div>
+                        <div id="canvas63"></div>
+                        <div id="canvas64"></div>
+                        <div id="canvas65"></div>
+                        <div id="canvas66"></div>
+                        <div id="canvas67"></div>
+                        <div id="canvas68"></div>
+                        <div id="canvas69"></div>
+                        <div id="canvas70"></div>
+                        <div id="canvas71"></div>
+                        <div id="canvas72"></div>
+                        <div id="canvas73"></div>
+                        <div id="canvas74"></div>
+                        <div id="canvas75"></div>
+                        <div id="canvas76"></div>
+                        <div id="canvas77"></div>
+                        <div id="canvas78"></div>
+                        <div id="canvas79"></div>
+                        <div id="canvas80"></div>
+                        <div id="canvas81"></div>
+                        <div id="canvas82"></div>
+                        <div id="canvas83"></div>
+                        <div id="canvas84"></div>
+                        <div id="canvas85"></div>
+                        <div id="canvas86"></div>
+                        <div id="canvas87"></div>
+                        <div id="canvas88"></div>
+                        <div id="canvas89"></div>
+                        <div id="canvas90"></div>
+                        <div id="canvas91"></div>
+                        <div id="canvas92"></div>
+                        <div id="canvas93"></div>
+                        <div id="canvas94"></div>
+                        <div id="canvas95"></div>
+                        <div id="canvas96"></div>
+                        <div id="canvas97"></div>
+                        <div id="canvas98"></div>
+                        <div id="canvas99"></div>
+                        <div id="canvas100"></div>
+                        <div id="canvas101"></div>
+                        <div id="canvas102"></div>
+                        <div id="canvas103"></div>
+                        <div id="canvas104"></div>
+                        <div id="canvas105"></div>
+                        <div id="canvas106"></div>
+                        <div id="canvas107"></div>
+                        <div id="canvas108"></div>
+                        <div id="canvas109"></div>
+                        <div id="canvas110"></div>
+                        <div id="canvas111"></div>
+                        <div id="canvas112"></div>
+                        <div id="canvas113"></div>
+                        <div id="canvas114"></div>
+                        <div id="canvas115"></div>
+                        <div id="canvas116"></div>
+                        <div id="canvas117"></div>
+                        <div id="canvas118"></div>
+                        <div id="canvas119"></div>
+                        <div id="canvas120"></div>
+                        <div id="canvas121"></div>
+                        <div id="canvas122"></div>
+                        <div id="canvas123"></div>
+                        <div id="canvas124"></div>
+                        <div id="canvas125"></div>
+                        <div id="canvas126"></div>
+                        <div id="canvas127"></div>
+                        <div id="canvas128"></div>
+                        <div id="canvas129"></div>
+                        <div id="canvas130"></div>
+                        <div id="canvas131"></div>
+                        <div id="canvas132"></div>
+                        <div id="canvas133"></div>
+                        <div id="canvas134"></div>
+                        <div id="canvas135"></div>
+                        <div id="canvas136"></div>
+                        <div id="canvas137"></div>
+                        <div id="canvas138"></div>
+                        <div id="canvas139"></div>
+                        <div id="canvas140"></div>
+                        <div id="canvas141"></div>
+                        <div id="canvas142"></div>
+                        <div id="canvas143"></div>
+                        <div id="canvas144"></div>
+                        <div id="canvas145"></div>
+                        <div id="canvas146"></div>
+                        <div id="canvas147"></div>
+                        <div id="canvas148"></div>
+                        <div id="canvas149"></div>
+                        <div id="canvas150"></div>
+                        <div id="canvas151"></div>
+                        <div id="canvas152"></div>
+                        <div id="canvas153"></div>
+                        <div id="canvas154"></div>
+                        <div id="canvas155"></div>
+                        <div id="canvas156"></div>
+                        <div id="canvas157"></div>
+                        <div id="canvas158"></div>
+                        <div id="canvas159"></div>
+                        <div id="canvas160"></div>
+                        <div id="canvas161"></div>
+                        <div id="canvas162"></div>
+                        <div id="canvas163"></div>
+                        <div id="canvas164"></div>
+                        <div id="canvas165"></div>
+                        <div id="canvas166"></div>
+                        <div id="canvas167"></div>
+                        <div id="canvas168"></div>
+                        <div id="canvas169"></div>
+                        <div id="canvas170"></div>
+                        <div id="canvas171"></div>
+                        <div id="canvas172"></div>
+                        <div id="canvas173"></div>
+                        <div id="canvas174"></div>
+                        <div id="canvas175"></div>
+                        <div id="canvas176"></div>
+                        <div id="canvas177"></div>
+                        <div id="canvas178"></div>
+                        <div id="canvas179"></div>
+                        <div id="canvas180"></div>
+                        <div id="canvas181"></div>
+                        <div id="canvas182"></div>
+                        <div id="canvas183"></div>
+                        <div id="canvas184"></div>
+                        <div id="canvas185"></div>
+                        <div id="canvas186"></div>
+                        <div id="canvas187"></div>
+                        <div id="canvas188"></div>
+                        <div id="canvas189"></div>
+                        <div id="canvas190"></div>
+                        <div id="canvas191"></div>
+                        <div id="canvas192"></div>
+                        <div id="canvas193"></div>
+                        <div id="canvas194"></div>
+                        <div id="canvas195"></div>
+                        <div id="canvas196"></div>
+                        <div id="canvas197"></div>
+                        <div id="canvas198"></div>
+                        <div id="canvas199"></div>
+                        <div id="canvas200"></div>
+                        <div id="canvas201"></div>
+                        <div id="canvas202"></div>
+                        <div id="canvas203"></div>
+                        <div id="canvas204"></div>
+                        <div id="canvas205"></div>
+                        <div id="canvas206"></div>
+                        <div id="canvas207"></div>
+                        <div id="canvas208"></div>
+                        <div id="canvas209"></div>
+                        <div id="canvas210"></div>
+                        <div id="canvas211"></div>
+                        <div id="canvas212"></div>
+                        <div id="canvas213"></div>
+                        <div id="canvas214"></div>
+                        <div id="canvas215"></div>
+                        <div id="canvas216"></div>
+                        <div id="canvas217"></div>
+                        <div id="canvas218"></div>
+                        <div id="canvas219"></div>
+                        <div id="canvas220"></div>
+                        <div id="canvas221"></div>
+                        <div id="canvas222"></div>
+                        <div id="canvas223"></div>
+                        <div id="canvas224"></div>
+                        <div id="canvas225"></div>
+                        <div id="canvas226"></div>
+                        <div id="canvas227"></div>
+                        <div id="canvas228"></div>
+                        <div id="canvas229"></div>
+                        <div id="canvas230"></div>
+                        <div id="canvas231"></div>
+                        <div id="canvas232"></div>
+                        <div id="canvas233"></div>
+                        <div id="canvas234"></div>
+                        <div id="canvas235"></div>
+                        <div id="canvas236"></div>
+                        <div id="canvas237"></div>
+                        <div id="canvas238"></div>
+                        <div id="canvas239"></div>
+                        <div id="canvas240"></div>
+                        <div id="canvas241"></div>
+                        <div id="canvas242"></div>
+                        <div id="canvas243"></div>
+                        <div id="canvas244"></div>
+                        <div id="canvas245"></div>
+                        <div id="canvas246"></div>
+                        <div id="canvas247"></div>
+                        <div id="canvas248"></div>
+                        <div id="canvas249"></div>
+                        <div id="canvas250"></div>
+                        <div id="canvas251"></div>
+                        <div id="canvas252"></div>
+                        <div id="canvas253"></div>
+                        <div id="canvas254"></div>
+                        <div id="canvas255"></div>
+                        <div id="canvas256"></div>
+                        <div id="canvas257"></div>
+                        <div id="canvas258"></div>
+                        <div id="canvas259"></div>
+                        <div id="canvas260"></div>
+                        <div id="canvas261"></div>
+                        <div id="canvas262"></div>
+                        <div id="canvas263"></div>
+                        <div id="canvas264"></div>
+                        <div id="canvas265"></div>
+                        <div id="canvas266"></div>
+                        <div id="canvas267"></div>
+                        <div id="canvas268"></div>
+                        <div id="canvas269"></div>
+                        <div id="canvas270"></div>
+                    </div>
+                    <div class="textboard1">
+                        <p class="text1-1" ><font color="red">がいこつ:</font>なんだ！お前侵入者だな！！</p>
+                        <p class="text1-2" ><font color="blue">フェアリー:</font>見つかってしまった</p>
+                        <p class="text1-3" ><font color="red">がいこつ:</font>この野郎！</p>
+                    </div>
+                    <div class="textboard2">
+                        <p class="text2-1" ><font color="blue">フェアリー:</font>この扉は鍵で開くみたいね</p>
+                        <p class="text2-2" ><font color="red">がいこつ:</font>おっと、見回りの時間だな</p>
+                        <p class="text2-3" ><font color="blue">フェアリー:</font>がいこつがくるわ、左の部屋に隠れましょう</p>
+                    </div>
+                    <div class="textboard3">
+                        <p class="text3-1" ><font color="blue">フェアリー:</font>扉がひらいたわ</p>
+                        <p class="text3-2" ><font color="blue">フェアリー:</font>壺を壊しておびき寄せましょう</p>
+                    </div>
+                    <div class="textboard4">
+                        <p class="text4-1" ><font color="red">がいこつ:</font>むっ？なんの音だ？？</p>
+                        <p class="text4-2" ><font color="blue">フェアリー:</font>がいこつがくるわ、右上のロッカーに隠れましょう</p>
+                    </div>
+                    <div class="textboard5">
+                        <p class="text5-1" ><font color="red">がいこつ:</font>むっ！？これはなんだ？？</p>
+                        <p class="text5-2" ><font color="blue">フェアリー:</font>今のうちにさっきの扉から進みましょう</p>
+                        <p class="text5-3" ><font color="blue">フェアリー:</font>がいこつのがこちらを向いていない時に出るのよ</p>
+                    </div>
 
-            <div id='button' class="cross-layout">
-                <button id="top" >￪</button>
-                <button id="left" >￩</button>
-                <button id="bottom" >￬</button>
-                <button id="right" >￫</button>
-                <input type="text" id="input1" autocomplete="off" value="1 2">
-                <input type="submit" id="action" value="調べる" href='' target='' onclick="win_open()" disabled>
+                    <div id='button' class="cross-layout">
+                        <button id="top" disabled>￪</button>
+                        <button id="left" disabled>￩</button>
+                        <button id="bottom" disabled>￬</button>
+                        <button id="right" disabled>￫</button>
+                        <input type="text" id="input1" autocomplete="off" value="1 2">
+                        <input type="submit" id="action" value="調べる" href='' target='' onclick="win_open()" disabled>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div id='pageclear'>
+            <p>クリア</p>
+            <a href="http://localhost:8080/stage4-5/nextstory4-5" target="story4-5">
+                <button style="width:100px;height:50px" onclick="mapclick2(15);">
+                    <font size='4'>next</font>
+                </button>
+            </a>
         </div>
     </body>
 </html>

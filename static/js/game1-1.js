@@ -2,6 +2,15 @@ var timer;
 var attack;
 //読み込み時実行//
 function firstscript(){
+	document.getElementById("attack").disabled="disabled";
+}
+function restart(){
+	timer = setInterval('meterUp()',10);
+}
+function start(){
+	document.getElementById("attack").disabled="";
+	document.getElementById("back").style.opacity="1";
+	document.getElementById("start").style.display="none";
 	timer = setInterval('meterUp()',10);
 }
 //メータを1ずつ増やす//
@@ -33,7 +42,8 @@ function onClick(){
 		document.getElementById("power").style.display="none";
 		document.getElementById("str").style.display="none";
 		document.getElementById("attack").style.display="none";
-		document.getElementById("next").style.display="block";
+		document.getElementById("clear").style.display="block";
+		document.getElementById("back").style.opacity="0.5";
 		fin();
 	}else{
 		setTimeout(reload,2000);
@@ -47,7 +57,7 @@ function reload(){
 	var pus = document.getElementById('meter');
 	pus.value=0;
 	document.getElementById("attack").disabled="";
-	firstscript();
+	restart();
 }
 function fin(){
 	clearInterval(timer);
