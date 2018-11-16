@@ -5,9 +5,11 @@
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/game2-2.css' %}">
         <script type="text/javascript" src="{% static 'js/game2-2.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
     </head>
-    <bode>
+    <body>
 				<button onclick="gameSet();count()" id="start">start</button>
+				<a href="http://localhost:8080/stage2-2/nextstory2-2" target="story2-2"><button onclick="mapclick2(6)" id="clear">clear</button></a>
 			<div id="back">
 				<div id="box">
 						<p id="breath">30</p>

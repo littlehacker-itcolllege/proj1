@@ -5,9 +5,11 @@
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/game1-4.css' %}">
         <script type="text/javascript" src="{% static 'js/game1-4.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
     </head>
     <body onload="load();">
 			<button id="start" onclick="start();">start</button>
+			<a href="http://localhost:8080/stage1-4/nextstory1-4" target="story1-4"><button id="clear" onclick="mapclick2(4);">clear</button></a>
 				<div id="back">
 				<div class="box">
 					<img src="{% static 'game/gobrin.gif' %}" id="enemy">
@@ -17,7 +19,6 @@
 						<input type="submit" value="唱える" id="in" onclick="check();">
 					</div>
 					<div id="button">
-						<a href="http://localhost:8080/stage1-4/nextstory1-4" target="story1-4" ><button id="next" style="width:100px;height:50px"><font size="4">Next</font></button></a>
 					</div>
 				</div>
 			</div>

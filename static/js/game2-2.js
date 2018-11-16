@@ -84,37 +84,6 @@ function gameSet2()
 function typeGame(evt)
 {
   var kc;  //入力されたキーコードを格納する変数
-	if(que == 1){
-		if (document.all)
-		{
-			kc = event.keyCode;
-		}
-		else
-		{
-			kc = evt.which;
-		}
-		//入力されたキーコードと、問題文のキーコードを比較
-		if (kc == kcode2[ rnd2[cnt2] ])
-		{
-			//以下、キーコードが一致した時の処理
-			//入力されたセルの文字色を灰色にする
-			var idName = "word2"+cnt2;
-			document.getElementById(idName).style.color="#dddddd";
-			if(esc >=1){
-				document.getElementById("key2"+esc).style.display="none";
-				esc++;
-				if(esc <=3){
-					document.getElementById("key2"+esc).style.display="block";
-				}
-			}
-			cnt2++; //カウント数を＋１にする
-			//全文字入力したか確認
-			if ( cnt2 == 3){
-				//問題終了を告げる文字列を作成
-				clearInterval(timer);
-			}
-		}
-	}
   //入力されたキーのキーコードを取得
   if (document.all)
   {
@@ -154,4 +123,38 @@ function typeGame(evt)
 			gameSet2();
 		}
   }
+	if(que == 1){
+		if (document.all)
+		{
+			kc = event.keyCode;
+		}
+		else
+		{
+			kc = evt.which;
+		}
+		//入力されたキーコードと、問題文のキーコードを比較
+		if (kc == kcode2[ rnd2[cnt2] ])
+		{
+			//以下、キーコードが一致した時の処理
+			//入力されたセルの文字色を灰色にする
+			var idName = "word2"+cnt2;
+			document.getElementById(idName).style.color="#dddddd";
+			if(esc >=1){
+				document.getElementById("key2"+esc).style.display="none";
+				esc++;
+				if(esc <=3){
+					document.getElementById("key2"+esc).style.display="block";
+				}
+			}
+			cnt2++; //カウント数を＋１にする
+			//全文字入力したか確認
+			if ( cnt2 == 3){
+				//問題終了を告げる文字列を作成
+				clearInterval(timer);
+			document.getElementById("start").style.display="none";
+      document.getElementById("clear").style.display="block";
+      document.getElementById("back").style.opacity="0.5";
+			}
+		}
+	}
 }
