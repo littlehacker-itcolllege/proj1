@@ -20,7 +20,7 @@ function onClick(){
 		ene.value -=1;
 		if(ene.value == 0){
 			document.getElementById("attack").style.display="block";
-			next.innerHTML = '<a href="http://localhost:8080/stage1-3/nextstory1-3" target="story1-3" ><button id="next" style="width:100px;height:50px"><font size="4">Next</font></button></a>'
+			next.innerHTML = '<a href="http://localhost:8080/stage1-3/nextstory1-3" target="story1-3" ><button id="next" style="width:100px;height:50px" onclick="mapclick2(3);"><font size="4">Next</font></button></a>'
 		}else{
 			var a = Math.floor( Math.random() * 1001 ) ;
 			scrollTo(0,a);

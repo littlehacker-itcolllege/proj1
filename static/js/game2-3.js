@@ -25,7 +25,7 @@ var cnt3=0;             //何問目か格納
 var que=0;
 var timer1;
 var dis=0;
-
+var down=0;
 var esc =1;
 var main = null;
 
@@ -164,6 +164,8 @@ function typeGame(evt)
 				}
 			document.getElementById("leaf-gobrin").style.display="none";
 			document.getElementById("leaf-gobrin-down").style.display="block";
+			down+=1;
+			clear();
 		}
   }
 	//2問目
@@ -210,6 +212,8 @@ function typeGame(evt)
 				}
 				document.getElementById("fire-gobrin").style.display="none";
 				document.getElementById("fire-gobrin-down").style.display="block";
+				down+=1;
+				clear();
 			}
 		}
 	}
@@ -257,7 +261,17 @@ function typeGame(evt)
 				}
 				document.getElementById("water-gobrin").style.display="none";
 				document.getElementById("water-gobrin-down").style.display="block";
+				down+=1;
+				clear();
 			}
 		}
+	}
+}
+
+function clear(){
+	if(down==3){
+		document.getElementById("start").style.display="none";
+		document.getElementById("clear").style.display="block";
+		document.getElementById("back").style.opacity="0.5";
 	}
 }

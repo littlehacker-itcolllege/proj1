@@ -5,6 +5,7 @@
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/game1-2.css' %}">
         <script type="text/javascript" src="{% static 'js/game1-2.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
     </head>
     <body onload="load();">
 			<button id="start" onclick="start();">start</button>
@@ -42,7 +43,7 @@
 								</div>
 						</div>
 
-						<a href=""><button id="next" style="width:100px;height:50px"><font size="4">完成！</font></button></a>
+						<a href=""><button id="next" style="width:100px;height:50px" onclick="mapclick2(2);"><font size="4">完成！</font></button></a>
 					</div>
         </div>
 			</div>

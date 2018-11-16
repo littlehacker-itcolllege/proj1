@@ -5,9 +5,11 @@
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/game3-1.css' %}">
         <script type="text/javascript" src="{% static 'js/game3-1.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
     </head>
     <body onload="load();">
         <button onclick="start();" id="start">start</button>
+				<a href="http://localhost:8080/stage3-1/nextstory3-1/" target="story3-1"><button onclick="mapclick2(8)"; id="clear">clear</button></a>
 			<div id="back">
 				<div id="box">
 					<div id="buttons">
@@ -27,9 +29,6 @@
 					<div id="mine"><img src="{% static 'game/mine.png' %}"></div>
 					<div id="item1"><img src='{% static 'game/orbpice1.png'%}'></div>
 					<div id="item2"><img src='{% static 'game/orbpice2.png'%}'></div>
-				<div id="next">
-									<a href="http://localhost:8080/stage3-1/nextstory3-1" target="story3-1" ><button style="width:100px;height:50px"><font size="4">Next</font></button></a>
-				</div>
 			</div>
     </body>
 </html>
