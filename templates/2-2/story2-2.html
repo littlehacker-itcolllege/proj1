@@ -6,35 +6,14 @@
   </head>
   <body>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
-    <table class="item">
-      ​
-      <tr>
-        <td width="30%" align="right"><img src="{% static "game/charactar5.png"%}"></td>
-        <td width="70%" align="left">STAGE4</td>
-        <td></td>
-      </tr>
-      ​
-      <tr>
-        <td></td>
-        <td width="70%" align="right">Hello<td>
-            <td width="30%"><img src="{% static "game/charactar5.png"%}"></td>
-      </tr>
-      ​
-      <tr>
-        <td width="30%" align="right"><img src="{% static "game/charactar5.png"%}"></td>
-        <td width="70%" align="left">Password is "pass"</td>
-        <td></td>
-      </tr>
-      ​
-      <tr>
-        <td></td>
-        <td width="70%" align="right">Bye<td>
-            <td width="30%"><img src="{% static "game/charactar5.png"%}"></td>
-      </tr>
-      ​
-    </table>
-
-
+    <link rel="stylesheet" type="text/css" href="{% static "css/story2-2.css" %}" />
+    <div class="textboard">
+        <p class="text1" id="text1Id"><img src="{% static 'game/fairy.png' %}">この湖にまちがいないわ！</p>
+        <p class="text2" id="text2Id"><img src="{% static 'game/rito.png' %}">!!!</p>
+        <p class="text3" id="text3Id"><img src="{% static 'game/rito.png' %}">湖の中に宝箱がある！</p>
+        <p class="text4" id="text4Id"><img src="{% static 'game/fairy.png' %}">あの中にオーブがありそうね・・・取りに行きましょう！</p>
+        <p class="text5" id="text5Id"><img src="{% static 'game/fairy.png' %}">さっきと同じように指定された文字をうつと前にすすめるわ！</p>
+        <p class="text6" id="text6Id"><img src="{% static 'game/fairy.png' %}">でも、水の中はあまり息が続かないから、急いでね！</p>
+    </div>
   </body>
 </html>
