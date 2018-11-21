@@ -6,35 +6,12 @@
   </head>
   <body>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
-    <table class="item">
-      ​
-      <tr>
-        <td width="30%" align="right"><img src="{% static "game/charactar5.png"%}"></td>
-        <td width="70%" align="left">NEXT_STAGE2</td>
-        <td></td>
-      </tr>
-      ​
-      <tr>
-        <td></td>
-        <td width="70%" align="right">HELLO<td>
-            <td width="30%"><img src="{% static "game/charactar5.png"%}"></td>
-      </tr>
-      ​
-      <tr>
-        <td width="30%" align="right"><img src="{% static "game/charactar5.png"%}"></td>
-        <td width="70%" align="left">BYE</td>
-        <td></td>
-      </tr>
-      ​
-      <tr>
-        <td></td>
-        <td width="70%" align="right">BYE<td>
-            <td width="30%"><img src="{% static "game/charactar5.png"%}"></td>
-      </tr>
-      ​
-    </table>
-
-
+    <link rel="stylesheet" type="text/css" href="{% static "css/nextstory1-2.css" %}" />
+    <div class="textboard">
+        <p class="text1"><img src="{% static 'game/fairy.png' %}">パチンコができたわ！　これで戦える！</p>
+        <p class="text2"><img src="{% static 'game/fairy.png' %}">これからもドラッグ、ドロップは使うかもしれないから覚えておいて！</p>
+        <p class="text3"><img src="{% static 'game/fairy.png' %}">!!!</p>
+        <p class="text4"><img src="{% static 'game/fairy.png' %}">さっそくバケモノがきそう！　気をつけて！</p>
+    </div>
   </body>
 </html>
