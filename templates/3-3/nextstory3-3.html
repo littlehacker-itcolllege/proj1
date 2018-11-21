@@ -6,35 +6,16 @@
   </head>
   <body>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
-    <table class="item">
-      ​
-      <tr>
-        <td width="30%" align="right"><img src="{% static "game/charactar5.png"%}"></td>
-        <td width="70%" align="left">NEXT_STAGE4</td>
-        <td></td>
-      </tr>
-      ​
-      <tr>
-        <td></td>
-        <td width="70%" align="right">HELLO<td>
-            <td width="30%"><img src="{% static "game/charactar5.png"%}"></td>
-      </tr>
-      ​
-      <tr>
-        <td width="30%" align="right"><img src="{% static "game/charactar5.png"%}"></td>
-        <td width="70%" align="left">BYE</td>
-        <td></td>
-      </tr>
-      ​
-      <tr>
-        <td></td>
-        <td width="70%" align="right">BYE<td>
-            <td width="30%"><img src="{% static "game/charactar5.png"%}"></td>
-      </tr>
-      ​
-    </table>
+    <link rel="stylesheet" type="text/css" href="{% static "css/nextstory3-3.css" %}" />
+    <div class="textboard">
+        <p class="text1" id="text1Id"><img src="{% static 'game/rito.png' %}">よし、キレイに合成できた！</p>
+        <p class="text2" id="text2Id"><img src="{% static 'game/fairy.png' %}">リト、さすがね！</p>
+        <p class="text3" id="text3Id"><img src="{% static 'game/fairy.png' %}">これで火のオーブも手に入ったわ！</p>
+        <p class="text4" id="text4Id"><img src="{% static 'game/fairy.png' %}">残るは一つ、土のオーブ。</p>
+        <p class="text5" id="text5Id"><img src="{% static 'game/rito.png' %}">さっさと土のオーブも手に入れてボスを倒しちゃおう！</p>
+        <p class="text6" id="text6Id"><img src="{% static 'game/fairy.png' %}">そうね・・・このまま何事もなく進めればいいんだけど・・・</p>
+        <p class="text7" id="text7Id"><img src="{% static 'game/fairy.png' %}">次の目的地は「亡霊の塔」。　気をつけてね・・・</p>
 
-
+    </div>
   </body>
 </html>

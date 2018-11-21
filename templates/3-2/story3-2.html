@@ -6,35 +6,15 @@
   </head>
   <body>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
-    <table class="item">
-      ​
-      <tr>
-        <td width="30%" align="right"><img src="{% static "game/charactar5.png"%}"></td>
-        <td width="70%" align="left">hello</td>
-        <td></td>
-      </tr>
-      ​
-      <tr>
-        <td></td>
-        <td width="70%" align="right">Hello<td>
-            <td width="30%"><img src="{% static "game/charactar5.png"%}"></td>
-      </tr>
-      ​
-      <tr>
-        <td width="30%" align="right"><img src="{% static "game/charactar5.png"%}"></td>
-        <td width="70%" align="left">bye</td>
-        <td></td>
-      </tr>
-      ​
-      <tr>
-        <td></td>
-        <td width="70%" align="right">Bye<td>
-            <td width="30%"><img src="{% static "game/charactar5.png"%}"></td>
-      </tr>
-      ​
-    </table>
-
-
+    <link rel="stylesheet" type="text/css" href="{% static "css/story3-2.css" %}" />
+    <div class="textboard">
+        <p class="text1" id="text1Id"><img src="{% static 'game/fairy.png' %}">残り２つはここらへんにありそうね！</p>
+        <p class="text2" id="text2Id"><img src="{% static 'game/fairy.png' %}">さっきの場所と同じく、岩の下にあるはず！</p>
+        <p class="text3" id="text3Id"><img src="{% static 'game/fairy.png' %}">やり方もさっきとほとんど一緒よ！ でも注意して！</p>
+        <p class="text4" id="text4Id"><img src="{% static 'game/fairy.png' %}">今回はウソの情報もまじってるみたい！ 正解のヒントは「下」よ！</p>
+        <p class="text5" id="text5Id"><img src="{% static 'game/fairy.png' %}">忘れてるかもしれないからもう一度。</p>
+        <p class="text6" id="text6Id"><img src="{% static 'game/fairy.png' %}">コントロールキーとUキーでソースを開く。</p>
+        <p class="text7" id="text7Id"><img src="{% static 'game/fairy.png' %}">コントルールキーとUキーでソースを閉じる。</p>
+    </div>
   </body>
 </html>

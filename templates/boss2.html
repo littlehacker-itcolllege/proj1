@@ -24,10 +24,16 @@
                 if(jumpval == 0){
                     jumpval = 1;
                     var jump = setInterval(function(){
+                        var herobottom = Math.round((parseInt($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの下側
+                        var enemytop = Math.round((parseInt($('#enemy img').css('top'))) / parseInt($('.canvas').height())*100)//enemyの上側
+                        var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                        var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                        var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                        var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
                         heroy -= addnumy;
                         $('#maru img').css({'top': heroy+'%'});
                         if(jumpcut++ % 2 == 0){
-                            addnumy -= 0.4;
+                            addnumy -= 0.3;
                             if(addnumy < -max_gravity){
                                 addnumy = -max_gravity;
                             }
@@ -38,6 +44,13 @@
                             $('#maru img').css({'top': heroy+'%'});
                             jumpval = 0;
                             clearInterval(jump);
+                            if(heroright >= enemyleft && heroright <= enemyright){
+                                herox = Math.round((parseInt($('#enemy img').css('left'))-$('#maru img').width()) / parseInt($('.canvas').width())*100) -1
+                                $('#maru img').css({'left': herox+'%'});
+                            }else if(heroleft <= enemyright && heroleft >= enemyleft){
+                                herox = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100) +1
+                                $('#maru img').css({'left': herox+'%'});
+                            }
                         }
                     },16)
                 }
@@ -51,52 +64,85 @@
                 if(stoprun == 0){
                     stoprun = 1;
                     clearInterval(run);
-                    console.log('gggg')
                     var run = setInterval(function(){
-                        if((parseFloat($('#maru img').css('left'))+parseFloat($('#maru img').width())) < parseFloat($('#enemy img').css('left'))||(parseFloat($('#maru img').css('left'))+parseFloat($('#maru img').width())) > parseFloat($('#enemy img').css('left'))+parseFloat($('#enemy img').width())||(parseFloat($('#maru img').css('top'))+parseFloat($('#maru img').height())) > parseFloat($('#enemy img').css('top'))){
-                console.log('gggg')
-                if(herox < 88){
-                herox = (parseInt(herox) + 1).toString();
-                $('#maru img').css({'left': herox+'%'});
-                count ++;
-                if(count == 3){
-                clearInterval(run);
-                stoprun = 0;
-                }}else{
-                clearInterval(run);
-                stoprun = 0;
-                }}else{
-                clearInterval(run);
-                stoprun = 0;
-                }},32)
+                        var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                        var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                        var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                        var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                        var jump = Math.round((parseFloat($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの下側
+                        var enemytop = Math.round(parseInt($('#enemy img').css('top'))/$('.canvas').height()*100)//enemyの上側
+                        if(heroright < enemyleft
+                            ||heroleft > enemyright
+                            ||jump < enemytop  ){
+                            if(herox > 0){
+                                herox = (parseInt(herox) + 1).toString();
+                                $('#maru img').css({'left': herox+'%'});
+                                count ++;
+                                if(count == 3){
+                                    herox = (parseInt(herox) - 1).toString();
+                                    $('#maru img').css({'left': herox+'%'});
+                                    clearInterval(run);
+                                    stoprun = 0;
+                                }}else{
+                                    herox = (parseInt(herox) - 1).toString();
+                                    $('#maru img').css({'left': herox+'%'});
+                                    clearInterval(run);
+                                    stoprun = 0;
+                                }}else{
+                                    herox = (parseInt(herox) - 1).toString();
+                                    $('#maru img').css({'left': herox+'%'});
+                                    clearInterval(run);
+                                    stoprun = 0;
+                                }},32)
                 }
-                }
-                //左ボタンの処理
-                function leftbutton(){
+            }
+            //左ボタンの処理
+            function leftbutton(){
                 count = 0;
                 if(stoprun == 0){
-                stoprun = 1;
-                clearInterval(run);
-                console.log('gggg')
-                var run = setInterval(function(){
-                if(herox > 0){
-                    herox = (parseInt(herox) - 1).toString();
-                    console.log(herox)
-                    $('#maru img').css({'left': herox+'%'});
-                    count ++;
-                    if(count == 3){
-                        clearInterval(run);
-                        stoprun = 0;
-                    }}else{
-                        clearInterval(run);
-                        stoprun = 0;
-                    }},32)
+                    stoprun = 1;
+                    clearInterval(run);
+                    var run = setInterval(function(){
+                        var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                        var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                        var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//nemyの右側
+                        var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                        var jump = Math.round((parseFloat($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの下側
+                        var enemytop = Math.round(parseInt($('#enemy img').css('top'))/$('.canvas').height()*100)//enemyの上側
+                        if(heroright < enemyleft
+                            ||heroleft > enemyright
+                            ||jump < enemytop  ){
+                            if(herox > 0){
+                                herox = (parseInt(herox) - 1).toString();
+                                $('#maru img').css({'left': herox+'%'});
+                                count ++;
+                                if(count == 3){
+                                    herox = (parseInt(herox) + 1).toString();
+                                    $('#maru img').css({'left': herox+'%'});
+                                    clearInterval(run);
+                                    stoprun = 0;
+                                }}else{
+                                    herox = (parseInt(herox) + 1).toString();
+                                    $('#maru img').css({'left': herox+'%'});
+                                    clearInterval(run);
+                                    stoprun = 0;
+                                }}else{
+                                    herox = (parseInt(herox) + 1).toString();
+                                    $('#maru img').css({'left': herox+'%'});
+                                    clearInterval(run);
+                                    stoprun = 0;
+                                }},32)
                 }
-                }
+            }
+
             // ページ読み込み時に実行
             window.onload = function () {
+                $('#patinko1').hide();
+                $('#patinko2').hide();
+                $('#patinko3').hide();
+                $('#herosword').hide();
                 // 矢印ボタンのを各、値に代入
-                var $left = document.getElementById( "left" );
+                /*                var $left = document.getElementById( "left" );
                 var $right = document.getElementById( "right" );
                 var $top = document.getElementById( "top" );
                 var $bottom = document.getElementById( "bottom" );
@@ -169,13 +215,17 @@
                         clearInterval( $intervalID );
                         leftbutton()
                     }else{clearInterval( $intervalID );}}}            // キーコード(どのキーが押されたか)を取得
-
+*/
+                    }
             window.addEventListener('keydown', KeyDown, true);
             window.addEventListener('keyup', KeyUp, true);
             var g_bUpPush =false;
             var g_bDownPush =false;
             var g_bRightPush =false;
             var g_bLeftPush =false;
+            var g_bzPush =false;
+            var g_bxPush =false;
+            var power = 1
             function KeyDown(event) {
                 var code = event.keyCode;       // どのキーが押されたか
 
@@ -196,48 +246,64 @@
                     case 40:
                         g_bDownPush = true;
                         bottombutton()
+                        break;
                         //event.preventDefault();   // なんだこれ?
-                            break;
+                        //zキー
+                    case 90:
+                        g_bzPush = true;
+                        break;
+                        //xキー
+                    case 88:
+                        g_bxPush = true;
+                        break;
                 }
             }
 
             /*
                 キーを離した時のイベント
-                */
-                function KeyUp(event) {
-                    code = event.keyCode;
-                    switch(code) {
-                            // ←キー
-                        case 37:
-                            g_bLeftPush = false;
-                            break;
-                        case 39:
-                            // →キー
-                            g_bRightPush = false;
-                            break;
-                        case 38:
-                            // ↑キー
-                            g_bUpPush = false;
-                            break;
-                        case 40:
-                            // ↓キー
-                            g_bDownPush = false;
-                            break;
-                    }
+             */
+            function KeyUp(event) {
+                code = event.keyCode;
+                switch(code) {
+                        // ←キー
+                    case 37:
+                        g_bLeftPush = false;
+                        break;
+                    case 39:
+                        // →キー
+                        g_bRightPush = false;
+                        break;
+                    case 38:
+                        // ↑キー
+                        g_bUpPush = false;
+                        break;
+                    case 40:
+                        // ↓キー
+                        g_bDownPush = false;
+                        break;
+                        //zキー
+                    case 90:
+                        g_bzPush = false;
+                        break;
+                        //xキー
+                    case 88:
+                        g_bxPush = false;
+                        break;
                 }
+            }
 
             (function(){
                 // targetを監視してtrueになったら関数を実行
+                //上ボタンの検知
                 (function observe(){
                     if (g_bUpPush == false) {
-                        console.log(parseInt($('#maru img').css('left'))+parseInt($('#maru img').width()))
-                        console.log(parseInt($('#enemy img').css('left')))
                         setTimeout(observe, 192);
                     } else {
                         topbutton()
                         setTimeout(observe, 192);
                     }
                 })();
+                //右ボタンの検知
                 (function observe(){
                     if (g_bRightPush == false) {
                         setTimeout(observe, 96);
@@ -246,6 +312,7 @@
                         setTimeout(observe, 96);
                     }
                 })();
+                //左ボタンの検知
                 (function observe(){
                     if (g_bLeftPush == false) {
                         setTimeout(observe, 96);
@@ -254,7 +321,207 @@
                         setTimeout(observe, 96);
                     }
                 })();
-            })();
+                //zボタンの検知
+                (function observe(){
+                    if (g_bzPush == false) {
+                        setTimeout(observe, 96);
+                    } else if(g_bzPush == true && power == 1){
+                        power = 0;
+                        setTimeout(
+                            function(){power = 1}, 1100);
+                        console.log(power)
+                        win_open();
+                        setTimeout(observe, 96);
+                    }else{
+                        setTimeout(observe, 96);
+                    }
+                })();
+                //xボタンの検知
+                (function observe(){
+                    if (g_bxPush == false) {
+                        setTimeout(observe, 96);
+                    } else {
+                        win_open2();
+                        setTimeout(observe, 96);
+                    }
+                })();
+                //hero&enemyの向きの検知
+                (function observe(){
+                    var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                    var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                    if (heroleft < enemyleft) {
+                $('#maru').children('img').attr('src',"{% static "game/character/right.gif" %}")
+                $('#enemy').children('img').attr('src',"{% static "game/character/enemyleft.gif" %}")
+                setTimeout(observe, 96);
+                }else{
+                $('#maru').children('img').attr('src',"{% static "game/character/left.gif" %}")
+                $('#enemy').children('img').attr('src',"{% static "game/character/enemyright.gif" %}")
+                setTimeout(observe, 96);
+                }
+                })();
+                })();
+
+
+
+
+
+
+                //パチンコ１発目
+                function attack1(){
+                var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                var herobottom = Math.round((parseInt($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの上側
+                var herotop = Math.round((parseInt($('#maru img').css('top'))) / parseInt($('.canvas').height())*100)//heroの下側
+                $('#patinko1').show();
+                $('#patinko1 img').css({'left': heroright+'%'});
+                $('#patinko1 img').css({'top': herotop+'%'});
+                clearInterval(attack1);
+                var attack1 = setInterval(function(){
+                var exit = Math.round((parseInt($('#patinko1 img').css('left'))+$('#patinko1 img').width()) /parseInt($('.canvas').width())*100)
+                var w = Math.round((parseInt($('#patinko1 img').css('left'))) /parseInt($('.canvas').width())*100)
+                if(exit <= 95){
+                w = (parseInt(w) + 1);
+                $('#patinko1 img').css('left',w+'%').change();
+                }else{
+                clearInterval(attack1);
+                $('#patinko1').hide();
+                }},30);
+                }
+                //パチンコ2発目
+                function attack2(){
+                var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                var herobottom = Math.round((parseInt($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの上側
+                var herotop = Math.round((parseInt($('#maru img').css('top'))) / parseInt($('.canvas').height())*100)//heroの下側
+                $('#patinko2').show();
+                $('#patinko2 img').css({'left': heroright+'%'});
+                $('#patinko2 img').css({'top': herotop+'%'});
+                clearInterval(attack2);
+                var attack2 = setInterval(function(){
+                var exit = Math.round((parseInt($('#patinko2 img').css('left'))+$('#patinko2 img').width()) /parseInt($('.canvas').width())*100)
+                var w = Math.round((parseInt($('#patinko2 img').css('left'))) /parseInt($('.canvas').width())*100)
+                if(exit <= 95){
+                w = (parseInt(w) + 1);
+                $('#patinko2 img').css('left',w+'%').change();
+                }else{
+                clearInterval(attack2);
+                $('#patinko2').hide();
+                }},30);
+                }
+                //パチンコ3発目
+                function attack3(){
+                var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                var herobottom = Math.round((parseInt($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの上側
+                var herotop = Math.round((parseInt($('#maru img').css('top'))) / parseInt($('.canvas').height())*100)//heroの下側
+                $('#patinko3').show();
+                $('#patinko3 img').css({'left': heroright+'%'});
+                $('#patinko3 img').css({'top': herotop+'%'});
+                clearInterval(attack3);
+                var attack3 = setInterval(function(){
+                var exit = Math.round((parseInt($('#patinko3 img').css('left'))+$('#patinko3 img').width()) /parseInt($('.canvas').width())*100)
+                var w = Math.round((parseInt($('#patinko3 img').css('left'))) /parseInt($('.canvas').width())*100)
+                if(exit <= 95){
+                w = (parseInt(w) + 1);
+                $('#patinko3 img').css('left',w+'%').change();
+                }else{
+                clearInterval(attack3);
+                $('#patinko3').hide();
+                }},30);
+                }
+
+            //パチンコボタンの条件分岐
+            var number = 0;
+            function win_open(){
+                //ボタンのOFFとONの切り替え
+                if($('#patinko1').css('display')=='none' && number == 0){
+                    number ++
+                    $('#action').attr("disabled",true);
+                    bullet=setTimeout( function(){
+                        $('#action').attr("disabled",false);
+                    },1100);
+                    //パチンコの発射
+                    attack1();
+                }else if($('#patinko2').css('display')=='none' && number == 1){
+                    number ++
+                    $('#action').attr("disabled",true);
+                    bullet=setTimeout( function(){
+                        $('#action').attr("disabled",false);
+                    },1100);
+                    attack2();
+                }else if($('#patinko3').css('display')=='none' && number == 2){
+                    number = 0;
+                    $('#action').attr("disabled",true);
+                    bullet=setTimeout( function(){
+                        $('#action').attr("disabled",false);
+                    },1100);
+                    attack3();
+                }
+            }
+
+
+            //heroの斬撃
+            function win_open2(){
+                var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                var herobottom = Math.round((parseInt($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの上側
+                var herotop = Math.round((parseInt($('#maru img').css('top'))) / parseInt($('.canvas').height())*100)//heroの下側
+                $('#herosword').show();
+                $('#herosword img').css({'left': heroright+'%'});
+                $('#herosword img').css({'top': herotop+'%'});
+                setTimeout(function(){$('#herosword').hide()},1000)
+            }
+
+
+//ダメージ計算
+            $(function(){
+                $('#patinko1') .change(function(){
+                var patinkoright = Math.round((parseInt($('#patinko1 img').css('left'))+$('#patinko1 img').width()) / parseInt($('.canvas').width())*100)//patinkoの右側
+                var patinkoleft = Math.round((parseInt($('#patinko1 img').css('left'))) / parseInt($('.canvas').width())*100)//patinkoの左側
+                    var patinkocenter = (parseInt(patinkoright) +parseInt (patinkoleft)) / 2
+                        var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                        var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                    if(patinkocenter > enemyleft && patinkocenter < enemyright){
+                    var damage = $('#enemy-meter').val();
+                            damage = damage - 20;
+                            $('#enemy-meter').val(damage).change();
+                            $('#patinko1').hide();
+                clearInterval(attack);
+                    }
+                });
+                $('#patinko2') .change(function(){
+                var patinkoright = Math.round((parseInt($('#patinko2 img').css('left'))+$('#patinko2 img').width()) / parseInt($('.canvas').width())*100)//patinkoの右側
+                var patinkoleft = Math.round((parseInt($('#patinko2 img').css('left'))) / parseInt($('.canvas').width())*100)//patinkoの左側
+                    var patinkocenter = (parseInt(patinkoright) +parseInt (patinkoleft)) / 2
+                        var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                        var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                    if(patinkocenter > enemyleft && patinkocenter < enemyright){
+                    var damage = $('#enemy-meter').val();
+                            damage = damage - 20;
+                            $('#enemy-meter').val(damage).change();
+                            $('#patinko2').hide();
+                clearInterval(attack);
+                    }
+                });
+                $('#patinko3') .change(function(){
+                var patinkoright = Math.round((parseInt($('#patinko3 img').css('left'))+$('#patinko3 img').width()) / parseInt($('.canvas').width())*100)//patinkoの右側
+                var patinkoleft = Math.round((parseInt($('#patinko3 img').css('left'))) / parseInt($('.canvas').width())*100)//patinkoの左側
+                    var patinkocenter = (parseInt(patinkoright) +parseInt (patinkoleft)) / 2
+                        var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                        var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                    if(patinkocenter > enemyleft && patinkocenter < enemyright){
+                    var damage = $('#enemy-meter').val();
+                            damage = damage - 20;
+                            $('#enemy-meter').val(damage).change();
+                            $('#patinko3').hide();
+                clearInterval(attack3);
+                    }
+                });
+            });
+
+
+
+
+
+
+
+
         </script>
     </head>
     <body>
@@ -275,17 +542,29 @@
                     <div id="enemy">
                         <img src="{% static "game/character/enemyleft.gif" %}" name='enemy'>
                     </div>
+                    <div id="patinko1">
+                        <img src="{% static "game/heroattack.png" %}" disabled>
+                    </div>
+                    <div id="patinko2">
+                        <img src="{% static "game/heroattack.png" %}" disabled>
+                    </div>
+                    <div id="patinko3">
+                        <img src="{% static "game/heroattack.png" %}" disabled>
+                    </div>
+                    <div id="herosword">
+                        <img src="{% static "game/herosword.png" %}" disabled>
+                    </div>
                 </div>
                 <div id="canvas1"></div>
             </div>
-            <div id='button' class="cross-layout">
+            <!--            <div id='button' class="cross-layout">
                 <button id="top"onclick="top" >￪</button>
                 <button id="left" >￩</button>
                 <button id="bottom" >￬</button>
                 <button id="right" >￫</button>
-                <input type="text" id="input1" autocomplete="off" value="2 2">
-                <input type="submit" id="action" value="パチンコ" onclick="win_open()">
-            </div>
+                <input type="text" id="input1" autocomplete="off" value="2 2"> 
+                <input type="submit" id="action" value="パチンコ" onclick="win_open()" disabled>
+                </div>   -->
         </div>
         </div>
         </div>

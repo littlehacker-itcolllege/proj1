@@ -6,35 +6,12 @@
   </head>
   <body>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
-    <table class="item">
-      ​
-      <tr>
-        <td width="30%" align="right"><img src="{% static "game/charactar5.png"%}"></td>
-        <td width="70%" align="left">HELLO</td>
-        <td></td>
-      </tr>
-      ​
-      <tr>
-        <td></td>
-        <td width="70%" align="right">HELLO<td>
-            <td width="30%"><img src="{% static "game/charactar5.png"%}"></td>
-      </tr>
-      ​
-      <tr>
-        <td width="30%" align="right"><img src="{% static "game/charactar5.png"%}"></td>
-        <td width="70%" align="left">BYE</td>
-        <td></td>
-      </tr>
-      ​
-      <tr>
-        <td></td>
-        <td width="70%" align="right">BYE<td>
-            <td width="30%"><img src="{% static "game/charactar5.png"%}"></td>
-      </tr>
-      ​
-    </table>
-
-
+    <link rel="stylesheet" type="text/css" href="{% static "css/nextstory4-2.css" %}" />
+    <div class="textboard">
+        <p class="text1" id="text1Id"><img src="{% static 'game/rito.png' %}">ゴミ箱の中にパスワードあるなんて・・・</p>
+        <p class="text2" id="text2Id"><img src="{% static 'game/fairy.png' %}">リトも重要な情報は紙に書いてそのまま捨てたらだめよ。</p>
+        <p class="text3" id="text3Id"><img src="{% static 'game/fairy.png' %}">捨てるなら粉々にしたりしないと、誰かに見られちゃうからね！</p>
+        <p class="text4" id="text4Id"><img src="{% static 'game/rito.png' %}">うん、気をつけるよ！</p>
+    </div>
   </body>
 </html>
