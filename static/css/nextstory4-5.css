@@ -18,7 +18,7 @@
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 6s;
+    animation-delay: 4s;
 }
 
 .text3 {
@@ -30,7 +30,7 @@
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 10s;
+    animation-delay: 8s;
 }
 .text4 {
     height: 40px;
@@ -41,7 +41,7 @@
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 12s;
+    animation-delay: 10s;
 }
 .text5 {
     height: 40px;
@@ -63,8 +63,42 @@
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 22s;
+    animation-delay: 19s;
 }
+.text7 {
+    height: 40px;
+    top: 5px;
+    left: 4px;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+    animation-delay: 23s;
+}
+.text8 {
+    height: 40px;
+    top: 5px;
+    left: 4px;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+    animation-delay: 25s;
+}
+.text9 {
+    height: 40px;
+    top: 5px;
+    left: 4px;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+    animation-delay: 28s;
+}
+
 
 @-webkit-keyframes ozDq {
     from { width: 0;}

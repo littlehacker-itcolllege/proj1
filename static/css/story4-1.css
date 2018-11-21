@@ -76,6 +76,30 @@
     animation-iteration-count:1;
     animation-delay: 27s;
 }
+.text8 {
+    height: 40px;
+    top: 5px;
+    left: 4px;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+    animation-delay: 31s;
+}
+.text9 {
+    height: 40px;
+    top: 5px;
+    left: 4px;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+    animation-delay: 36s;
+}
+
+
 @-webkit-keyframes ozDq {
     from { width: 0;}
     0% {opacity: 1;}
