@@ -49,7 +49,7 @@ urlpatterns = [
     url(r'^stage2-3/game2-3/$',views.game2_3,name='game2-3'),
     url(r'^stage2-3/head2-3/$',views.head2_3,name='head2-3'),
     url(r'^stage2-3/nextstory2-3/$',views.nextstory2_3,name='nextstory2-3'),
-    url(r'^stage2-2/gameover2-3/$',views.gameover2_3,name='gameover2-3'),
+    url(r'^stage2-3/gameover2-3/$',views.gameover2_3,name='gameover2-3'),
     #stage3-1
     url(r'^stage3-1/$',views.stage3_1,name='stage3-1'),
     url(r'^stage3-1/story3-1/$',views.story3_1,name='story3-1'),
@@ -120,6 +120,7 @@ urlpatterns = [
     url(r'^stage4-6/nextstory4-6/$',views.nextstory4_6,name='nextstory4-6'),
     url(r'^stage4-6/see4-6/$',views.see4_6,name='see4-6'),
     url(r'^stage4-6/input4-6/$',views.input4_6,name='input4-6'),
+    url(r'^stage4-6/movie4-6/$',views.movie4_6,name='movie4-6'),
 
     url(r'^boss2/$',views.boss2,name='boss2')
 ]

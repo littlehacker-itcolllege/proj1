@@ -28,6 +28,9 @@ var dis=0;
 var down=0;
 var esc =1;
 var main = null;
+var monster=null;
+var attribute=null;
+var life=3;
 
 function load(){
 	document.getElementById("fire-button").disabled="disabled";
@@ -121,56 +124,8 @@ function gameSet3()
 function typeGame(evt)
 {
   var kc;  //入力されたキーコードを格納する変数
-	  //入力されたキーのキーコードを取得
-  if (document.all)
-  {
-    kc = event.keyCode;
-  }
-  else
-  {
-    kc = evt.which;
-  }
-  //入力されたキーコードと、問題文のキーコードを比較
-  if (kc == kcode[ rnd[cnt] ])
-  {
-    //以下、キーコードが一致した時の処理
-    //入力されたセルの文字色を灰色にする
-    var idName = "word"+cnt;
-    document.getElementById(idName).style.color="#dddddd";
-		document.getElementById("fire-button").disabled="disabled";
-		document.getElementById("water-button").disabled="disabled";
-		document.getElementById("leaf-button").disabled="disabled";
-		 if(esc >=1){
-      document.getElementById("fire"+esc).style.display="none";
-				esc++;
-      if(esc <=4){
-        document.getElementById("fire"+esc).style.display="block";
-      }
-    }
-    cnt++; //カウント数を＋１にする
-    //全文字入力したか確認
-		if(cnt==4){
-			dis+=1;
-			document.getElementById("fire-button").disabled="disabled";
-			document.getElementById("water-button").disabled="";
-			document.getElementById("leaf-button").disabled="";
-			if(dis==3){
-					document.getElementById("water-button").disabled="disabled";
-				}else if(dis==4){
-					document.getElementById("leaf-button").disabled="disabled";
-				}else if(dis==6){
-					document.getElementById("water-button").disabled="disabled";
-					document.getElementById("leaf-button").disabled="disabled";
-				}
-			document.getElementById("leaf-gobrin").style.display="none";
-			document.getElementById("leaf-gobrin-down").style.display="block";
-			down+=1;
-			clear();
-		}
-  }
-	//2問目
-	if(que == 1){
-		if (document.all)
+	if(monster!=null){
+		if (document.all)//入力されたキーのキーコードを取得
 		{
 			kc = event.keyCode;
 		}
@@ -179,95 +134,191 @@ function typeGame(evt)
 			kc = evt.which;
 		}
 		//入力されたキーコードと、問題文のキーコードを比較
-		if (kc == kcode2[ rnd2[cnt2] ])
+		if (kc == kcode[ rnd[cnt] ])
 		{
 			//以下、キーコードが一致した時の処理
 			//入力されたセルの文字色を灰色にする
-			var idName = "word2"+cnt2;
+			var idName = "word"+cnt;
 			document.getElementById(idName).style.color="#dddddd";
 			document.getElementById("fire-button").disabled="disabled";
 			document.getElementById("water-button").disabled="disabled";
 			document.getElementById("leaf-button").disabled="disabled";
-		if(esc >=1){
-      document.getElementById("water"+esc).style.display="none";
-				esc++;
-      if(esc <=5){
-        document.getElementById("water"+esc).style.display="block";
-      }
-    }
-			cnt2++; //カウント数を＋１にする
-			//全文字入力したか確認
-			if ( cnt2 == 5){
-				dis+=2;
-				document.getElementById("water-button").disabled="disabled";
-				document.getElementById("fire-button").disabled="";
-				document.getElementById("leaf-button").disabled="";
-				if(dis==3){
-					document.getElementById("fire-button").disabled="disabled";
-				}else if(dis==5){
-					document.getElementById("leaf-button").disabled="disabled";
-				}else if(dis==6){
-					document.getElementById("fire-button").disabled="disabled";
-					document.getElementById("leaf-button").disabled="disabled";
+			 if(esc >=1){
+				document.getElementById("fire"+esc).style.display="none";
+					esc++;
+				if(esc <=4){
+					document.getElementById("fire"+esc).style.display="block";
 				}
-				document.getElementById("fire-gobrin").style.display="none";
-				document.getElementById("fire-gobrin-down").style.display="block";
+			}
+			cnt++; //カウント数を＋１にする
+			//全文字入力したか確認
+			if(cnt==4){
+				document.getElementById("water-button").disabled="";
+				document.getElementById("leaf-button").disabled="";
+				document.getElementById("fire-button").disabled="";
+				judge('leaf-');
+				monster=null;
 				down+=1;
 				clear();
 			}
 		}
+	}else{
+		alert("敵を選択してください")
 	}
-	//3問目
-	if(que == 2){
-		if (document.all)
-		{
-			kc = event.keyCode;
-		}
-		else
-		{
-			kc = evt.which;
-		}
-		//入力されたキーコードと、問題文のキーコードを比較
-		if (kc == kcode3[ rnd3[cnt3] ])
-		{
-			//以下、キーコードが一致した時の処理
-			//入力されたセルの文字色を灰色にする
-			var idName = "word3"+cnt3;
-			document.getElementById(idName).style.color="#dddddd";
-			document.getElementById("water-button").disabled="disabled";
-			document.getElementById("fire-button").disabled="disabled";
-			document.getElementById("leaf-button").disabled="disabled";
-		if(esc >=1){
-      document.getElementById("leaf"+esc).style.display="none";
-				esc++;
-      if(esc <=4){
-        document.getElementById("leaf"+esc).style.display="block";
-      }
-    }
-			cnt3++; //カウント数を＋１にする
-			//全文字入力したか確認
-			if ( cnt3 == 4){
-				dis+=3;
-				document.getElementById("leaf-button").disabled="sisabled";
-				document.getElementById("fire-button").disabled="";
-				document.getElementById("water-button").disabled="";
-				if(dis==4){
-					document.getElementById("fire-button").disabled="disabled";
-				}else if(dis==5){
-					document.getElementById("water-button").disabled="disabled";
-				}else if(dis==6){
-					document.getElementById("fire-button").disabled="disabled";
-					document.getElementById("water-button").disabled="disabled";
+	//2問目
+	if(monster!=null){
+		if(que == 1){
+			if (document.all)
+			{
+				kc = event.keyCode;
+			}
+			else
+			{
+				kc = evt.which;
+			}
+			//入力されたキーコードと、問題文のキーコードを比較
+			if (kc == kcode2[ rnd2[cnt2] ])
+			{
+				//以下、キーコードが一致した時の処理
+				//入力されたセルの文字色を灰色にする
+				var idName = "word2"+cnt2;
+				document.getElementById(idName).style.color="#dddddd";
+				document.getElementById("fire-button").disabled="disabled";
+				document.getElementById("water-button").disabled="disabled";
+				document.getElementById("leaf-button").disabled="disabled";
+			if(esc >=1){
+				document.getElementById("water"+esc).style.display="none";
+					esc++;
+				if(esc <=5){
+					document.getElementById("water"+esc).style.display="block";
 				}
-				document.getElementById("water-gobrin").style.display="none";
-				document.getElementById("water-gobrin-down").style.display="block";
-				down+=1;
-				clear();
+			}
+				cnt2++; //カウント数を＋１にする
+				//全文字入力したか確認
+				if ( cnt2 == 5){
+					document.getElementById("water-button").disabled="";
+					document.getElementById("fire-button").disabled="";
+					document.getElementById("leaf-button").disabled="";
+					judge('fire-')
+					down+=1;
+					monster=null;
+					clear();
+				}
+			}
+		}
+	}
+
+	//3問目
+	if(monster!=null){
+		if(que == 2){
+			if (document.all)
+			{
+				kc = event.keyCode;
+			}
+			else
+			{
+				kc = evt.which;
+			}
+			//入力されたキーコードと、問題文のキーコードを比較
+			if (kc == kcode3[ rnd3[cnt3] ])
+			{
+				//以下、キーコードが一致した時の処理
+				//入力されたセルの文字色を灰色にする
+				var idName = "word3"+cnt3;
+				document.getElementById(idName).style.color="#dddddd";
+				document.getElementById("water-button").disabled="disabled";
+				document.getElementById("fire-button").disabled="disabled";
+				document.getElementById("leaf-button").disabled="disabled";
+			if(esc >=1){
+				document.getElementById("leaf"+esc).style.display="none";
+					esc++;
+				if(esc <=4){
+					document.getElementById("leaf"+esc).style.display="block";
+				}
+			}
+				cnt3++; //カウント数を＋１にする
+				//全文字入力したか確認
+				if ( cnt3 == 4){
+					dis+=3;
+					document.getElementById("leaf-button").disabled="";
+					document.getElementById("fire-button").disabled="";
+					document.getElementById("water-button").disabled="";
+					judge('water-');
+					down+=1;
+					clear();
+				}
 			}
 		}
 	}
 }
-
+function get_attribute(a){
+	attribute=a;
+}
+function get_monster(m){
+	monster=m;
+	if(monster=="water"){//fire-gobrin
+		document.getElementById("target").style.left="17%";
+		document.getElementById("target").style.display="block";
+	}
+	if(monster=="leaf"){//water-gobrin
+		document.getElementById("target").style.left="47%";
+		document.getElementById("target").style.display="block";
+	}
+	if(monster=="fire"){//leaf-gobrin
+		document.getElementById("target").style.left="77%";
+		document.getElementById("target").style.display="block";
+	}
+}
+function judge(j){
+	var attri=j;
+	if(attribute==monster){
+		document.getElementById(attri+"gobrin").style.display="none";
+		document.getElementById(attri+"gobrin-down").style.display="block";
+		document.getElementById(attribute+"-button").style.display="none";
+		document.getElementById("target").style.display="none";
+	}else{
+		document.getElementById("life"+life).style.display="none";
+		life-=1;
+		console.log(life);
+		if(life==0){
+			setTimeout(jump(),10);
+			alert("うわっ！やーらーれーたー")
+		}
+		miss(attribute);
+	}
+}
+function jump(){
+	location.href="http://localhost:8080/stage2-3/gameover2-3";
+}
+function miss(attri){
+	esc=1;
+	var ene=attri;//eneにモンスターの弱点属性が入る
+	console.log(ene);
+	if(ene=="fire"){//火ゴブリンの場合
+		gameSet();
+		document.getElementById("fire-button").disabled="";
+		document.getElementById("fire"+esc).style.display="block";
+		for(var i=0;i<=4;i++){
+			document.getElementById("word"+i).style.color="black";
+		}
+	}
+	if(ene=="water"){//水ゴブリンの場合
+		gameSet2();
+		document.getElementById("water-button").disabled="";
+		document.getElementById("water"+esc).style.display="block";
+		for(var i=0;i<=5;i++){
+			document.getElementById("word2"+i).style.color="black";
+		}
+	}
+	if(ene=="leaf"){//草ゴブリンの場合
+		gameSet3();
+		document.getElementById("leaf"+esc).style.display="block";
+		document.getElementById("leaf-button").disabled="";
+		for(var i=0;i<=4;i++){
+			document.getElementById("word3"+i).style.color="black";
+		}
+	}
+}
 function clear(){
 	if(down==3){
 		document.getElementById("start").style.display="none";

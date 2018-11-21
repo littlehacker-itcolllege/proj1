@@ -18,7 +18,7 @@
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 4s;
+    animation-delay: 6s;
 }
 
 .text3 {
@@ -30,7 +30,7 @@
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 8s;
+    animation-delay: 10s;
 }
 .text4 {
     height: 40px;
@@ -64,17 +64,6 @@
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
     animation-delay: 22s;
-}
-.text7 {
-    height: 40px;
-    top: 5px;
-    left: 4px;
-    width: 100%;
-    overflow: hidden;
-    opacity: 0;
-    -webkit-animation: ozDq 6s steps(70, end) forwards;
-    animation-iteration-count:1;
-    animation-delay: 27s;
 }
 
 @-webkit-keyframes ozDq {

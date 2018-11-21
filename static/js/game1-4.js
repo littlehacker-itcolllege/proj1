@@ -7,7 +7,7 @@ function start(){
 	document.getElementById("in").disabled="";
 }
 function check(){
-	if (document.getElementById("jumon").value=="pass"){
+	if (document.getElementById("jumon").value=="fire"){
 		document.getElementById("enemy-down").style.display="block";
 		document.getElementById("enemy").style.display="none";
 		document.getElementById("clear").style.display="block";

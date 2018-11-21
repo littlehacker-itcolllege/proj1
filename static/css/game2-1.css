@@ -4,6 +4,7 @@ body{
 }
 td{
 	text-align:center;
+	color:white;
 }
 #start{
 	position:absolute;
@@ -33,8 +34,7 @@ td{
 	height:100vh;
 	background-repeat:no-repeat;
 	background-position:center center;
-	background-image: url("../game/stage2back.png");
-	display:block;
+	background-color:black;
 	display:block;
 	background-size:cover;
 	postion: relative;

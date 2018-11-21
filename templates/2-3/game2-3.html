@@ -13,9 +13,9 @@
 			<div id="back">
 				<div class="box">
 					<div id="select">
-						<button id="fire-button" onclick="gameSet()">火属性</button>
-						<button id="water-button" onclick="gameSet2()">水属性</button>
-						<button id="leaf-button" onclick="gameSet3()">草属性</button>
+						<button id="fire-button" onclick="gameSet();get_attribute('fire')">火属性</button>
+						<button id="water-button" onclick="gameSet2();get_attribute('water')">水属性</button>
+						<button id="leaf-button" onclick="gameSet3();get_attribute('leaf')">草属性</button>
 					</div>
 					<div id="waku">
 						<div id="fire">
@@ -51,13 +51,22 @@
 						</div>
 					</div>
 					<div id="enemy-zone">
-						<img src="{% static 'game/firegobrin.gif' %}" id="fire-gobrin">
-						<img src="{% static 'game/watergobrin.gif' %}" id="water-gobrin">
-						<img src="{% static 'game/gobrin.gif' %}" id="leaf-gobrin">
+
+						<img src="{%static 'game/target-mark.png'%}" id="target">
+						<input type="image"onclick="get_monster('water')" src="{% static 'game/firegobrin.gif' %}" id="fire-gobrin"></input>
+
+						<input type="image"onclick="get_monster('leaf')" src="{% static 'game/watergobrin.gif' %}" id="water-gobrin"></input>
+
+						<input type="image"onclick="get_monster('fire')" src="{% static 'game/leaf-gobrin.gif' %}" id="leaf-gobrin"></input>
 
 						<img src="{% static 'game/firegobrin-down.png' %}" id="fire-gobrin-down">
 						<img src="{% static 'game/watergobrin-down.png' %}" id="water-gobrin-down">
 						<img src="{% static 'game/gobrin-down.png' %}" id="leaf-gobrin-down">
+					</div>
+					<div id="life-box">
+						<img src="{%static 'game/rito.png'%}" id="life1">
+						<img src="{%static 'game/rito.png'%}" id="life2">
+						<img src="{%static 'game/rito.png'%}" id="life3">
 					</div>
 					<div id='keybord-fire'>
 						<img id="fire1" src="{% static 'game/keybord-f.png' %}">

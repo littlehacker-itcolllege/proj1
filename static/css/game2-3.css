@@ -27,6 +27,7 @@ td{
 	z-index:1;
 	display:none;
 }
+
 .box{
     height:100vh;
     background-repeat:no-repeat;
@@ -39,6 +40,10 @@ td{
 }
 #enemy-zone{
 	height:23vh;
+}
+#life-box{
+	position:absolute;
+	top:45%;
 }
 #fire{
   display:none;
@@ -89,6 +94,11 @@ td{
 	position:absolute;
 	top:30%;
 	left:74%;
+}
+#target{
+	position:absolute;
+	top:26%;
+	display:none;
 }
 #fire-gobrin-down{
 	position:absolute;

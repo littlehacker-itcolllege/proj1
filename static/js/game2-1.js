@@ -89,7 +89,7 @@ function typeGame(evt)
     //以下、キーコードが一致した時の処理
     //入力されたセルの文字色を灰色にする
     var idName = "word"+cnt;
-    document.getElementById(idName).style.color="#dddddd";
+    document.getElementById(idName).style.color="gray";
 		if(esc >=1){
 			document.getElementById("key"+esc).style.display="none";
 			esc++;

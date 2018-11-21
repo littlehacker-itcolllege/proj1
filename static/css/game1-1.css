@@ -1,6 +1,7 @@
 body{
 	margin:0px;
 	padding:0px;
+	color:white;
 }
 meter{
 	width:40%;
@@ -62,6 +63,19 @@ meter{
 	position:absolute;
 	left:45%;
 	top:70%;
+	background: #BDBDBD;
+	width:15%;
+	height: 15%;
+	border-radius: 50%;
+	vertical-align: middle;
+	overflow: hidden;
+	box-shadow: 0px 0px 0px 5px #BDBDBD;
+	border: solid 2px rgba(255, 255, 255, 0.47);
+}
+#attack:active{
+	left:45%;
+	top:71%;
+	outline:none;
 }
 #str{
 	position:absolute;
@@ -70,8 +84,8 @@ meter{
 }
 #hp{
 	position:absolute;
-	top:12%;
-	left:70%;
+	top:8%;
+	left:65%;
 }
 #next{
 	display:none;
