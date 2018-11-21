@@ -366,7 +366,7 @@
                         $("#button >*").attr("disabled",false);
                         $('#button').attr("class",'');
                         $('#action').attr("disabled",true);
-                    },20000);
+                    },18000);
                     vasecrash = (vasecrash + 1);
                     $('#canvas235').css({'background' : 'url("../../static/game/vasecrash.png")'});
                     setTimeout("text()" , 2000);
@@ -381,6 +381,8 @@
                     var upanddown = $('#maru').css('grid-column');
                     obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
                     actionvalue = (actionvalue + 1);
+                    $("#button >*").attr("disabled",true);
+                    $('#button').attr("class",'disabled');
                     $("#action").prop("disabled", true);
                 }else if (actionvalue == 4){
                     var h = $('#maru').css('grid-row');
@@ -391,6 +393,8 @@
                     var upanddown = $('#maru').css('grid-column');
                     obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
                     actionvalue = (actionvalue + 1);
+                    $("#button >*").attr("disabled",false);
+                    $('#button').attr("class",'');
                     $("#action").prop("disabled", true);
                 }else if (actionvalue == 5){
                     actionvalue = (actionvalue + 1);
