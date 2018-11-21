@@ -63,18 +63,7 @@
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 20s;
-}
-.text7 {
-    height: 40px;
-    top: 5px;
-    left: 4px;
-    width: 100%;
-    overflow: hidden;
-    opacity: 0;
-    -webkit-animation: ozDq 6s steps(70, end) forwards;
-    animation-iteration-count:1;
-    animation-delay: 24s;
+    animation-delay: 22s;
 }
 @-webkit-keyframes ozDq {
     from { width: 0;}
