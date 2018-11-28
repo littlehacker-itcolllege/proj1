@@ -4,7 +4,8 @@ h1 {
 }
 
 body {
-	background-image: url("../game/family.jpg");
+	background-image: url("../game/navigation.png");
+    background-color: gray;
 	background-position:center center;
 	background-repeat:no-repeat;
 	width:100vw;
