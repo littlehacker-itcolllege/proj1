@@ -4,12 +4,13 @@ body{
 }
 td{
 	text-align:center;
+	color:white;
 }
 #box{
     height:100vh;
     background-repeat:no-repeat;
     background-position:center center;
-    background-image: url("../game/stage2back.png");
+		background-color:black;
     background-size:cover;
     postion: relative;
     justify-content: center; /*左右中央揃え*/

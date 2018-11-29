@@ -54,7 +54,19 @@ td{
 #leaf{
 	display:none;
 }
-
+#damage{
+	position:absolute;
+	top:45%;
+	left:45%;
+	width:10%;
+	display:none;
+}
+#chara{
+	position:absolute;
+	top:45%;
+	left:45%;
+	width:10%;
+}
 #select{
 	height:5vh;
 	width:100vh;

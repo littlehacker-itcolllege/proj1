@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head lang="ja">
+    <meta charset="UTF-8">
+    {% load static %}
+		    <link rel="stylesheet" type="text/css" href="{% static 'css/omake.css' %}">
+		<script  type="text/javascript" src="{% static 'js/omake.js' %}"></script>
+    <title>おまけ</title>
+  </head>
+	<body>
+		<button onclick="click();">おまけ画像</button>
+			<img src="{% static 'game/omake1.jpeg' %}" id="image1">
+			<img src="{% static 'game/omake2.jpeg' %}" id="image2">
+	</body>
+</html>

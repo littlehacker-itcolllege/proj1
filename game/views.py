@@ -18,6 +18,8 @@ def head1_1(request):
     return render(request,'1-1/head1-1.html')
 def nextstory1_1(request):
     return render(request,'1-1/nextstory1-1.html')
+def omake(request):
+    return render(request,'omake/omake.html')
 
 #stage1_2
 def stage1_2(request):

@@ -9,12 +9,14 @@
     </head>
     <body onload="load();">
 			<button id="start" onclick="start();">start</button>
-			<a href="http://localhost:8080/stage1-2/nextstory1-2/" target="story1-2"><button id="clear" onclick="mapclick2(2);">完成！</button></a>
+			<a href="http://localhost:8080/stage1-2/nextstory1-2/" target="story1-2"><button id="clear" onclick="mapclick2(2);stage2clear();">完成！</button></a>
+			<button onclick="wepon_click();" id="comp">作成！</button>
 			<div id="back">
         <div class="box">
 					<img src="{% static 'game/wepon1.png' %}" id="damy-a">
 					<img src="{% static 'game/wepon2.png' %}" id="damy-b">
 					<img src="{% static 'game/wepon3.png' %}" id="damy-c">
+					<img src="{% static 'game/wepon.png' %}" id="wepon">
 					<div itemContainer>
 
 						<div id="item1">
@@ -30,18 +32,12 @@
 							<div  class="dragwrapper2"  ondragover="DragOver(event)" ondrop="Drop(event)" >
 								<img src="{% static 'game/wepon2.png' %}" class="dragimg" id="b" draggable="true" ondragstart="DragStart(event)">
 							</div>
-								<div id="droppoint2">
-									<div id="drop2" class="drop" ondragover="DragOver(event)" ondrop="Drop2(event)"></div>
-								</div>
 						</div>
 
 						<div id="item3">
 							<div  class="dragwrapper3"  ondragover="DragOver(event)" ondrop="Drop(event)" >
 								<img src="{% static 'game/wepon3.png' %}" class="dragimg" id="c" draggable="true" ondragstart="DragStart(event)">
 							</div>
-								<div id="droppoint3">
-									<div id="drop3" class="drop" ondragover="DragOver(event)" ondrop="Drop3(event)"></div>
-								</div>
 						</div>
 
 					</div>

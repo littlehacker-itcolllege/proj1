@@ -113,3 +113,9 @@ body{
 	left:58%;
 	top:12%;
 }
+#mine{
+  position:absolute;
+  top:55%;
+  left:60%;
+  display:none;
+}

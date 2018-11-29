@@ -53,21 +53,23 @@
 					<div id="enemy-zone">
 
 						<img src="{%static 'game/target-mark.png'%}" id="target">
-						<input type="image"onclick="get_monster('water')" src="{% static 'game/firegobrin.gif' %}" id="fire-gobrin"></input>
+						<input type="image"onclick="get_monster('water','fire')" src="{% static 'game/firegobrin.gif' %}" id="fire-gobrin"></input>
 
-						<input type="image"onclick="get_monster('leaf')" src="{% static 'game/watergobrin.gif' %}" id="water-gobrin"></input>
+						<input type="image"onclick="get_monster('leaf','water')" src="{% static 'game/watergobrin.gif' %}" id="water-gobrin"></input>
 
-						<input type="image"onclick="get_monster('fire')" src="{% static 'game/leaf-gobrin.gif' %}" id="leaf-gobrin"></input>
+						<input type="image"onclick="get_monster('fire','leaf')" src="{% static 'game/leaf-gobrin.gif' %}" id="leaf-gobrin"></input>
 
 						<img src="{% static 'game/firegobrin-down.png' %}" id="fire-gobrin-down">
 						<img src="{% static 'game/watergobrin-down.png' %}" id="water-gobrin-down">
 						<img src="{% static 'game/gobrin-down.png' %}" id="leaf-gobrin-down">
 					</div>
 					<div id="life-box">
-						<img src="{%static 'game/rito.png'%}" id="life1">
-						<img src="{%static 'game/rito.png'%}" id="life2">
-						<img src="{%static 'game/rito.png'%}" id="life3">
+						<img src="{%static 'game/hp.png'%}" id="life1">
+						<img src="{%static 'game/hp.png'%}" id="life2">
+						<img src="{%static 'game/hp.png'%}" id="life3">
 					</div>
+						<img src="{%static 'game/charadamage.gif'%}" id="damage">
+						<img src="{%static 'game/character/top.gif'%}" id="chara">
 					<div id='keybord-fire'>
 						<img id="fire1" src="{% static 'game/keybord-f.png' %}">
 						<img id="fire2" src="{% static 'game/keybord-i.png' %}">
