@@ -1,20 +1,48 @@
 h1 {
     width: 500px;
-    float: left;
+    padding: 0;
+/*    float: left;*/
+    display: inline;
 }
 
 body {
 	background-image: url("../game/navigation.png");
-    background-color: gray;
-	background-position:center center;
+	background-position: 50% 50%;
 	background-repeat:no-repeat;
-	width:100vw;
+    background-color: lightblue;
+	width:100%;
 	margin:0px;
 }
-
 .button {
     text-align:right;
     float:right;
-		margin-right:10px;
+    margin-right:10px;
+    margin-top: 15px;
+}
+.history_back_btn{
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #00bcd4;
+    transition: .4s;
+}
+.history_back_btn:hover{
+    background: black;
+}
+.map_btn {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #00bcd4;
+    transition: .4s;
 }
 
+.map_btn:hover {
+    background: black;
+}
