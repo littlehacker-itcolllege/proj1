@@ -139,6 +139,60 @@ body {
     width:10vw;
     height:10vh;
 }
+#enemyattack {
+    grid-row: 1;
+    grid-column: 1;
+}
+#enemyattack img{
+    position:relative;
+    width:10vw;
+    height:10vh;
+}
+#enemyattack2 {
+    grid-row: 1;
+    grid-column: 1;
+}
+#enemyattack2 img{
+    position:relative;
+    width:10vw;
+    height:10vh;
+}
+#enemyattack3 {
+    grid-row: 1;
+    grid-column: 1;
+}
+#enemyattack3 img{
+    position:relative;
+    width:10vw;
+    height:10vh;
+}
+#enemyattack4 {
+    grid-row: 1;
+    grid-column: 1;
+}
+#enemyattack4 img{
+    position:relative;
+    width:10vw;
+    height:10vh;
+}
+#enemyattack5 {
+    grid-row: 1;
+    grid-column: 1;
+}
+#enemyattack5 img{
+    position:relative;
+    width:15vw;
+    height:50vh;
+}
+#enemyattack5charge {
+    grid-row: 1;
+    grid-column: 1;
+}
+#enemyattack5charge img{
+    position:relative;
+    width:10vw;
+    height:10vh;
+}
 #herosword {
     grid-row: 1;
     grid-column: 1;
@@ -148,33 +202,6 @@ body {
     width:10vw;
     height:10vh;
 }
-/*
-#button {
-    display: grid;
-    grid-template-columns: 8vw 8vw 8vw 16vw 16vw;
-    grid-template-rows: 10vh 10vh ;
-}
-#top {
-    grid-row: 1;
-    grid-column: 2;
-}
-#left {
-    grid-row: 2;
-    grid-column: 1;
-}
-#bottom{
-    grid-row: 2;
-    grid-column: 2;
-}
-#right {
-    grid-row: 2;
-    grid-column: 3;
-}
-#input1 {
-    grid-row: 1;
-    grid-column: 5;
-}
-*/
 #action{
     z-index:-2;
     grid-row:1;

@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static "css/boss2.css" %}">
+        <meta charset="utf-8">
+        <script type='text/javascript'  src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+        <script  src="{% static "js/jquery.easing.1.3.js" %}"></script>
+        <script type='text/javascript'>
+            //heroの初期位置
+            var heroy = 60; //heroの座標y軸
+            var addnumy = 4; //ジャンプ力
+            var jumpcut = 0; //カウント変数
+            var groundposy = 60; //地面の座標
+            var max_gravity = 10; //落下速度の最速
+            var herox = 10;//heroの座標x軸
+            var stoprun = 0; //行動中は他の
+            var jumpval = 0; //jump中の検知
+            var charge = 0;//下ボタンのチャージの値
+
+            //上ボタンの処理
+            function topbutton (){
+                if(jumpval == 0){
+                    jumpval = 1;//jump中にする
+                    var jump = setInterval(function(){
+                        var herobottom = Math.round((parseInt($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの下側
+                        var enemytop = Math.round((parseInt($('#enemy img').css('top'))) / parseInt($('.canvas').height())*100)//enemyの上側
+                        var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                        var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                        var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                        var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                        heroy -= addnumy;//heroの位置からaddnumy分の数字を引く
+                        $('#maru img').css({'top': heroy+'%'});//heroの位置を挿入する
+                        if(jumpcut++ % 2 == 0){//jumpcutが２で割れたら実行
+                            addnumy -= 0.3;//addnumyから引いていく
+                            if(addnumy < -max_gravity){//max_gravityよりもaddnumyが小さくなったら実行
+                                addnumy = -max_gravity;//addnumyにmax_gravityと同じ値を格納
+                            }
+                        }
+                        if(heroy > groundposy){//heroが地面以下ついたら実行
+                            addnumy = 4;//jump力を元に戻す
+                            heroy = groundposy;//heroの位置を地面に戻す
+                            $('#maru img').css({'top': heroy+'%'});
+                            jumpval = 0;//jump中を解除
+                            clearInterval(jump);//setIntervaleを解除
+                            if(heroright >= enemyleft && heroright <= enemyright){//heroとenemyの位置が被ったらhero左寄りなら左に寄せる
+                                herox = Math.round((parseInt($('#enemy img').css('left'))-$('#maru img').width()) / parseInt($('.canvas').width())*100) -1//1%左寄せ
+                                $('#maru img').css({'left': herox+'%'});//heroの位置に代入
+                            }else if(heroleft <= enemyright && heroleft >= enemyleft){//heroとenemyの位置が被ったらhero右寄りなら右に寄せる
+                                herox = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100) +1//1%右寄せ
+                                $('#maru img').css({'left': herox+'%'});//heroの位置に代入
+                            }
+                        }
+                    },16)//１秒間に62.5回繰り返す
+                }
+            }
+            //下ボタンの処理
+            function bottombutton(){
+                if(charge == 0 ){//チャージ中の検知
+                    charge = 1;//チャージ中
+                    var mp = $('#hero-mp-meter').val();//mpメーターの値を変数に代入
+                    mp = mp + 1;//mpに１をプラス
+                    $('#hero-mp-meter').val(mp).change();//mpメーターに１をプラスしたmpを入れる
+                    $('#maru').children('img').attr('src',"{% static "game/character/heroboss2chargeright.gif" %}");
+                    if(direction == 0){
+                        $('#maru').children('img').attr('src',"{% static "game/character/heroboss2chargeright.gif" %}");
+                    }else{
+                        $('#maru').children('img').attr('src',"{% static "game/character/heroboss2chargeleft.gif" %}");
+                    }
+                }else if(charge == 1){
+                    charge = 2;//チャージ中
+                    var mp = $('#hero-mp-meter').val();//mpメーターの値を変数に代入
+                    mp = mp + 1;//mpに１をプラス
+                    setTimeout(function(){
+                        charge = 1;
+                    },100)
+                    $('#hero-mp-meter').val(mp).change();//mpメーターに１をプラスしたmpを入れる
+                }
+            }
+            //右ボタンの処理
+            function rightbutton(){
+                count = 0;
+                if(stoprun == 0){
+                    stoprun = 1;
+                    clearInterval(run);
+                    var run = setInterval(function(){
+                        var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                        var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                        var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                        var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                        var herobottom = Math.round((parseFloat($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの下側
+                        var enemytop = Math.round(parseInt($('#enemy img').css('top'))/$('.canvas').height()*100)//enemyの上側
+                        if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
+                            ||heroleft > enemyright//heroの左側がenemyの右側よりも右にある
+                            ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
+                        ){
+                            if(heroright < 100){
+                                herox = (parseInt(herox) + 1).toString();
+                                $('#maru img').css({'left': herox+'%'});
+                                count ++;
+                                if(count == 4){//1pushで4vw動く
+                                    herox = (parseInt(herox) - 1).toString();
+                                    $('#maru img').css({'left': herox+'%'});
+                                    clearInterval(run);
+                                    stoprun = 0;
+                                }}else{
+                                    herox = (parseInt(herox) - 1).toString();
+                                    $('#maru img').css({'left': herox+'%'});
+                                    clearInterval(run);
+                                    stoprun = 0;
+                                }}else{
+                                    herox = (parseInt(herox) - 1).toString();
+                                    $('#maru img').css({'left': herox+'%'});
+                                    clearInterval(run);
+                                    stoprun = 0;
+                                }},24)
+                }
+            }
+            //左ボタンの処理
+            function leftbutton(){
+                count = 0;
+                if(stoprun == 0){
+                    stoprun = 1;
+                    clearInterval(run);
+                    var run = setInterval(function(){
+                        var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                        var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                        var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//nemyの右側
+                        var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                        var jump = Math.round((parseFloat($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの下側
+                        var enemytop = Math.round(parseInt($('#enemy img').css('top'))/$('.canvas').height()*100)//enemyの上側
+                        if(heroright < enemyleft
+                            ||heroleft > enemyright
+                            ||jump < enemytop  ){
+                            if(herox > 0){
+                                herox = (parseInt(herox) - 1).toString();
+                                $('#maru img').css({'left': herox+'%'});
+                                count ++;
+                                if(count == 4){//1pushで4vw動く
+                                    herox = (parseInt(herox) + 1).toString();
+                                    $('#maru img').css({'left': herox+'%'});
+                                    clearInterval(run);
+                                    stoprun = 0;
+                                }}else{
+                                    herox = (parseInt(herox) + 1).toString();
+                                    $('#maru img').css({'left': herox+'%'});
+                                    clearInterval(run);
+                                    stoprun = 0;
+                                }}else{
+                                    herox = (parseInt(herox) + 1).toString();
+                                    $('#maru img').css({'left': herox+'%'});
+                                    clearInterval(run);
+                                    stoprun = 0;
+                                }},24)
+                }
+            }
+
+            // ページ読み込み時に実行
+            window.onload = function () {
+                $('#patinko1').hide();
+                $('#patinko2').hide();
+                $('#patinko3').hide();
+                $('#herosword').hide();
+                $('#enemyattack').hide();
+                $('#enemyattack2').hide();
+                $('#enemyattack3').hide();
+            }
+            window.addEventListener('keydown', KeyDown, true);
+            window.addEventListener('keyup', KeyUp, true);
+            var g_bUpPush =false;//上ボタンの検知関数
+            var g_bDownPush =false;//下ボタンの検知関数
+            var g_bRightPush =false;//右ボタンの検知関数
+            var g_bLeftPush =false;//左ボタンの検知関数
+            var g_bzPush =false;//zボタンの検知関数
+            var g_bxPush =false;//xボタンの検知関数
+            var power = 1
+            var direction = 0; //heroの向き 1左 0右
+            function KeyDown(event) {
+                var code = event.keyCode;       // どのキーが押されたか
+                switch(code) {
+                        // ←キー
+                    case 37:
+                        g_bLeftPush = true;
+                        break;
+                        // →キー
+                    case 39:
+                        g_bRightPush = true;
+                        break;
+                        // ↑キー
+                    case 38:
+                        g_bUpPush = true;
+                        break;
+                        // ↓キー
+                    case 40:
+                        g_bDownPush = true;
+                        break;
+                        //zキー
+                    case 90:
+                        g_bzPush = true;
+                        break;
+                        //xキー
+                    case 88:
+                        g_bxPush = true;
+                        break;
+                }
+            }
+
+            /*
+                キーを離した時のイベント
+             */
+            function KeyUp(event) {
+                code = event.keyCode;
+                switch(code) {
+                        // ←キー
+                    case 37:
+                        g_bLeftPush = false;
+                        break;
+                    case 39:
+                        // →キー
+                        g_bRightPush = false;
+                        break;
+                    case 38:
+                        // ↑キー
+                        g_bUpPush = false;
+                        break;
+                    case 40:
+                        // ↓キー
+                        g_bDownPush = false;
+                        if(direction == 0){
+                            $('#maru').children('img').attr('src',"{% static "game/character/right.gif" %}");
+                        }else{
+                            $('#maru').children('img').attr('src',"{% static "game/character/left.gif" %}");
+                        }
+                        break;
+                        //zキー
+                    case 90:
+                        g_bzPush = false;
+                        break;
+                        //xキー
+                    case 88:
+                        g_bxPush = false;
+                        break;
+                }
+            }
+            var invalid = false;
+            (function(){
+                // targetを監視してtrueになったら関数を実行
+                //上ボタンの検知
+                (function observe(){
+                    if(invalid == false){
+                        if (g_bUpPush == false) {
+                            setTimeout(observe, 256);
+                        } else {
+                            topbutton()
+                            setTimeout(observe, 256);
+                        }
+                    }else{
+                        setTimeout(observe, 256);
+                    }
+                })();
+                //下ボタンの検知
+                (function observe(){
+                    if (g_bDownPush == false) {
+                        invalid = false;
+                        charge = 0;
+                        setTimeout(observe, 100);
+                    } else {
+                        invalid = true;
+                        bottombutton()
+                        setTimeout(observe, 100);
+                    }
+                })();
+                //右ボタンの検知
+                (function observe(){
+                    if(invalid == false){
+                        if (g_bRightPush == false) {
+                            setTimeout(observe, 96);
+                        } else {
+                            rightbutton()
+                            setTimeout(observe, 96);
+                        }
+                    }else{
+                        setTimeout(observe, 96);
+                    }
+                })();
+                //左ボタンの検知
+                (function observe(){
+                    if(invalid == false){
+                        if (g_bLeftPush == false) {
+                            setTimeout(observe, 96);
+                        } else {
+                            leftbutton()
+                            setTimeout(observe, 96);
+                        }
+                    }else{
+                        setTimeout(observe, 96);
+                    }
+                })();
+                //zボタンの検知
+                (function observe(){
+                    if(invalid == false){
+                        var mp = $('#hero-mp-meter').val();
+                        if (g_bzPush == false) {
+                            setTimeout(observe, 96);
+                        } else if(g_bzPush == true && power == 1 && mp >= 5){
+                            mp = mp - 5;
+                            $('#hero-mp-meter').val(mp).change();
+                            power = 0;
+                            setTimeout(
+                                function(){power = 1}, 1100);
+                            console.log(power)
+                            win_open();
+                            setTimeout(observe, 96);
+                        }else{
+                            setTimeout(observe, 96);
+                        }
+                    }else{
+                        setTimeout(observe, 96);
+                    }
+                })();
+                //xボタンの検知
+                (function observe(){
+                    if(invalid == false){
+                        var mp = $('#hero-mp-meter').val();
+                        if (g_bxPush == false) {
+                            setTimeout(observe, 96);
+                        } else {
+                            if(mp >= 10){
+                                mp = mp - 10;
+                                $('#hero-mp-meter').val(mp).change();
+                                win_open2();
+                                setTimeout(observe, 96);
+                            }else{
+                                setTimeout(observe, 96);
+                            }
+                        }
+                    }else{
+                        setTimeout(observe, 96);
+                    }
+                })();
+                //hero&enemyの向きの検知
+                (function observe(){
+                    var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                    var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                    if (heroleft < enemyleft) {
+                            setTimeout(observe, 96);
+                        if(direction == 1){
+                            direction = 0;//右向きの値
+                            $('#maru').children('img').attr('src',"{% static "game/character/right.gif" %}")
+                            $('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}")
+                            setTimeout(observe, 96);
+                        }
+                    }else{
+                            setTimeout(observe, 96);
+                        if(direction == 0){
+                            direction = 1;//左向きの値
+                            $('#maru').children('img').attr('src',"{% static "game/character/left.gif" %}")
+                            $('#enemy').children('img').attr('src',"{% static "game/character/boss2right.gif" %}")
+                            setTimeout(observe, 96);
+                        }
+                    }
+                })();
+            })();
+
+
+
+
+
+            //パチンコ１発目
+            function attack1(){
+                var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                var heroleft = Math.round((parseInt($('#maru img').css('left'))) / parseInt($('.canvas').width())*100)//heroの左側
+                var herobottom = Math.round((parseInt($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの上側
+                var herotop = Math.round((parseInt($('#maru img').css('top'))) / parseInt($('.canvas').height())*100)//heroの下側
+                if(direction == 0){//右向き
+                    $('#patinko1').children('img').attr('src',"{% static "game/heroattack.png" %}")
+                    $('#patinko1').show();
+                    $('#patinko1 img').css({'left': heroright+'%'});
+                    $('#patinko1 img').css({'top': herotop+'%'});
+                    var attack = setInterval(function(){
+                        var exit = Math.round((parseInt($('#patinko1 img').css('left'))+$('#patinko1 img').width()) /parseInt($('.canvas').width())*100)
+                        var w = Math.round((parseInt($('#patinko1 img').css('left'))) /parseInt($('.canvas').width())*100)
+                        if(contact1 == 1){
+                            clearInterval(attack);
+                            contact1 = 0;
+                        }else if(exit <= 95){
+                            w = (parseInt(w) + 1);
+                            $('#patinko1 img').css('left',w+'%').change();
+                        }else{
+                            clearInterval(attack);
+                            $('#patinko1').hide();
+                        }},30)
+                }else{//左向き
+                    $('#patinko1').children('img').attr('src',"{% static "game/heroattackleft.png" %}")
+                    $('#patinko1').show();
+                    $('#patinko1 img').css({'left': parseInt(heroleft)-$('#patinko1 img').width()/parseInt($('.canvas').width())*100+'%'});
+                    $('#patinko1 img').css({'top': herotop+'%'});
+                    var attack = setInterval(function(){
+                        var exit = Math.round((parseInt($('#patinko1 img').css('left'))+$('#patinko1 img').width()) /parseInt($('.canvas').width())*100)
+                        var w = Math.round((parseInt($('#patinko1 img').css('left'))) /parseInt($('.canvas').width())*100)
+                        if(contact1 == 1){
+                            clearInterval(attack);
+                            contact1 = 0;
+                        }else if(exit >= 0){
+                            w = (parseInt(w) - 1);
+                            $('#patinko1 img').css('left',w+'%').change();
+                        }else{
+                            clearInterval(attack);
+                            $('#patinko1').hide();
+                        }},30);
+                }}
+            //パチンコ2発目
+            function attack2(){
+                var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                var heroleft = Math.round((parseInt($('#maru img').css('left'))) / parseInt($('.canvas').width())*100)//heroの左側
+                var herobottom = Math.round((parseInt($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの上側
+                var herotop = Math.round((parseInt($('#maru img').css('top'))) / parseInt($('.canvas').height())*100)//heroの下側
+                if(direction == 0){//右向き
+                    $('#patinko2').children('img').attr('src',"{% static "game/heroattack.png" %}")
+                    $('#patinko2').show();
+                    $('#patinko2 img').css({'left': heroright+'%'});
+                    $('#patinko2 img').css({'top': herotop+'%'});
+                    var attack = setInterval(function(){
+                        var exit = Math.round((parseInt($('#patinko2 img').css('left'))+$('#patinko2 img').width()) /parseInt($('.canvas').width())*100)
+                        var w = Math.round((parseInt($('#patinko2 img').css('left'))) /parseInt($('.canvas').width())*100)
+                        if(contact2 == 1){
+                            clearInterval(attack);
+                            contact2 = 0;
+                        }else if(exit <= 95){
+                            w = (parseInt(w) + 1);
+                            $('#patinko2 img').css('left',w+'%').change();
+                        }else{
+                            clearInterval(attack);
+                            $('#patinko2').hide();
+                        }},30)
+                }else{//左向き
+                    $('#patinko2').children('img').attr('src',"{% static "game/heroattackleft.png" %}")
+                    $('#patinko2').show();
+                    $('#patinko2 img').css({'left': parseInt(heroleft)-$('#patinko2 img').width()/parseInt($('.canvas').width())*100+'%'});
+                    $('#patinko2 img').css({'top': herotop+'%'});
+                    var attack = setInterval(function(){
+                        var exit = Math.round((parseInt($('#patinko2 img').css('left'))+$('#patinko2 img').width()) /parseInt($('.canvas').width())*100)
+                        var w = Math.round((parseInt($('#patinko2 img').css('left'))) /parseInt($('.canvas').width())*100)
+                        if(contact2 == 1){
+                            clearInterval(attack);
+                            contact2 = 0;
+                        }else if(exit >= 0){
+                            w = (parseInt(w) - 1);
+                            $('#patinko2 img').css('left',w+'%').change();
+                        }else{
+                            clearInterval(attack);
+                            $('#patinko2').hide();
+                        }},30);
+                }}
+            //パチンコ3発目
+            function attack3(){
+                var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                var heroleft = Math.round((parseInt($('#maru img').css('left'))) / parseInt($('.canvas').width())*100)//heroの左側
+                var herobottom = Math.round((parseInt($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの上側
+                var herotop = Math.round((parseInt($('#maru img').css('top'))) / parseInt($('.canvas').height())*100)//heroの下側
+
+                if(direction == 0){//右向き
+                    $('#patinko3').children('img').attr('src',"{% static "game/heroattack.png" %}")
+                    $('#patinko3').show();
+                    $('#patinko3 img').css({'left': heroright+'%'});
+                    $('#patinko3 img').css({'top': herotop+'%'});
+                    var attack = setInterval(function(){
+                        var exit = Math.round((parseInt($('#patinko3 img').css('left'))+$('#patinko3 img').width()) /parseInt($('.canvas').width())*100)
+                        var w = Math.round((parseInt($('#patinko3 img').css('left'))) /parseInt($('.canvas').width())*100)
+                        if(contact3 == 1){
+                            clearInterval(attack);
+                            contact3 = 0;
+                        }else if(exit <= 95){
+                            w = (parseInt(w) + 1);
+                            $('#patinko3 img').css('left',w+'%').change();
+                        }else{
+                            clearInterval(attack);
+                            $('#patinko3').hide();
+                        }},30)
+                }else{//左向き
+                    $('#patinko3').children('img').attr('src',"{% static "game/heroattackleft.png" %}")
+                    $('#patinko3').show();
+                    $('#patinko3 img').css({'left': parseInt(heroleft)-$('#patinko3 img').width()/parseInt($('.canvas').width())*100+'%'});
+                    $('#patinko3 img').css({'top': herotop+'%'});
+                    var attack = setInterval(function(){
+                        var exit = Math.round((parseInt($('#patinko3 img').css('left'))+$('#patinko3 img').width()) /parseInt($('.canvas').width())*100)
+                        var w = Math.round((parseInt($('#patinko3 img').css('left'))) /parseInt($('.canvas').width())*100)
+                        if(contact3 == 1){
+                            clearInterval(attack);
+                            contact3 = 0;
+                        }else if(exit >= 0){
+                            w = (parseInt(w) - 1);
+                            $('#patinko3 img').css('left',w+'%').change();
+                        }else{
+                            clearInterval(attack);
+                            $('#patinko3').hide();
+                        }},30);
+                }}
+            //パチンコボタンの条件分岐
+            var number = 0;
+            function win_open(){
+                //ボタンのOFFとONの切り替え
+                if($('#patinko1').css('display')=='none' && number == 0){
+                    number ++
+                    $('#action').attr("disabled",true);
+                    bullet=setTimeout( function(){
+                        $('#action').attr("disabled",false);
+                    },1100);
+                    setTimeout( function(){attack1()},500);
+
+                    if(direction == 0){
+                        $('#maru').children('img').attr('src',"{% static "game/character/heroboss2patinkoright.gif" %}");
+                        setTimeout( function(){$('#maru').children('img').attr('src',"{% static "game/character/right.gif" %}")},700);
+                    }else{
+                        $('#maru').children('img').attr('src',"{% static "game/character/heroboss2patinkoleft.gif" %}");
+                        setTimeout( function(){$('#maru').children('img').attr('src',"{% static "game/character/left.gif" %}")},700);
+                    }
+                }else if($('#patinko2').css('display')=='none' && number == 1){
+                    number ++
+                    $('#action').attr("disabled",true);
+                    bullet=setTimeout( function(){
+                        $('#action').attr("disabled",false);
+                    },1100);
+                    setTimeout( function(){
+                        attack2()
+                    },500);
+                    if(direction == 0){
+                        $('#maru').children('img').attr('src',"{% static "game/character/heroboss2patinkoright.gif" %}");
+                        setTimeout( function(){$('#maru').children('img').attr('src',"{% static "game/character/right.gif" %}")},700);
+                    }else{
+                        $('#maru').children('img').attr('src',"{% static "game/character/heroboss2patinkoleft.gif" %}");
+                        setTimeout( function(){$('#maru').children('img').attr('src',"{% static "game/character/left.gif" %}")},700);
+                    }
+                }else if($('#patinko3').css('display')=='none' && number == 2){
+                    number = 0;
+                    $('#action').attr("disabled",true);
+                    bullet=setTimeout( function(){
+                        $('#action').attr("disabled",false);
+                    },1100);
+                    setTimeout( function(){
+                        attack3()
+                    },500);
+                    if(direction == 0){
+                        $('#maru').children('img').attr('src',"{% static "game/character/heroboss2patinkoright.gif" %}");
+                        setTimeout( function(){$('#maru').children('img').attr('src',"{% static "game/character/right.gif" %}")},700);
+                    }else{
+                        $('#maru').children('img').attr('src',"{% static "game/character/heroboss2patinkoleft.gif" %}");
+                        setTimeout( function(){$('#maru').children('img').attr('src',"{% static "game/character/left.gif" %}")},700);
+                    }
+                }
+            }
+
+
+            //heroの斬撃
+            var sword = 0;
+            function win_open2(){
+                if(sword == 0){
+                    if(direction == 0){//右向き
+                        setTimeout(function(){
+                            var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                            var heroleft = Math.round((parseInt($('#maru img').css('left'))) / parseInt($('.canvas').width())*100)//heroの左側
+                            var herobottom = Math.round((parseInt($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの上側
+                            var herotop = Math.round((parseInt($('#maru img').css('top'))) / parseInt($('.canvas').height())*100)//heroの下側
+                            $('#herosword').children('img').attr('src',"{% static "game/herosword.png" %}")
+                            $('#herosword img').css({'left': heroright+'%'});
+                            $('#herosword img').css({'top': herotop+'%'});
+                            $('#herosword').show().change();
+                        },200);
+                        sword = 1;
+                        setTimeout(function(){$('#herosword').hide();sword = 0;$('#maru').children('img').attr('src',"{% static "game/character/right.gif" %}")},500)
+                        $('#maru').children('img').attr('src',"{% static "game/character/heroboss2swordright.gif" %}");
+                    }else{//左向き
+                        setTimeout(function(){
+                            var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                            var heroleft = Math.round((parseInt($('#maru img').css('left'))) / parseInt($('.canvas').width())*100)//heroの左側
+                            var herobottom = Math.round((parseInt($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの上側
+                            var herotop = Math.round((parseInt($('#maru img').css('top'))) / parseInt($('.canvas').height())*100)//heroの下側
+                            $('#herosword').children('img').attr('src',"{% static "game/heroswordleft.png" %}")
+                            $('#herosword img').css({'left': String(parseInt(heroleft)-$('#herosword img').width()/parseInt($('.canvas').width())*100)+'%'});
+                            $('#herosword img').css({'top': herotop+'%'});
+                            $('#herosword').show().change()
+                        },200);
+                        sword = 1;
+                        setTimeout(function(){$('#herosword').hide();sword = 0;$('#maru').children('img').attr('src',"{% static "game/character/left.gif" %}")},500)
+                        $('#maru').children('img').attr('src',"{% static "game/character/heroboss2swordleft.gif" %}");
+                    }
+                }
+            }
+
+            //ダメージ計算
+            var contact1 = 0;
+            var contact2 = 0;
+            var contact3 = 0;
+            var contact4 = 0;
+            var contact5 = 0;
+                        var float = false;
+            $(function(){
+                $('#patinko1').change(function(){
+                    var patinkoright = Math.round((parseInt($('#patinko1 img').css('left'))+$('#patinko1 img').width()) / parseInt($('.canvas').width())*100)//patinkoの右側
+                    var patinkoleft = Math.round((parseInt($('#patinko1 img').css('left'))) / parseInt($('.canvas').width())*100)//patinkoの左側
+                    var patinkobottom = Math.round((parseInt($('#patinko1 img').css('top'))+$('#patinko1 img').height()) / parseInt($('.canvas').height())*100)//patinkoの下側
+                    var patinkotop = Math.round((parseInt($('#patinko1 img').css('top'))) / parseInt($('.canvas').height())*100)//patinkoの上側
+                    var patinkocenterx = (parseInt(patinkoright) +parseInt (patinkoleft)) / 2//patinkoのx軸の中心
+                    var patinkocentery = (parseInt(patinkotop) +parseInt (patinkobottom)) / 2//patinkoのy軸の中心
+                    var enemytop = Math.round((parseInt($('#enemy img').css('top')) / $('.canvas').height())*100)//enemyの左側
+                    var enemybottom = Math.round((parseInt($('#enemy img').css('top'))+$('#enemy img').height()) / parseInt($('.canvas').height())*100)//enemyの右側
+                    var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                    var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                    if(patinkocenterx > enemyleft && patinkocenterx < enemyright && patinkocentery < enemybottom && patinkocentery > enemytop){
+                        var damage = $('#enemy-meter').val();
+                        damage = damage - 5;
+                        $('#enemy-meter').val(damage).change();
+                        contact1 = 1;
+                        $('#patinko1').hide();
+                    }
+                });
+                $('#patinko2').change(function(){
+                    var patinkoright = Math.round((parseInt($('#patinko2 img').css('left'))+$('#patinko2 img').width()) / parseInt($('.canvas').width())*100)//patinkoの右側
+                    var patinkoleft = Math.round((parseInt($('#patinko2 img').css('left'))) / parseInt($('.canvas').width())*100)//patinkoの左側
+                    var patinkobottom = Math.round((parseInt($('#patinko2 img').css('top'))+$('#patinko2 img').height()) / parseInt($('.canvas').height())*100)//patinkoの下側
+                    var patinkotop = Math.round((parseInt($('#patinko2 img').css('top'))) / parseInt($('.canvas').height())*100)//patinkoの上側
+                    var patinkocenterx = (parseInt(patinkoright) +parseInt (patinkoleft)) / 2//patinkoのx軸の中心
+                    var patinkocentery = (parseInt(patinkotop) +parseInt (patinkobottom)) / 2//patinkoのy軸の中心
+                    var enemytop = Math.round((parseInt($('#enemy img').css('top')) / $('.canvas').height())*100)//enemyの左側
+                    var enemybottom = Math.round((parseInt($('#enemy img').css('top'))+$('#enemy img').height()) / parseInt($('.canvas').height())*100)//enemyの右側
+                    var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                    var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                    if(patinkocenterx > enemyleft && patinkocenterx < enemyright && patinkocentery < enemybottom && patinkocentery > enemytop){
+                        var damage = $('#enemy-meter').val();
+                        damage = damage - 5;
+                        $('#enemy-meter').val(damage).change();
+                        contact2 = 1;
+                        $('#patinko2').hide();
+                    }
+                });
+                $('#patinko3').change(function(){
+                    var patinkoright = Math.round((parseInt($('#patinko3 img').css('left'))+$('#patinko3 img').width()) / parseInt($('.canvas').width())*100)//patinkoの右側
+                    var patinkoleft = Math.round((parseInt($('#patinko3 img').css('left'))) / parseInt($('.canvas').width())*100)//patinkoの左側
+                    var patinkobottom = Math.round((parseInt($('#patinko3 img').css('top'))+$('#patinko3 img').height()) / parseInt($('.canvas').height())*100)//patinkoの下側
+                    var patinkotop = Math.round((parseInt($('#patinko3 img').css('top'))) / parseInt($('.canvas').height())*100)//patinkoの上側
+                    var patinkocenterx = (parseInt(patinkoright) +parseInt (patinkoleft)) / 2//patinkoのx軸の中心
+                    var patinkocentery = (parseInt(patinkotop) +parseInt (patinkobottom)) / 2//patinkoのy軸の中心
+                    var enemytop = Math.round((parseInt($('#enemy img').css('top')) / $('.canvas').height())*100)//enemyの左側
+                    var enemybottom = Math.round((parseInt($('#enemy img').css('top'))+$('#enemy img').height()) / parseInt($('.canvas').height())*100)//enemyの右側
+                    var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                    var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                    if(patinkocenterx > enemyleft && patinkocenterx < enemyright && patinkocentery < enemybottom && patinkocentery > enemytop){
+                        var damage = $('#enemy-meter').val();
+                        damage = damage - 5;
+                        $('#enemy-meter').val(damage).change();
+                        contact3 = 1;
+                        $('#patinko3').hide();
+                    }
+                });
+                $('#herosword') .change(function(){
+                    var patinkoright = Math.round((parseInt($('#herosword img').css('left'))+$('#herosword img').width()) / parseInt($('.canvas').width())*100)//patinkoの右側
+                    var patinkoleft = Math.round((parseInt($('#herosword img').css('left'))) / parseInt($('.canvas').width())*100)//patinkoの左側
+                    var patinkobottom = Math.round((parseInt($('#herosword img').css('top'))+$('#herosword img').height()) / parseInt($('.canvas').height())*100)//patinkoの下側
+                    var patinkotop = Math.round((parseInt($('#herosword img').css('top'))) / parseInt($('.canvas').height())*100)//patinkoの上側
+                    var patinkocenterx = (parseInt(patinkoright) +parseInt (patinkoleft)) / 2//patinkoのx軸の中心
+                    var patinkocentery = (parseInt(patinkotop) +parseInt (patinkobottom)) / 2//patinkoのy軸の中心
+                    var enemytop = Math.round((parseInt($('#enemy img').css('top')) / $('.canvas').height())*100)//enemyの左側
+                    var enemybottom = Math.round((parseInt($('#enemy img').css('top'))+$('#enemy img').height()) / parseInt($('.canvas').height())*100)//enemyの右側
+                    var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                    var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                    if(patinkocenterx > enemyleft && patinkocenterx < enemyright && patinkocentery < enemybottom && patinkocentery > enemytop){
+                        var damage = $('#enemy-meter').val();
+                        damage = damage - 10;
+                        $('#enemy-meter').val(damage).change();
+                    }
+                });
+
+                $('#enemyattack2') .change(function(){
+                    var enemyattack2right = Math.round((parseInt($('#enemyattack2 img').css('left'))+$('#enemyattack2 img').width()) / parseInt($('.canvas').width())*100)//enemyattack2の右側
+                    var enemyattack2left = Math.round((parseInt($('#enemyattack2 img').css('left'))) / parseInt($('.canvas').width())*100)//enemyattack2の左側
+                    var enemyattack2bottom = Math.round((parseInt($('#enemyattack2 img').css('top'))+$('#enemyattack2 img').height()) / parseInt($('.canvas').height())*100)//enemyattack2の下側
+                    var enemyattack2top = Math.round((parseInt($('#enemyattack2 img').css('top'))) / parseInt($('.canvas').height())*100)//enemyattack2の上側
+                    var enemyattack2centerx = (parseInt(enemyattack2right) +parseInt (enemyattack2left)) / 2//enemyattack2のx軸の中心
+                    var enemyattack2centery = (parseInt(enemyattack2top) +parseInt (enemyattack2bottom)) / 2//enemyattack2のy軸の中心
+                    var herotop = Math.round((parseInt($('#maru img').css('top')) / $('.canvas').height())*100)//heroの左側
+                    var herobottom = Math.round((parseInt($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの右側
+                    var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                    var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                    if(enemyattack2centerx > heroleft && enemyattack2centerx < heroright && enemyattack2centery < herobottom && enemyattack2centery > herotop){
+                        var damage = $('#hero-meter').val();
+                        damage = damage - 10;
+                        $('#hero-meter').val(damage).change();
+                        contact5 = 1;
+                        $('#enemyattack2').hide();
+                    }
+                });
+
+var enemycount = 0;
+                $('#enemy-meter') .change(function(){
+                    var enemyattack2right = Math.round((parseInt($('#enemyattack2 img').css('left'))+$('#enemyattack2 img').width()) / parseInt($('.canvas').width())*100)//enemyattack2の右側
+                    var enemyattack2left = Math.round((parseInt($('#enemyattack2 img').css('left'))) / parseInt($('.canvas').width())*100)//enemyattack2の左側
+                    var enemyattack2bottom = Math.round((parseInt($('#enemyattack2 img').css('top'))+$('#enemyattack2 img').height()) / parseInt($('.canvas').height())*100)//enemyattack2の下側
+                    var enemyattack2top = Math.round((parseInt($('#enemyattack2 img').css('top'))) / parseInt($('.canvas').height())*100)//enemyattack2の上側
+                    var enemyattack2centerx = (parseInt(enemyattack2right) +parseInt (enemyattack2left)) / 2//enemyattack2のx軸の中心
+                    var enemyattack2centery = (parseInt(enemyattack2top) +parseInt (enemyattack2bottom)) / 2//enemyattack2のy軸の中心
+                    var herotop = Math.round((parseInt($('#maru img').css('top')) / $('.canvas').height())*100)//heroの左側
+                    var herobottom = Math.round((parseInt($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの右側
+                    var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                    var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                    var enemymeter = $('#enemy-meter').val();
+                    if(enemymeter < 70 && enemycount == 0){
+                        enemycount ++;
+                        float = true;
+                            $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
+                                        $('#enemy img').css({'left': '90%'});
+                                        $('#enemy img').css({'top': '30%'});
+                setTimeout(function(){
+                    $('#enemyattack2').show();
+                     heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                            $('#enemyattack2 img').css('left',heroleft+'%');
+                            $('#enemyattack2 img').css('top','0%');
+                },500);
+                setTimeout(function(){
+                     heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                            $('#enemyattack2 img').css('left',heroleft+'%');
+                            $('#enemyattack2 img').css('top','0%');
+                },1000);
+                setTimeout(function(){
+                     heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                            $('#enemyattack2 img').css('left',heroleft+'%');
+                            $('#enemyattack2 img').css('top','0%');
+                setTimeout(function(){
+                    $('#enemyattack3').show();
+                    $('#enemyattack2').hide();
+                            $('#enemyattack3 img').css('left',heroleft+'%');
+                            $('#enemyattack3 img').css('top','10%');
+                },500)
+                },1500);
+                setTimeout(function(){
+                    $('#enemyattack3').hide();
+                            $('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
+                                        $('#enemy img').css({'left': '90%'});
+                                        $('#enemy img').css({'top': '60%'});
+                        float = false;
+                },3000);
+
+
+                    }
+                });
+
+            });
+
+            //enemyのAI
+            var stop = false;//攻撃等の行動したあとにtrueにすることで行動を止める
+            var speed = 50;//enemyの行動スピード
+            var enemyrightwall = 90;//enemyの右の壁
+            (function enemymove(){
+                var count = 0;//enemyの移動回数の変数
+                var herobottom = Math.round((parseInt($('#maru img').css('top'))+$('#maru img').height()) / parseInt($('.canvas').height())*100)//heroの下側
+                var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
+                var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                var enemytop = Math.round((parseInt($('#enemy img').css('top'))) / parseInt($('.canvas').height())*100)//enemyの上側
+                var b = Math.floor( Math.random() * (16 + 1 - 10))+10;//enemyが前後する回数の指定ランダム
+                if(float == false){
+                if(direction == 0 ){//heroが右向き時の処理
+                    if(enemyleft - heroright <= 1 ){//密着状態(1以下)
+                        var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
+                        if(a == 0){//1/50で近に移動
+                            (function retreat(){
+                                if(count < b&&float == false){//10~16回後ろに下がる
+                                    enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                                    if( enemyright >= enemyrightwall){
+                                        enemyleft -= 1;
+                                        $('#enemy img').css({'left': enemyleft+'%'});
+                                        setTimeout(enemymove, speed);
+                                    }else{
+                                        count ++;//countを1ずつ足していく
+                                        enemyleft += 1;
+                                        $('#enemy img').css({'left': enemyleft+'%'});
+                                        setTimeout(retreat, speed);//retreatを繰り返す
+                                    }
+                                }else{
+                                    setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                }
+                            })();
+                        }else  if(a == (1||2||3) && stop == false){//3/50で攻撃可能状態なら近接攻撃
+                            stop = true;//攻撃不可能状態にする
+                            $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack.gif" %}")//enemyの近接攻撃中のgifに差し替え
+                            $('#enemyattack img').css({'left': String(parseInt(enemyleft)-$('#enemyattack img').width()/parseInt($('.canvas').width())*100)+'%'});
+                            $('#enemyattack img').css({'top': enemytop+'%'});
+                            $('#enemyattack').show();//enemyの近接攻撃の表示
+                            setTimeout(function(){stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}");$('#enemyattack').hide()},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
+                            setTimeout(enemymove, speed);
+                        }else{//密中に48/50で何もしない
+                            setTimeout(enemymove, speed);
+                        }
+                    }else if(enemyleft - heroright >= 2 && enemyleft - heroright <= 14){//近距離(2~14の間)
+                        var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
+                        if(a == 0){//1/50で中に移動
+                            (function retreat(){
+                                if(count < b&&float == false){//10~16回後ろに下がる
+                                    enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                                    if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
+                                        ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
+                                    ){
+                                        if( enemyright >= enemyrightwall){
+                                            console.log(enemyright)
+                                            enemyleft -= 1;
+                                            $('#enemy img').css({'left': enemyleft+'%'});
+                                            setTimeout(enemymove, speed);
+                                        }else{
+                                            count ++;//countを1ずつ足していく
+                                            enemyleft += 1;
+                                            $('#enemy img').css({'left': enemyleft+'%'});
+                                            setTimeout(retreat, speed);//retreatを繰り返す
+                                        }
+                                    }else{
+                                        enemyleft += 1;
+                                        $('#enemy img').css({'left': enemyleft+'%'});
+                                        setTimeout(enemymove, speed);
+                                    }
+                                }else{
+                                    setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                }
+                            })();
+                        }else if(a == 1){//1/50で密に移動
+                            (function retreat(){
+                                if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
+                                    ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
+                                ){
+                                    if(count < b&&float == false){//10~16回前に移動
+                                        count ++;//countを1ずつ足していく
+                                        enemyleft -= 1;
+                                        $('#enemy img').css({'left': enemyleft+'%'});
+                                        setTimeout(retreat, speed);//retreatを繰り返す
+                                    }else{
+                                        setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                    }
+                                }else{
+                                    enemyleft += 1;
+                                    $('#enemy img').css({'left': enemyleft+'%'});
+                                    setTimeout(enemymove, speed);
+                                }
+
+                            })();
+                        }else if(a == 2 && stop == false){
+                            stop = true;//攻撃不可能状態にする
+                            $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack.gif" %}")//enemyの近接攻撃中のgifに差し替え
+                            $('#enemyattack img').css({'left': String(parseInt(enemyleft)-$('#enemyattack img').width()/parseInt($('.canvas').width())*100)+'%'});
+                            $('#enemyattack img').css({'top': enemytop+'%'});
+                            $('#enemyattack').show();//enemyの近接攻撃の表示
+                            setTimeout(function(){stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}");$('#enemyattack').hide()},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
+                            setTimeout(enemymove, speed);
+                        }else{
+                            setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                        }
+                    }else if(enemyleft - heroright >= 15 && enemyleft - heroright <= 27){//中距離(15~27の間)
+                        var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
+                        if(a == 0){//1/50で中~遠に移動
+                            (function retreat(){
+                                if(count < b&&float == false){//'1016回'後ろに下がる
+                                    enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                                    if( enemyright >= enemyrightwall){
+                                        console.log(enemyright)
+                                        enemyleft -= 1;
+                                        $('#enemy img').css({'left': enemyleft+'%'});
+                                        setTimeout(enemymove, speed);
+                                    }else{
+                                        count ++;//countを1ずつ足していく
+                                        enemyleft += 1;
+                                        $('#enemy img').css({'left': enemyleft+'%'});
+                                        setTimeout(retreat, speed);//retreatを繰り返す
+                                    }
+                                }else{
+                                    setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                }
+                            })();
+                        }else if(a == 1){//1/50で近に移動
+                            (function retreat(){
+                                if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
+                                    ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
+                                ){
+
+                                    if(count < b&&float == false){//10~16回前に移動
+                                        count ++;//countを1ずつ足していく
+                                        enemyleft -= 1;
+                                        $('#enemy img').css({'left': enemyleft+'%'});
+                                        setTimeout(retreat, speed);//retreatを繰り返す
+                                    }else{
+                                        setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                    }
+                                }else{
+                                    enemyleft += 1;
+                                    $('#enemy img').css({'left': enemyleft+'%'});
+                                    setTimeout(enemymove, speed);
+                                }
+
+                            })();
+                        }else if(a == 2 && stop == false){
+                            stop = true;//攻撃不可能状態にする
+                            $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack2.gif" %}")//enemyの近接攻撃中のgifに差し替え
+                            $('#enemyattack2 img').css({'left': String(parseInt(enemyleft)-$('#enemyattack img').width()/parseInt($('.canvas').width())*100)+'%'});
+                            $('#enemyattack2 img').css({'top': enemytop+'%'});
+                            $('#enemyattack2').show();//enemyの近接攻撃の表示
+                            setTimeout(function(){stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}");$('#enemyattack2').hide()},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
+                            setTimeout(enemymove, speed);
+                        }else{
+                            setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                        }
+                    }else if(enemyleft - heroright >= 28 && enemyleft - heroright <= 40){//中~遠距離(28~40の間)
+                        var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
+                        if(a == 0){//1/50で遠に移動
+                            (function retreat(){
+                                if(count < b){//10~16回後ろに下がる
+                                    enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                                    if( enemyright >= enemyrightwall){
+                                        console.log(enemyright)
+                                        enemyleft -= 1;
+                                        $('#enemy img').css({'left': enemyleft+'%'});
+                                        setTimeout(enemymove, speed);
+                                    }else{
+                                        count ++;//countを1ずつ足していく
+                                        enemyleft += 1;
+                                        $('#enemy img').css({'left': enemyleft+'%'});
+                                        setTimeout(retreat, speed);//retreatを繰り返す
+                                    }
+                                }else{
+                                    setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                }
+
+                            })();
+                        }else if(a == 1){//1/50で中に移動
+                            (function retreat(){
+                                if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
+                                    ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
+                                ){
+                                    if(count < b&&float == false){//10~16回前に移動
+                                        count ++;//countを1ずつ足していく
+                                        enemyleft -= 1;
+                                        $('#enemy img').css({'left': enemyleft+'%'});
+                                        setTimeout(retreat, speed);//retreatを繰り返す
+                                    }else{
+                                        setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                    }
+                                }else{
+                                    enemyleft += 1;
+                                    $('#enemy img').css({'left': enemyleft+'%'});
+                                    setTimeout(enemymove, speed);
+                                }
+
+                            })();
+                            }else if(a == 2 && stop == false){
+                            stop = true;//攻撃不可能状態にする
+                            $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack2.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
+                            enemyattack2();
+                            setTimeout(function(){stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}");},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
+                            setTimeout(enemymove, speed);
+                        }else{
+                            setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                        }
+
+                    }else{//遠距離(63~の間)
+                        enemyleft -= 1;
+                        $('#enemy img').css({'left': enemyleft+'%'});
+                        setTimeout(enemymove, speed);
+                    }
+
+                }else{//heroが左向き時の処理
+                    setTimeout(enemymove, speed);
+                }
+
+
+
+
+                }else{
+                    setTimeout(enemymove, speed);
+                }
+            })();
+
+            function enemyattack2(){
+                var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                var enemyleft = Math.round((parseInt($('#enemy img').css('left'))) / parseInt($('.canvas').width())*100)//enemyの左側
+                var enemybottom = Math.round((parseInt($('#enemy img').css('top'))+$('#enemy img').height()) / parseInt($('.canvas').height())*100)//enemyの上側
+                var enemytop = Math.round((parseInt($('#enemy img').css('top'))) / parseInt($('.canvas').height())*100)//enemyの下側
+                if(direction == 1){//右向き
+                    $('#enemyattack2').children('img').attr('src',"{% static "game/heroattack.png" %}")
+                    $('#enemyattack2').show();
+                    $('#enemyattack2 img').css({'left': enemyright+'%'});
+                    $('#enemyattack2 img').css({'top': enemytop+'%'});
+                    var attack = setInterval(function(){
+                        var exit = Math.round((parseInt($('#enemyattack2 img').css('left'))+$('#enemyattack2 img').width()) /parseInt($('.canvas').width())*100)
+                        var w = Math.round((parseInt($('#enemyattack2 img').css('left'))) /parseInt($('.canvas').width())*100)
+                        if(contact5 == 1){
+                            contact5 = 0;
+                            clearInterval(attak);
+                        }else if(exit <= 95){
+                            w = (parseInt(w) + 1);
+                            $('#enemyattack2 img').css('left',w+'%').change();
+                        }else{
+                            clearInterval(attack);
+                            $('#enemyattack2').hide();
+                        }},30)
+                }else{//左向き
+                    $('#enemyattack2').children('img').attr('src',"{% static "game/character/boss2magic.gif" %}")
+                    $('#enemyattack2').show();
+                    $('#enemyattack2 img').css({'left': parseInt(enemyleft)-$('#enemyattack2 img').width()/parseInt($('.canvas').width())*100+'%'});
+                    $('#enemyattack2 img').css({'top': enemytop+'%'});
+                    var attack = setInterval(function(){
+                        var exit = Math.round((parseInt($('#enemyattack2 img').css('left'))+$('#enemyattack2 img').width()) /parseInt($('.canvas').width())*100)
+                        var w = Math.round((parseInt($('#enemyattack2 img').css('left'))) /parseInt($('.canvas').width())*100)
+                        if(contact5 == 1){
+                            contact5 = 0;
+                            clearInterval(attack);
+                        }else if(exit >= 0){
+                            w = (parseInt(w) - 1);
+                            $('#enemyattack2 img').css('left',w+'%').change();
+                        }else{
+                            clearInterval(attack);
+                            $('#enemyattack2').hide();
+                        }},30);
+                }}
+
+        </script>
+    </head>
+    <body>
+        <div id='back'>
+            <div  id='pageplaying'>
+                <div id='hpbar'>
+                    <div id='hp1'><p>リト</p><meter id='hero-meter' max='200' low='40' high='140' optimum='200' value='200'></div>
+                    <div id='hp2'><p>BOSS</p><meter id='enemy-meter' max='200' low='40' high='140' optimum='200' value='200'></div>
+                    <div id='vs'><p>VS</p></div>
+                </div>
+                <div id='wall'>
+                    <img src="{% static "game/4-6wall.png" %}">
+                    <meter id='hero-mp-meter' max='100' low='20' high='70' optimum='100' value='0'>
+                </div>
+                <div class="canvas">
+                    <div id="maru">
+                        <img src="{% static "game/character/right.gif" %}" name="maru">
+                    </div>
+                    <div id="enemy">
+                        <img src="{% static "game/character/boss2left.gif" %}" name='enemy'>
+                    </div>
+                    <div id="patinko1">
+                        <img src="{% static "game/heroattack.png" %}" disabled>
+                    </div>
+                    <div id="patinko2">
+                        <img src="{% static "game/heroattack.png" %}" disabled>
+                    </div>
+                    <div id="patinko3">
+                        <img src="{% static "game/heroattack.png" %}" disabled>
+                    </div>
+                    <div id="herosword">
+                        <img src="{% static "game/herosword.png" %}" disabled>
+                    </div>
+                    <div id="enemyattack">
+                        <img src="{% static "game/character/boss2thunder.gif" %}" disabled>
+                    </div>
+                    <div id="enemyattack2">
+                        <img src="{% static "game/character/boss2magic.gif" %}" disabled>
+                    </div>
+                    <div id="enemyattack3">
+                        <img src="{% static "game/character/boss2thunder.gif" %}" disabled>
+                    </div>
+
+
+                </div>
+                <div id="canvas1"></div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </body>
+</html>
