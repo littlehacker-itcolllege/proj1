@@ -28,61 +28,38 @@ function Drop1(event) {
 	drop1 = "ok";
 	if(id == "a"){
 		document.getElementById("droppoint1").innerHTML="<div id=\"drop1\" class=\"drop\"><img src=\"/static/game/wepon1.png\" class=\"dragimg\" id=\"a\" draggable=\"false\" style=\"display\:block\";></div>"
+		setTimeout("wepon('a')",500);
 	}
 	if(id=="b"){
 		document.getElementById("droppoint1").innerHTML="<div id=\"drop1\" class=\"drop\"><img src=\"/static/game/wepon2.png\" class=\"dragimg\" id=\"a\" draggable=\"false\" style=\"display\:block\";></div>"
+		setTimeout("wepon('b')",500);
 	}
 	if(id=="c"){
 		document.getElementById("droppoint1").innerHTML="<div id=\"drop1\" class=\"drop\"><img src=\"/static/game/wepon3.png\" class=\"dragimg\" id=\"a\" draggable=\"false\" style=\"display\:block\";></div>"
-	}
-	if(drop1 !=null && drop2 !=null && drop3!=null){
-		document.getElementById("clear").style.display="block";
-		document.getElementById("back").style.opacity="0.5";
+		setTimeout("wepon('c')",500);
 	}
 }
-function Drop2(event) {
-	const id = event.dataTransfer.getData("text");
-	const elm = document.getElementById(id);
-	event.currentTarget.appendChild(elm);
-	event.preventDefault();
-	drop2 = "ok";
-	if(id == "a"){
-		document.getElementById("droppoint2").innerHTML="<div id=\"drop2\" class=\"drop\"><img src=\"/static/game/wepon1.png\" class=\"dragimg\" id=\"a\" draggable=\"false\" style=\"display\:block\";></div>"
-	}
-	if(id=="b"){
-		document.getElementById("droppoint2").innerHTML="<div id=\"drop2\" class=\"drop\"><img src=\"/static/game/wepon2.png\" class=\"dragimg\" id=\"a\" draggable=\"false\" style=\"display\:block\";></div>"
-	}
-	if(id=="c"){
-		document.getElementById("droppoint2").innerHTML="<div id=\"drop2\" class=\"drop\"><img src=\"/static/game/wepon3.png\" class=\"dragimg\" id=\"a\" draggable=\"false\" style=\"display\:block\";></div>"
-	}
-	if(drop1 !=null && drop2 !=null && drop3!=null){
-		if(drop1 !=null && drop2 !=null && drop3!=null){
-		document.getElementById("clear").style.display="block";
-		document.getElementById("back").style.opacity="0.5";
+var count=0;
+function wepon(num){
+	if(drop1!=null){
+		document.getElementById("droppoint1").innerHTML="<div id=\"drop1\" class=\"drop\" ondragover=\"DragOver(event)\" ondrop=\"Drop1(event)\"></div>"
+		document.getElementById("damy-"+num).style.display="block";
+		document.getElementById("damy-"+num).style.top="70%";
+		count+=1;
+		if (count==3){
+			document.getElementById("drop1").style.display="none";
+			document.getElementById("comp").style.display="block";
 		}
 	}
 }
-function Drop3(event) {
-	const id = event.dataTransfer.getData("text");
-	const elm = document.getElementById(id);
-	event.currentTarget.appendChild(elm);
-	event.preventDefault();
-	drop3 = "ok";
-	if(id == "a"){
-		document.getElementById("droppoint3").innerHTML="<div id=\"drop3\" class=\"drop\"><img src=\"/static/game/wepon1.png\" class=\"dragimg\" id=\"a\" draggable=\"false\" style=\"display\:block\";></div>"
-	}
-	if(id=="b"){
-		document.getElementById("droppoint3").innerHTML="<div id=\"drop3\" class=\"drop\"><img src=\"/static/game/wepon2.png\" class=\"dragimg\" id=\"a\" draggable=\"false\" style=\"display\:block\";></div>"
-	}
-	if(id=="c"){
-		document.getElementById("droppoint3").innerHTML="<div id=\"drop3\" class=\"drop\"><img src=\"/static/game/wepon3.png\" class=\"dragimg\" id=\"a\" draggable=\"false\" style=\"display\:block\";></div>"
-	}
-	if(drop1 !=null && drop2 !=null && drop3!=null){
-		document.getElementById("clear").style.display="block";
-		document.getElementById("back").style.opacity="0.5";
-	}
+function wepon_click(){
+	document.getElementById("wepon").style.display="block";
+	document.getElementById("clear").style.display="block";
 }
-
+function stage2clear(){
+	document.getElementById("clear").disabled="disabled";
+	document.getElementById("back").style.opacity="0.5";
+}
 // ブラウザ標準のドロップ動作をキャンセル
 function DragOver(event) {
 	event.preventDefault();

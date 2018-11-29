@@ -158,7 +158,6 @@ function typeGame(evt)
 				document.getElementById("fire-button").disabled="";
 				judge('leaf-');
 				monster=null;
-				down+=1;
 				clear();
 			}
 		}
@@ -200,7 +199,6 @@ function typeGame(evt)
 					document.getElementById("fire-button").disabled="";
 					document.getElementById("leaf-button").disabled="";
 					judge('fire-')
-					down+=1;
 					monster=null;
 					clear();
 				}
@@ -244,7 +242,6 @@ function typeGame(evt)
 					document.getElementById("fire-button").disabled="";
 					document.getElementById("water-button").disabled="";
 					judge('water-');
-					down+=1;
 					clear();
 				}
 			}
@@ -254,8 +251,10 @@ function typeGame(evt)
 function get_attribute(a){
 	attribute=a;
 }
-function get_monster(m){
+var monster_attri;
+function get_monster(m,n){
 	monster=m;
+	monster_attri=n;
 	if(monster=="water"){//fire-gobrin
 		document.getElementById("target").style.left="17%";
 		document.getElementById("target").style.display="block";
@@ -276,16 +275,37 @@ function judge(j){
 		document.getElementById(attri+"gobrin-down").style.display="block";
 		document.getElementById(attribute+"-button").style.display="none";
 		document.getElementById("target").style.display="none";
+		down+=1;
 	}else{
+		document.getElementById(monster_attri+"-gobrin").style.top="40%";
+		document.getElementById(monster_attri+"-gobrin").style.left="45%";
+		document.getElementById("chara").style.display="none";
+		document.getElementById("damage").style.display="block";
+		setTimeout('cleen()',500);
 		document.getElementById("life"+life).style.display="none";
 		life-=1;
-		console.log(life);
 		if(life==0){
-			setTimeout(jump(),10);
-			alert("うわっ！やーらーれーたー")
+			setTimeout('jump()',1000);
 		}
 		miss(attribute);
 	}
+}
+function cleen(){
+	if(monster_attri=="fire"){
+		document.getElementById(monster_attri+"-gobrin").style.top="30%";
+		document.getElementById(monster_attri+"-gobrin").style.left="14%";
+		document.getElementById("chara").style.display="block";
+		document.getElementById("damage").style.display="none";
+	}
+	if(monster_attri=="water"){
+		document.getElementById(monster_attri+"-gobrin").style.top="30%";
+		document.getElementById(monster_attri+"-gobrin").style.left="44%";
+	}
+	if(monster_attri=="leaf"){
+		document.getElementById(monster_attri+"-gobrin").style.top="30%";
+		document.getElementById(monster_attri+"-gobrin").style.left="74%";
+	}
+	document.getElementById("target").style.display="none";
 }
 function jump(){
 	location.href="http://localhost:8080/stage2-3/gameover2-3";
@@ -298,7 +318,7 @@ function miss(attri){
 		gameSet();
 		document.getElementById("fire-button").disabled="";
 		document.getElementById("fire"+esc).style.display="block";
-		for(var i=0;i<=4;i++){
+		for(var i=0;i<=3;i++){
 			document.getElementById("word"+i).style.color="black";
 		}
 	}
@@ -306,7 +326,7 @@ function miss(attri){
 		gameSet2();
 		document.getElementById("water-button").disabled="";
 		document.getElementById("water"+esc).style.display="block";
-		for(var i=0;i<=5;i++){
+		for(var i=0;i<=4;i++){
 			document.getElementById("word2"+i).style.color="black";
 		}
 	}
@@ -314,7 +334,7 @@ function miss(attri){
 		gameSet3();
 		document.getElementById("leaf"+esc).style.display="block";
 		document.getElementById("leaf-button").disabled="";
-		for(var i=0;i<=4;i++){
+		for(var i=0;i<=3;i++){
 			document.getElementById("word3"+i).style.color="black";
 		}
 	}

@@ -51,6 +51,9 @@ function mine(a){
 		document.getElementById("left").style.display="block";
 		document.getElementById("right").style.display="none";
 		document.getElementById("left").style.top="10%";
+	  document.getElementById("mine").style.display="block";
+    document.getElementById("mine").style.top="15%";
+    document.getElementById("mine").style.left="35%";
 		setTimeout("trap()",10);
 			}
 	if(a==2){
@@ -58,6 +61,9 @@ function mine(a){
 		document.getElementById("right").style.display="block";
 		document.getElementById("left").style.display="none";
 		document.getElementById("right").style.top="10%";
+	  document.getElementById("mine").style.display="block";
+    document.getElementById("mine").style.top="15%";
+    document.getElementById("mine").style.left="60%";
 		setTimeout("trap()",10);
 	}
 	if(a==3){
@@ -65,6 +71,9 @@ function mine(a){
 		document.getElementById("right").style.display="block";
 		document.getElementById("left").style.display="none";
 		document.getElementById("right").style.top="50%";
+	  document.getElementById("mine").style.display="block";
+    document.getElementById("mine").style.top="55%";
+    document.getElementById("mine").style.left="60%";
 		setTimeout("trap()",10);
 	}
 }
