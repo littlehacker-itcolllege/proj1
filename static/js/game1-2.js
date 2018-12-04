@@ -55,6 +55,7 @@ function wepon(num){
 function wepon_click(){
 	document.getElementById("wepon").style.display="block";
 	document.getElementById("clear").style.display="block";
+	document.getElementById("comp").style.display="none";
 }
 function stage2clear(){
 	document.getElementById("clear").disabled="disabled";

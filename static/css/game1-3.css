@@ -22,17 +22,37 @@ body::-webkit-scrollbar{
 	z-index:0;
 }
 #start{
+	font-size:2em;
 	position:absolute;
 	top:60%;
-	left:50%;
+	left:45%;
 	z-index:1;
+	font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #00bcd4;
+  transition: .4s;
+}
+#start:hover{
+	background:black;
 }
 #clear{
+	font-size:2em;
 	position:absolute;
 	top:60%;
-	left:50%;
+	left:45%;
 	z-index:1;
 	display:none;
+	font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #00bcd4;
+  transition: .4s;
+}
+#clear:hover{
+	background:black;
 }
 #test{
   width:130px;

@@ -9,15 +9,35 @@ td{
 #start{
 	position:absolute;
 	top:60%;
-	left:50%;
+	left:45%;
 	z-index:1;
+	font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #00bcd4;
+  transition: .4s;
+  font-size:2em;
+}
+#start:hover{
+  background:black;
 }
 #clear{
 	position:absolute;
 	top:60%;
-	left:50%;
+	left:45%;
 	z-index:1;
 	display:none;
+	font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #FFF;
+  background: #00bcd4;
+  transition: .4s;
+  font-size:2em;
+}
+#clear:hover{
+  background:black;
 }
 #back{
 	background-color:gray;
