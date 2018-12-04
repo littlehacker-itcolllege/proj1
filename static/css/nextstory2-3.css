@@ -1,3 +1,8 @@
+body{
+    color: white;
+    background-color: black;
+}
+
 .text1{
     height: 40px;
     top: 5px;
@@ -53,6 +58,29 @@
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
     animation-delay: 15s;
+}
+
+
+.button{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.next-button{
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #00bcd4;
+    transition: .4s;
+}
+
+.next-button:hover{
+    background-color: white;
+    color: black;
 }
 
 

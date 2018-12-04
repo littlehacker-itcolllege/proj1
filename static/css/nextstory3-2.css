@@ -1,3 +1,8 @@
+body{
+    color: white;
+    background-color: black;
+}
+
 .text1{
     height: 40px;
     top: 5px;
@@ -54,6 +59,31 @@
     animation-iteration-count:1;
     animation-delay: 13s;
 }
+
+
+.button{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.next-button{
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #00bcd4;
+    transition: .4s;
+}
+
+.next-button:hover{
+    background-color: white;
+    color: black;
+}
+
+
 @-webkit-keyframes ozDq {
     from { width: 0;}
     0% {opacity: 1;}
