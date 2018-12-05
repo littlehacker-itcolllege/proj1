@@ -2,7 +2,7 @@ position = 0;
 var timer;
 window.onscroll = function(){
   var a = document.documentElement.scrollTop || document.body.scrollTop;
-	document.getElementById("test").textContent=a;
+	document.getElementById("target").textContent=a;
 	position = a;
 }
 function load(){

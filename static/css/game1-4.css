@@ -68,4 +68,12 @@ body{
 	left:10%;
 }
 #in{
+  background: #BDBDBD;
+  border-radius: 50%;
+	width:15%;
+	height:auto;
+  vertical-align: middle;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 5px #BDBDBD;
+  border: solid 2px rgba(255, 255, 255, 0.47);
 }

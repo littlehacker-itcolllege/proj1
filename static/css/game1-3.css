@@ -54,11 +54,11 @@ body::-webkit-scrollbar{
 #clear:hover{
 	background:black;
 }
-#test{
+#target{
   width:130px;
   position: fixed;
   top:35%;
-  left:40%;
+  left:39.5%;
   color:#FFF;
   padding:10px;
 
@@ -72,6 +72,19 @@ body::-webkit-scrollbar{
 	position:fixed;
 	top:55%;
 	left:65%;
+  background: #BDBDBD;
+  width:17%;
+  height: 13%;
+  border-radius: 50%;
+  vertical-align: middle;
+  overflow: hidden;
+  box-shadow: 0px 0px 0px 5px #BDBDBD;
+  border: solid 2px rgba(255, 255, 255, 0.47);
+}
+#attack:active{
+  left:65%;
+  top:56%;
+  outline:none;
 }
 #enemy-img{
 	position:absolute;

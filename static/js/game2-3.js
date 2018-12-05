@@ -125,45 +125,48 @@ function typeGame(evt)
 {
   var kc;  //入力されたキーコードを格納する変数
 	if(monster!=null){
-		if (document.all)//入力されたキーのキーコードを取得
-		{
-			kc = event.keyCode;
-		}
-		else
-		{
-			kc = evt.which;
-		}
-		//入力されたキーコードと、問題文のキーコードを比較
-		if (kc == kcode[ rnd[cnt] ])
-		{
-			//以下、キーコードが一致した時の処理
-			//入力されたセルの文字色を灰色にする
-			var idName = "word"+cnt;
-			document.getElementById(idName).style.color="#dddddd";
-			document.getElementById("fire-button").disabled="disabled";
-			document.getElementById("water-button").disabled="disabled";
-			document.getElementById("leaf-button").disabled="disabled";
-			 if(esc >=1){
-				document.getElementById("fire"+esc).style.display="none";
-					esc++;
-				if(esc <=4){
-					document.getElementById("fire"+esc).style.display="block";
-				}
+		if(que==0){
+			if (document.all)//入力されたキーのキーコードを取得
+			{
+				kc = event.keyCode;
 			}
-			cnt++; //カウント数を＋１にする
-			//全文字入力したか確認
-			if(cnt==4){
-				document.getElementById("water-button").disabled="";
-				document.getElementById("leaf-button").disabled="";
-				document.getElementById("fire-button").disabled="";
-				judge('leaf-');
-				monster=null;
-				clear();
+			else
+			{
+				kc = evt.which;
+			}
+			//入力されたキーコードと、問題文のキーコードを比較
+			if (kc == kcode[ rnd[cnt] ])
+			{
+				//以下、キーコードが一致した時の処理
+				//入力されたセルの文字色を灰色にする
+				var idName = "word"+cnt;
+				document.getElementById(idName).style.color="#dddddd";
+				document.getElementById("fire-button").disabled="disabled";
+				document.getElementById("water-button").disabled="disabled";
+				document.getElementById("leaf-button").disabled="disabled";
+				 if(esc >=1){
+					document.getElementById("fire"+esc).style.display="none";
+						esc++;
+					if(esc <=4){
+						document.getElementById("fire"+esc).style.display="block";
+					}
+				}
+				cnt++; //カウント数を＋１にする
+				//全文字入力したか確認
+				if(cnt==4){
+					document.getElementById("water-button").disabled="";
+					document.getElementById("leaf-button").disabled="";
+					document.getElementById("fire-button").disabled="";
+					judge('leaf-');
+					monster=null;
+					clear();
+				}
 			}
 		}
 	}else{
-		alert("敵を選択してください")
-	}
+			alert("敵を選択してください")
+		}
+
 	//2問目
 	if(monster!=null){
 		if(que == 1){
