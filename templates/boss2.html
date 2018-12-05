@@ -164,7 +164,19 @@
             }
 
             // ページ読み込み時に実行
+
+            var start = '0';
             window.onload = function () {
+                $("#pageclear").hide();
+                $("#pagerestart").hide();
+                $("#pagestart a").on('click',function(){
+                    start = '1';
+                    $("#pagestart a").hide();
+                    $("#back").css('opacity','1');
+                    $("#back").css('background-color','#fff');
+                    $("#pageplaying").show();
+                });
+
                 $('#patinko1').hide();
                 $('#patinko2').hide();
                 $('#patinko3').hide();
@@ -254,12 +266,12 @@
                 }
             }
             var invalid = false;
-            (function(){
+            (function observe(){
                 // targetを監視してtrueになったら関数を実行
                 //上ボタンの検知
                 (function observe(){
                     if(invalid == false){
-                        if (g_bUpPush == false) {
+                        if (g_bUpPush == false || start == '0') {
                             setTimeout(observe, 256);
                         } else {
                             topbutton()
@@ -271,7 +283,7 @@
                 })();
                 //下ボタンの検知
                 (function observe(){
-                    if (g_bDownPush == false) {
+                    if (g_bDownPush == false || start == '0') {
                         invalid = false;
                         charge = 0;
                         setTimeout(observe, 100);
@@ -284,7 +296,7 @@
                 //右ボタンの検知
                 (function observe(){
                     if(invalid == false){
-                        if (g_bRightPush == false) {
+                        if (g_bRightPush == false || start == '0') {
                             setTimeout(observe, 96);
                         } else {
                             rightbutton()
@@ -297,7 +309,7 @@
                 //左ボタンの検知
                 (function observe(){
                     if(invalid == false){
-                        if (g_bLeftPush == false) {
+                        if (g_bLeftPush == false || start == '0') {
                             setTimeout(observe, 96);
                         } else {
                             leftbutton()
@@ -311,7 +323,7 @@
                 (function observe(){
                     if(invalid == false){
                         var mp = $('#hero-mp-meter').val();
-                        if (g_bzPush == false) {
+                        if (g_bzPush == false || start == '0') {
                             setTimeout(observe, 96);
                         } else if(g_bzPush == true && power == 1 && mp >= 5){
                             mp = mp - 5;
@@ -331,7 +343,7 @@
                 //xボタンの検知
                 (function observe(){
                     if(invalid == false){
-                        if (g_bxPush == false) {
+                        if (g_bxPush == false || start == '0') {
                             setTimeout(observe, 96);
                         } else {
                             win_open2()
@@ -860,7 +872,13 @@
                     var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
                     var enemymeter = $('#enemy-meter').val();
 
-                    if(direction == 0){
+                    var enemy_meter = $('#enemy-meter').val();
+                    if(enemy_meter <= 0 ){
+                        $("#pageclear").show();
+                        start = '0';
+                        $("#back").css('opacity','0.5');
+                        $("#back").css('background-color','#fff');
+                    }else if(direction == 0){
                         if(enemymeter < 150 && enemycount == 0){
                             enemycount ++;
                             float = true;
@@ -891,7 +909,7 @@
                                 },500)
                             },1500);
                             setTimeout(function(){
-                                $('#enemyattack5').hide().change();
+                                $('#enemyattack5').hide();
                                 $('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
                                 $('#enemy img').css({'left': '90%'});
                                 $('#enemy img').css({'top': '60%'});
@@ -1031,7 +1049,7 @@
                             enemycount ++;
                             float = true;
                             $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
-                            $('#enemy img').css({'left': '90%'});
+                            $('#enemy img').css({'left': '0%'});
                             $('#enemy img').css({'top': '30%'});
                             setTimeout(function(){
                                 $('#enemyattack5charge').show();
@@ -1066,7 +1084,7 @@
                             enemycount ++;
                             float = true;
                             $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
-                            $('#enemy img').css({'left': '90%'});
+                            $('#enemy img').css({'left': '0%'});
                             $('#enemy img').css({'top': '30%'});
                             setTimeout(function(){
                                 $('#enemyattack5charge').show();
@@ -1123,18 +1141,30 @@
                     }
                 });
                 $('#enemyattack5').change(function(){//enemyの必殺技の当たり判定
+                    console.log('ddd')
                     var enemyattack5right = Math.round((parseInt($('#enemyattack5 img').css('left'))+$('#enemyattack5 img').width()) / parseInt($('.canvas').width())*100)//enemyattack5の右側
                     var enemyattack5left = Math.round((parseInt($('#enemyattack5 img').css('left'))) / parseInt($('.canvas').width())*100)//enemyattack5の左側
                     var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
                     var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
                     var herocenterx = (parseInt(heroright) +parseInt (heroleft)) / 2
-                    if(enemyattack5left < herocenterx && enemyattack5right > herocenterx || enemyattack5left > herocenterx && enemyattack5right < herocenterx){
+                    console.log(enemyattack5left,herocenterx)
+                    console.log(enemyattack5right,herocenterx)
+                    if(enemyattack5left < herocenterx && enemyattack5right > herocenterx){
                         var damage = $('#hero-meter').val();
                         damage = damage - 30;
                         $('#hero-meter').val(damage).change();
                     }
                 });
 
+                $('#hero-meter').change(function(){
+                    var hero_meter = $('#hero-meter').val();
+                    if(hero_meter <= 0 ){
+                        $("#pagerestart").show();
+                        start = '0';
+                        $("#back").css('opacity','0.5');
+                        $("#back").css('background-color','#fff');
+                    }
+                });
             });
 
             //enemyのAI
@@ -1151,47 +1181,15 @@
                 var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
                 var enemytop = Math.round((parseInt($('#enemy img').css('top'))) / parseInt($('.canvas').height())*100)//enemyの上側
                 var b = Math.floor( Math.random() * (16 + 1 - 10))+10;//enemyが前後する回数の指定ランダム
-                if(float == false){
-                    if(direction == 0 ){//heroが右向き時の処理
-                        if(enemyleft - heroright <= 1 ){//密着状態(1以下)
-                            var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
-                            if(a == (0||1||2)){//近に移動
-                                (function retreat(){
-                                    if(count < b&&float == false){//10~16回後ろに下がる
-                                        enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
-                                        if( enemyright >= enemyrightwall){
-                                            enemyleft -= 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(enemymove, speed);
-                                        }else{
-                                            count ++;//countを1ずつ足していく
-                                            enemyleft += 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(retreat, speed);//retreatを繰り返す
-                                        }
-                                    }else{
-                                        setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
-                                    }
-                                })();
-                            }else  if(a == (4||5||6||7||8) && stop == false){//攻撃可能状態なら近接攻撃
-                                stop = true;//攻撃不可能状態にする
-                                $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack.gif" %}")//enemyの近接攻撃中のgifに差し替え
-                                $('#enemyattack img').css({'left': String(parseInt(enemyleft)-$('#enemyattack img').width()/parseInt($('.canvas').width())*100)+'%'});
-                                $('#enemyattack img').css({'top': enemytop+'%'});
-                                $('#enemyattack').show().change();//enemyの近接攻撃の表示
-                                setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}");$('#enemyattack').hide().change()},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
-                            }else{//密中に何もしない
-                                setTimeout(enemymove, speed);
-                            }
-                        }else if(enemyleft - heroright >= 2 && enemyleft - heroright <= 14){//近距離(2~14の間)
-                            var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
-                            if(a == 0){//中に移動
-                                (function retreat(){
-                                    if(count < b&&float == false){//10~16回後ろに下がる
-                                        enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
-                                        if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
-                                            ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
-                                        ){
+                if( start == '1'){
+                    if(float == false){
+                        if(direction == 0 ){//heroが右向き時の処理
+                            if(enemyleft - heroright <= 1 ){//密着状態(1以下)
+                                var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
+                                if(a == (0||1||2)){//近に移動
+                                    (function retreat(){
+                                        if(count < b&&float == false){//10~16回後ろに下がる
+                                            enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
                                             if( enemyright >= enemyrightwall){
                                                 enemyleft -= 1;
                                                 $('#enemy img').css({'left': enemyleft+'%'});
@@ -1203,216 +1201,306 @@
                                                 setTimeout(retreat, speed);//retreatを繰り返す
                                             }
                                         }else{
-                                            enemyleft += 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(enemymove, speed);
+                                            setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
                                         }
-                                    }else{
-                                        setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
-                                    }
-                                })();
-                            }else if(a == (1||2||3)){//密に移動
-                                (function retreat(){
-                                    if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
-                                        && herobottom < enemytop//heroの下側がenemyの上側よりも下にある
-                                    ){
-                                        if(count < b&&float == false){//10~16回前に移動
-                                            count ++;//countを1ずつ足していく
-                                            enemyleft -= 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(retreat, speed);//retreatを繰り返す
+                                    })();
+                                }else  if(a == (4||5||6||7||8) && stop == false){//攻撃可能状態なら近接攻撃
+                                    stop = true;//攻撃不可能状態にする
+                                    $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack.gif" %}")//enemyの近接攻撃中のgifに差し替え
+                                    $('#enemyattack img').css({'left': String(parseInt(enemyleft)-$('#enemyattack img').width()/parseInt($('.canvas').width())*100)+'%'});
+                                    $('#enemyattack img').css({'top': enemytop+'%'});
+                                    $('#enemyattack').show().change();//enemyの近接攻撃の表示
+                                    setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}");$('#enemyattack').hide().change()},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
+                                }else{//密中に何もしない
+                                    setTimeout(enemymove, speed);
+                                }
+                            }else if(enemyleft - heroright >= 2 && enemyleft - heroright <= 14){//近距離(2~14の間)
+                                var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
+                                if(a == 0){//中に移動
+                                    (function retreat(){
+                                        if(count < b&&float == false){//10~16回後ろに下がる
+                                            enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                                            if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
+                                                ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
+                                            ){
+                                                if( enemyright >= enemyrightwall){
+                                                    enemyleft -= 1;
+                                                    $('#enemy img').css({'left': enemyleft+'%'});
+                                                    setTimeout(enemymove, speed);
+                                                }else{
+                                                    count ++;//countを1ずつ足していく
+                                                    enemyleft += 1;
+                                                    $('#enemy img').css({'left': enemyleft+'%'});
+                                                    setTimeout(retreat, speed);//retreatを繰り返す
+                                                }
+                                            }else{
+                                                enemyleft += 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(enemymove, speed);
+                                            }
                                         }else{
                                             setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
                                         }
-                                    }else{
-                                        enemyleft += 1;
-                                        $('#enemy img').css({'left': enemyleft+'%'});
-                                        setTimeout(enemymove, speed);
-                                    }
-
-                                })();
-                            }else if(a == 4 && stop == false){
-                                stop = true;//攻撃不可能状態にする
-                                $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack.gif" %}")//enemyの近接攻撃中のgifに差し替え
-                                $('#enemyattack img').css({'left': String(parseInt(enemyleft)-$('#enemyattack img').width()/parseInt($('.canvas').width())*100)+'%'});
-                                $('#enemyattack img').css({'top': enemytop+'%'});
-                                $('#enemyattack').show().change();//enemyの近接攻撃の表示
-                                setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}");$('#enemyattack').hide().change()},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
-                            }else{
-                                setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
-                            }
-                        }else if(enemyleft - heroright >= 15 && enemyleft - heroright <= 27){//中距離(15~27の間)
-                            var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
-                            if(a == (0||1||2)){//中~遠に移動
-                                (function retreat(){
-                                    if(count < b&&float == false){//'1016回'後ろに下がる
-                                        enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
-                                        if( enemyright >= enemyrightwall){
-                                            enemyleft -= 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(enemymove, speed);
+                                    })();
+                                }else if(a == (1||2||3)){//密に移動
+                                    (function retreat(){
+                                        if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
+                                            && herobottom < enemytop//heroの下側がenemyの上側よりも下にある
+                                        ){
+                                            if(count < b&&float == false){//10~16回前に移動
+                                                count ++;//countを1ずつ足していく
+                                                enemyleft -= 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(retreat, speed);//retreatを繰り返す
+                                            }else{
+                                                setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                            }
                                         }else{
-                                            count ++;//countを1ずつ足していく
                                             enemyleft += 1;
                                             $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(retreat, speed);//retreatを繰り返す
+                                            setTimeout(enemymove, speed);
                                         }
-                                    }else{
-                                        setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
-                                    }
-                                })();
-                            }else if(a == 3){//近に移動
-                                (function retreat(){
-                                    if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
-                                        ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
-                                    ){
 
-                                        if(count < b&&float == false){//10~16回前に移動
-                                            count ++;//countを1ずつ足していく
-                                            enemyleft -= 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(retreat, speed);//retreatを繰り返す
+                                    })();
+                                }else if(a == 4 && stop == false){
+                                    stop = true;//攻撃不可能状態にする
+                                    $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack.gif" %}")//enemyの近接攻撃中のgifに差し替え
+                                    $('#enemyattack img').css({'left': String(parseInt(enemyleft)-$('#enemyattack img').width()/parseInt($('.canvas').width())*100)+'%'});
+                                    $('#enemyattack img').css({'top': enemytop+'%'});
+                                    $('#enemyattack').show().change();//enemyの近接攻撃の表示
+                                    setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}");$('#enemyattack').hide().change()},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
+                                }else{
+                                    setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                }
+                            }else if(enemyleft - heroright >= 15 && enemyleft - heroright <= 27){//中距離(15~27の間)
+                                var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
+                                if(a == (0||1||2)){//中~遠に移動
+                                    (function retreat(){
+                                        if(count < b&&float == false){//'1016回'後ろに下がる
+                                            enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                                            if( enemyright >= enemyrightwall){
+                                                enemyleft -= 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(enemymove, speed);
+                                            }else{
+                                                count ++;//countを1ずつ足していく
+                                                enemyleft += 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(retreat, speed);//retreatを繰り返す
+                                            }
                                         }else{
                                             setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
                                         }
-                                    }else{
-                                        enemyleft += 1;
-                                        $('#enemy img').css({'left': enemyleft+'%'});
-                                        setTimeout(enemymove, speed);
-                                    }
-
-                                })();
-                            }else if(a == 4 && stop == false){
-                                stop = true;//攻撃不可能状態にする
-                                $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack2.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
-                                if($('#enemyattack2').css('display')=='none'){
-                                    enemyattack2();
-                                }else if($('#enemyattack3').css('display')=='none'){
-                                    enemyattack3();
-                                }else{
-                                    enemyattack4();
-                                }
-                                setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}");},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
-                            }else{
-                                setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
-                            }
-                        }else if(enemyleft - heroright >= 28 && enemyleft - heroright <= 40){//中~遠距離(28~40の間)
-                            var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
-                            if(a == 0){//1/50で遠に移動
-                                (function retreat(){
-                                    if(count < b){//10~16回後ろに下がる
-                                        enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
-                                        if( enemyright >= enemyrightwall){
-                                            enemyleft -= 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(enemymove, speed);
-                                        }else{
-                                            count ++;//countを1ずつ足していく
-                                            enemyleft += 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(retreat, speed);//retreatを繰り返す
-                                        }
-                                    }else{
-                                        setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
-                                    }
-                                })();
-                            }else if(a == (1||2)){//中に移動
-                                (function retreat(){
-                                    if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
-                                        ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
-                                    ){
-                                        if(count < b&&float == false){//10~16回前に移動
-                                            count ++;//countを1ずつ足していく
-                                            enemyleft -= 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(retreat, speed);//retreatを繰り返す
-                                        }else{
-                                            setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
-                                        }
-                                    }else{
-                                        enemyleft += 1;
-                                        $('#enemy img').css({'left': enemyleft+'%'});
-                                        setTimeout(enemymove, speed);
-                                    }
-
-                                })();
-                            }else if(a == 3 && stop == false){
-                                stop = true;//攻撃不可能状態にする
-                                $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack2.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
-                                if($('#enemyattack2').css('display')=='none'){
-                                    enemyattack2();
-                                }else if($('#enemyattack3').css('display')=='none'){
-                                    enemyattack3();
-                                }else{
-                                    enemyattack4();
-                                }
-                                setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}");},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
-                            }else{
-                                setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
-                            }
-
-                        }else{//遠距離(63~の間)
-                            var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
-                            if(a == (0||1||2||3||4) && stop == false){
-                                stop = true;//攻撃不可能状態にする
-                                $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack2.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
-                                if($('#enemyattack2').css('display')=='none'){
-                                    enemyattack2();
-                                }else if($('#enemyattack3').css('display')=='none'){
-                                    enemyattack3();
-                                }else{
-                                    enemyattack4();
-                                }
-                                setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}");},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
-                            }else{
-                                enemyleft -= 1;
-                                $('#enemy img').css({'left': enemyleft+'%'});
-                                setTimeout(enemymove, speed);
-                            }
-                        }
-
-
-                        // *****************************************************************************************************************************************************************************************************************8*********************************************************************************//
-                    }else{//heroが左向き時の処理
-                        if(heroleft - enemyright <= 1 ){//密着状態(1以下)
-                            var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
-                            if(a == (0||1||2)){//近に移動
-                                (function retreat(){
-                                    if(count < b&&float == false){//10~16回後ろに下がる
-                                        enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
-                                        if( enemyleft <= enemyleftwall){
-                                            enemyleft += 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(enemymove, speed);
-                                        }else{
-                                            count ++;//countを1ずつ足していく
-                                            enemyleft -= 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(retreat, speed);//retreatを繰り返す
-                                        }
-                                    }else{
-                                        setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
-                                    }
-                                })();
-                            }else  if(a == (4||5||6||7||8) && stop == false){//攻撃可能状態なら近接攻撃
-                                stop = true;//攻撃不可能状態にする
-                                $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack.gif" %}")//enemyの近接攻撃中のgifに差し替え
-                                $('#enemyattack img').css({'left': String(parseInt(enemyleft)+$('#enemyattack img').width()/parseInt($('.canvas').width())*100)+'%'});
-                                $('#enemyattack img').css({'top': enemytop+'%'});
-                                $('#enemyattack').show().change();//enemyの近接攻撃の表示
-                                setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2right.gif" %}");$('#enemyattack').hide()},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
-                            }else{//密中に何もしない
-                                setTimeout(enemymove, speed);
-                            }
-                        }else if(enemyleft - heroright >= 2 && enemyleft - heroright <= 14){//近距離(2~14の間)
-                            var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
-                            if(a == 0){//中に移動
-                                (function retreat(){
-                                    if(count < b&&float == false){//10~16回後ろに下がる
-                                        enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                                    })();
+                                }else if(a == 3){//近に移動
+                                    (function retreat(){
                                         if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
                                             ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
                                         ){
+
+                                            if(count < b&&float == false){//10~16回前に移動
+                                                count ++;//countを1ずつ足していく
+                                                enemyleft -= 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(retreat, speed);//retreatを繰り返す
+                                            }else{
+                                                setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                            }
+                                        }else{
+                                            enemyleft += 1;
+                                            $('#enemy img').css({'left': enemyleft+'%'});
+                                            setTimeout(enemymove, speed);
+                                        }
+
+                                    })();
+                                }else if(a == 4 && stop == false){
+                                    stop = true;//攻撃不可能状態にする
+                                    $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack2.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
+                                    if($('#enemyattack2').css('display')=='none'){
+                                        enemyattack2();
+                                    }else if($('#enemyattack3').css('display')=='none'){
+                                        enemyattack3();
+                                    }else{
+                                        enemyattack4();
+                                    }
+                                    setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}");},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
+                                }else{
+                                    setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                }
+                            }else if(enemyleft - heroright >= 28 && enemyleft - heroright <= 40){//中~遠距離(28~40の間)
+                                var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
+                                if(a == 0){//1/50で遠に移動
+                                    (function retreat(){
+                                        if(count < b){//10~16回後ろに下がる
+                                            enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
+                                            if( enemyright >= enemyrightwall){
+                                                enemyleft -= 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(enemymove, speed);
+                                            }else{
+                                                count ++;//countを1ずつ足していく
+                                                enemyleft += 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(retreat, speed);//retreatを繰り返す
+                                            }
+                                        }else{
+                                            setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                        }
+                                    })();
+                                }else if(a == (1||2)){//中に移動
+                                    (function retreat(){
+                                        if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
+                                            ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
+                                        ){
+                                            if(count < b&&float == false){//10~16回前に移動
+                                                count ++;//countを1ずつ足していく
+                                                enemyleft -= 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(retreat, speed);//retreatを繰り返す
+                                            }else{
+                                                setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                            }
+                                        }else{
+                                            enemyleft += 1;
+                                            $('#enemy img').css({'left': enemyleft+'%'});
+                                            setTimeout(enemymove, speed);
+                                        }
+
+                                    })();
+                                }else if(a == 3 && stop == false){
+                                    stop = true;//攻撃不可能状態にする
+                                    $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack2.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
+                                    if($('#enemyattack2').css('display')=='none'){
+                                        enemyattack2();
+                                    }else if($('#enemyattack3').css('display')=='none'){
+                                        enemyattack3();
+                                    }else{
+                                        enemyattack4();
+                                    }
+                                    setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}");},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
+                                }else{
+                                    setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                }
+
+                            }else{//遠距離(63~の間)
+                                var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
+                                if(a == (0||1||2||3||4) && stop == false){
+                                    stop = true;//攻撃不可能状態にする
+                                    $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack2.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
+                                    if($('#enemyattack2').css('display')=='none'){
+                                        enemyattack2();
+                                    }else if($('#enemyattack3').css('display')=='none'){
+                                        enemyattack3();
+                                    }else{
+                                        enemyattack4();
+                                    }
+                                    setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2left.gif" %}");},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
+                                }else{
+                                    enemyleft -= 1;
+                                    $('#enemy img').css({'left': enemyleft+'%'});
+                                    setTimeout(enemymove, speed);
+                                }
+                            }
+
+
+                            // *****************************************************************************************************************************************************************************************************************8*********************************************************************************//
+                        }else{//heroが左向き時の処理
+                            if(heroleft - enemyright <= 1 ){//密着状態(1以下)
+                                var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
+                                if(a == (0||1||2)){//近に移動
+                                    (function retreat(){
+                                        if(count < b&&float == false){//10~16回後ろに下がる
+                                            enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                                            if( enemyleft <= enemyleftwall){
+                                                enemyleft += 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(enemymove, speed);
+                                            }else{
+                                                count ++;//countを1ずつ足していく
+                                                enemyleft -= 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(retreat, speed);//retreatを繰り返す
+                                            }
+                                        }else{
+                                            setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                        }
+                                    })();
+                                }else  if(a == (4||5||6||7||8) && stop == false){//攻撃可能状態なら近接攻撃
+                                    stop = true;//攻撃不可能状態にする
+                                    $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack.gif" %}")//enemyの近接攻撃中のgifに差し替え
+                                    $('#enemyattack img').css({'left': String(parseInt(enemyleft)+$('#enemyattack img').width()/parseInt($('.canvas').width())*100)+'%'});
+                                    $('#enemyattack img').css({'top': enemytop+'%'});
+                                    $('#enemyattack').show().change();//enemyの近接攻撃の表示
+                                    setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2right.gif" %}");$('#enemyattack').hide()},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
+                                }else{//密中に何もしない
+                                    setTimeout(enemymove, speed);
+                                }
+                            }else if(enemyleft - heroright >= 2 && enemyleft - heroright <= 14){//近距離(2~14の間)
+                                var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
+                                if(a == 0){//中に移動
+                                    (function retreat(){
+                                        if(count < b&&float == false){//10~16回後ろに下がる
+                                            enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                                            if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
+                                                ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
+                                            ){
+                                                if( enemyleft <= enemyleftwall){
+                                                    console.log(enemyright)
+                                                    enemyleft += 1;
+                                                    $('#enemy img').css({'left': enemyleft+'%'});
+                                                    setTimeout(enemymove, speed);
+                                                }else{
+                                                    count ++;//countを1ずつ足していく
+                                                    enemyleft -= 1;
+                                                    $('#enemy img').css({'left': enemyleft+'%'});
+                                                    setTimeout(retreat, speed);//retreatを繰り返す
+                                                }
+                                            }else{
+                                                enemyleft -= 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(enemymove, speed);
+                                            }
+                                        }else{
+                                            setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                        }
+                                    })();
+                                }else if(a == (1||2||3)){//密に移動
+                                    (function retreat(){
+                                        if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
+                                            && herobottom < enemytop//heroの下側がenemyの上側よりも下にある
+                                        ){
+                                            if(count < b&&float == false){//10~16回前に移動
+                                                count ++;//countを1ずつ足していく
+                                                enemyleft += 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(retreat, speed);//retreatを繰り返す
+                                            }else{
+                                                setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                            }
+                                        }else{
+                                            console.log('aaa')
+                                            enemyleft -= 1;
+                                            $('#enemy img').css({'left': enemyleft+'%'});
+                                            setTimeout(enemymove, speed);
+                                        }
+
+                                    })();
+                                }else if(a == 4 && stop == false){
+                                    stop = true;//攻撃不可能状態にする
+                                    $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack.gif" %}")//enemyの近接攻撃中のgifに差し替え
+                                    $('#enemyattack img').css({'left': String(parseInt(enemyleft)-$('#enemyattack img').width()/parseInt($('.canvas').width())*100)+'%'});
+                                    $('#enemyattack img').css({'top': enemytop+'%'});
+                                    $('#enemyattack').show().change();//enemyの近接攻撃の表示
+                                    setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2right.gif" %}");$('#enemyattack').hide()},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
+                                }else{
+                                    setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                }
+                            }else if(enemyleft - heroright >= 15 && enemyleft - heroright <= 27){//中距離(15~27の間)
+                                var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
+                                if(a == (0||1||2)){//中~遠に移動
+                                    (function retreat(){
+                                        if(count < b&&float == false){//'1016回'後ろに下がる
+                                            enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
                                             if( enemyleft <= enemyleftwall){
                                                 console.log(enemyright)
                                                 enemyleft += 1;
@@ -1425,177 +1513,123 @@
                                                 setTimeout(retreat, speed);//retreatを繰り返す
                                             }
                                         }else{
+                                            setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                        }
+                                    })();
+                                }else if(a == 3){//近に移動
+                                    (function retreat(){
+                                        if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
+                                            ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
+                                        ){
+
+                                            if(count < b&&float == false){//10~16回前に移動
+                                                count ++;//countを1ずつ足していく
+                                                enemyleft += 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(retreat, speed);//retreatを繰り返す
+                                            }else{
+                                                setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                            }
+                                        }else{
                                             enemyleft -= 1;
                                             $('#enemy img').css({'left': enemyleft+'%'});
                                             setTimeout(enemymove, speed);
                                         }
+
+                                    })();
+                                }else if(a == 4 && stop == false){
+                                    stop = true;//攻撃不可能状態にする
+                                    $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack2right.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
+                                    if($('#enemyattack2').css('display')=='none'){
+                                        enemyattack2();
+                                    }else if($('#enemyattack3').css('display')=='none'){
+                                        enemyattack3();
                                     }else{
-                                        setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                        enemyattack4();
                                     }
-                                })();
-                            }else if(a == (1||2||3)){//密に移動
-                                (function retreat(){
-                                    if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
-                                        && herobottom < enemytop//heroの下側がenemyの上側よりも下にある
-                                    ){
-                                        if(count < b&&float == false){//10~16回前に移動
-                                            count ++;//countを1ずつ足していく
-                                            enemyleft += 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(retreat, speed);//retreatを繰り返す
+                                    setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2right.gif" %}");},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
+                                }else{
+                                    setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                }
+                            }else if(enemyleft - heroright >= 28 && enemyleft - heroright <= 40){//中~遠距離(28~40の間)
+                                var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
+                                if(a == 0){//遠に移動
+                                    (function retreat(){
+                                        if(count < b){//10~16回後ろに下がる
+                                            enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
+                                            if( enemyleft >= enemyleftwall){
+                                                console.log(enemyright)
+                                                enemyleft += 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(enemymove, speed);
+                                            }else{
+                                                count ++;//countを1ずつ足していく
+                                                enemyleft -= 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(retreat, speed);//retreatを繰り返す
+                                            }
                                         }else{
                                             setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
                                         }
-                                    }else{
-                                        console.log('aaa')
-                                        enemyleft -= 1;
-                                        $('#enemy img').css({'left': enemyleft+'%'});
-                                        setTimeout(enemymove, speed);
-                                    }
 
-                                })();
-                            }else if(a == 4 && stop == false){
-                                stop = true;//攻撃不可能状態にする
-                                $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack.gif" %}")//enemyの近接攻撃中のgifに差し替え
-                                $('#enemyattack img').css({'left': String(parseInt(enemyleft)-$('#enemyattack img').width()/parseInt($('.canvas').width())*100)+'%'});
-                                $('#enemyattack img').css({'top': enemytop+'%'});
-                                $('#enemyattack').show().change();//enemyの近接攻撃の表示
-                                setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2right.gif" %}");$('#enemyattack').hide()},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
-                            }else{
-                                setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
-                            }
-                        }else if(enemyleft - heroright >= 15 && enemyleft - heroright <= 27){//中距離(15~27の間)
-                            var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
-                            if(a == (0||1||2)){//中~遠に移動
-                                (function retreat(){
-                                    if(count < b&&float == false){//'1016回'後ろに下がる
-                                        enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
-                                        if( enemyleft <= enemyleftwall){
-                                            console.log(enemyright)
-                                            enemyleft += 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(enemymove, speed);
+                                    })();
+                                }else if(a == (1||2)){//中に移動
+                                    (function retreat(){
+                                        if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
+                                            ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
+                                        ){
+                                            if(count < b&&float == false){//10~16回前に移動
+                                                count ++;//countを1ずつ足していく
+                                                enemyleft += 1;
+                                                $('#enemy img').css({'left': enemyleft+'%'});
+                                                setTimeout(retreat, speed);//retreatを繰り返す
+                                            }else{
+                                                setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                            }
                                         }else{
-                                            count ++;//countを1ずつ足していく
                                             enemyleft -= 1;
                                             $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(retreat, speed);//retreatを繰り返す
-                                        }
-                                    }else{
-                                        setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
-                                    }
-                                })();
-                            }else if(a == 3){//近に移動
-                                (function retreat(){
-                                    if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
-                                        ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
-                                    ){
-
-                                        if(count < b&&float == false){//10~16回前に移動
-                                            count ++;//countを1ずつ足していく
-                                            enemyleft += 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(retreat, speed);//retreatを繰り返す
-                                        }else{
-                                            setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
-                                        }
-                                    }else{
-                                        enemyleft -= 1;
-                                        $('#enemy img').css({'left': enemyleft+'%'});
-                                        setTimeout(enemymove, speed);
-                                    }
-
-                                })();
-                            }else if(a == 4 && stop == false){
-                                stop = true;//攻撃不可能状態にする
-                                $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack2right.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
-                                if($('#enemyattack2').css('display')=='none'){
-                                    enemyattack2();
-                                }else if($('#enemyattack3').css('display')=='none'){
-                                    enemyattack3();
-                                }else{
-                                    enemyattack4();
-                                }
-                                setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2right.gif" %}");},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
-                            }else{
-                                setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
-                            }
-                        }else if(enemyleft - heroright >= 28 && enemyleft - heroright <= 40){//中~遠距離(28~40の間)
-                            var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
-                            if(a == 0){//遠に移動
-                                (function retreat(){
-                                    if(count < b){//10~16回後ろに下がる
-                                        enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
-                                        if( enemyleft >= enemyleftwall){
-                                            console.log(enemyright)
-                                            enemyleft += 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
                                             setTimeout(enemymove, speed);
-                                        }else{
-                                            count ++;//countを1ずつ足していく
-                                            enemyleft -= 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(retreat, speed);//retreatを繰り返す
                                         }
+
+                                    })();
+                                }else if(a == 3 && stop == false){
+                                    stop = true;//攻撃不可能状態にする
+                                    $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack2right.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
+                                    if($('#enemyattack2').css('display')=='none'){
+                                        enemyattack2();
+                                    }else if($('#enemyattack3').css('display')=='none'){
+                                        enemyattack3();
                                     }else{
-                                        setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                        enemyattack4();
                                     }
+                                    setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2right.gif" %}");},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
+                                }else{
+                                    setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
+                                }
 
-                                })();
-                            }else if(a == (1||2)){//中に移動
-                                (function retreat(){
-                                    if(heroright < enemyleft//heroの右側がenemyの左側よりも左にある
-                                        ||herobottom < enemytop//heroの下側がenemyの上側よりも下にある
-                                    ){
-                                        if(count < b&&float == false){//10~16回前に移動
-                                            count ++;//countを1ずつ足していく
-                                            enemyleft += 1;
-                                            $('#enemy img').css({'left': enemyleft+'%'});
-                                            setTimeout(retreat, speed);//retreatを繰り返す
-                                        }else{
-                                            setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
-                                        }
+                            }else{//遠距離(63~の間)
+                                var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
+                                if(a == (0||1||2||3||4) && stop == false){
+                                    stop = true;//攻撃不可能状態にする
+                                    $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack2right.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
+                                    if($('#enemyattack2').css('display')=='none'){
+                                        enemyattack2();
+                                    }else if($('#enemyattack3').css('display')=='none'){
+                                        enemyattack3();
                                     }else{
-                                        enemyleft -= 1;
-                                        $('#enemy img').css({'left': enemyleft+'%'});
-                                        setTimeout(enemymove, speed);
+                                        enemyattack4();
                                     }
-
-                                })();
-                            }else if(a == 3 && stop == false){
-                                stop = true;//攻撃不可能状態にする
-                                $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack2right.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
-                                if($('#enemyattack2').css('display')=='none'){
-                                    enemyattack2();
-                                }else if($('#enemyattack3').css('display')=='none'){
-                                    enemyattack3();
+                                    setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2right.gif" %}");},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
                                 }else{
-                                    enemyattack4();
+                                    enemyleft += 1;
+                                    $('#enemy img').css({'left': enemyleft+'%'});
+                                    setTimeout(enemymove, speed);
                                 }
-                                setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2right.gif" %}");},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
-                            }else{
-                                setTimeout(enemymove, speed);//ifの条件を満たせなかったら元のenemymoveに戻る
-                            }
-
-                        }else{//遠距離(63~の間)
-                            var a = Math.floor( Math.random() * 50 );//ランダムに数字を生成するお
-                            if(a == (0||1||2||3||4) && stop == false){
-                                stop = true;//攻撃不可能状態にする
-                                $('#enemy').children('img').attr('src',"{% static "game/character/boss2attack2right.gif" %}")//enemyの遠距離攻撃中のgifに差し替え
-                                if($('#enemyattack2').css('display')=='none'){
-                                    enemyattack2();
-                                }else if($('#enemyattack3').css('display')=='none'){
-                                    enemyattack3();
-                                }else{
-                                    enemyattack4();
-                                }
-                                setTimeout(function(){enemymove();stop = false;$('#enemy').children('img').attr('src',"{% static "game/character/boss2right.gif" %}");},1000);//１秒後に攻撃可能にする&enemyのgifを元のものに差し替え
-                            }else{
-                                enemyleft += 1;
-                                $('#enemy img').css({'left': enemyleft+'%'});
-                                setTimeout(enemymove, speed);
                             }
                         }
+                    }else{
+                        setTimeout(enemymove, speed);
                     }
                 }else{
                     setTimeout(enemymove, speed);
@@ -1733,6 +1767,11 @@
         </script>
     </head>
     <body>
+        <div id='pagestart'>
+            <a>
+                <button id='start'>スタート</button>
+            </a>
+        </div>
         <div id='back'>
             <div  id='pageplaying'>
                 <div id='hpbar'>
@@ -1788,6 +1827,16 @@
             </div>
         </div>
         </div>
+        </div>
+        <div id='pageclear'>
+            <a>
+                <button id='clear'>次の話</button>
+            </a>
+        </div>
+        <div id='pagerestart'>
+            <a>
+                <button id='retry' onclick='location.reload()'>リトライ</button>
+            </a>
         </div>
     </body>
 </html>

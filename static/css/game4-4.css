@@ -11,17 +11,37 @@ body {
     top:60%;
     left:40%;
     z-index:1;
+	display: inline-block;
+
+	font-weight: bold;
+	padding: 0.25em 0.5em;
+	text-decoration: none;
+	color: #FFF;
+	background: #00bcd4;
+	transition: .4s;
+	font-size:2em;
 }
+
 #pagestart{
     text-align: center;
 }
 #pageclear{
+    text-align: center;
+}
+#clear{
     position:absolute;
+    top:60%;
+    left:45%;
     z-index:1;
-    top:40%;
-    left:35%;
-    font-weight: bold;
-    font-size: 40px;
+	display: inline-block;
+
+	font-weight: bold;
+	padding: 0.25em 0.5em;
+	text-decoration: none;
+	color: #FFF;
+	background: #00bcd4;
+	transition: .4s;
+	font-size:2em;
 }
 .canvas{
     z-index: 2;

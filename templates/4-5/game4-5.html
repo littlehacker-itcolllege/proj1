@@ -5,7 +5,7 @@
     <head>
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static "css/game4-5.css" %}">
-				<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
         <meta charset="utf-8">
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
         <script type='text/javascript'>
@@ -582,9 +582,7 @@
     <body>
         <div id='pagestart'>
             <a>
-                <button id='start' style="width:100px;height:50px">
-                    <font size='4'>スタート</font>
-                </button>
+                <button id='start'>スタート</button>
             </a>
             <div id='back'>
                 <div  id='pageplaying'>
@@ -902,11 +900,8 @@
             </div>
         </div>
         <div id='pageclear'>
-            <p>クリア</p>
             <a href="http://localhost:8080/stage4-5/nextstory4-5" target="story4-5">
-                <button style="width:100px;height:50px" onclick="mapclick2(15);">
-                    <font size='4'>next</font>
-                </button>
+                <button id="clear" onclick="mapclick2(15);">次の話</button>
             </a>
         </div>
     </body>

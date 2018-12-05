@@ -5,7 +5,7 @@
     <head>
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static "css/game4-6.css" %}">
-				<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
         <meta charset="utf-8">
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
         <script type='text/javascript'>
@@ -230,10 +230,16 @@
                             $('#patinko1').hide();
                             document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
                             bossdamage = 1;
-                            setTimeout(function(){
-                                document.enemy.src="{% static "game/character/4-6boss.png" %}";
-                                bossdamage = 0;
-                            } ,2000);
+                            var v = $('#enemy-meter').val();
+                            if(v>0){
+                                setTimeout(function(){
+                                    document.enemy.src="{% static "game/character/4-6boss.png" %}";
+                                    bossdamage = 0;
+                                } ,2000);}else{
+                                    document.enemy.src="{% static "game/character/4-6bossloose.png" %}";
+                                    bossdamage = 0;
+                                    attackout = 0;
+                                }
                         }else if(x == patinko2 && $('#patinko2').css('display') == 'block' && patinko2left > 30 && bossdamage == 0){
                             var damage = $('#enemy-meter').val();
                             damage = damage - 20;
@@ -270,17 +276,27 @@
                             $('#patinko1').hide();
                             document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
                             bossdamage = 1;
-                            setTimeout(function(){
-                                document.enemy.src="{% static "game/character/4-6boss.png" %}";
-                                bossdamage = 0;
-                            } ,2000);
+                            var v = $('#enemy-meter').val();
+                            if(v > 0){
+                                setTimeout(function(){
+                                    document.enemy.src="{% static "game/character/4-6boss.png" %}";
+                                    bossdamage = 0;
+                                } ,2000);}else{
+                                    document.enemy.src="{% static "game/character/4-6bossloose.png" %}";
+                                    bossdamage = 0;
+                                    attackout = 0;
+                                }
                         }}
                 });
                 $('#patinko2').change(function(){
                     var patinko2 = $(this).val();
                     var patinko2left = parseInt($(this).css('left'));
+                    var v = $('#enemy-meter').val();
                     var x = $('#enemy').val();
-                    if(start == '1'){
+                    if(v <=0){
+                        document.enemy.src="{% static "game/character/4-6bossloose.png" %}";
+                    }
+                    else if(start == '1'){
                         if(x == patinko2 && $('#patinko2').css('display') == 'block' && patinko2left > 30 && patinko2left < 70 && bossdamage == 0){
                             var damage = $('#enemy-meter').val();
                             damage = damage - 20;
@@ -288,17 +304,27 @@
                             $('#patinko2').hide();
                             document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
                             bossdamage = 1;
-                            setTimeout(function(){
-                                document.enemy.src="{% static "game/character/4-6boss.png" %}";
-                                bossdamage = 0;
-                            } ,2000);
+                            var v = $('#enemy-meter').val();
+                            if(v > 0){
+                                setTimeout(function(){
+                                    document.enemy.src="{% static "game/character/4-6boss.png" %}";
+                                    bossdamage = 0;
+                                } ,2000);}else{
+                                    document.enemy.src="{% static "game/character/4-6bossloose.png" %}";
+                                    bossdamage = 0;
+                                    attackout = 0;
+                                }
                         }}
                 });
                 $('#patinko3').change(function(){
                     var patinko3 = $(this).val();
                     var patinko3left = parseInt($(this).css('left'));
+                    var v = $('#enemy-meter').val();
                     var x = $('#enemy').val();
-                    if(start == '1'){
+                    if(v <=0){
+                        document.enemy.src="{% static "game/character/4-6bossloose.png" %}";
+                    }
+                    else if(start == '1'){
                         if(x == patinko3 && $('#patinko3').css('display') == 'block' && patinko3left > 30 && patinko3left < 70 && bossdamage == 0 ){
                             var damage = $('#enemy-meter').val();
                             damage = damage - 20;
@@ -306,10 +332,16 @@
                             $('#patinko3').hide();
                             document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
                             bossdamage = 1;
-                            setTimeout(function(){
-                                document.enemy.src="{% static "game/character/4-6boss.png" %}";
-                                bossdamage = 0;
-                            } ,2000);
+                            var v = $('#enemy-meter').val();
+                            if(v > 0){
+                                setTimeout(function(){
+                                    document.enemy.src="{% static "game/character/4-6boss.png" %}";
+                                    bossdamage = 0;
+                                } ,2000);}else{
+                                    document.enemy.src="{% static "game/character/4-6bossloose.png" %}";
+                                    bossdamage = 0;
+                                    attackout = 0;
+                                }
                         }}
                 });
                 //heroへのダメージ計算
@@ -318,8 +350,6 @@
                     var xleft = parseInt($('#enemyattack').css('left'));
                     var enemyattack = $('#enemyattack').val();
                     if(start == '1'){
-                        console.log(past.slice(0,1))
-                        console.log(x.slice(0,1))
                         if (past.slice(0,1) == x.slice(0,1)  && x == enemyattack && $('#enemyattack').css('display') == 'block' && xleft < 30 && herodamage == 0){
                             var damage = $('#hero-meter').val();
                             damage = damage - 80;
@@ -395,6 +425,7 @@
 
             //enemyのランダムの動き
             var enemymove;
+            var enemymove2;
             var attackout = 0;
             $(function startTimer(){
                 enemymove = setInterval(function(){//enemyのランダムな攻撃
@@ -403,12 +434,11 @@
                     if(start == '1'){
                         if( randomattack == '0' && $('#enemyattack').css('display')=='none' && attackout == 0 && bossdamage == 0){
                             attackout = 1;
-                            document.enemy.src="{% static "game/character/top.gif" %}";
                             enemyattack();
                             enemyvalue();
                             clearInterval(enemymove);
                             setTimeout(startTimer(),2000);
-                            setTimeout(function(){
+                            enemymove2 = setTimeout(function(){
                                 attackout = 0;
                                 document.enemy.src="{% static "game/character/4-6boss.png" %}";
                             } ,2000);
@@ -472,9 +502,10 @@
             });
 
             //enemyの攻撃
+            var enemyattack2;
             function enemyattack(){
                 document.enemy.src="{% static "game/character/4-6bossatk.png" %}";
-                setTimeout(function(){
+                enemyattack2 = setTimeout(function(){
                     document.enemy.src="{% static "game/character/4-6boss.png" %}";
                 },1000)
                 var x = $('#enemy').css('grid-column');
@@ -639,11 +670,11 @@
                 $('#enemy-meter').change(function(){
                     var enevalue = $(this).val();
                     if(enevalue <= 0){
-                        //$('#pageclear').show();
-                        //$('#pageclear>a').show();
+                        clearTimeout(enemymove2);
+                        clearTimeout(enemyattack2);
+                        start = 0;
                         $('#q1').show();
                         $('#q1>a').show();
-                        start = '0';
                         $("#top").prop('disabled',true);
                         $("#bottom").prop('disabled',true);
                         $("#right").prop('disabled',true);
@@ -682,6 +713,7 @@
                     $('#q2').show();
                 });
                 $("#q1").find("#answer").on('click',function(){
+                    document.enemy.src="{% static "game/character/4-6boss.png" %}";
                     $('#q1').hide();
                     $('#q2').hide();
                     $("#back").css('opacity','1');
@@ -718,6 +750,7 @@
 
                 });
                 $("#q2").find("#answer").on('click',function(){
+                    document.enemy.src="{% static "game/character/4-6boss.png" %}";
                     $('#q1').hide();
                     $('#q2').hide();
                     $("#back").css('opacity','1');
@@ -749,9 +782,7 @@
     <body>
         <div id='pagestart'>
             <a>
-                <button id='start' style="width:100px;height:50px">
-                    <font size='4'>スタート</font>
-                </button>
+                <button id='start'>スタート</button>
             </a>
             <div id='back'>
                 <div  id='pageplaying'>
@@ -813,19 +844,13 @@
             </div>
         </div>
         <div id='pageclear'>
-            <p>クリア</p>
             <a href="http://localhost:8080/stage4-6/nextstory4-6" target="story4-6">
-                <button style="width:100px;height:50px" onclick="mapclick2(16);">
-                    <font size='4'>next</font>
-                </button>
+                <button id='clear' onclick="mapclick2(16);">次の話</button>
             </a>
         </div>
         <div id='pagerestart'>
-            <p>ゲームオーバー</p>
-            <a onclick='location.reload()'>
-                <button style="width:100px;height:50px">
-                    <font size='4'>next</font>
-                </button>
+            <a>
+                <button id='retry' onclick='location.reload()'>リトライ</button>
             </a>
         </div>
         <div id='q1'>

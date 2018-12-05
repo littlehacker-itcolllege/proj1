@@ -5,7 +5,7 @@
     <head>
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static "css/game4-1.css" %}">
-				<script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
         <meta charset="utf-8">
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
         <script type='text/javascript'>
@@ -269,100 +269,98 @@
             //enemyの行動
             function enemyfast(){
                 if (enemymove <= 1) {
-                    document.enemy1.src="{% static "game/character/enemybottom.gif" %}"
-                    var h = $('#enemy1').css('grid-row');
-                    h = (parseInt(h) + 1).toString();
-                    $('#enemy1').css('grid-row', h);
-                    enemymove = (enemymove + 1);
+                document.enemy1.src="{% static "game/character/enemybottom.gif" %}"
+                var h = $('#enemy1').css('grid-row');
+                h = (parseInt(h) + 1).toString();
+                $('#enemy1').css('grid-row', h);
+                enemymove = (enemymove + 1);
                 } else if (enemymove <= 5){
-                    document.enemy1.src="{% static "game/character/enemyright.gif" %}"
-                    var h = $('#enemy1').css('grid-column');
-                    h = (parseInt(h) + 1).toString();
-                    $('#enemy1').css('grid-column', h);
-                    enemymove = (enemymove + 1);
+                document.enemy1.src="{% static "game/character/enemyright.gif" %}"
+                var h = $('#enemy1').css('grid-column');
+                h = (parseInt(h) + 1).toString();
+                $('#enemy1').css('grid-column', h);
+                enemymove = (enemymove + 1);
                 } else if (enemymove <=7) {
-                    document.enemy1.src="{% static "game/character/enemytop.gif" %}"
-                    var h = $('#enemy1').css('grid-row');
-                    h = (parseInt(h) - 1).toString();
-                    $('#enemy1').css('grid-row', h);
-                    enemymove = (enemymove + 1);
+                document.enemy1.src="{% static "game/character/enemytop.gif" %}"
+                var h = $('#enemy1').css('grid-row');
+                h = (parseInt(h) - 1).toString();
+                $('#enemy1').css('grid-row', h);
+                enemymove = (enemymove + 1);
                 }else if(enemymove <= 10) {
-                    document.enemy1.src="{% static "game/character/enemyleft.gif" %}"
-                    var h = $('#enemy1').css('grid-column');
-                    h = (parseInt(h) - 1).toString();
-                    $('#enemy1').css('grid-column', h);
-                    enemymove = (enemymove + 1);
+                document.enemy1.src="{% static "game/character/enemyleft.gif" %}"
+                var h = $('#enemy1').css('grid-column');
+                h = (parseInt(h) - 1).toString();
+                $('#enemy1').css('grid-column', h);
+                enemymove = (enemymove + 1);
                 }else{
-                    document.enemy1.src="{% static "game/character/enemyleft.gif" %}"
-                    var h = $('#enemy1').css('grid-column');
-                    h = (parseInt(h) - 1).toString();
-                    $('#enemy1').css('grid-column', h);
-                    enemymove = 0;
+                document.enemy1.src="{% static "game/character/enemyleft.gif" %}"
+                var h = $('#enemy1').css('grid-column');
+                h = (parseInt(h) - 1).toString();
+                $('#enemy1').css('grid-column', h);
+                enemymove = 0;
                 }
-            }
-            function enemyfast2(){
+                }
+                function enemyfast2(){
                 if (enemymove2 <= 1) {
-                    document.enemy2.src="{% static "game/character/enemybottom.gif" %}"
-                    var h = $('#enemy2').css('grid-row');
-                    h = (parseInt(h) + 1).toString();
-                    $('#enemy2').css('grid-row', h);
-                    enemymove2 = (enemymove2 + 1);
+                document.enemy2.src="{% static "game/character/enemybottom.gif" %}"
+                var h = $('#enemy2').css('grid-row');
+                h = (parseInt(h) + 1).toString();
+                $('#enemy2').css('grid-row', h);
+                enemymove2 = (enemymove2 + 1);
                 } else if (enemymove2 <= 5){
-                    document.enemy2.src="{% static "game/character/enemyleft.gif" %}"
-                    var h = $('#enemy2').css('grid-column');
-                    h = (parseInt(h) - 1).toString();
-                    $('#enemy2').css('grid-column', h);
-                    enemymove2 = (enemymove2 + 1);
+                document.enemy2.src="{% static "game/character/enemyleft.gif" %}"
+                var h = $('#enemy2').css('grid-column');
+                h = (parseInt(h) - 1).toString();
+                $('#enemy2').css('grid-column', h);
+                enemymove2 = (enemymove2 + 1);
                 } else if (enemymove2 <=7) {
-                    document.enemy2.src="{% static "game/character/enemytop.gif" %}"
-                    var h = $('#enemy2').css('grid-row');
-                    h = (parseInt(h) - 1).toString();
-                    $('#enemy2').css('grid-row', h);
-                    enemymove2 = (enemymove2 + 1);
+                document.enemy2.src="{% static "game/character/enemytop.gif" %}"
+                var h = $('#enemy2').css('grid-row');
+                h = (parseInt(h) - 1).toString();
+                $('#enemy2').css('grid-row', h);
+                enemymove2 = (enemymove2 + 1);
                 }else if(enemymove2 <= 10) {
-                    document.enemy2.src="{% static "game/character/enemyright.gif" %}"
-                    var h = $('#enemy2').css('grid-column');
-                    h = (parseInt(h) + 1).toString();
-                    $('#enemy2').css('grid-column', h);
-                    enemymove2 = (enemymove2 + 1);
+                document.enemy2.src="{% static "game/character/enemyright.gif" %}"
+                var h = $('#enemy2').css('grid-column');
+                h = (parseInt(h) + 1).toString();
+                $('#enemy2').css('grid-column', h);
+                enemymove2 = (enemymove2 + 1);
                 }else{
-                    document.enemy2.src="{% static "game/character/enemyright.gif" %}"
-                    var h = $('#enemy2').css('grid-column');
-                    h = (parseInt(h) + 1).toString();
-                    $('#enemy2').css('grid-column', h);
-                    enemymove2 = 0;
+                document.enemy2.src="{% static "game/character/enemyright.gif" %}"
+                var h = $('#enemy2').css('grid-column');
+                h = (parseInt(h) + 1).toString();
+                $('#enemy2').css('grid-column', h);
+                enemymove2 = 0;
                 }
-            }
-            var actionvalue = 1;
-            //調べるボタンのHTML表示とサイズ指定
-            var w;
-            function win_open(){
+                }
+                var actionvalue = 1;
+                //調べるボタンのHTML表示とサイズ指定
+                var w;
+                function win_open(){
                 if(!w||w.closed){
-                    w = window.open("http://localhost:8080/stage4-1/see4-1","","width=650,height=660");
-                    v.close();
+                w = window.open("http://localhost:8080/stage4-1/see4-1","","width=650,height=660");
+                v.close();
                 }else{
-                    w.focus();
+                w.focus();
                 }
-            }
-            //入力ボタンのHTML表示とサイズ指定
-            var v;
-            function input(){
+                }
+                //入力ボタンのHTML表示とサイズ指定
+                var v;
+                function input(){
                 if(!v||v.closed){
-                    v = window.open("http://localhost:8080/stage4-1/input4-1","","width=600,height=600");
-                    w.close();
+                v = window.open("http://localhost:8080/stage4-1/input4-1","","width=600,height=600");
+                w.close();
                 }else{
-                    v.focus();
+                v.focus();
                 }
-            }
+                }
 
         </script>
     </head>
     <body>
         <div id='pagestart'>
             <a>
-                <button id='start' style="width:100px;height:50px">
-                    <font size='4'>スタート</font>
-                </button>
+                <button id='start'>スタート</button>
             </a>
             <div id="back">
                 <div  id='pageplaying'>
@@ -583,11 +581,8 @@
 
         </div>
         <div id='pageclear'>
-            <p>クリア</p>
             <a href="http://localhost:8080/stage4-1/nextstory4-1" target="story4-1">
-                <button style="width:100px;height:50px" onclick="mapclick2(11);">
-                    <font size='4'>next</font>
-                </button>
+                <button id='clear'onclick="mapclick2(12);">次の話</button>
             </a>
         </div>
 
