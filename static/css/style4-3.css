@@ -5,6 +5,10 @@
     margin: 0px;
     position: absolute;
 }
+#close{
+    position: absolute;
+
+}
 .textboard {
     width: 750px;
     height: 140px;

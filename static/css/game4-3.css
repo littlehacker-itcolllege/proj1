@@ -43,6 +43,8 @@ body {
 	font-size:2em;
 }
 .canvas{
+    z-index:2;
+    position:absolute;
     width: 640px;
     background:#999;
     display: grid;
@@ -737,6 +739,10 @@ body {
     grid-column: 19;
 }
 .cross-layout {
+    z-index:2;
+    position:absolute;
+    top:416px;
+    left:25vw;
     display: grid;
     grid-template-columns: 60px 60px 60px 120px 120px;
     grid-template-rows: 60px 60px;
@@ -744,18 +750,38 @@ body {
 #top {
     grid-row: 1;
     grid-column: 2;
+	color: #FFF;
+	background: #00bcd4;
+	transition: .4s;
+	font-size:2em;
+
 }
 #left {
     grid-row: 2;
     grid-column: 1;
+	color: #FFF;
+	background: #00bcd4;
+	transition: .4s;
+	font-size:2em;
+
 }
 #bottom{
     grid-row: 2;
     grid-column: 2;
+	color: #FFF;
+	background: #00bcd4;
+	transition: .4s;
+	font-size:2em;
+
 }
 #right {
     grid-row: 2;
     grid-column: 3;
+	color: #FFF;
+	background: #00bcd4;
+	transition: .4s;
+	font-size:2em;
+
 }
 #input1 {
     grid-row: 1;
@@ -764,8 +790,18 @@ body {
 #action{
     grid-row:1;
     grid-column:4;
+	color: #FFF;
+	background: #00bcd4;
+	transition: .4s;
+	font-size:1.5em;
+
 }
 #action2{
     grid-row:2;
     grid-column:4;
+	color: #FFF;
+	background: #00bcd4;
+	transition: .4s;
+	font-size:2em;
+
 }
