@@ -28,6 +28,7 @@ function check2(){
 		document.getElementById("pice3").style.left="41%";
 		document.getElementById("pice4").style.left="45%";
 		document.getElementById("clear").style.display="block";
+		document.getElementById("clear-window").style.display="block";
 		document.getElementById("back").style.opacity="0.5";
 		clearInterval(count);
 	}else{

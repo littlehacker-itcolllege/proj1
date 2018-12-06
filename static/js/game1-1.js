@@ -58,6 +58,10 @@ function clear(){
 	document.getElementById("attack").style.display="none";
 	document.getElementById("clear").style.display="block";
 	document.getElementById("back").style.opacity="0.5";
+	document.getElementById("clear-window").style.display="block";
+	document.getElementById("stone").style.display="none";
+	document.getElementById("enemy-meter").style.display="none";
+	document.getElementById("hp").style.display="none";
 }
 function stone(){
 	stop+=1.5;

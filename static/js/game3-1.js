@@ -27,6 +27,7 @@ function onClick1(){
 	item+=1;
 	if(item==2){
 		document.getElementById("clear").style.display="block";
+		document.getElementById("clear-window").style.display="block";
 		document.getElementById("back").style.opacity="0.5";
 	}
 }
@@ -40,6 +41,7 @@ function onClick2(){
 	item+=1;
 	if(item==2){
 		document.getElementById("clear").style.display="block";
+		document.getElementById("clear-window").style.display="block";
 		document.getElementById("back").style.opacity="0.5";
 	}
 }
@@ -76,7 +78,7 @@ function mine(a){
 	}
 }
 function trap(){
-	alert("しまった！ワナだった！")
+	alert("しまった！ワナだった！");
 }
 url="http://localhost:8080/stage3-1/gameover3-1"
 function gameover(){
