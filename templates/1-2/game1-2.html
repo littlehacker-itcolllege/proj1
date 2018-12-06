@@ -8,8 +8,11 @@
         <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
     </head>
     <body onload="load();">
-			<button id="start" onclick="start();">スタート</button>
-			<a href="http://localhost:8080/stage1-2/nextstory1-2/" target="story1-2"><button id="clear" onclick="mapclick2(2);stage2clear();">次の話</button></a>
+		 <div id="yatta">
+				<img src="{% static 'game/clear-window.gif' %}" id="clear-window">
+				<a href="http://localhost:8080/stage1-2/nextstory1-2/" target="story1-2"><button id="clear" onclick="mapclick2(2);stage2clear();">次の話</button></a>
+			</div>
+				<button id="start" onclick="start();">スタート</button>
 			<button onclick="wepon_click();" id="comp">作成！</button>
 			<div id="back">
         <div class="box">

@@ -144,6 +144,9 @@ function typeGame(evt)
 				document.getElementById("fire-button").disabled="disabled";
 				document.getElementById("water-button").disabled="disabled";
 				document.getElementById("leaf-button").disabled="disabled";
+				document.getElementById("fire-gobrin").disabled="disabled";
+				document.getElementById("water-gobrin").disabled="disabled";
+				document.getElementById("leaf-gobrin").disabled="disabled";
 				 if(esc >=1){
 					document.getElementById("fire"+esc).style.display="none";
 						esc++;
@@ -157,6 +160,9 @@ function typeGame(evt)
 					document.getElementById("water-button").disabled="";
 					document.getElementById("leaf-button").disabled="";
 					document.getElementById("fire-button").disabled="";
+					document.getElementById("fire-gobrin").disabled="";
+					document.getElementById("water-gobrin").disabled="";
+					document.getElementById("leaf-gobrin").disabled="";
 					judge('leaf-');
 					monster=null;
 					clear();
@@ -188,6 +194,9 @@ function typeGame(evt)
 				document.getElementById("fire-button").disabled="disabled";
 				document.getElementById("water-button").disabled="disabled";
 				document.getElementById("leaf-button").disabled="disabled";
+				document.getElementById("fire-gobrin").disabled="disabled";
+				document.getElementById("water-gobrin").disabled="disabled";
+				document.getElementById("leaf-gobrin").disabled="disabled";
 			if(esc >=1){
 				document.getElementById("water"+esc).style.display="none";
 					esc++;
@@ -201,6 +210,9 @@ function typeGame(evt)
 					document.getElementById("water-button").disabled="";
 					document.getElementById("fire-button").disabled="";
 					document.getElementById("leaf-button").disabled="";
+					document.getElementById("fire-gobrin").disabled="";
+					document.getElementById("water-gobrin").disabled="";
+					document.getElementById("leaf-gobrin").disabled="";
 					judge('fire-')
 					monster=null;
 					clear();
@@ -230,6 +242,9 @@ function typeGame(evt)
 				document.getElementById("water-button").disabled="disabled";
 				document.getElementById("fire-button").disabled="disabled";
 				document.getElementById("leaf-button").disabled="disabled";
+				document.getElementById("fire-gobrin").disabled="disabled";
+				document.getElementById("water-gobrin").disabled="disabled";
+				document.getElementById("leaf-gobrin").disabled="disabled";
 			if(esc >=1){
 				document.getElementById("leaf"+esc).style.display="none";
 					esc++;
@@ -244,6 +259,9 @@ function typeGame(evt)
 					document.getElementById("leaf-button").disabled="";
 					document.getElementById("fire-button").disabled="";
 					document.getElementById("water-button").disabled="";
+					document.getElementById("fire-gobrin").disabled="";
+					document.getElementById("water-gobrin").disabled="";
+					document.getElementById("leaf-gobrin").disabled="";
 					judge('water-');
 					clear();
 				}
@@ -303,10 +321,14 @@ function cleen(){
 	if(monster_attri=="water"){
 		document.getElementById(monster_attri+"-gobrin").style.top="30%";
 		document.getElementById(monster_attri+"-gobrin").style.left="44%";
+		document.getElementById("chara").style.display="block";
+		document.getElementById("damage").style.display="none";
 	}
 	if(monster_attri=="leaf"){
 		document.getElementById(monster_attri+"-gobrin").style.top="30%";
 		document.getElementById(monster_attri+"-gobrin").style.left="74%";
+		document.getElementById("chara").style.display="block";
+		document.getElementById("damage").style.display="none";
 	}
 	document.getElementById("target").style.display="none";
 }
@@ -346,6 +368,7 @@ function clear(){
 	if(down==3){
 		document.getElementById("start").style.display="none";
 		document.getElementById("clear").style.display="block";
+		document.getElementById("clear-window").style.display="block";
 		document.getElementById("back").style.opacity="0.5";
 	}
 }

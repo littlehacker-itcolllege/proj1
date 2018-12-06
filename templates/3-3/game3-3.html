@@ -9,7 +9,10 @@
     </head>
     <body oncontextmenu="return false;"onload="load();">
 			<button onclick="start();" id="start">スタート</button>
-			<a href="http://localhost:8080/stage3-3/nextstory3-3/" target="story3-3"><button onclick="mapclick2(10);" id="clear">次の話</button></a>
+		 <div id="yatta">
+				<img src="{% static 'game/clear-window.gif' %}" id="clear-window">
+				<a href="http://localhost:8080/stage3-3/nextstory3-3/" target="story3-3"><button onclick="mapclick2(10);" id="clear">次の話</button></a>
+			</div>
 			<div id="back">
 				<div id="box">
 					<p id="timer">30</p>

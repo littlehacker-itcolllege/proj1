@@ -17,7 +17,7 @@ td{
 #start{
 	position:absolute;
 	top:60%;
-	left:45%;
+	left:40%;
 	z-index:1;
 	font-weight: bold;
   padding: 0.25em 0.5em;
@@ -31,9 +31,6 @@ td{
   background:black;
 }
 #clear{
-	position:absolute;
-	top:60%;
-	left:45%;
 	z-index:1;
 	display:none;
 	font-weight: bold;
@@ -61,6 +58,7 @@ td{
 	height:23vh;
 }
 #life-box{
+	width:20vh;
 	position:absolute;
 	top:45%;
 }
@@ -260,4 +258,28 @@ td{
   display:none;
   height:40vh;
   width:100vh;
+}
+#life1{
+	width:30%;
+	height:auto;
+}
+#life2{
+	width:30%;
+	height:auto;
+}
+#life3{
+	width:30%;
+	height:auto;
+}
+#clear-window{
+  display:none;
+  z-index:1;
+  width:100%;
+}
+#yatta{
+  display:block;
+  position:absolute;
+  top:40%;
+  left:40%;
+  z-index:1;
 }

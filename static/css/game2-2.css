@@ -19,7 +19,7 @@ td{
 #start{
 	position:absolute;
 	top:60%;
-	left:45%;
+	left:40%;
 	z-index:1;
 	font-weight: bold;
   padding: 0.25em 0.5em;
@@ -33,9 +33,6 @@ td{
   background:black;
 }
 #clear{
-	position:absolute;
-	top:60%;
-	left:45%;
 	z-index:1;
 	display:none;
 	font-weight: bold;
@@ -166,4 +163,16 @@ td{
   display:none;
   height:40vh;
   width:100vh;
+}
+#clear-window{
+  display:none;
+  z-index:1;
+  width:100%;
+}
+#yatta{
+  display:block;
+  position:absolute;
+  top:40%;
+  left:40%;
+  z-index:1;
 }

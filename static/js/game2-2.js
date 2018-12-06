@@ -153,6 +153,7 @@ function typeGame(evt)
 				clearInterval(timer);
 			document.getElementById("start").style.display="none";
       document.getElementById("clear").style.display="block";
+      document.getElementById("clear-window").style.display="block";
       document.getElementById("back").style.opacity="0.5";
 			}
 		}

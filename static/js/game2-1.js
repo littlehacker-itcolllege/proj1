@@ -109,6 +109,7 @@ function typeGame(evt)
       //問題終了を告げる文字列を作成
 			document.getElementById("start").style.display="none";
 			document.getElementById("clear").style.display="block";
+			document.getElementById("clear-window").style.display="block";
 			document.getElementById("back").style.opacity="0.5";
     }
   }

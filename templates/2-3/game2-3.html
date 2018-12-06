@@ -9,7 +9,10 @@
     </head>
     <body onload="load();">
 			<button onclick="start();" id="start">スタート</button>
-			<a href="http://localhost:8080/stage2-3/nextstory2-3/" target="story2-3"><button  onclick="mapclick2(7);" id="clear">次の話</button></a>
+			<div id="yatta">
+				<img src="{% static 'game/clear-window.gif' %}" id="clear-window">
+				<a href="http://localhost:8080/stage2-3/nextstory2-3/" target="story2-3"><button  onclick="mapclick2(7);" id="clear">次の話</button></a>
+			</div>
 			<div id="back">
 				<div class="box">
 					<div id="select">

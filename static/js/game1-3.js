@@ -18,7 +18,9 @@ function onClick(){
 	if(position > 165 && position <= 290){
 		ene.value -=1;
 		if(ene.value == 0){
+			window,scrollTo(0,0);
 			document.getElementById("clear").style.display="block";
+			document.getElementById("clear-window").style.display="block";
 			document.getElementById("back").style.opacity="0.5";
 		}else{
 			var a = Math.floor( Math.random() * 1001 ) ;
