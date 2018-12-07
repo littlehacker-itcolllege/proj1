@@ -18,5 +18,15 @@
         <p class="text8"><img src="{% static 'game/fairy.png' %}">ドロップは、ドラッグしたあとに左クリックをはなすことよ。</p>
         <p class="text9"><img src="{% static 'game/fairy.png' %}">あとは完成ボタンを押せば完成よ！</p>
     </div>
+
+	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
+	<script>
+		roop();
+		function roop(){
+			document.getElementById("music").src="{% static 'sound/1-2kettei.m4a' %}";
+			setTimeout(roop,131000);
+		}
+	</script>
+
   </body>
 </html>

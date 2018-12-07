@@ -25,7 +25,6 @@
         </script>
         <link rel="stylesheet" type="text/css" href="{% static 'css/map.css' %}">
         <!--<iframe width="0" height="0" src="{% static 'sound/map.m4a' %}" frameborder="0" allowfullscreen></iframe> -->
-        <div class="kyoku"><iframe id="music" src="" ></iframe></div>
 
     </head>
     <body onload="mapload()">
@@ -143,11 +142,12 @@
         </script>
 
 
+        <div class="kyoku"><iframe id="music" src="" ></iframe></div>
         <script>
             roop();
 
             function roop(){
-                document.getElementById("").src="{% static 'sound/map.m4a' %}";
+                document.getElementById("music").src="{% static 'sound/map.m4a' %}";
                 setTimeout(roop, 131000);
             }
         </script>

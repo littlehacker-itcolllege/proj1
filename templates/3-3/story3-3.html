@@ -18,5 +18,15 @@
         <p class="text8" id="text8Id"><img src="{% static 'game/fairy.png' %}">その後、コントロールキー(Ctrl)とCキーを同時押すの。</p>
         <p class="text9" id="text9Id"><img src="{% static 'game/fairy.png' %}">貼り付けは、コントロールキー(Ctrl)とVキーを同時に押すのよ！</p>
     </div>
+
+	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
+	<script>
+		roop();
+		function roop(){
+			document.getElementById("music").src="{% static 'sound/3-3.m4a' %}";
+			setTimeout(roop, 131000);
+		}
+</script>
+
   </body>
 </html>

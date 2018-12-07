@@ -18,5 +18,15 @@
         <p class="text8" id="text8Id"><img src="{% static 'game/air.png' %}">また右クリックして、貼り付けを選択して、魔法のボタンをおして！</p>
         <p class="text9" id="text9Id"><img src="{% static 'game/fairy.png' %}">すこしむずかしいけど、がんばって！</p>
     </div>
+
+	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
+	<script>
+		roop();
+		function roop(){
+			document.getElementById("music").src="{% static 'sound/1-1.3.4.m4a' %}";
+			setTimeout(roop, 131000);
+}
+	</script>
+
   </body>
 </html>

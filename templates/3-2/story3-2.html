@@ -16,5 +16,14 @@
         <p class="text6" id="text6Id"><img src="{% static 'game/fairy.png' %}">コントロールキーとUキーでソースを開く。</p>
         <p class="text7" id="text7Id"><img src="{% static 'game/fairy.png' %}">コントルールキーとUキーでソースを閉じる。</p>
     </div>
+
+	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
+	<script>
+		roop();
+		function roop(){
+			document.getElementById("music").src="{% static 'sound/3-1.2.m4a' %}";
+			setTimeout(roop, 131000);
+}
+</script>
   </body>
 </html>
