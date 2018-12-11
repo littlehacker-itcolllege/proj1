@@ -21,7 +21,9 @@ body {
 	transition: .4s;
 	font-size:2em;
 }
-
+#start:hover{
+	background:black;
+}
 #pagestart{
     text-align: center;
 }
@@ -47,6 +49,9 @@ body {
     transition: .4s;
     font-size:2em;
 }
+#clear:hover{
+	background:black;
+}
 #pagerestart{
     text-align: center;
 }
@@ -63,7 +68,9 @@ body {
 	transition: .4s;
 	font-size:2em;
 }
-
+#retry:hover{
+	background:black;
+}
 #q1{
     text-align: center;
     z-index:1;

@@ -10,166 +10,38 @@
         <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
         <script type='text/javascript'>
 
-            jQuery.curCSS = jQuery.css;
-            var actionvalue = 0
-            //ボタンのoff動作
-            function buttonoff(){
-                $("#action").prop("disabled", true);
-                $("#action2").prop("disabled", true);
-            }
 
             //上ボタンの処理
             function topbutton (){
-                //現在のキャラの座標
-                var input1 = $('#input1').val()
-                //キャラの上の座標の取得
-                var y = $('#maru').css('grid-row');
-                y = (parseInt(y) - 1).toString();
-                var x = $('#maru').css('grid-column');
-                x = (parseInt(x)).toString();
-                //キャラが進む方向に画像があれば,length==1を返す
-                var go =
-                    $('div').filter(function(){
-                        return $.curCSS(this,"grid-row",true)==y
-                            &&  $.curCSS(this,"grid-column",true)==x
-                            &&  $.curCSS(this,"background",true)!=undefined
-                    }).attr('value','1');
-                if(input1 == "12 4"){
-                    $("#action").prop("disabled", false);
-                    document.maru.src="{% static "game/character/top.gif" %}";
-                }else if (go.length=='1') {
-                    document.maru.src="{% static "game/character/top.gif" %}";
-                    buttonoff();
-                    $("div[value='1']").attr('value','');
-                } else {
-                    //方向キー入力時キャラ移動
-                    var h = $('#maru').css('grid-row');
-                    h = (parseInt(h) - 1).toString();
-                    $('#maru').css('grid-row', h);
-                    //方向キー入力時のキャラの画像変更&座標出力
-                    document.maru.src="{% static "game/character/top.gif" %}";
-                    var leftandright = $('#maru').css('grid-row');
-                    var upanddown = $('#maru').css('grid-column');
-                    obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
-                    $("div[value='1']").attr('value','');
-                    buttonoff();
-                    //調べるボタンの入力切り替え
-                    if ($("#input1").val() == '12 4') {
-                        $("#action").prop("disabled", false);
-                    }
-                }
+                var herotop = Math.round((parseInt($('#maru img').css('top'))) / parseInt($('.canvas').height())*100)//enemyの上側
+                if($('#maru img').attr('src').split('/')[4]!="top.gif"){$('#maru img').attr('src',"{% static "game/character/top.gif" %}");}
+                heroy = (herotop - 1).toString();
+                $('#maru img').css({'top':heroy+'%'});
             }
             //下ボタンの処理
             function bottombutton(){
-                var input1 = $('#input1').val()
-                var y = $('#maru').css('grid-row');
-                y = (parseInt(y) + 1).toString();
-                var x = $('#maru').css('grid-column');
-                x = (parseInt(x)).toString();
-                var go =
-                    $('div').filter(function(){
-                        return $.curCSS(this,"grid-row",true)==y
-                            &&  $.curCSS(this,"grid-column",true)==x
-                            &&  $.curCSS(this,"background",true)!=undefined
-                    }).attr('value','1');
-                if(input1 == '12 2') {
-                    document.maru.src="{% static "game/character/bottom.gif" %}";
-                    $("#action2").prop("disabled", false);
-                }else  if (go.length=='1' )  {
-                    document.maru.src="{% static "game/character/bottom.gif" %}";
-                    buttonoff();
-                    $("div[value='1']").attr('value','');
-                } else {
-                    var h = $('#maru').css('grid-row');
-                    h = (parseInt(h) + 1).toString();
-                    $('#maru').css('grid-row', h);
-                    document.maru.src="{% static "game/character/bottom.gif" %}"
-                    var leftandright = $('#maru').css('grid-row');
-                    var upanddown = $('#maru').css('grid-column');
-                    obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
-                    $("div[value='1']").attr('value','');
-                    if ($("#input1").val() == '12 2') {
-                        $("#action2").prop("disabled", false);
-                    } else {
-                        $("#action").prop("disabled", true);
-                        $("#action2").prop("disabled", true);
-                    }
-                }
+                var herotop = Math.round((parseInt($('#maru img').css('top'))) / parseInt($('.canvas').height())*100)//enemyの上側
+                if($('#maru img').attr('src').split('/')[4]!="bottom.gif"){$('#maru img').attr('src',"{% static "game/character/bottom.gif" %}");}
+                heroy = (herotop + 1).toString();
+                $('#maru img').css({'top':heroy+'%'});
             }
             //右ボタンの処理
             function rightbutton(){
-                var input1 = $('#input1').val()
-                var y = $('#maru').css('grid-row');
-                y = (parseInt(y)).toString();
-                var x = $('#maru').css('grid-column');
-                x = (parseInt(x) + 1).toString();
-                var go =
-                    $('div').filter(function(){
-                        return $.curCSS(this,"grid-row",true)==y
-                            &&  $.curCSS(this,"grid-column",true)==x
-                            &&  $.curCSS(this,"background",true)!=undefined
-                    }).attr('value','1');
-                if (go.length=='1') {
-                    document.maru.src="{% static "game/character/right.gif" %}";
-                    buttonoff();
-                    $("div[value='1']").attr('value','');
-                } else {
-                    var w = $('#maru').css('grid-column');
-                    w = (parseInt(w) + 1).toString();
-                    $('#maru').css('grid-column', w);
-                    document.maru.src="{% static "game/character/right.gif" %}"
-                    var leftandright = $('#maru').css('grid-row');
-                    var upanddown = $('#maru').css('grid-column');
-                    obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
-                    $("div[value='1']").attr('value','');
-                    buttonoff();
-                }
+                var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                if($('#maru img').attr('src').split('/')[4]!="right.gif"){$('#maru img').attr('src',"{% static "game/character/right.gif" %}");}
+                herox = (heroleft + 1).toString();
+                $('#maru img').css({'left':herox+'%'});
             }
             //左ボタンの処理
             function leftbutton(){
-                var input1 = $('#input1').val()
-                var y = $('#maru').css('grid-row');
-                y = (parseInt(y)).toString();
-                var x = $('#maru').css('grid-column');
-                x = (parseInt(x) - 1).toString();
-                var go =
-                    $('div').filter(function(){
-                        return $.curCSS(this,"grid-row",true)==y
-                            &&  $.curCSS(this,"grid-column",true)==x
-                            &&  $.curCSS(this,"background",true)!=undefined
-                    }).attr('value','1');
-                if (go.length=='1') {
-                    document.maru.src="{% static "game/character/left.gif" %}";
-                    buttonoff();
-                    $("div[value='1']").attr('value','');
-                } else {
-                    var h = $('#maru').css('grid-column');
-                    h = (parseInt(h) - 1).toString();
-                    $('#maru').css('grid-column', h);
-                    document.maru.src="{% static "game/character/left.gif" %}";
-                    var leftandright = $('#maru').css('grid-row');
-                    var upanddown = $('#maru').css('grid-column');
-                    obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
-                    $("div[value='1']").attr('value','');
-                    buttonoff();
-                }
+                var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
+                if($('#maru img').attr('src').split('/')[4]!="left.gif"){$('#maru img').attr('src',"{% static "game/character/left.gif" %}");}
+                herox = (heroleft - 1).toString();
+                $('#maru img').css({'left':herox+'%'});
             }
             // ページ読み込み時に実行
             window.onload = function () {
-                $("#pageclear").hide();
-                $("#input1").hide();
-                $("#pagestart a").on('click',function(){
-                    start = '1';
-                    $("#top").prop('disabled',false);
-                    $("#bottom").prop('disabled',false);
-                    $("#right").prop('disabled',false);
-                    $("#left").prop('disabled',false);
-                    $("#pagestart a").hide();
-                    $("#back").css('opacity','1');
-                    $("#back").css('background-color','#fff');
-                    $("#pageplaying").show();
-                    return false;
-                });
+
 
 
                 // 矢印ボタンのを各、値に代入
@@ -246,327 +118,130 @@
                         clearInterval( $intervalID );
                         leftbutton()
                     }else{clearInterval( $intervalID );}}}
-            // キーコード(どのキーが押されたか)を取得
-            window.addEventListener("keydown", handleKeydown);
-            function handleKeydown(event){
-                var keyCode = event.keyCode;
-                // 条件文で制御する
-                if(start=='1'){
-                    //上キーの入力
-                    if (keyCode == 38) {topbutton()}
-                    //下キーの入力
-                    if (keyCode == 40) {bottombutton()}
-                    //右キーの入力
-                    if (keyCode == 39) {rightbutton()}
-                    //左キーの入力
-                    if (keyCode == 37) {leftbutton()}
+
+            window.addEventListener('keydown', KeyDown, true);
+            window.addEventListener('keyup', KeyUp, true);
+            var g_bUpPush =false;//上ボタンの検知関数
+            var g_bDownPush =false;//下ボタンの検知関数
+            var g_bRightPush =false;//右ボタンの検知関数
+            var g_bLeftPush =false;//左ボタンの検知関数
+            function KeyDown(event) {
+                var code = event.keyCode;       // どのキーが押されたか
+                switch(code) {
+                        // ←キー
+                    case 37:
+                        g_bLeftPush = true;
+                        break;
+                        // →キー
+                    case 39:
+                        g_bRightPush = true;
+                        break;
+                        // ↑キー
+                    case 38:
+                        g_bUpPush = true;
+                        break;
+                        // ↓キー
+                    case 40:
+                        g_bDownPush = true;
+                        break;
                 }
             }
 
-            var enemymove = 0
-            var enemymove2 = 0
-            setInterval('enemyfast()',500)
-            setInterval('enemyfast2()',600)
-            //enemyの行動
-            function enemyfast(){
-                if (enemymove <= 1) {
-                document.enemy1.src="{% static "game/character/enemybottom.gif" %}"
-                var h = $('#enemy1').css('grid-row');
-                h = (parseInt(h) + 1).toString();
-                $('#enemy1').css('grid-row', h);
-                enemymove = (enemymove + 1);
-                } else if (enemymove <= 5){
-                document.enemy1.src="{% static "game/character/enemyright.gif" %}"
-                var h = $('#enemy1').css('grid-column');
-                h = (parseInt(h) + 1).toString();
-                $('#enemy1').css('grid-column', h);
-                enemymove = (enemymove + 1);
-                } else if (enemymove <=7) {
-                document.enemy1.src="{% static "game/character/enemytop.gif" %}"
-                var h = $('#enemy1').css('grid-row');
-                h = (parseInt(h) - 1).toString();
-                $('#enemy1').css('grid-row', h);
-                enemymove = (enemymove + 1);
-                }else if(enemymove <= 10) {
-                document.enemy1.src="{% static "game/character/enemyleft.gif" %}"
-                var h = $('#enemy1').css('grid-column');
-                h = (parseInt(h) - 1).toString();
-                $('#enemy1').css('grid-column', h);
-                enemymove = (enemymove + 1);
-                }else{
-                document.enemy1.src="{% static "game/character/enemyleft.gif" %}"
-                var h = $('#enemy1').css('grid-column');
-                h = (parseInt(h) - 1).toString();
-                $('#enemy1').css('grid-column', h);
-                enemymove = 0;
+            /*
+                キーを離した時のイベント
+             */
+            function KeyUp(event) {
+                code = event.keyCode;
+                switch(code) {
+                        // ←キー
+                    case 37:
+                        g_bLeftPush = false;
+                        break;
+                    case 39:
+                        // →キー
+                        g_bRightPush = false;
+                        break;
+                    case 38:
+                        // ↑キー
+                        g_bUpPush = false;
+                        break;
+                    case 40:
+                        // ↓キー
+                        g_bDownPush = false;
+                        break;
                 }
-                }
-                function enemyfast2(){
-                if (enemymove2 <= 1) {
-                document.enemy2.src="{% static "game/character/enemybottom.gif" %}"
-                var h = $('#enemy2').css('grid-row');
-                h = (parseInt(h) + 1).toString();
-                $('#enemy2').css('grid-row', h);
-                enemymove2 = (enemymove2 + 1);
-                } else if (enemymove2 <= 5){
-                document.enemy2.src="{% static "game/character/enemyleft.gif" %}"
-                var h = $('#enemy2').css('grid-column');
-                h = (parseInt(h) - 1).toString();
-                $('#enemy2').css('grid-column', h);
-                enemymove2 = (enemymove2 + 1);
-                } else if (enemymove2 <=7) {
-                document.enemy2.src="{% static "game/character/enemytop.gif" %}"
-                var h = $('#enemy2').css('grid-row');
-                h = (parseInt(h) - 1).toString();
-                $('#enemy2').css('grid-row', h);
-                enemymove2 = (enemymove2 + 1);
-                }else if(enemymove2 <= 10) {
-                document.enemy2.src="{% static "game/character/enemyright.gif" %}"
-                var h = $('#enemy2').css('grid-column');
-                h = (parseInt(h) + 1).toString();
-                $('#enemy2').css('grid-column', h);
-                enemymove2 = (enemymove2 + 1);
-                }else{
-                document.enemy2.src="{% static "game/character/enemyright.gif" %}"
-                var h = $('#enemy2').css('grid-column');
-                h = (parseInt(h) + 1).toString();
-                $('#enemy2').css('grid-column', h);
-                enemymove2 = 0;
-                }
-                }
-                var actionvalue = 1;
-                //調べるボタンのHTML表示とサイズ指定
-                var w;
-                function win_open(){
-                if(!w||w.closed){
-                w = window.open("http://localhost:8080/stage4-1/see4-1","","width=650,height=660");
-                v.close();
-                }else{
-                w.focus();
-                }
-                }
-                //入力ボタンのHTML表示とサイズ指定
-                var v;
-                function input(){
-                if(!v||v.closed){
-                v = window.open("http://localhost:8080/stage4-1/input4-1","","width=600,height=600");
-                w.close();
-                }else{
-                v.focus();
-                }
-                }
+            }
+            var invalid = false;
+            var speed = 50;
+            (function observe(){
+                // targetを監視してtrueになったら関数を実行
+                //上ボタンの検知
+                (function observe(){
+                    if(g_bUpPush == false){
+                        setTimeout(observe, speed);
+                    }else{
+                        topbutton()
+                        setTimeout(observe, speed);
+                    }
+                })();
+                //下ボタンの検知
+                (function observe(){
+                    if (g_bDownPush == false) {
+                        setTimeout(observe, speed);
+                    } else {
+                        bottombutton()
+                        setTimeout(observe, speed);
+                    }
+                })();
+                //右ボタンの検知
+                (function observe(){
+                    if (g_bRightPush == false) {
+                        setTimeout(observe, speed);
+                    }else{
+                        rightbutton()
+                        setTimeout(observe, speed);
+                    }
+                })();
+                //左ボタンの検知
+                (function observe(){
+                    if (g_bLeftPush == false) {
+                        setTimeout(observe, speed);
+                    }else{
+                        leftbutton()
+                        setTimeout(observe, speed);
+                    }
+                })();
+                //heroの向きの検知
+                (function observe(){
+var herodire = String($('#maru img').attr('src')).split('/')[4]
+                    if (herodire == 'top.gif') {
+                        setTimeout(observe, speed);
+                    }else if(herodire == 'bottom.gif' ) {
+                        setTimeout(observe, speed);
+                    }else if(herodire == 'right.gif'){
+                        setTimeout(observe, speed);
+                    }else if(herodire == 'left.gif'){
+                        setTimeout(observe, speed);
+                    }else{
+                        setTimeout(observe, speed);
+                    }
+                })();
+
+            })();
 
         </script>
     </head>
     <body>
         <div id='pagestart'>
-            <a>
-                <button id='start'>スタート</button>
-            </a>
+
             <div id="back">
                 <div  id='pageplaying'>
                     <div class="canvas">
                         <div id="maru">
                             <img src="{% static "game/character/bottom.gif" %}" name="maru">
                         </div>
-                        <div id="enemy1">
-                            <img src="{% static "game/character/enemybottom.gif" %}" name="enemy1">
-                        </div>
-                        <div id="enemy2">
-                            <img src="{% static "game/character/enemybottom.gif" %}" name="enemy2">
-                        </div>
                         <div id="canvas1"></div>
-                        <div id="canvas2"></div>
-                        <div id="canvas3"></div>
-                        <div id="canvas4"></div>
-                        <div id="canvas5"></div>
-                        <div id="canvas6"></div>
-                        <div id="canvas7"></div>
-                        <div id="canvas8"></div>
-                        <div id="canvas9"></div>
-                        <div id="canvas10"></div>
-                        <div id="canvas11"></div>
-                        <div id="canvas12"></div>
-                        <div id="canvas13"></div>
-                        <div id="canvas14"></div>
-                        <div id="canvas15"></div>
-                        <div id="canvas16"></div>
-                        <div id="canvas17"></div>
-                        <div id="canvas18"></div>
-                        <div id="canvas19"></div>
-                        <div id="canvas20"></div>
-                        <div id="canvas21"></div>
-                        <div id="canvas22"></div>
-                        <div id="canvas23"></div>
-                        <div id="canvas24"></div>
-                        <div id="canvas25"></div>
-                        <div id="canvas26"></div>
-                        <div id="canvas27"></div>
-                        <div id="canvas28"></div>
-                        <div id="canvas29"></div>
-                        <div id="canvas30"></div>
-                        <div id="canvas31"></div>
-                        <div id="canvas32"></div>
-                        <div id="canvas33"></div>
-                        <div id="canvas34"></div>
-                        <div id="canvas35"></div>
-                        <div id="canvas36"></div>
-                        <div id="canvas37"></div>
-                        <div id="canvas38"></div>
-                        <div id="canvas39"></div>
-                        <div id="canvas40"></div>
-                        <div id="canvas41"></div>
-                        <div id="canvas42"></div>
-                        <div id="canvas43"></div>
-                        <div id="canvas44"></div>
-                        <div id="canvas45"></div>
-                        <div id="canvas46"></div>
-                        <div id="canvas47"></div>
-                        <div id="canvas48"></div>
-                        <div id="canvas49"></div>
-                        <div id="canvas50"></div>
-                        <div id="canvas51"></div>
-                        <div id="canvas52"></div>
-                        <div id="canvas53"></div>
-                        <div id="canvas54"></div>
-                        <div id="canvas55"></div>
-                        <div id="canvas56"></div>
-                        <div id="canvas57"></div>
-                        <div id="canvas58"></div>
-                        <div id="canvas59"></div>
-                        <div id="canvas60"></div>
-                        <div id="canvas61"></div>
-                        <div id="canvas62"></div>
-                        <div id="canvas63"></div>
-                        <div id="canvas64"></div>
-                        <div id="canvas65"></div>
-                        <div id="canvas66"></div>
-                        <div id="canvas67"></div>
-                        <div id="canvas68"></div>
-                        <div id="canvas69"></div>
-                        <div id="canvas70"></div>
-                        <div id="canvas71"></div>
-                        <div id="canvas72"></div>
-                        <div id="canvas73"></div>
-                        <div id="canvas74"></div>
-                        <div id="canvas75"></div>
-                        <div id="canvas76"></div>
-                        <div id="canvas77"></div>
-                        <div id="canvas78"></div>
-                        <div id="canvas79"></div>
-                        <div id="canvas80"></div>
-                        <div id="canvas81"></div>
-                        <div id="canvas82"></div>
-                        <div id="canvas83"></div>
-                        <div id="canvas84"></div>
-                        <div id="canvas85"></div>
-                        <div id="canvas86"></div>
-                        <div id="canvas87"></div>
-                        <div id="canvas88"></div>
-                        <div id="canvas89"></div>
-                        <div id="canvas90"></div>
-                        <div id="canvas91"></div>
-                        <div id="canvas92"></div>
-                        <div id="canvas93"></div>
-                        <div id="canvas94"></div>
-                        <div id="canvas95"></div>
-                        <div id="canvas96"></div>
-                        <div id="canvas97"></div>
-                        <div id="canvas98"></div>
-                        <div id="canvas99"></div>
-                        <div id="canvas100"></div>
-                        <div id="canvas101"></div>
-                        <div id="canvas102"></div>
-                        <div id="canvas103"></div>
-                        <div id="canvas104"></div>
-                        <div id="canvas105"></div>
-                        <div id="canvas106"></div>
-                        <div id="canvas107"></div>
-                        <div id="canvas108"></div>
-                        <div id="canvas109"></div>
-                        <div id="canvas110"></div>
-                        <div id="canvas111"></div>
-                        <div id="canvas112"></div>
-                        <div id="canvas113"></div>
-                        <div id="canvas114"></div>
-                        <div id="canvas115"></div>
-                        <div id="canvas116"></div>
-                        <div id="canvas117"></div>
-                        <div id="canvas118"></div>
-                        <div id="canvas119"></div>
-                        <div id="canvas120"></div>
-                        <div id="canvas121"></div>
-                        <div id="canvas122"></div>
-                        <div id="canvas123"></div>
-                        <div id="canvas124"></div>
-                        <div id="canvas125"></div>
-                        <div id="canvas126"></div>
-                        <div id="canvas127"></div>
-                        <div id="canvas128"></div>
-                        <div id="canvas129"></div>
-                        <div id="canvas130"></div>
-                        <div id="canvas131"></div>
-                        <div id="canvas132"></div>
-                        <div id="canvas133"></div>
-                        <div id="canvas134"></div>
-                        <div id="canvas135"></div>
-                        <div id="canvas136"></div>
-                        <div id="canvas137"></div>
-                        <div id="canvas138"></div>
-                        <div id="canvas139"></div>
-                        <div id="canvas140"></div>
-                        <div id="canvas141"></div>
-                        <div id="canvas142"></div>
-                        <div id="canvas143"></div>
-                        <div id="canvas144"></div>
-                        <div id="canvas145"></div>
-                        <div id="canvas146"></div>
-                        <div id="canvas147"></div>
-                        <div id="canvas148"></div>
-                        <div id="canvas149"></div>
-                        <div id="canvas150"></div>
-                        <div id="canvas151"></div>
-                        <div id="canvas152"></div>
-                        <div id="canvas153"></div>
-                        <div id="canvas154"></div>
-                        <div id="canvas155"></div>
-                        <div id="canvas156"></div>
-                        <div id="canvas157"></div>
-                        <div id="canvas158"></div>
-                        <div id="canvas159"></div>
-                        <div id="canvas160"></div>
-                        <div id="canvas161"></div>
-                        <div id="canvas162"></div>
-                        <div id="canvas163"></div>
-                        <div id="canvas164"></div>
-                        <div id="canvas165"></div>
-                        <div id="canvas166"></div>
-                        <div id="canvas167"></div>
-                        <div id="canvas168"></div>
-                        <div id="canvas169"></div>
-                        <div id="canvas170"></div>
-                        <div id="canvas171"></div>
-                        <div id="canvas172"></div>
-                        <div id="canvas173"></div>
-                        <div id="canvas174"></div>
-                        <div id="canvas175"></div>
-                        <div id="canvas176"></div>
-                        <div id="canvas177"></div>
-                        <div id="canvas178"></div>
-                        <div id="canvas179"></div>
-                        <div id="canvas180"></div>
-                        <div id="canvas181"></div>
-                        <div id="canvas182"></div>
-                        <div id="canvas183"></div>
-                        <div id="canvas184"></div>
-                        <div id="canvas185"></div>
-                        <div id="canvas186"></div>
-                        <div id="canvas187"></div>
-                        <div id="canvas188"></div>
-                        <div id="canvas189"></div>
-                        <div id="canvas190"></div>
-                        <div id="canvas191"></div>
-                        <div id="canvas192"></div>
+
                     </div>
                     <div id='button' class="cross-layout">
                         <button id="top" disabled>￪</button>
@@ -581,12 +256,7 @@
             </div>
 
         </div>
-        <div id='pageclear'>
-            <img src="/static/game/clear-window.gif" id="clear-window" style="display: block;">
-            <a href="http://localhost:8080/stage4-1/nextstory4-1" target="story4-1"style="text-decoration:none;">
-                <button id='clear'onclick="mapclick2(12);">次の話</button>
-            </a>
-        </div>
+
 
     </body>
 </html>

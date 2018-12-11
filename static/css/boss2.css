@@ -11,17 +11,19 @@ body {
     top:60%;
     left:40%;
     z-index:1;
-	display: inline-block;
+    display: inline-block;
 
-	font-weight: bold;
-	padding: 0.25em 0.5em;
-	text-decoration: none;
-	color: #FFF;
-	background: #00bcd4;
-	transition: .4s;
-	font-size:2em;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #00bcd4;
+    transition: .4s;
+    font-size:2em;
 }
-
+#start:hover{
+	background:black;
+}
 #pagestart{
     text-align: center;
 }
@@ -33,7 +35,7 @@ body {
 }
 #clear-window{
     z-index:1;
-	width:100%;
+    width:100%;
 }
 #clear{
     z-index:1;
@@ -47,6 +49,9 @@ body {
     transition: .4s;
     font-size:2em;
 }
+#clear:hover{
+	background:black;
+}
 #pagerestart{
     text-align: center;
 }
@@ -56,13 +61,16 @@ body {
     left:40%;
     z-index:1;
 
-	font-weight: bold;
-	padding: 0.25em 0.5em;
-	text-decoration: none;
-	color: #FFF;
-	background: #00bcd4;
-	transition: .4s;
-	font-size:2em;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #00bcd4;
+    transition: .4s;
+    font-size:2em;
+}
+#retry:hover{
+	background:black;
 }
 #hpbar{
     background-color:#8a4b08;
@@ -274,4 +282,3 @@ body {
     grid-row:2;
     grid-column:4;
 }
-
