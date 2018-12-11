@@ -314,6 +314,7 @@
                 }
             }
         </script>
+	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
     </head>
 
     <body>
@@ -613,10 +614,17 @@
             </div>
         </div>
         <div id='pageclear'>
-            <a href="http://localhost:8080/stage4-2/nextstory4-2" target="story4-2">
+            <img src="/static/game/clear-window.gif" id="clear-window" style="display: block;">
+            <a href="http://localhost:8080/stage4-2/nextstory4-2" target="story4-2"style="text-decoration:none;">
                 <button id="clear" onclick="mapclick2(12);">次の話</button>
             </a>
         </div>
-
+	<script>
+		roop();
+		function roop(){
+			document.getElementById("music").src="{% static 'sound/4.m4a' %}";
+			setTimeout(roop, 130000);
+		}
+	</script>
     </body>
 </html>

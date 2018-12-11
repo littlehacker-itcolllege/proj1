@@ -283,3 +283,8 @@ td{
   left:40%;
   z-index:1;
 }
+
+.kyoku {
+	visibility: hidden;
+	position: absolute;
+}
