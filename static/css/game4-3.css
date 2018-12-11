@@ -809,3 +809,8 @@ body {
 	font-size:2em;
 
 }
+
+.kyoku {
+	visibility: hidden;
+	position: absolute;
+}

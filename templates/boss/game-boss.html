@@ -745,6 +745,7 @@
                 });
             });
         </script>
+	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
     </head>
     <body>
         <div id='pagestart'>
@@ -852,5 +853,12 @@
                 </button>
             </a>
         </div>
+	<script>
+		roop();
+		function roop(){
+			document.getElementById("music").src="{% static 'sound/lasboss.m4a' %}";
+			setTimeout(roop, 131000);
+		}
+	</script>
     </body>
 </html>

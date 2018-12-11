@@ -579,6 +579,7 @@
                     }
             }
         </script>
+	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
     </head>
     <body>
         <div id='pagestart'>
@@ -906,5 +907,12 @@
                 <button id="clear" onclick="mapclick2(15);">次の話</button>
             </a>
         </div>
+	<script>
+		roop();
+		function roop(){
+			document.getElementById("music").src="{% static 'sound/4.m4a' %}";
+			setTimeout(roop, 131000);
+		}
+	</script>
     </body>
 </html>
