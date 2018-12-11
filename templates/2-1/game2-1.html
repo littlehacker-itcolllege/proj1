@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/game2-1.css' %}">
         <script type="text/javascript" src="{% static 'js/game2-1.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
     </head>
     <body onload="gameSet()">
 			<button onclick="gameSet();count();start()" id="start">スタート</button>
@@ -43,5 +44,13 @@
 						</div>
 				</div>
 			</div>
+	<script>
+		roop();
+		function roop(){
+			document.getElementById("music").src="{% static 'sound/2-1.m4a' %}";
+			setTimeout(roop, 130000);
+		}
+	</script>
+
     </body>
 </html>

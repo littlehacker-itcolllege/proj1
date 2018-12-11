@@ -309,6 +309,7 @@
                 window.open("http://localhost:8080/stage4-3/input4-3","","width=600,height=600");
             }
         </script>
+	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
     </head>
 
     <body>
@@ -615,5 +616,12 @@
                 <button id='clear' onclick="mapclick2(13)">次の話</button>
             </a>
         </div>
+	<script>
+		roop();
+			function roop(){
+				document.getElementById("music").src="{% static 'sound/4-3.m4a' %}";
+				setTimeout(roop, 115000);
+			}
+	</script>
     </body>
 </html>

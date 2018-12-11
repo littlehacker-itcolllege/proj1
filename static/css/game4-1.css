@@ -74,3 +74,8 @@ body {
     transition: .4s;
     font-size:2em;
 }
+
+.kyoku {
+	visibility: hidden;
+	position: absolute;
+}

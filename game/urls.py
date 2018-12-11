@@ -123,5 +123,6 @@ urlpatterns = [
     url(r'^stage4-6/input4-6/$',views.input4_6,name='input4-6'),
     url(r'^stage4-6/movie4-6/$',views.movie4_6,name='movie4-6'),
 
+    url(r'^boss/$',views.boss,name='boss'),
     url(r'^boss2/$',views.boss2,name='boss2')
 ]

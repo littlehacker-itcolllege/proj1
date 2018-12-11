@@ -46,3 +46,8 @@ body {
 .map_btn:hover {
     background: black;
 }
+
+.kyoku {
+	visibility: hidden;
+	position: absolute;
+}

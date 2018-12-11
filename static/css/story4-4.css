@@ -71,6 +71,18 @@ body{
     animation-iteration-count:1;
     animation-delay: 22s;
 }
+.text7 {
+    height: 40px;
+    top: 5px;
+    left: 4px;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+    animation-delay: 28s;
+}
+
 
 @-webkit-keyframes ozDq {
     from { width: 0;}
@@ -84,4 +96,7 @@ body{
     100% {opacity: 1;}
 }
 
-
+.kyoku {
+	visibility: hidden;
+	position: absolute;
+}

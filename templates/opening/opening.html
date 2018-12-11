@@ -7,7 +7,7 @@
 
 		<div class="kyoku"><iframe src="{% static 'sound/op.m4a' %}"></iframe></div>
     </head>
-	<body onLoad=setTimeout("location.href='http://localhost:8080/stage1-1'",80000)>
+	<body >
 
 
 		<div class='opening'>
@@ -21,16 +21,10 @@
         <script>
 
 			one();
-            roop();
 
             setTimeout(function(){
               window.location.href = 'http://localhost:8080/stage1-1';
-            }, 5*1000);
-
-            function roop(){
-                document.getElementById("music").src="{% static 'game/opening.m4a' %}";
-                setTimeout(roop,17000);
-            }
+            }, 80000);
 
 			function one(){
                 document.getElementById("open").src="{% static 'game/opening/main-actor500.gif' %}";
