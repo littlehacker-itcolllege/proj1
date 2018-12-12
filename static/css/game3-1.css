@@ -2,7 +2,9 @@ body{
   margin:0px;
   padding:0px;
 }
-
+a{
+	text-decoration:none;
+}
 #back{
   background-color:gray;
   opacity:0.5;
@@ -10,7 +12,7 @@ body{
 }
 #start{
   position:absolute;
-  top:60%;
+  top:80%;
 	left:40%;
 	z-index:1;
 	font-weight: bold;
@@ -37,6 +39,20 @@ body{
 }
 #clear:hover{
   background:black;
+}
+#U{
+	position:absolute;
+	width:80%;
+	top:5%;
+	left:10%;
+	z-index:1;
+}
+#W{
+	position:absolute;
+	width:80%;
+	top:42%;
+	left:10%;
+	z-index:1;
 }
 #box{
 	height:100vh;

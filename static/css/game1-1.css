@@ -7,10 +7,20 @@ meter{
 	width:40%;
 	height:1.5em;
 }
+a{
+	text-decoration:none;
+}
 #back{
 	background-color:gray;
 	height:100vh;
 	opacity:0.5;
+	z-index:1;
+}
+#left_click{
+	position:absolute;
+	top:35%;
+	left:42.5%;
+	width:20%;
 	z-index:1;
 }
 #start{
@@ -19,7 +29,6 @@ meter{
 	left:40%;
 	z-index:1;
 	display: inline-block;
-
 	font-weight: bold;
 	padding: 0.25em 0.5em;
 	text-decoration: none;
@@ -129,11 +138,7 @@ meter{
 	left:40%;
 	z-index:1;
 }
-<<<<<<< HEAD
-
 .kyoku {
 	visibility: hidden;
 	position: absolute;
 }
-=======
->>>>>>> 6e6b67d72e6583b62e7da220867455f39906e291

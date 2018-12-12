@@ -9,8 +9,9 @@
     </head>
     <body onload="load();">
 			<button id="start" onclick="start();">スタート</button>
+			<img src="{% static 'game/right_click.png' %}" id="right">
 			<div id="yatta">
-				<img src="{% static 'game/clear-window.gif' %}" id="clear-window">
+				<img src="{% static 'game/clear-window_green.gif' %}" id="clear-window">
 				<a href="http://localhost:8080/stage1-4/nextstory1-4" target="story1-4"><button id="clear" onclick="mapclick2(4);">次の話</button></a>
     </div>
 				<div id="back">
@@ -19,7 +20,7 @@
 					<img src="{% static 'game/gobrin-down.png' %}" id="enemy-down">
 					<div id="magic">
 						<p>呪文:<input method="post" type="text" name="password" size="40" id="jumon"></p>
-						<input type="image" src="{%static 'game/magic.png'%}" id="in" onclick="check();">
+						<button id="in" onclick="check();"><img src="{%static 'game/magic.png'%}" id="tue"></button>
 					</div>
 					</div>
 				</div>

@@ -4,6 +4,7 @@ function load(){
 function start(){
 	document.getElementById("back").style.opacity="1";
 	document.getElementById("start").style.display="none";
+	document.getElementById("right").style.display="none";
 	document.getElementById("in").disabled="";
 }
 function check(){

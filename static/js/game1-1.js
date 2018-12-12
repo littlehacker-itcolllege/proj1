@@ -14,6 +14,7 @@ function start(){
 	document.getElementById("attack").disabled="";
 	document.getElementById("back").style.opacity="1";
 	document.getElementById("start").style.display="none";
+	document.getElementById("left_click").style.display="none";
 	timer = setInterval('meterUp()',10);
 }
 //メータを1ずつ増やす//

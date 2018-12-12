@@ -2,6 +2,12 @@ body{
 	margin:0px;
 	padding:0px;
 }
+p{
+	color:white;
+}
+a{
+	text-decoration:none;
+}
 .box{
     height:100vh;
     background-repeat:no-repeat;
@@ -17,6 +23,13 @@ body{
 	opacity:0.5;
 	height:100vh;
 	z-index:0;
+}
+#right{
+	position:absolute;
+	top:37%;
+	left:42%;
+	width:20%;
+	z-index:1;
 }
 #start{
 	position:absolute;
@@ -34,6 +47,9 @@ body{
 #start:hover{
 	background:black;
 }
+#jumon{
+	height:2em;
+}
 #clear{
 	z-index:1;
 	display:none;
@@ -49,15 +65,17 @@ body{
 	background:black;
 }
 #enemy{
+	width:20%;
 	position:absolute;
-	left:50%;
+	left:45%;
 	top:10%;
 }
 #enemy-down{
 	display:none;
 	position:absolute;
-	left:50%;
+	left:45%;
 	top:10%;
+	width:20%;
 }
 #magic{
 	position:absolute;
@@ -65,14 +83,25 @@ body{
 	left:10%;
 }
 #in{
+  display:block;
+  position:absolute;
+	top:90%;
   background: #BDBDBD;
+  width:20%;
+  height:100%;
   border-radius: 50%;
-	width:15%;
-	height:auto;
   vertical-align: middle;
   overflow: hidden;
   box-shadow: 0px 0px 0px 5px #BDBDBD;
   border: solid 2px rgba(255, 255, 255, 0.47);
+}
+#in:active{
+  top:100%;
+  outline:none;
+}
+#tue{
+	width:100%;
+	height:auto;
 }
 #clear-window{
   display:none;

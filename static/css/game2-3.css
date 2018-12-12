@@ -8,6 +8,9 @@ td{
   width:100vh;
   font-size:5em;
 }
+a{
+	text-decoration:none;
+}
 #back{
 	background-color:gray;
 	opacity:0.5;

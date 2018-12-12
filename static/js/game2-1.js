@@ -37,18 +37,22 @@ function ransu()
 }
 
 function count(){
-  timer = setInterval('countDown()',500);
+  timer = setInterval('countDown()',1000);
   document.getElementById("start").style.display="none";
   document.getElementById("box").style.display="block";
   document.getElementById("key1").style.display="block";
 }
 
 function countDown(){
-  iki++;
-	document.getElementById("breath").textContent=iki;
-	if(iki == nam){
+  iki+=1;
+	x=5;
+	x-=iki
+	document.getElementById("count").textContent=x;
+	if(x == 0){
 		nam+=10;
 		document.getElementById("enemy").style.left=nam+"%";
+		document.getElementById("count").style.left=nam+"%";
+		iki=0;
 	}
   if(nam == left){
     clearInterval(timer);

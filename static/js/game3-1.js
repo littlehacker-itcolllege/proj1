@@ -10,6 +10,8 @@ function load(){
 function start(){
   document.getElementById("back").style.opacity="1";
   document.getElementById("start").style.display="none";
+  document.getElementById("U").style.display="none";
+  document.getElementById("W").style.display="none";
 	for (var i=1;i!=6;i++){
     document.getElementById("button"+i).disabled=""
     if(i<4){

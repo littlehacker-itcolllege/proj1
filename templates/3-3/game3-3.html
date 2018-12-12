@@ -9,8 +9,10 @@
     </head>
     <body oncontextmenu="return false;"onload="load();">
 			<button onclick="start();" id="start">スタート</button>
+			<img src="{% static 'game/Ctrl_C.png' %}" id="C">
+			<img src="{% static 'game/Ctrl_V.png' %}" id="V">
 		 <div id="yatta">
-				<img src="{% static 'game/clear-window.gif' %}" id="clear-window">
+				<img src="{% static 'game/clear-window_red.gif' %}" id="clear-window">
 				<a href="http://localhost:8080/stage3-3/nextstory3-3/" target="story3-3"><button onclick="mapclick2(10);" id="clear">次の話</button></a>
 			</div>
 			<div id="back">

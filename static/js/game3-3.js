@@ -7,6 +7,8 @@ function start(){
 	document.getElementById("back").style.opacity="1";
 	document.getElementById("box").style.display="block";
 	document.getElementById("start").style.display="none";
+	document.getElementById("C").style.display="none";
+	document.getElementById("V").style.display="none";
 	document.getElementById("in").disabled="";
 	count=setInterval("timer()",1000);
 }

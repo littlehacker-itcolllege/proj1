@@ -2,9 +2,15 @@ body{
 	margin:0px;
 	padding:0px;
 }
+p{
+	color:white;
+}
+a{
+	text-decoration:none;
+}
 #start{
 	position:absolute;
-	top:60%;
+	top:80%;
 	left:40%;
 	z-index:1;
 	font-weight: bold;
@@ -32,6 +38,20 @@ body{
 #clear:hover{
   background:black;
 }
+#C{
+  position:absolute;
+  width:80%;
+  top:5%;
+  left:10%;
+  z-index:1;
+}
+#V{
+  position:absolute;
+  width:80%;
+  top:42%;
+  left:10%;
+  z-index:1;
+}
 #back{
 	background-color:gray;
 	opacity:0.5;
@@ -50,7 +70,9 @@ body{
 #button{
 	display:none;
 }
-
+#jumon{
+	height:2em;
+}
 #input{
 	position:absolute;
 	top:50%;
