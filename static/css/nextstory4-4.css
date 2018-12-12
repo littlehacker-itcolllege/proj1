@@ -23,7 +23,7 @@ body{
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 4s;
+    animation-delay: 5s;
 }
 
 .text3 {
@@ -35,7 +35,7 @@ body{
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 8s;
+    animation-delay: 9s;
 }
 .text4 {
     height: 40px;
@@ -46,7 +46,7 @@ body{
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 12s;
+    animation-delay: 14s;
 }
 .text5 {
     height: 40px;
@@ -57,31 +57,8 @@ body{
     opacity: 0;
     -webkit-animation: ozDq 6s steps(70, end) forwards;
     animation-iteration-count:1;
-    animation-delay: 16s;
-}
-.text6 {
-    height: 40px;
-    top: 5px;
-    left: 4px;
-    width: 100%;
-    overflow: hidden;
-    opacity: 0;
-    -webkit-animation: ozDq 6s steps(70, end) forwards;
-    animation-iteration-count:1;
     animation-delay: 20s;
 }
-.text7 {
-    height: 40px;
-    top: 5px;
-    left: 4px;
-    width: 100%;
-    overflow: hidden;
-    opacity: 0;
-    -webkit-animation: ozDq 6s steps(70, end) forwards;
-    animation-iteration-count:1;
-    animation-delay: 24s;
-}
-
 
 .button{
     position: absolute;

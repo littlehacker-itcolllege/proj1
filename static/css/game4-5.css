@@ -21,7 +21,9 @@ body {
 	transition: .4s;
 	font-size:2em;
 }
-
+#start:hover{
+	background:black;
+}
 #pagestart{
     text-align: center;
 }
@@ -47,7 +49,9 @@ body {
     transition: .4s;
     font-size:2em;
 }
-
+#clear:hover{
+	background:black;
+}
 .canvas{
     z-index:2;
     position: absolute;
