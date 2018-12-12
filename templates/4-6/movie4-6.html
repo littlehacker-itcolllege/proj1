@@ -4,6 +4,7 @@
 		<meta charset='UTF-8'>
 		{% load static %}
 		<link rel='stylesheet' type='text/css' href="{% static 'css/movie4-6.css' %}">
+	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
 	</head>
            <body onLoad=setTimeout("location.href='http://localhost:8080/stage4-6'",52000)>
 
@@ -129,6 +130,12 @@
 
 		</script>
 
+		<script>
+		roop();
+		function roop(){
+			document.getElementById("music").src="{% static 'sound/4-6movie.m4a' %}";
+			setTimeout(roop, 58000)
+		}</script>
 	</body>
 </html>
 

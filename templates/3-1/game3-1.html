@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/game3-1.css' %}">
         <script type="text/javascript" src="{% static 'js/game3-1.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
     </head>
     <body onload="load();">
         <button onclick="start();" id="start">スタート</button>
@@ -18,14 +19,14 @@
 			<div id="back">
 				<div id="box">
 					<div id="buttons">
-						<input type="image" src="{%static 'game/pushblock.png'%}" id="button1" onclick="onClick1()">
-						<input type="image" src="{%static 'game/pushblock2.png'%}" id="mine1" onclick="mine(1);gameover()"><br>
-						<input type="image" src="{%static 'game/pushblock.png'%}" id="button2" onclick="onClick2()">
-						<input type="image" src="{%static 'game/pushblock2.png'%}" id="button3" onclick="nat(1)"><br>
-						<input type="image" src="{%static 'game/pushblock2.png'%}" id="button4" onclick="nat(2)">
-						<input type="image" src="{%static 'game/pushblock.png'%}" id="mine2" onclick="mine(2);gameover()"><br>
-						<input type="image" src="{%static 'game/pushblock.png'%}" id="button5" onclick="nat(3)">
-						<input type="image" src="{%static 'game/pushblock2.png'%}" id="mine3" onclick="mine(3);gameover()">
+						<input type="image" src="{%static 'game/pushblock.png'%}" id="button1" onclick="se();onClick1();">
+						<input type="image" src="{%static 'game/pushblock2.png'%}" id="mine1" onclick="se();mine(1);gameover();"><br>
+						<input type="image" src="{%static 'game/pushblock.png'%}" id="button2" onclick="se();onClick2();">
+						<input type="image" src="{%static 'game/pushblock2.png'%}" id="button3" onclick="se();nat(1);"><br>
+						<input type="image" src="{%static 'game/pushblock2.png'%}" id="button4" onclick="se();nat(2);">
+						<input type="image" src="{%static 'game/pushblock.png'%}" id="mine2" onclick="se();mine(2);gameover();"><br>
+						<input type="image" src="{%static 'game/pushblock.png'%}" id="button5" onclick="se();nat(3);">
+						<input type="image" src="{%static 'game/pushblock2.png'%}" id="mine3" onclick="se();mine(3);gameover();">
 					</div>
 					<div id="chara">
 						<img id="left" src="{% static 'game/pushleft.gif' %}">
@@ -35,5 +36,13 @@
 					<div id="item1"><img src='{% static 'game/orbpice1.png'%}'></div>
 					<div id="item2"><img src='{% static 'game/orbpice2.png'%}'></div>
 			</div>
+
+	<script>
+		roop();
+		function roop(){
+			document.getElementById("music").src="{% static 'sound/3-1.2.m4a' %}";
+			setTimeout(roop, 130000);
+		}
+	</script>
     </body>
 </html>

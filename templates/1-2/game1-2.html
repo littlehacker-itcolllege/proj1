@@ -6,6 +6,8 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/game1-2.css' %}">
         <script type="text/javascript" src="{% static 'js/game1-2.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+
+	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
     </head>
     <body onload="load();">
 		 <div id="yatta">
@@ -13,7 +15,11 @@
 				<a href="http://localhost:8080/stage1-2/nextstory1-2/" target="story1-2"><button id="clear" onclick="mapclick2(2);stage2clear();">次の話</button></a>
 			</div>
 				<button id="start" onclick="start();">スタート</button>
+<<<<<<< HEAD
 			<button onclick="wepon_click();" id="comp">装備する</button>
+=======
+			<button onclick="wepon_click();se()" id="comp">作成！</button>
+>>>>>>> 5fcdffbf17fdfdc4e3ec45300954466cae0cc7ed
 			<div id="back">
         <div class="box">
 					<img src="{% static 'game/wepon1.png' %}" id="damy-a">
@@ -46,5 +52,13 @@
 					</div>
         </div>
 			</div>
+
+	<script>
+		roop();
+		function roop(){
+			document.getElementById("music").src="{% static 'sound/1-2sound.m4a' %}";
+			setTimeout(roop, 121000);
+		}
+	</script>
     </body>
 </html>

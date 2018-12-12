@@ -370,6 +370,7 @@
                     },18000);
                     vasecrash = (vasecrash + 1);
                     $('#canvas235').css({'background' : 'url("../../static/game/vasecrash.png")'});
+		    stone();
                     setTimeout("text()" , 2000);
                     actionvalue =(actionvalue + 1);
                     $("#action").prop("disabled", true);
@@ -378,6 +379,7 @@
                     h = (parseInt(h) - 1).toString();
                     $('#maru').css('grid-row', h);
                     document.maru.src="{% static "game/character/bottom.gif" %}";
+		    ake();
                     var leftandright = $('#maru').css('grid-row');
                     var upanddown = $('#maru').css('grid-column');
                     obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
@@ -390,6 +392,7 @@
                     h = (parseInt(h) + 1).toString();
                     $('#maru').css('grid-row', h);
                     document.maru.src="{% static "game/character/bottom.gif" %}";
+		    sime();
                     var leftandright = $('#maru').css('grid-row');
                     var upanddown = $('#maru').css('grid-column');
                     obj.value = String(parseInt(leftandright))+" "+String(parseInt(upanddown));
@@ -579,6 +582,7 @@
                     }
             }
         </script>
+	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
     </head>
     <body>
         <div id='pagestart'>
@@ -906,5 +910,34 @@
                 <button id="clear" onclick="mapclick2(15);">次の話</button>
             </a>
         </div>
+
+	<!--sound-->
+	<script>
+		roop();
+		function roop(){
+			document.getElementById("music").src="{% static 'sound/4.m4a' %}";
+			setTimeout(roop, 131000);
+		}
+
+	function stone(){
+		audioElem = new Audio();
+		audioElem.src = "/static/gamesound/stone-break1.mp3";
+		audioElem.play();
+	}
+
+	function ake(){
+		audioElem = new Audio();
+		audioElem.src = "/static/gamesound/4-5ake.mp3";
+		audioElem.play();
+	}
+
+	function sime(){
+		audioElem = new Audio();
+		audioElem.src = "/static/gamesound/4-5sime.mp3";
+		audioElem.play();
+	}
+
+
+	</script>
     </body>
 </html>

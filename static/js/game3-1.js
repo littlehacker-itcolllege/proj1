@@ -115,3 +115,9 @@ function nat(b){
 		setTimeout("nul()",10);
 	}
 }
+
+function se() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/3-1stone.m4a";
+	audioElem.play();
+}

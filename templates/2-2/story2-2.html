@@ -15,15 +15,5 @@
         <p class="text5" id="text5Id"><img src="{% static 'game/fairy.png' %}">さっきと同じように指定された文字をうつと前にすすめるわ！</p>
         <p class="text6" id="text6Id"><img src="{% static 'game/fairy.png' %}">でも、水の中はあまり息が続かないから、急いでね！</p>
     </div>
-
-	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
-	<script>
-		roop();
-		function roop(){
-			document.getElementById("music").src="{% static 'sound/2-2.m4a' %}";
-			setTimeout(roop, 131000);
-}
-	</script>
-
   </body>
 </html>

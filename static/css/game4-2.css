@@ -21,6 +21,9 @@ body {
 	transition: .4s;
 	font-size:2em;
 }
+#start:hover{
+	background:black;
+}
 #pagestart{
     text-align: center;
 }
@@ -45,6 +48,9 @@ body {
     background: #00bcd4;
     transition: .4s;
     font-size:2em;
+}
+#clear:hover{
+	background:black;
 }
 .canvas{
     z-index:2;
@@ -789,4 +795,9 @@ body {
 	background: #00bcd4;
 	transition: .4s;
 	font-size:2em;
+}
+
+.kyoku {
+	visibility: hidden;
+	position: absolute;
 }

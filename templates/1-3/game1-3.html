@@ -6,6 +6,7 @@
         <link rel="stylesheet" type="text/css" href="{% static 'css/game1-3.css' %}">
         <script type="text/javascript" src="{% static 'js/game1-3.js' %}"></script>
         <script type="text/javascript" src="{% static 'js/map.js' %}"></script>
+	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
     </head>
     <body onload="load();">
 			<button id="start" onclick="start()">スタート</button>
@@ -19,11 +20,22 @@
 						<meter id="enemy-meter" max="5" low="1" high="3" optimum="5" value="5"></meter>
 						<img src="{% static 'game/1-1enemy.gif' %}" id="enemy-img" width="30%" height="auto">
 					<img src="{% static 'game/target-mark.png' %}"id="target">
+<<<<<<< HEAD
 					<img src="{% static 'game/target-mark_black.png' %}"id="not_target">
 					<div id="change"><button onClick='onClick();' id="attack">
+=======
+					<div id="change"><button onClick='onClick();se()' id="attack">
+>>>>>>> 5fcdffbf17fdfdc4e3ec45300954466cae0cc7ed
 						<img src="{% static 'game/pachinko.png' %}" width="100%" height="auto"></button></div>
 
 				</div>
 			</div>
+	<script>
+		roop();
+		function roop(){
+			document.getElementById("music").src="{% static 'sound/1-1.3.4.m4a' %}";
+			setTimeout(roop, 115000);
+		}
+	</script>
     </body>
 </html>

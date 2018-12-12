@@ -1,4 +1,4 @@
-document.onkeydown = typeGame;  //キー押下時に関数typeGame()を呼び出す
+document.onkeydown = typeGame; se();  //キー押下時に関数typeGame()を呼び出す
 
 //文字を格納する配列
 //var moji = new Array("Ａ","Ｂ","Ｃ","Ｄ","Ｅ","Ｆ","Ｇ","Ｈ","Ｉ",
@@ -117,4 +117,10 @@ function typeGame(evt)
 			document.getElementById("back").style.opacity="0.5";
     }
   }
+}
+
+function se() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/2-123typing.m4a";
+	audioElem.play();
 }

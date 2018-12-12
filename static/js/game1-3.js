@@ -35,3 +35,9 @@ function onClick(){
 		}
 	}
 }
+
+function se() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/1-3hit.m4a";
+	audioElem.play();
+}

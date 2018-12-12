@@ -6,25 +6,14 @@
   </head>
   <body>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static "css/.css" %}" />
+    <link rel="stylesheet" type="text/css" href="{% static "css/story2-3.css" %}" />
     <div class="textboard">
-        <p class="text1" id="text1Id"><img src="{% static 'game/rito.png' %}">ゴブリンだわ！　でも今回のは前のと違う・・・</p>
-        <p class="text2" id="text2Id"><img src="{% static 'game/fairy.png' %}"></p>
-        <p class="text3" id="text3Id"><img src="{% static 'game/rito.png' %}"></p>
-        <p class="text4" id="text4Id"><img src="{% static 'game/rito.png' %}"></p>
-        <p class="text5" id="text5Id"><img src="{% static 'game/rito.png' %}"></p>
-        <p class="text6" id="text6Id"><img src="{% static 'game/fairy.png' %}"></p>
-        <p class="text7" id="text7Id"><img src="{% static 'game/fairy.png' %}"></p>
+        <p class="text1" id="text1Id"><img src="{% static 'game/rito.png' %}">ゴブリンだ！　でも今回は前のと違う・・・</p>
+        <p class="text2" id="text2Id"><img src="{% static 'game/fairy.png' %}">3体ともタイプが違うわ！</p>
+        <p class="text3" id="text3Id"><img src="{% static 'game/fairy.png' %}">気をつけて！　弱点の魔法を使わないと反撃されるわ！</p>
+        <p class="text4" id="text4Id"><img src="{% static 'game/fairy.png' %}">火は水に弱く、水は草に弱く、草は火に弱い。</p>
+        <p class="text5" id="text5Id"><img src="{% static 'game/fairy.png' %}">敵をクリックで選択して、その後に弱点魔法を選択、</p>
+        <p class="text6" id="text6Id"><img src="{% static 'game/fairy.png' %}">そして魔法を使って！</p>
     </div>
-
-	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
-	<script>
-		roop();
-		function roop(){
-			document.getElementById("music").src="{% static 'sound/2-3kari.m4a' %}";
-			setTimeout(roop, 131000);
-		}
-	</script>
-
   </body>
 </html>
