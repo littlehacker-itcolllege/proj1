@@ -41,3 +41,9 @@ function timer(){
 		location.href="http://localhost:8080//stage3-3/gameover3-3"
 	}
 }
+
+function se() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/1-4magic.m4a";
+	audioElem.play();
+}

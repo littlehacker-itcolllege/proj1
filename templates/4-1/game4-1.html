@@ -575,8 +575,8 @@
                         <button id="bottom" disabled>￬</button>
                         <button id="right" disabled>￫</button>
                         <input type="text" id="input1" autocomplete="off" value="1 2">
-                        <input type="submit" id="action" value="調べる" onclick="win_open()" disabled>
-                        <input type="submit" id="action2" value="入力" onclick="input()" disabled>
+                        <input type="submit" id="action" value="調べる" onclick="se();win_open();" disabled>
+                        <input type="submit" id="action2" value="入力" onclick="input();" disabled>
                     </div>
                 </div>
             </div>
@@ -594,6 +594,14 @@
 			document.getElementById("music").src="{% static 'sound/4.m4a' %}";
 			setTimeout(roop, 130000);
 		}
+
+function se() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/gomibakoasari1.m4a";
+	audioElem.play();
+}
 	</script>
+
+
     </body>
 </html>

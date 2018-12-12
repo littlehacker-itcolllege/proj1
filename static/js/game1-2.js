@@ -67,3 +67,9 @@ function DragOver(event) {
 	event.preventDefault();
 }
 
+//sound//
+function se() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/1-2kumitate.m4a";
+	audioElem.play();
+}
