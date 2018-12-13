@@ -22,7 +22,9 @@
                                 window.opener.$("#action2").prop('disabled',true);
                                 window.opener.$('#pageclear').show();
                                 window.opener.$('#pageclear>a').show();
-                                window.close()
+				window.cler();
+				setTimeout(function(){
+					window.close()},3500)
                             });
                         }
                         if ($("#input").val().length == 4 ){
@@ -40,7 +42,11 @@
                 }
 
             }
-
+		function cler(){
+		audioElem = new Audio();
+		audioElem.src = "/static/gamesound/cler.m4a";
+		audioElem.play();
+	}
             function allClear() {
                 $("#input").val('').change();
             }

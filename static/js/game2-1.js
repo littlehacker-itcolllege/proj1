@@ -1,5 +1,4 @@
-document.onkeydown = typeGame; se();  //キー押下時に関数typeGame()を呼び出す
-
+document.onkeydown = typeGame;   //キー押下時に関数typeGame()を呼び出す
 //文字を格納する配列
 //var moji = new Array("Ａ","Ｂ","Ｃ","Ｄ","Ｅ","Ｆ","Ｇ","Ｈ","Ｉ",
 //                     "Ｊ","Ｋ","Ｌ","Ｍ","Ｎ","Ｏ","Ｐ","Ｑ","Ｒ",
@@ -77,7 +76,8 @@ function gameSet()
 //キー入力を受け取る関数
 function typeGame(evt)
 {
-  var kc;  //入力されたキーコードを格納する変数
+	se();
+	var kc;  //入力されたキーコードを格納する変数
   //入力されたキーのキーコードを取得
   if (document.all)
   {

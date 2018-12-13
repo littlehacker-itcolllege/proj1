@@ -80,3 +80,9 @@ function se() {
 	audioElem.src = "/static/gamesound/1-2kumitate.m4a";
 	audioElem.play();
 }
+
+function se() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/cler.m4a";
+	audioElem.play();
+}
