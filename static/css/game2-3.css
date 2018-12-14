@@ -93,22 +93,22 @@ a{
 }
 #fire-button{
 	position:absolute;
-	width:auto;
-	height:5vh;
+	width:6%;
+	height:auto;
 	margin:0 auto;
 	left:15%;
 }
 #water-button{
 	position:absolute;
-	width:auto;
-	height:5vh;
+	width:7%;
+	height:auto;
 	margin:0 auto;
 	left:45%;
 }
 #leaf-button{
 	position:absolute;
-	width:auto;
-	height:5vh;
+	width:10%;
+	height:auto;
 	margin:0 auto;
 	left:75%;
 }
@@ -286,7 +286,9 @@ a{
   left:40%;
   z-index:1;
 }
-
+#waku{
+	margin-top:5%;
+}
 .kyoku {
 	visibility: hidden;
 	position: absolute;
