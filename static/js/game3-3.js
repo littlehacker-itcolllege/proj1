@@ -32,6 +32,7 @@ function check2(){
 		document.getElementById("clear").style.display="block";
 		document.getElementById("clear-window").style.display="block";
 		document.getElementById("back").style.opacity="0.5";
+		cler();
 		clearInterval(count);
 	}else{
 		alert("呪文が違うよ...")	}
@@ -47,5 +48,11 @@ function timer(){
 function se() {
 	audioElem = new Audio();
 	audioElem.src = "/static/gamesound/1-4magic.m4a";
+	audioElem.play();
+}
+
+function cler() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/cler.m4a";
 	audioElem.play();
 }

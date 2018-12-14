@@ -29,6 +29,7 @@ function onClick(){
 			document.getElementById("clear").style.display="block";
 			document.getElementById("clear-window").style.display="block";
 			document.getElementById("back").style.opacity="0.5";
+			cler();
 		}else{
 			var a = Math.floor( Math.random() * 1001 ) ;
 			scrollTo(0,a);
@@ -39,5 +40,11 @@ function onClick(){
 function se() {
 	audioElem = new Audio();
 	audioElem.src = "/static/gamesound/1-3hit.m4a";
+	audioElem.play();
+}
+
+function cler() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/cler.m4a";
 	audioElem.play();
 }
