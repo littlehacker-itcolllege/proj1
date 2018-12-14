@@ -3,9 +3,7 @@ body {
     height: 100vh;
     background-repeat:no-repeat;
     background-position:center center;
-    background-image: url("../game/new-map1.png");
-    background-color: black;
-    background-size: auto 600px;
+    background-image: url("../game/map6.png");
 }
 
 .main {
@@ -14,9 +12,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 0px;
-    height: 0px;
-    text-align: center;
+    width: 100px;
+    height: 100px;
 }
 
 .show button {
@@ -26,7 +23,7 @@ body {
     width: 200px;
     height: 60px;
     font-size: 24px;
-    background: black;
+    background: #2196f3;
     border: none;
     box-shadow: none;
     outline: none;
@@ -44,7 +41,7 @@ body {
     background: #ccc;
     transform-origin: top;
     transform: perspective(1000px) rotateX(-90deg);
-    transition: 0.7s;
+    transition: 0.5s;
 }
 
 .show ul.active {
@@ -89,95 +86,115 @@ body {
     position: absolute;
 }
 
+
 /*--------------Mori----------------*/
 .stage-mori {
     position: relative;
-    top: 250px;
-    right: 225px;
+    top: 360px;
+    right: 130px;
+}
+.stage-mori img {
+    width: 100px;
 }
 
-.stage-mori button {
-    top: -109px;
-    right: 70px;
+.stage-mori img:hover {
+    width: 105px;
 }
-
-.stage-mori ul {
-    top: 107px;
-    right: 70px;
-}
-
-/*------------lake-------------------*/
-.stage-lake {
-    position:relative;
-    top: 350px;
-    left: 80px;
-}
-
-.stage-lake button {
-    top: -110px;
-    right: 75px;
-}
-
-.stage-lake ul {
-    top: 106px;
-    right: 75px;
-}
-
-/*--------------Volcano---------------*/
-.stage-volcano {
-    position:relative;
-    top: 187px;
-    left: 198px;
-}
-
-.stage-volcano button {
-    top: -118px;
-    right: 80px;
-}
-
-.stage-volcano ul {
-    top: 98px;
-    right: 80px;
-}
-
-/*--------------tower-----------------*/
-.stage-tower {
-    position:relative;
-    top: 25px;
-    left: -80px;
-}
-
-.stage-tower button {
-	top: -120px;
-	right: 78px;
-}
-
-.stage-tower ul {
-	top: 96px;
-	right: 78px;
-}
-
-
 
 /*--------------BOSS----------------*/
 .stage-boss {
     position: relative;
-    top: 265px;
-    right: 45px;
+    top: 161px;
+    right: 120px;
+}
+.stage-boss img {
+    width: 120px;
+}
+.stage-boss img:hover {
+    width: 125px;
 }
 
 .stage-boss button {
-	top: -115px;
-	right: 85px;
+	top: -138px;
+	right: 40px;
 }
 
 .stage-boss ul {
-	top: 101px;
-	right: 85px;
+	top: 2px;
+	right: 40px;
+}
+/*--------------tower-----------------*/
+.stage-tower {
+    position:relative;
+    top: 200px;
+    left: 165px;
+}
+.stage-tower img {
+    width: 55px;
+}
+.stage-tower img:hover {
+    width: 60px;
 }
 
-/*-----------------------------------*/
-p {
-	font-size: 280%;
-	color: #800000;
+.stage-tower button {
+	top: -145px;
+	right: 70px;
+}
+
+.stage-tower ul {
+	top: 2px;
+	right: 70px;
+}
+/*--------------Volcano---------------*/
+.stage-volcano {
+    position:relative;
+    top: 320px;
+    left: 130px;
+}
+
+.stage-volcano img {
+    width: 100px;
+}
+
+.stage-volcano img:hover {
+    width: 105px;
+}
+
+.stage-volcano button {
+    top: -143px;
+    right: 50px;
+}
+
+.stage-volcano ul {
+    top: 0px;
+    right: 50px;
+}
+
+
+
+
+/*------------lake-------------------*/
+.stage-lake {
+    position:relative;
+    top: 445px;
+    left: 20px;
+}
+
+.stage-lake img {
+    position:relative;
+    width: 190px;
+}
+
+.stage-lake img:hover {
+    width: 185px;
+}
+
+.stage-lake button {
+    top: -154px;
+    right: 10px;
+}
+
+.stage-lake ul {
+    top: 9px;
+    right: 10px;
 }
