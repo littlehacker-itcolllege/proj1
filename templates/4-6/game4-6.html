@@ -230,6 +230,7 @@
                             $('#enemy-meter').val(damage).change();
                             $('#patinko1').hide();
                             document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
+			    ate();
                             bossdamage = 1;
                             var v = $('#enemy-meter').val();
                             if(v>0){
@@ -247,6 +248,7 @@
                             $('#enemy-meter').val(damage).change();
                             $('#patinko2').hide();
                             document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
+			    ate();
                             bossdamage = 1;
                             setTimeout(function(){
                                 document.enemy.src="{% static "game/character/4-6boss.png" %}";
@@ -258,6 +260,7 @@
                             $('#enemy-meter').val(damage).change();
                             $('#patinko3').hide();
                             document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
+			    ate();
                             bossdamage = 1;
                             setTimeout(function(){
                                 document.enemy.src="{% static "game/character/4-6boss.png" %}";
@@ -276,6 +279,7 @@
                             $('#enemy-meter').val(damage).change();
                             $('#patinko1').hide();
                             document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
+	                    ate();
                             bossdamage = 1;
                             var v = $('#enemy-meter').val();
                             if(v > 0){
@@ -304,6 +308,7 @@
                             $('#enemy-meter').val(damage).change();
                             $('#patinko2').hide();
                             document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
+	      		    ate();
                             bossdamage = 1;
                             var v = $('#enemy-meter').val();
                             if(v > 0){
@@ -332,6 +337,7 @@
                             $('#enemy-meter').val(damage).change();
                             $('#patinko3').hide();
                             document.enemy.src="{% static "game/character/4-6bossdamage.gif" %}";
+	      		    ate();
                             bossdamage = 1;
                             var v = $('#enemy-meter').val();
                             if(v > 0){
@@ -357,6 +363,7 @@
                             $('#hero-meter').val(damage).change();
                             $('#enemyattack').hide();
                             document.maru.src="{% static "game/character/4-6herodamage.gif" %}";
+                            uke();
                             herodamage = 1;
                             setTimeout(function(){
                                 document.maru.src="{% static "game/character/4-6hero.png" %}";
@@ -369,6 +376,7 @@
                             $('#hero-meter').val(damage).change();
                             $('#enemyattack').hide();
                             document.maru.src="{% static "game/character/4-6herodamage.gif" %}";
+			    uke();
                             herodamage = 1;
                             setTimeout(function(){
                                 document.maru.src="{% static "game/character/4-6hero.png" %}";
@@ -387,6 +395,7 @@
                             $('#hero-meter').val(damage).change();
                             $('#enemyattack').hide();
                             document.maru.src="{% static "game/character/4-6herodamage.gif" %}";
+	      		    uke();
                             herodamage = 1;
                             setTimeout(function(){
                                 document.maru.src="{% static "game/character/4-6hero.png" %}";
@@ -649,21 +658,21 @@
                         $('#action').attr("disabled",false);
                     },1100);
                     //パチンコの発射
-                    attack1();
+                    attack1();se();
                 }else if($('#patinko2').css('display')=='none' && number == 1){
                     number ++
                     $('#action').attr("disabled",true);
                     bullet=setTimeout( function(){
                         $('#action').attr("disabled",false);
                     },1100);
-                    attack2();
+                    attack2();se();
                 }else if($('#patinko3').css('display')=='none' && number == 2){
                     number = 0;
                     $('#action').attr("disabled",true);
                     bullet=setTimeout( function(){
                         $('#action').attr("disabled",false);
                     },1100);
-                    attack3();
+                    attack3();se();
                 }
             }
             //enemyとheroのhpがゼロになったとき
@@ -886,6 +895,23 @@
 			document.getElementById("music").src="{% static 'sound/Boss.m4a' %}";
 			setTimeout(roop, 80000);
 		}
+
+	function se(){
+		audioElem = new Audio();
+		audioElem.src = "/static/gamesound/1-4magic.m4a";
+		audioElem.play();
+	}
+	function uke(){
+		audioElem = new Audio();
+		audioElem.src = "/static/gamesound/4-6enemy-damage.m4a";
+		audioElem.play();
+	}
+	function ate(){
+		audioElem = new Audio();
+		audioElem.src = "/static/gamesound/4-6drito-damage.m4a";
+		audioElem.play();
+	}
+
 	</script>
     </body>
 </html>

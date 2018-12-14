@@ -48,22 +48,41 @@ function wepon(num){
 		count+=1;
 		if (count==3){
 			document.getElementById("drop1").style.display="none";
-			document.getElementById("comp").style.display="block";
+			setTimeout('loading()',1000);
 		}
 	}
 }
-function wepon_click(){
+function loading(){
+	document.getElementById("damy-a").style.display="none";
+	document.getElementById("damy-b").style.display="none";
+	document.getElementById("damy-c").style.display="none";
+	document.getElementById("comp").style.display="block";
 	document.getElementById("wepon").style.display="block";
+}
+function wepon_click(){
+	document.getElementById("wepon").style.display="none";
 	document.getElementById("clear").style.display="block";
 	document.getElementById("comp").style.display="none";
 	document.getElementById("clear-window").style.display="block";
+	document.getElementById("back").style.opacity="0.5";
 }
 function stage2clear(){
 	document.getElementById("clear").disabled="disabled";
-	document.getElementById("back").style.opacity="0.5";
 }
 // ブラウザ標準のドロップ動作をキャンセル
 function DragOver(event) {
 	event.preventDefault();
 }
 
+//sound//
+function se() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/1-2kumitate.m4a";
+	audioElem.play();
+}
+
+function se() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/cler.m4a";
+	audioElem.play();
+}

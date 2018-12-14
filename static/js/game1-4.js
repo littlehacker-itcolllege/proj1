@@ -4,6 +4,7 @@ function load(){
 function start(){
 	document.getElementById("back").style.opacity="1";
 	document.getElementById("start").style.display="none";
+	document.getElementById("right").style.display="none";
 	document.getElementById("in").disabled="";
 }
 function check(){
@@ -12,7 +13,24 @@ function check(){
 		document.getElementById("enemy").style.display="none";
 		document.getElementById("clear").style.display="block";
 		document.getElementById("clear-window").style.display="block";
+		cler();
 	document.getElementById("back").style.opacity="0.5";
 	}else{
-		alert("呪文が違うよ...")	}
+		setTimeout('miss()',100);
+	}
+}
+function miss(){
+ alert("呪文が違うよ...");
+}
+//hitsound//
+function se() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/1-4magic.m4a";
+	audioElem.play();
+}
+
+function cler() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/cler.m4a";
+	audioElem.play();
 }

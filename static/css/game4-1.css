@@ -1,26 +1,12 @@
 body {
     margin: 0px;
 }
-.canvas{
-    background:#999;
-    display: grid;
-    grid-template-columns:100vw;
-    grid-template-rows: 70vh;
-}
-#maru {
-    grid-row: 1;
-    grid-column: 1;
-}
-#maru img{
-    position:relative;
-    width:7vw;
-    height:7vh;
-}
-
 .cross-layout {
     display: grid;
     grid-template-columns: 60px 60px 60px 120px 120px;
     grid-template-rows: 60px 60px;
+    top:420px;
+    left:25vw;
 }
 #top {
     grid-row: 1;
@@ -54,10 +40,6 @@ body {
     transition: .4s;
     font-size:2em;
 }
-#input1 {
-    grid-row: 1;
-    grid-column: 5;
-}
 #action{
     grid-row:1;
     grid-column:4;
@@ -73,9 +55,4 @@ body {
     background: #00bcd4;
     transition: .4s;
     font-size:2em;
-}
-
-.kyoku {
-	visibility: hidden;
-	position: absolute;
 }

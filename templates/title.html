@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <title>Littration</title>
     <link rel="stylesheet" href="{% static 'css/title.css' %}" type="text/css" media="screen" title="no title" charset="utf-8">
+    <div class="kyoku"><iframe id="music" src="" ></iframe></div>
   </head>
   <body>
       <div class="box">
@@ -12,5 +13,11 @@
             <img src="{% static 'game/title-start.png' %}">
         </div>
       </div>
+	<script>
+		roop();
+		function roop(){
+			document.getElementById("music").src="{% static 'sound/titleketu.m4a' %}";
+		}
+	</script>
   </body>
 </html>

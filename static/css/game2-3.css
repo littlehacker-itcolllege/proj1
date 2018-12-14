@@ -8,6 +8,9 @@ td{
   width:100vh;
   font-size:5em;
 }
+a{
+	text-decoration:none;
+}
 #back{
 	background-color:gray;
 	opacity:0.5;
@@ -90,22 +93,22 @@ td{
 }
 #fire-button{
 	position:absolute;
-	width:auto;
-	height:5vh;
+	width:6%;
+	height:auto;
 	margin:0 auto;
 	left:15%;
 }
 #water-button{
 	position:absolute;
-	width:auto;
-	height:5vh;
+	width:7%;
+	height:auto;
 	margin:0 auto;
 	left:45%;
 }
 #leaf-button{
 	position:absolute;
-	width:auto;
-	height:5vh;
+	width:10%;
+	height:auto;
 	margin:0 auto;
 	left:75%;
 }
@@ -283,7 +286,9 @@ td{
   left:40%;
   z-index:1;
 }
-
+#waku{
+	margin-top:5%;
+}
 .kyoku {
 	visibility: hidden;
 	position: absolute;

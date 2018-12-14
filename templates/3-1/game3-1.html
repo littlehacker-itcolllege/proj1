@@ -10,6 +10,8 @@
     </head>
     <body onload="load();">
         <button onclick="start();" id="start">スタート</button>
+				<img src="{% static 'game/Ctrl_U.png' %}" id="U">
+				<img src="{% static 'game/Ctrl_W.png' %}" id="W">
 			<div id="yatta">
 				<img src="{% static 'game/clear-window.gif' %}" id="clear-window">
 				<a href="http://localhost:8080/stage3-1/nextstory3-1/" target="story3-1"><button onclick="mapclick2(8)"; id="clear">次の話</button></a>
@@ -17,14 +19,14 @@
 			<div id="back">
 				<div id="box">
 					<div id="buttons">
-						<input type="image" src="{%static 'game/pushblock.png'%}" id="button1" onclick="onClick1()">
-						<input type="image" src="{%static 'game/pushblock2.png'%}" id="mine1" onclick="mine(1);gameover()"><br>
-						<input type="image" src="{%static 'game/pushblock.png'%}" id="button2" onclick="onClick2()">
-						<input type="image" src="{%static 'game/pushblock2.png'%}" id="button3" onclick="nat(1)"><br>
-						<input type="image" src="{%static 'game/pushblock2.png'%}" id="button4" onclick="nat(2)">
-						<input type="image" src="{%static 'game/pushblock.png'%}" id="mine2" onclick="mine(2);gameover()"><br>
-						<input type="image" src="{%static 'game/pushblock.png'%}" id="button5" onclick="nat(3)">
-						<input type="image" src="{%static 'game/pushblock2.png'%}" id="mine3" onclick="mine(3);gameover()">
+						<input type="image" src="{%static 'game/pushblock.png'%}" id="button1" onclick="se();onClick1();">
+						<input type="image" src="{%static 'game/pushblock2.png'%}" id="mine1" onclick="se();mine(1);gameover();"><br>
+						<input type="image" src="{%static 'game/pushblock.png'%}" id="button2" onclick="se();onClick2();">
+						<input type="image" src="{%static 'game/pushblock2.png'%}" id="button3" onclick="se();nat(1);"><br>
+						<input type="image" src="{%static 'game/pushblock2.png'%}" id="button4" onclick="se();nat(2);">
+						<input type="image" src="{%static 'game/pushblock.png'%}" id="mine2" onclick="se();mine(2);gameover();"><br>
+						<input type="image" src="{%static 'game/pushblock.png'%}" id="button5" onclick="se();nat(3);">
+						<input type="image" src="{%static 'game/pushblock2.png'%}" id="mine3" onclick="se();mine(3);gameover();">
 					</div>
 					<div id="chara">
 						<img id="left" src="{% static 'game/pushleft.gif' %}">

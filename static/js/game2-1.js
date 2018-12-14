@@ -1,5 +1,4 @@
-document.onkeydown = typeGame;  //キー押下時に関数typeGame()を呼び出す
-
+document.onkeydown = typeGame;   //キー押下時に関数typeGame()を呼び出す
 //文字を格納する配列
 //var moji = new Array("Ａ","Ｂ","Ｃ","Ｄ","Ｅ","Ｆ","Ｇ","Ｈ","Ｉ",
 //                     "Ｊ","Ｋ","Ｌ","Ｍ","Ｎ","Ｏ","Ｐ","Ｑ","Ｒ",
@@ -37,18 +36,22 @@ function ransu()
 }
 
 function count(){
-  timer = setInterval('countDown()',500);
+  timer = setInterval('countDown()',1000);
   document.getElementById("start").style.display="none";
   document.getElementById("box").style.display="block";
   document.getElementById("key1").style.display="block";
 }
 
 function countDown(){
-  iki++;
-	document.getElementById("breath").textContent=iki;
-	if(iki == nam){
+  iki+=1;
+	x=5;
+	x-=iki
+	document.getElementById("count").textContent=x;
+	if(x == 0){
 		nam+=10;
 		document.getElementById("enemy").style.left=nam+"%";
+		document.getElementById("count").style.left=nam+"%";
+		iki=0;
 	}
   if(nam == left){
     clearInterval(timer);
@@ -73,7 +76,8 @@ function gameSet()
 //キー入力を受け取る関数
 function typeGame(evt)
 {
-  var kc;  //入力されたキーコードを格納する変数
+	se();
+	var kc;  //入力されたキーコードを格納する変数
   //入力されたキーのキーコードを取得
   if (document.all)
   {
@@ -111,6 +115,19 @@ function typeGame(evt)
 			document.getElementById("clear").style.display="block";
 			document.getElementById("clear-window").style.display="block";
 			document.getElementById("back").style.opacity="0.5";
+			cler();
     }
   }
+}
+
+function se() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/2-123typing.m4a";
+	audioElem.play();
+}
+
+function cler() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/cler.m4a";
+	audioElem.play();
 }
