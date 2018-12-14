@@ -1,11 +1,11 @@
 
 body {
-    height: 100vh;
     background-repeat:no-repeat;
     background-position:center center;
     background-image: url("../game/new-map1.png");
     background-color: black;
-    background-size: auto 600px;
+    background-size: contain;
+		overflow-x:hidden;
 }
 
 .main {
@@ -18,7 +18,18 @@ body {
     height: 0px;
     text-align: center;
 }
-
+#lake{
+	display:none;
+}
+#volcano{
+	display:none;
+}
+#tower{
+	display:none;
+}
+#boss{
+	display:none;
+}
 .show button {
     position: relative;
     top: -160px;

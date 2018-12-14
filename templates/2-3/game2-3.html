@@ -17,9 +17,9 @@
 			<div id="back">
 				<div class="box">
 					<div id="select">
-						<button id="fire-button" onclick="gameSet();get_attribute('fire')">火属性</button>
-						<button id="water-button" onclick="gameSet2();get_attribute('water')">水属性</button>
-						<button id="leaf-button" onclick="gameSet3();get_attribute('leaf')">草属性</button>
+						<input type="image" id="fire-button" src="{% static 'game/fire_button.png' %}" onclick="gameSet();get_attribute('fire')">
+						<input type="image" id="water-button" src="{% static 'game/water_button.png' %}" onclick="gameSet2();get_attribute('water')">
+						<input type="image" id="leaf-button" src="{% static 'game/leaf_button.png' %}" onclick="gameSet3();get_attribute('leaf')">
 					</div>
 					<div id="waku">
 						<div id="fire">

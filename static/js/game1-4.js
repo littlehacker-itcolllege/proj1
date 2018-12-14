@@ -16,9 +16,12 @@ function check(){
 		cler();
 	document.getElementById("back").style.opacity="0.5";
 	}else{
-		alert("呪文が違うよ...")	}
+		setTimeout('miss()',100);
+	}
 }
-
+function miss(){
+ alert("呪文が違うよ...");
+}
 //hitsound//
 function se() {
 	audioElem = new Audio();

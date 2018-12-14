@@ -27,6 +27,18 @@ function mapload(){
 	//表示するステージ
 	for(i=1;i<=num;i++){
 		document.getElementById("stage"+i).style.display="block";
+		if(num>=5){
+			document.getElementById("lake").style.display="block";
+		}
+		if(num>=8){
+			document.getElementById("volcano").style.display="block";
+		}
+		if(num>=11){
+			document.getElementById("tower").style.display="block";
+		}
+		if(num>=14){
+			document.getElementById("boss").style.display="block";
+		}
 	}
 }
 function mapclick(){
