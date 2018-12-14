@@ -5,6 +5,7 @@ body {
     background-image: url("../game/new-map1.png");
     background-color: black;
     background-size: contain;
+		overflow-x:hidden;
 }
 
 .main {
