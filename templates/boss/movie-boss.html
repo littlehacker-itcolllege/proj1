@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Boss movie</title>
+    {% load static %}
+        <script>
+            function button(){
+              document.getElementById("button").style.display="none";
+              document.getElementById("quiz1id").style.visibility="visible";
+              document.getElementById("quiz1id").style.animation="fadeIn 1s ease forwards";
+            }
+            function right1(){
+                document.getElementById("quiz1id").style.display="none";
+                document.getElementById("leafwall").style.animation="wall-break 1s ease forwards";
+                document.getElementById("quiz2id").style.visibility="visible";
+                document.getElementById("quiz2id").style.animation="fadeIn 1s ease 1.5s forwards";
+            }
+            function right2(){
+                document.getElementById("quiz2id").style.display="none";
+                document.getElementById("waterwall").style.animation="wall-break 1s ease forwards";
+                document.getElementById("quiz3id").style.visibility="visible";
+                document.getElementById("quiz3id").style.animation="fadeIn 1s ease 1.5s forwards";
+            }
+            function right3(){
+                document.getElementById("quiz3id").style.display="none";
+                document.getElementById("firewall").style.animation="wall-break 1s ease forwards";
+                document.getElementById("quiz4id").style.visibility="visible";
+                document.getElementById("quiz4id").style.animation="fadeIn 1s ease 1.5s forwards";
+            }
+      </script>
+  </head>
+  <body>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/movie.css'%}">
+    <main id="display">
+      <div class="motion">
+        <div class="first-door" id="groundwall"></div>
+        <div class="second-door" id="firewall"></div>
+        <div class="third-door" id="waterwall"></div>
+        <div class="fourth-door" id="leafwall"></div>
+      </div>
+
+
+
+      <div id="hide">
+        <div id="button">
+            <a class="go" onclick="button()"></a>
+        </div>
+        <div class="quiz1" id="quiz1id">
+            <p>問１　ページを下に動かすことをなんというか？<p>
+            <div class="answer">
+                <a id="answerA" href="">スクロース</a>
+                <a id="answerB" onclick="right1()">スクロール</a>
+            </div>
+        </div>
+
+        <div class="quiz2" id="quiz2id">
+            <p>問２　Eキーの場所が正しいのはどちらか？</p>
+            <div class="answer2">
+                <div class="quiz2img1">
+                <a class="picA" onclick="right2()"><img src="{% static 'game/true.png' %}" /></a>
+                </div>
+                <div class="quiz2img2">
+                <a class="picB" ><img src="{% static 'game/false.png' %}" /></a>
+                </div>
+            </div>
+        </div>
+        <div class="quiz3" id="quiz3id">
+            <p>問３　ソースの開き方はどちらが正しい？<p>
+            <div class="answer3">
+                <p id="answer3A" href="">エンターキー</p>
+                <p id="answer3B" onclick="right3()">コントロールキー＋Uキー</p>
+            </div>
+        </div>
+        <div class="quiz4" id="quiz4id">
+            <p>問４　パスワードを自分のたんじょうびにするのはただしい？<p>
+            <div class="answer4">
+                <p id="answer4A" href="">おぼえやすいので正しい。</a>
+                <p id="answer4B" onclick="right4()">だれかにばれやすいので正しくない。</a>
+            </div>
+        </div>
+
+      </div>
+    </main>
+  </body>
+</html>

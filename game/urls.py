@@ -124,5 +124,11 @@ urlpatterns = [
     url(r'^stage4-6/movie4-6/$',views.movie4_6,name='movie4-6'),
 
     url(r'^boss/$',views.boss,name='boss'),
+    url(r'^boss/start-boss/$',views.start_boss,name='start_boss'),
+    url(r'^boss/movie-boss/$',views.movie_boss,name='movie-boss'),
+    url(r'^boss/story-boss/$',views.story_boss,name='story-boss'),
+    url(r'^boss/story-boss2/$',views.story_boss2,name='story-boss2'),
+    url(r'^boss/head-boss/$',views.head_boss,name='head-boss'),
+
     url(r'^boss2/$',views.boss2,name='boss2')
 ]
