@@ -1,9 +1,13 @@
 body{
 	margin:0px;
 	padding:0px;
+	overflow:hidden;
 }
 body::-webkit-scrollbar{
 	display:none;
+}
+a{
+	text-decoration:none;
 }
 .box{
     height:300vh;
@@ -20,6 +24,13 @@ body::-webkit-scrollbar{
 	opacity:0.5;
 	height:100vh;
 	z-index:0;
+}
+#scroll{
+	position:absolute;
+	top:35%;
+	left:41%;
+	z-index:1;
+	width:22%;
 }
 #start{
 	font-size:2em;
@@ -58,7 +69,16 @@ body::-webkit-scrollbar{
   left:39.5%;
   color:#FFF;
   padding:10px;
-
+	display:none;
+	z-index:1;
+}
+#not_target{
+  width:130px;
+  position:fixed;
+  top:35%;
+  left:39.5%;
+  color:#FFF;
+  padding:10px;
 }
 #next{
 	position:fixed;

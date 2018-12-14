@@ -10,6 +10,7 @@
     </head>
     <body onload="load();">
 			<button id="start" onclick="start()">スタート</button>
+			<img src="{% static 'game/scroll.png' %}" id="scroll">
 			<div id="yatta">
 				<img src="{% static 'game/clear-window.gif' %}" id="clear-window">
 				<a href="http://localhost:8080/stage1-3/nextstory1-3" target="story1-3"><button id="clear" onclick="mapclick2(3)">次の話</button></a>
@@ -19,7 +20,8 @@
 						<meter id="enemy-meter" max="5" low="1" high="3" optimum="5" value="5"></meter>
 						<img src="{% static 'game/1-1enemy.gif' %}" id="enemy-img" width="30%" height="auto">
 					<img src="{% static 'game/target-mark.png' %}"id="target">
-					<div id="change"><button onClick='onClick();' id="attack">
+					<img src="{% static 'game/target-mark_black.png' %}"id="not_target">
+					<div id="change"><button onClick='onClick();se()' id="attack">
 						<img src="{% static 'game/pachinko.png' %}" width="100%" height="auto"></button></div>
 
 				</div>

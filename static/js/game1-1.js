@@ -14,6 +14,7 @@ function start(){
 	document.getElementById("attack").disabled="";
 	document.getElementById("back").style.opacity="1";
 	document.getElementById("start").style.display="none";
+	document.getElementById("left_click").style.display="none";
 	timer = setInterval('meterUp()',10);
 }
 //メータを1ずつ増やす//
@@ -41,6 +42,7 @@ function onClick(){
 		//メータやボタンなどの非表示//
 		setTimeout('clear()',500);
 		fin();
+		cler();
 	}else{
 		setTimeout(reload,1000);
 	}
@@ -96,6 +98,12 @@ function fin(){
 function se() {
 	audioElem = new Audio();
 	audioElem.src = "/static/gamesound/1-1button.m4a";
+	audioElem.play();
+}
+
+function cler() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/cler.m4a";
 	audioElem.play();
 }
 

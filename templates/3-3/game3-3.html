@@ -10,8 +10,10 @@
     </head>
     <body oncontextmenu="return false;"onload="load();">
 			<button onclick="start();" id="start">スタート</button>
+			<img src="{% static 'game/Ctrl_C.png' %}" id="C">
+			<img src="{% static 'game/Ctrl_V.png' %}" id="V">
 		 <div id="yatta">
-				<img src="{% static 'game/clear-window.gif' %}" id="clear-window">
+				<img src="{% static 'game/clear-window_red.gif' %}" id="clear-window">
 				<a href="http://localhost:8080/stage3-3/nextstory3-3/" target="story3-3"><button onclick="mapclick2(10);" id="clear">次の話</button></a>
 			</div>
 			<div id="back">
@@ -27,14 +29,14 @@
 					<!--!>一回目の入力<!--!>
 					<div id="input">
 						<p>呪文:<input method="post" type="text" name="password" size="40" id="jumon"></p>
-						<input id="in" type="submit" value="唱える" onclick="check();">
+						<input id="in" type="submit" value="唱える" onclick="check();se()">
 					</div>
 					<!--!><!--!>
 
 			 		<!--!>二回目の入力<!--!>
 					<div id="input2">
 						<p>呪文:<input method="post" type="text" name="password" size="40" id="jumon2"></p>
-						<input type="submit" value="唱える" onclick="check2();">
+						<input type="submit" value="唱える" onclick="check2();se()">
 					</div>
 
 				</div>

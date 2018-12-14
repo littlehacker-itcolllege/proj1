@@ -7,6 +7,8 @@ function start(){
 	document.getElementById("back").style.opacity="1";
 	document.getElementById("box").style.display="block";
 	document.getElementById("start").style.display="none";
+	document.getElementById("C").style.display="none";
+	document.getElementById("V").style.display="none";
 	document.getElementById("in").disabled="";
 	count=setInterval("timer()",1000);
 }
@@ -30,6 +32,7 @@ function check2(){
 		document.getElementById("clear").style.display="block";
 		document.getElementById("clear-window").style.display="block";
 		document.getElementById("back").style.opacity="0.5";
+		cler();
 		clearInterval(count);
 	}else{
 		alert("呪文が違うよ...")	}
@@ -40,4 +43,16 @@ function timer(){
 	if(time==0){
 		location.href="http://localhost:8080//stage3-3/gameover3-3"
 	}
+}
+
+function se() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/1-4magic.m4a";
+	audioElem.play();
+}
+
+function cler() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/cler.m4a";
+	audioElem.play();
 }

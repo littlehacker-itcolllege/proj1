@@ -6,6 +6,12 @@ td{
 	text-align:center;
 	color:white;
 }
+p{
+	color:white;
+}
+a{
+	text-decoration:none;
+}
 #box{
     height:100vh;
     background-repeat:no-repeat;

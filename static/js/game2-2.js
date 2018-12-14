@@ -83,6 +83,7 @@ function gameSet2()
 //キー入力を受け取る関数
 function typeGame(evt)
 {
+  se();
   var kc;  //入力されたキーコードを格納する変数
   //入力されたキーのキーコードを取得
   if (document.all)
@@ -155,7 +156,20 @@ function typeGame(evt)
       document.getElementById("clear").style.display="block";
       document.getElementById("clear-window").style.display="block";
       document.getElementById("back").style.opacity="0.5";
+      cler();
 			}
 		}
 	}
+}
+
+function se(){
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/2-123typing.m4a";
+	audioElem.play();
+}
+
+function cler(){
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/cler.m4a";
+	audioElem.play();
 }

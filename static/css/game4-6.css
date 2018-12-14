@@ -387,3 +387,7 @@ body {
     grid-column:4;
 }
 
+.kyoku {
+	visibility: hidden;
+	position: absolute;
+}

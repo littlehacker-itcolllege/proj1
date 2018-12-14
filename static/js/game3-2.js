@@ -30,6 +30,7 @@ function onClick1(){
 		document.getElementById("clear").style.display="block";
 		document.getElementById("clear-window").style.display="block";
 		document.getElementById("back").style.opacity="0.5";
+		cler();
 	}
 
 }
@@ -45,6 +46,7 @@ function onClick2(){
 		document.getElementById("clear").style.display="block";
 		document.getElementById("clear-window").style.display="block";
 		document.getElementById("back").style.opacity="0.5";
+		cler();
 	}
 }
 function mine(a){
@@ -114,4 +116,16 @@ function nat(b){
 		document.getElementById("left").style.top="70%";
 		setTimeout("nul()",10);
 	}
+}
+
+function se() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/3-1stone.m4a";
+	audioElem.play();
+}
+
+function cler() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/cler.m4a";
+	audioElem.play();
 }
