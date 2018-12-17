@@ -239,5 +239,15 @@ def movie4_6(request):
     return render(request,'4-6/movie4-6.html')
 def boss(request):
     return render(request,'boss/boss.html')
+def start_boss(request):
+    return render(request,'boss/start-boss.html')
+def story_boss(request):
+    return render(request,'boss/story-boss.html')
+def story_boss2(request):
+    return render(request,'boss/story-boss2.html')
+def movie_boss(request):
+    return render(request,'boss/movie-boss.html')
+def head_boss(request):
+    return render(request,'boss/head-boss.html')
 def boss2(request):
     return render(request,'boss2.html')

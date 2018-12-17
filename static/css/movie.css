@@ -1,0 +1,335 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    background: black;
+}
+
+.quiz1{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: calc(50% - 100px); left: calc(50% - 200px);
+    width: 400px;
+    height: 200px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+
+.quiz2{
+    top: calc(50% - 250px);
+    left: calc(50% - 250px);
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+
+img{
+    width: 400px;
+    height: 200px;
+    display: block;
+    cursor: pointer;
+}
+
+.quiz2img2{
+    margin: 20px 0;
+}
+
+.quiz3{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: calc(50% - 100px); left: calc(50% - 200px);
+    width: 400px;
+    height: 200px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+.quiz4{
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: calc(50% - 100px); left: calc(50% - 250px);
+    width: 500px;
+    height: 200px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+}
+
+#leafwall{
+    overflow: hidden;
+}
+
+.answer{
+    position: absolute;
+    top: 50%;
+    width: 400px;
+    height: 200px;
+}
+
+.answer2{
+    position: absolute;
+    top: 4em; left: calc(50% - 200px);
+    width: 100%;
+    height: 200px;
+}
+
+.answer3{
+    position: absolute;
+    left: calc(50% - 100px);
+    width: 200px;
+    height: 200px;
+}
+
+.answer4{
+    position: absolute;
+    left: calc(50% - 200px);
+    width: 400px;
+    height: 200px;
+}
+
+#answerA{
+    position: absolute;
+    left: calc(50% - 150px);
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    transition: .4s;
+}
+
+#answerA:hover{
+    background-color: white;
+    color: green;
+}
+
+#answerB{
+    position: absolute;
+    left: calc(50% + 50px);
+    background-color: green;
+    color: white;
+    text-decoration: none;
+    transition: .4s;
+}
+
+#answerB:hover{
+    background-color: white;
+    color: green;
+    cursor: pointer;
+}
+
+#answer3A{
+    cursor: pointer;
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    transition: .4s;
+}
+
+#answer3A:hover{
+    background-color: white;
+    color: red;
+}
+
+#answer3B{
+    background-color: red;
+    color: white;
+    text-decoration: none;
+    transition: .4s;
+}
+
+#answer3B:hover{
+    background-color: white;
+    color: #8B4513;
+    cursor: pointer;
+}
+
+#answer4A{
+    left: calc(50% - 200px);
+    width: 400px;
+    cursor: pointer;
+    background-color: #8B4513;
+    color: white;
+    text-decoration: none;
+    transition: .4s;
+}
+
+#answer4A:hover{
+    background-color: white;
+    color: #8B4513;
+}
+
+#answer4B{
+    margin-top: 30px;
+    left: calc(50% - 200px);
+    width: 400px;
+    background-color: #8B4513;
+    color: white;
+    text-decoration: none;
+    transition: .4s;
+}
+
+#answer4B:hover{
+    background-color: white;
+    color: #8B4513;
+    cursor: pointer;
+}
+
+
+/**************************************
+ * button部分
+ *************************************/
+#hide{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; height: 100%;
+}
+
+#button{
+    z-index: 9;
+    width: 100%;
+    height: 100%;
+}
+
+.go{
+    width: 0%;
+    height: 50px;
+    position: absolute;
+    top: calc(50% - 25px); left: calc(50% - 50px);
+    font-weight: bold;
+    text-decoration: none;
+    background: #00bcd4;
+    color: white;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+    transition: .4s;
+}
+
+.go:after{
+    padding-top: 10px;
+    content: "すすむ！"; display: block;
+    width: 100px; height: 50px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+
+.go:hover{
+    background-color: white;
+    color: black;
+}
+
+
+#display{
+    position: absolute;
+    width: 100%; height: 100%;
+}
+/*******************************************
+ * motion部分
+ ******************************************/
+.motion,
+.motion div{
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+
+.motion div:nth-child(2n-1){
+    transform-origin: bottom right;
+    transform: translateY(-100%) rotate(30deg);
+}
+.motion div:nth-child(2n){
+    transform-origin: bottom left;
+    transform: translateY(-100%) rotate(-30deg);
+}
+
+#groundwall{
+    background-image: url("./../game/groundwall.png");
+}
+#firewall{
+    background-image: url("./../game/firewall.png");
+}
+#waterwall{
+    background-image: url("./../game/waterwall.png");
+}
+.fourth-door{
+    background-image: url("./../game/leafwall.png");
+}
+
+
+
+/***************************************
+ * animation
+ **************************************/
+
+.motion div:nth-child(1){
+    animation: fall-1 0.6s ease 1s forwards;
+}
+
+.motion div:nth-child(2){
+    animation: fall-2 0.6s ease 1.5s forwards;
+}
+
+.motion div:nth-child(3){
+    animation: fall-1 0.6s ease 2s forwards;
+}
+
+.motion div:nth-child(4){
+    animation: fall-2 0.6s ease 2.5s forwards;
+}
+
+.go {
+    z-index: 2;
+    animation: show-button 0.7s ease 3s forwards;
+}
+
+/**************************************
+ * keyframe
+ *************************************/
+
+@keyframes fall-1{
+    from    { transform: translateY(-100%) rotate(30deg); }
+    to      { transform: translateY(0%) rotate(0deg); }
+}
+
+@keyframes fall-2{
+    from    { transform: translateY(-100%) rotate(-30deg); }
+    to      { transform: translateY(0%) rotate(0deg); }
+}
+
+@keyframes show-button{
+    from    { width: 0px; }
+    to      { width: 100px;}
+}
+
+@keyframes hidden-button{
+    from    { width: 100%; }
+    to      { width: 0%; }
+}
+
+@keyframes fadeIn{
+    from    {opacity: 0 }
+    to      {opacity: 100 }
+}
+
+@keyframes wall-break{
+    from    { transform: translateY(0%); }
+    to      { transform: translateY(-100%); }
+}
