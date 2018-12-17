@@ -2,7 +2,7 @@
 var canvas = document.getElementById( 'canvas' );
 canvas.width = 640;     //canvasの横幅（よこはば）
 canvas.height = 416;    //canvasの縦幅（たてはば）
-
+start = 0;
 
 //コンテキストを取得
 var ctx = canvas.getContext( '2d' );
@@ -69,8 +69,39 @@ var map = [
 ]
 
 function main(){
+
+if(start == 0){
+    $('#pageclear').hide();
+    $('#pagerestart').hide();
+    $('.textboard1').hide();
+    $("#pagestart a").on('click',function(){
+        start = 1;
+        $("#top").prop('disabled',false);
+        $("#bottom").prop('disabled',false);
+        $("#right").prop('disabled',false);
+        $("#left").prop('disabled',false);
+        $("#pagestart a").hide();
+        $("#back").css('opacity','1');
+        $("#back").css('background-color','#fff');
+        $("#pageplaying").show();
+        $('#maru').val('2 2').change();
+        return false;
+    });
+}
+
     //enemyに見つかったらリロード
-    if(found == 1){location.reload();}
+    if(found == 1){
+        start = 2;
+    $('.textboard1').show();
+                $(".canvas").css("z-index" , 1);
+                $(".textboard1").toggleClass("ck");
+                $(".text1-1").toggleClass("ck");
+                $(".text1-2").toggleClass("ck");
+                $(".text1-3").toggleClass("ck");
+                setTimeout("location.reload()",10000);
+        found= 2;
+            }
+
     move();
     //塗りつぶす色を指定
     ctx.fillStyle = "rgb( 97, 97, 97 )";
@@ -80,10 +111,10 @@ function main(){
     //enemyの視野を表示する
     for (var y=0; y<map.length; y++) {
         for (var x=0; x<map[y].length; x++) {
-            if(enemy.img.src.split('/')[6]=='enemytop.gif'){ctx.fillStyle = "rgb( 225, 0, 0 )";ctx.fillRect(enemy.x,enemy.y,32,-enemylook*32)};
-            if(enemy.img.src.split('/')[6]=='enemyright.gif'){ctx.fillStyle = "rgb( 225, 0, 0 )";ctx.fillRect(enemy.x+32,enemy.y,enemylook*32,32)};
-            if(enemy.img.src.split('/')[6]=='enemybottom.gif'){ctx.fillStyle = "rgb( 225, 0, 0 )";ctx.fillRect(enemy.x,enemy.y+32,32,enemylook*32)};
-            if(enemy.img.src.split('/')[6]=='enemyleft.gif'){ctx.fillStyle = "rgb( 225, 0, 0 )";ctx.fillRect(enemy.x,enemy.y,-enemylook*32,32)};
+            if(enemy.img.src.split('/')[6]=='enemytop.gif'){ctx.fillStyle = "rgb( 243, 225, 0 )";ctx.fillRect(enemy.x,enemy.y,32,-enemylook*32)};
+            if(enemy.img.src.split('/')[6]=='enemyright.gif'){ctx.fillStyle = "rgb( 243, 225, 0 )";ctx.fillRect(enemy.x+32,enemy.y,enemylook*32,32)};
+            if(enemy.img.src.split('/')[6]=='enemybottom.gif'){ctx.fillStyle = "rgb( 243, 225, 0 )";ctx.fillRect(enemy.x,enemy.y+32,32,enemylook*32)};
+            if(enemy.img.src.split('/')[6]=='enemyleft.gif'){ctx.fillStyle = "rgb( 243, 225, 0 )";ctx.fillRect(enemy.x,enemy.y,-enemylook*32,32)};
         }
     }
     //マップチップを表示する
@@ -114,16 +145,20 @@ function main(){
 
     if(hero.y/32==11 && hero.x/32 == 1&&hero.img.src.split('/')[6]=='bottom.gif'){
         $("#action2").prop("disabled", false);
+    }else{
+        $("#action2").prop("disabled", true);
     }
     if(hero.y/32==1 && hero.x/32 == 18&&hero.img.src.split('/')[6]=='top.gif'){
         $("#action").prop("disabled", false);
+    }else{
+        $("#action").prop("disabled", true);
     }
 
 
     addEventListener("keydown", keydownfunc, false);
     addEventListener("keyup", keyupfunc, false);
 
-    if ( hero.move === 0 ) {
+    if ( hero.move === 0 && start == 1) {
         if ( key.left === true) {
             var x = hero.x/32;
             var y = hero.y/32;
@@ -167,7 +202,6 @@ function main(){
             }
         }
     }
-    console.log(hero.y/32,hero.x/32)
     requestAnimationFrame( main );
 }
 //ページと依存している全てのデータが読み込まれたら、メインループ開始
@@ -195,7 +229,7 @@ function keyupfunc( event ) {
 //hero.moveが0より大きい場は、4pxずつ移動を続ける
 function move(){
     if (hero.move > 0&&enemy_move_now != 0) {
-        if(enemy_move_now==1&&enemy.img.src.split('/')[6]!='enemytop.gif'){enemy.img.src =('../../static/game/character/enemytop.gif')}; 
+        if(enemy_move_now==1&&enemy.img.src.split('/')[6]!='enemytop.gif'){enemy.img.src =('../../static/game/character/enemytop.gif')};
         if(enemy_move_now==2&&enemy.img.src.split('/')[6]!='enemyright.gif'){enemy.img.src =('../../static/game/character/enemyright.gif')};
         if(enemy_move_now==3&&enemy.img.src.split('/')[6]!='enemybottom.gif'){enemy.img.src =('../../static/game/character/enemybottom.gif')};
         if(enemy_move_now==4&&enemy.img.src.split('/')[6]!='enemyleft.gif'){enemy.img.src =('../../static/game/character/enemyleft.gif')};
@@ -210,7 +244,7 @@ function move(){
         if(enemy_move_now==3) enemy.y += 4;;
         if(enemy_move_now==4) enemy.x -= 4;;
         hero.move -= 4;
-        if(hero.move === 0){map[enemy.y/32][enemy.x/32] = 1;map[hero.y/32][hero.x/32] = 4;
+        if(hero.move === 0){map[hero.y/32][hero.x/32] = 4;
             if(enemy_move_now==1){ if(map[enemy.y/32-1][enemy.x/32]!=0){enemy_move_now = 0;enemylook=0}else if(map[enemy.y/32-2][enemy.x/32]!=0){enemylook=1}else if(map[enemy.y/32-3][enemy.x/32]!=0){enemylook=2}else{enemylook=3}};
             if(enemy_move_now==2){if(map[enemy.y/32][enemy.x/32+1]!=0){enemy_move_now = 0;enemylook=0}else if(map[enemy.y/32][enemy.x/32+2]!=0){enemylook=1}else if(map[enemy.y/32][enemy.x/32+3]!=0){enemylook=2}else{enemylook=3}};
             if(enemy_move_now==3){if(map[enemy.y/32+1][enemy.x/32]!=0){enemy_move_now = 0;enemylook=0}else if(map[enemy.y/32+2][enemy.x/32]!=0){enemylook=1}else if(map[enemy.y/32+3][enemy.x/32]!=0){enemylook=2}else{enemylook=3}};
@@ -244,30 +278,30 @@ function move(){
         };
     }
 }
-   var $left = document.getElementById( "left" );
-    var $right = document.getElementById( "right" );
-    var $top = document.getElementById( "top" );
-    var $bottom = document.getElementById( "bottom" );
+var $left = document.getElementById( "left" );
+var $right = document.getElementById( "right" );
+var $top = document.getElementById( "top" );
+var $bottom = document.getElementById( "bottom" );
 
-    $top.onmousedown = function ( $event ) {
-        if( $event.button == 0 ){$intervalID = setInterval(function(){key.up = true;},20);}}
-    $top.onmouseup = function ( $event ) {
-        if( $event.button == 0 ){key.up = false;clearInterval( $intervalID );}}
+$top.onmousedown = function ( $event ) {
+    if( $event.button == 0 ){$intervalID = setInterval(function(){key.up = true;},20);}}
+$top.onmouseup = function ( $event ) {
+    if( $event.button == 0 ){key.up = false;clearInterval( $intervalID );}}
 
-    $right.onmousedown = function ( $event ) {
-        if( $event.button == 0 ){$intervalID = setInterval(function(){key.right = true;},20);}}
-    $right.onmouseup = function ( $event ) {
-        if( $event.button == 0 ){key.right = false;clearInterval( $intervalID );}}
+$right.onmousedown = function ( $event ) {
+    if( $event.button == 0 ){$intervalID = setInterval(function(){key.right = true;},20);}}
+$right.onmouseup = function ( $event ) {
+    if( $event.button == 0 ){key.right = false;clearInterval( $intervalID );}}
 
-    $bottom.onmousedown = function ( $event ) {
-        if( $event.button == 0 ){$intervalID = setInterval(function(){key.down = true;},20);}}
-    $bottom.onmouseup = function ( $event ) {
-        if( $event.button == 0 ){key.down = false;clearInterval( $intervalID );}}
+$bottom.onmousedown = function ( $event ) {
+    if( $event.button == 0 ){$intervalID = setInterval(function(){key.down = true;},20);}}
+$bottom.onmouseup = function ( $event ) {
+    if( $event.button == 0 ){key.down = false;clearInterval( $intervalID );}}
 
-    $left.onmousedown = function ( $event ) {
-        if( $event.button == 0 ){$intervalID = setInterval(function(){key.left = true;},20);}}
-    $left.onmouseup = function ( $event ) {
-        if( $event.button == 0 ){key.left = false;clearInterval( $intervalID );}}
+$left.onmousedown = function ( $event ) {
+    if( $event.button == 0 ){$intervalID = setInterval(function(){key.left = true;},20);}}
+$left.onmouseup = function ( $event ) {
+    if( $event.button == 0 ){key.left = false;clearInterval( $intervalID );}}
 var w1;
 var w2;
 function win_open(){
