@@ -1,6 +1,57 @@
 body {
     margin: 0px;
 }
+#back{
+    background-color:gray;
+    opacity:0.5;
+    z-index:0;
+}
+#start{
+    position:absolute;
+    top:60%;
+    left:40%;
+    z-index:1;
+	display: inline-block;
+
+	font-weight: bold;
+	padding: 0.25em 0.5em;
+	text-decoration: none;
+	color: #FFF;
+	background: #00bcd4;
+	transition: .4s;
+	font-size:2em;
+}
+#start:hover{
+	background:black;
+}
+#pagestart{
+    text-align: center;
+}
+#pageclear{
+    position:absolute;
+    top:40%;
+    left:40%;
+    z-index:1;
+}
+#clear-window{
+    z-index:1;
+	width:100%;
+}
+#clear{
+    z-index:1;
+    display: block;
+
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #00bcd4;
+    transition: .4s;
+    font-size:2em;
+}
+#clear:hover{
+	background:black;
+}
 .cross-layout {
     display: grid;
     grid-template-columns: 60px 60px 60px 120px 120px;
@@ -55,4 +106,77 @@ body {
     background: #00bcd4;
     transition: .4s;
     font-size:2em;
+}
+.textboard1.ck{
+    z-index:1;
+}
+.text1-1.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+}
+.text1-2.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-delay:4s;
+}
+.text1-3.ck{
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-delay:6s;
+}
+
+
+.textboard1 {
+    text-align: left;
+    z-index:1;
+    width: 580px;
+    height: 140px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #FFF;
+    border: 2px solid #000;
+    border-radius: 5px;
+    box-shadow: 0 0 0 4px #FFF inset;
+    background-color: rgba(0,0,0,0.9);
+    top: 270px;
+    left: 32px;
+    position:absolute;
+}
+.text1-1 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+.text1-2 {
+    height: 30px;
+    top: 5px;
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+.text1-3 {
+    width: 100%;
+    margin: 2%;
+    white-space: pre;
+    overflow: hidden;
+    opacity: 0;
+    /* プロパティは順に name, duration, timing-function です */
+}
+
+@-webkit-keyframes ozDq {
+    from { width: 0;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
+} /* 開始地点の指定 */
+
+@-moz-keyframes ozDq {
+    from { width: 0 ;}
+    0% {opacity: 1;}
+    100%{opacity: 1;}
 }
