@@ -107,9 +107,3 @@ function cler() {
 	audioElem.play();
 }
 
-//Sound//
-roop();
-function roop(){
-	document.getElementById("music").src="{% static 'sound/map.m4a' %    }";
-	setTimeout(roop, 131000);
-}
