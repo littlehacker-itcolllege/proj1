@@ -20,15 +20,16 @@
             document.getElementById("change").style.display="none";
         }
         setTimeout(buttonup,5000);
+
         setTimeout(function(){
             document.getElementById("hide").style.display="inline-block";
-        },5400);
-    </script>
+        },7000);
+            </script>
   </head>
   <body>
-    <div class="box">
+    <div class="box" id="main">
         <div class="button">
-            <a onclick="fadeout();stat()" class="btn" id="hide"></a>
+            <p onclick="fadeout();stat()" class="btn" id="hide">スタート</p>
         </div>
     </div>
     <div class="black" id="change">
