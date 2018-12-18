@@ -28,7 +28,7 @@
   <body>
     <div class="box">
         <div class="button">
-            <a onclick="fadeout()" class="btn" id="hide"></a>
+            <a onclick="fadeout();stat()" class="btn" id="hide"></a>
         </div>
     </div>
     <div class="black" id="change">
@@ -40,6 +40,11 @@
 			document.getElementById("music").src="{% static 'sound/titleketu.m4a' %}";
 			setTimeout(roop, 93000)
 		}
+	function stat() {
+		audioElem = new Audio();
+		audioElem.src = "/static/gamesound/start.m4a";
+		audioElem.play();
+	}
 	</script>
   </body>
 </html>

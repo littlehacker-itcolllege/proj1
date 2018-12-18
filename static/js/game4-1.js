@@ -320,3 +320,15 @@ function input(){
         w2.close();
     }
 }
+
+function look(){
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/nanikahakken.m4a";
+	audioElem.play();
+}
+
+function cler(){
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/cler.m4a";
+	audioElem.play();
+}
