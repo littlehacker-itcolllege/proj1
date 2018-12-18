@@ -6,12 +6,33 @@
     <title>Littration</title>
     <link rel="stylesheet" href="{% static 'css/title.css' %}" type="text/css" media="screen" title="no title" charset="utf-8">
 	<div class="kyoku"><iframe id="music" src="" ></iframe></div>
+    <script>
+        function fadeout(){
+            setTimeout(function(){
+                window.location.href="http://localhost:8080/opening"
+            },1000);
+            document.getElementById("change").style.display="inline";
+            document.getElementById("change").className="blackout";
+            document.getElementById("change").style.animation="fadeout 1s ease forwards";
+        }
+
+        function buttonup(){
+            document.getElementById("change").style.display="none";
+        }
+        setTimeout(buttonup,5000);
+        setTimeout(function(){
+            document.getElementById("hide").style.display="inline-block";
+        },5400);
+    </script>
   </head>
   <body>
     <div class="box">
         <div class="button">
-            <a href="http://localhost:8080/opening" class="btn">はじめる</a>
+            <a onclick="fadeout()" class="btn" id="hide"></a>
         </div>
+    </div>
+    <div class="black" id="change">
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
     </div>
 	<script>
 		roop();
