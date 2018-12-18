@@ -5,17 +5,15 @@
         {% load static %}
         <script  src='http://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
         <script>
-
             function keyEvent(c) {
                 if($("#input").val().length < 4) {
                     var getdate = $("#input").val();
                     $("#input").val(getdate+c).change();
-		    typing();
                     $('#input').change(function(){
-                        if ($("#input").val() == '1347' && $("#input").val().length == 4 ){
+                        if ($("#input").val() == '3535' && $("#input").val().length == 4 ){
                             $('#action').click(function(){
                                 window.opener.$('#back').css({'opacity':'0.5','background-color':'gray'}).change();
-                                window.opener.start = 2;
+                                window.opener.start = '0';
                                 window.opener.$("#top").prop('disabled',true);
                                 window.opener.$("#bottom").prop('disabled',true);
                                 window.opener.$("#right").prop('disabled',true);
@@ -28,7 +26,6 @@
 				setTimeout(function(){
 					window.close()},3500)
                             });
-                            //  $("#action").wrap('<a type="button" id="a" href="http://localhost:8080/stage4-1/nextstory4-1" target="story4-1"} ></a>').change();
                         }
                         if ($("#input").val().length == 4 ){
                             $("#action").prop("disabled",false);
@@ -39,13 +36,17 @@
                 };
             };
             function window_close(){
-                if($("#input").val()=='1347'){
+                if($("#input").val()=='3535'){
                 }else{
                     $('#input').val('間違い').change();
                 }
 
             }
-
+		function cler(){
+		audioElem = new Audio();
+		audioElem.src = "/static/gamesound/cler.m4a";
+		audioElem.play();
+	}
             function allClear() {
                 $("#input").val('').change();
             }
@@ -68,8 +69,8 @@ body {
             border:solid 3px black;
         }
         #close{
-            position:absolute;
-            top:550px;
+position:absolute;
+       top:550px;
         }
         </style>
 
@@ -105,19 +106,5 @@ body {
             </form>
         </div>
         <a id='close' href="#" onClick="window.close();"><button style="background:#00bcd4;color:#FFF">ウィンドウを閉じる</button></a><br/>
-<script>
-function cler() {
-	audioElem = new Audio();
-	audioElem.src = "/static/gamesound/cler.m4a";
-	audioElem.play();
-}
-
-function typing() {
-	audioElem = new Audio();
-	audioElem.src = "/static/gamesound/2-123typing.m4a";
-	audioElem.play();
-}
-
-</script>
     </body>
 </html>
