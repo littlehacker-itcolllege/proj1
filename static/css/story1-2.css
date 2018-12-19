@@ -3,6 +3,7 @@ body{
     color: white;
     margin: 0;
     padding: 0;
+		font-weight:bold;
 }
 .text1{
     height: 40px;
