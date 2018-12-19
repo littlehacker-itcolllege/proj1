@@ -3,7 +3,11 @@ body{
     color: white;
     margin: 0;
     padding: 0;
+<<<<<<< HEAD
 		font-weight:bold;
+=======
+    font-weight: bold;
+>>>>>>> 80eb469b83f776d599b90df63937fb0c6055c3d0
 }
 .text1{
     height: 40px;
