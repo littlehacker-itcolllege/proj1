@@ -2,7 +2,7 @@
 body {
     background-repeat:no-repeat;
     background-position:center center;
-    background-image: url("../game/new-map1.png");
+    background-image: url("../game/presen-map.png");
     background-color: black;
     background-size: contain;
 		overflow-x:hidden;
