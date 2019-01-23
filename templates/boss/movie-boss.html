@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>Boss movie</title>
     {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/movie-boss.css' %}">
         <script>
             function button(){
                 document.getElementById("button").style.display="none";
@@ -33,6 +34,8 @@
             }
 
       </script>
+      <div class="kyoku"><iframe id="music" src="{% static 'gamesound/kabeketu.m4a' %}"; ></iframe></div>
+
   </head>
   <body>
     {% load static %}
@@ -54,8 +57,8 @@
         <div class="quiz1" id="quiz1id">
             <p id="quiz1">問１　ページを下に動かすことをなんというか？<p>
             <div class="answer">
-                <a id="answerA" href="">スクロース</a>
-                <a id="answerB" onclick="right1()">スクロール</a>
+                <a id="answerA" onclick="batu()">スクロース</a>
+                <a id="answerB" onclick="right1();seikai()">スクロール</a>
             </div>
         </div>
 
@@ -63,31 +66,47 @@
             <p id="quiz2">問２　Eキーの場所が正しいのはどちらか？</p>
             <div class="answer2">
                 <div class="quiz2img1">
-                <a class="picA" onclick="right2()"><img src="{% static 'game/true.png' %}" /></a>
+                <a class="picA" onclick="right2();seikai()"><img src="{% static 'game/true.png' %}" /></a>
                 </div>
                 <div class="quiz2img2">
-                <a class="picB" ><img src="{% static 'game/false.png' %}" /></a>
+                <a class="picB" onclick="batu()"><img src="{% static 'game/false.png' %}" /></a>
                 </div>
             </div>
         </div>
         <div class="quiz3" id="quiz3id">
             <p>問３　ソースの開き方はどちらが正しい？<p>
             <div class="answer3">
-                <p id="answer3A" href="">エンターキー</p>
-                <p id="answer3B" onclick="right3()">コントロールキー＋Uキー</p>
+                <p id="answer3A" onclick="batu()">エンターキー</p>
+                <p id="answer3B" onclick="right3();seikai()">コントロールキー＋Uキー</p>
             </div>
         </div>
         <div class="quiz4" id="quiz4id">
             <p>問４　パスワードを自分のたんじょうびにするのはただしい？<p>
             <div class="answer4">
-                <a id="answer4A" href="">おぼえやすいので正しい。</a><br>
+                <a id="answer4A" onclick="batu()">おぼえやすいので正しい。</a><br>
                 <div class='last'>
-                    <a id="answer4B" target="story-boss" href="http://localhost:8080/boss/story-bosslast" >だれかにばれやすいので正しくない。</a>
+                    <a id="answer4B" onclick="seikai()" target="story-boss" href="http://localhost:8080/boss/story-bosslast" >だれかにばれやすいので正しくない。</a>
                 </div>
             </div>
         </div>
 
       </div>
     </main>
+
+	<script>
+function seikai() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/seikai.mp3";
+	audioElem.play();
+}
+
+function batu() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/batu.mp3";
+	audioElem.play();
+}
+
+	</script>
+
   </body>
 </html>
