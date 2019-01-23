@@ -22,7 +22,9 @@
                                 window.opener.$("#action2").prop('disabled',true);
                                 window.opener.$('#pageclear').show();
                                 window.opener.$('#pageclear>a').show();
-                                window.close()
+				window.cler();
+				setTimeout(function(){
+					window.close()},3500)
                             });
                         }
                         if ($("#input").val().length == 4 ){
@@ -100,5 +102,20 @@ position:absolute;
             </form>
         </div>
         <a id='close' href="#" onClick="window.close();"><input type="button"  value="ウィンドウを閉じる"></a><br/>
+<script>
+function cler() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/cler.m4a";
+	audioElem.play();
+}
+
+function typing() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/2-123typing.m4a";
+	audioElem.play();
+}
+
+</script>
+
     </body>
 </html>

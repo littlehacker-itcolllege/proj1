@@ -401,6 +401,7 @@
                     $('#button').attr("class",'');
                     $("#action").prop("disabled", true);
                 }else if (actionvalue == 5){
+				window.cler();
                     actionvalue = (actionvalue + 1);
                     $('#back').css({'opacity':'0.5','background-color':'gray'});
                     start = '0';
@@ -936,8 +937,18 @@
 		audioElem.src = "/static/gamesound/4-5sime.mp3";
 		audioElem.play();
 	}
+function cler() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/cler.m4a";
+	audioElem.play();
+}
 
-
+function typing() {
+	audioElem = new Audio();
+	audioElem.src = "/static/gamesound/2-123typing.m4a";
+	audioElem.play();
+}
 	</script>
+
     </body>
 </html>

@@ -634,6 +634,7 @@
                     var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
                     var enemycenterx = (parseInt(enemyright) +parseInt (enemyleft)) / 2//patinkoのx軸の中心
                     if(patinkocenterx > enemyleft && patinkocenterx < enemyright && patinkocentery < enemybottom && patinkocentery > enemytop &&damagenow2 == false){
+                        ate();
                         var damage = $('#enemy-meter').val();
                         damage = damage - 5;
                         $('#enemy-meter').val(damage).change();
@@ -675,6 +676,7 @@
                     var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
                     var enemycenterx = (parseInt(enemyright) +parseInt (enemyleft)) / 2//patinkoのx軸の中心
                     if(patinkocenterx > enemyleft && patinkocenterx < enemyright && patinkocentery < enemybottom && patinkocentery > enemytop &&damagenow2 == false){
+                        ate();
                         var damage = $('#enemy-meter').val();
                         damage = damage - 5;
                         $('#enemy-meter').val(damage).change();
@@ -716,6 +718,7 @@
                     var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
                     var enemycenterx = (parseInt(enemyright) +parseInt (enemyleft)) / 2//patinkoのx軸の中心
                     if(patinkocenterx > enemyleft && patinkocenterx < enemyright && patinkocentery < enemybottom && patinkocentery > enemytop &&damagenow2 == false){
+                        ate();
                         var damage = $('#enemy-meter').val();
                         damage = damage - 5;
                         $('#enemy-meter').val(damage).change();
@@ -756,6 +759,7 @@
                     var enemyleft = Math.round((parseInt($('#enemy img').css('left')) / $('.canvas').width())*100)//enemyの左側
                     var enemyright = Math.round((parseInt($('#enemy img').css('left'))+$('#enemy img').width()) / parseInt($('.canvas').width())*100)//enemyの右側
                     if(patinkocenterx > enemyleft && patinkocenterx < enemyright && patinkocentery < enemybottom && patinkocentery > enemytop &&damagenow2 == false){
+                        ate();
                         var damage = $('#enemy-meter').val();
                         damage = damage - 10;
                         $('#enemy-meter').val(damage).change();
@@ -794,6 +798,7 @@
                     var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
                     var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
                     if(enemyattackcenterx > heroleft && enemyattackcenterx < heroright && enemyattackcentery < herobottom && enemyattackcentery > herotop && damagenow == false){
+                        uke();
                         var damage = $('#hero-meter').val();
                         damage = damage - enemyweak;
                         $('#hero-meter').val(damage).change();
@@ -811,6 +816,7 @@
                     var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
                     var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
                     if(enemyattack2centerx > heroleft && enemyattack2centerx < heroright && enemyattack2centery < herobottom && enemyattack2centery > herotop && damagenow == false){
+                        uke();
                         var damage = $('#hero-meter').val();
                         damage = damage - enemyweak;
                         $('#hero-meter').val(damage).change();
@@ -831,6 +837,7 @@
                     var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
                     var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
                     if(enemyattack3centerx > heroleft && enemyattack3centerx < heroright && enemyattack3centery < herobottom && enemyattack3centery > herotop && damagenow == false){
+                        uke();
                         var damage = $('#hero-meter').val();
                         damage = damage - enemyweak;
                         $('#hero-meter').val(damage).change();
@@ -850,6 +857,7 @@
                     var heroleft = Math.round((parseInt($('#maru img').css('left')) / $('.canvas').width())*100)//heroの左側
                     var heroright = Math.round((parseInt($('#maru img').css('left'))+$('#maru img').width()) / parseInt($('.canvas').width())*100)//heroの右側
                     if(enemyattack4centerx > heroleft && enemyattack4centerx < heroright && enemyattack4centery < herobottom && enemyattack4centery > herotop && damagenow == false){
+                        uke();
                         var damage = $('#hero-meter').val();
                         damage = damage - enemyweak;
                         $('#hero-meter').val(damage).change();
@@ -1150,6 +1158,7 @@
                     console.log(enemyattack5left,herocenterx)
                     console.log(enemyattack5right,herocenterx)
                     if(enemyattack5left < herocenterx && enemyattack5right > herocenterx){
+                        uke();
                         var damage = $('#hero-meter').val();
                         damage = damage - 30;
                         $('#hero-meter').val(damage).change();
@@ -1765,6 +1774,7 @@
                         }},30);
                 }}
         </script>
+        <div class="kyoku"><iframe id="music" src="" ></iframe></div>
     </head>
     <body>
         <div id='pagestart'>
@@ -1841,3 +1851,20 @@
         </div>
     </body>
 </html>
+<script>
+	function uke(){
+		audioElem = new Audio();
+		audioElem.src = "/static/gamesound/4-6enemy-damage.m4a";
+		audioElem.play();
+	}
+	function ate(){
+		audioElem = new Audio();
+		audioElem.src = "/static/gamesound/4-6drito-damage.m4a";
+		audioElem.play();
+	}
+		roop();
+		function roop(){
+			document.getElementById("music").src="{% static 'sound/Boss.m4a' %}";
+			setTimeout(roop, 80000)
+		}
+    </script>
