@@ -1,0 +1,23 @@
+html,body{
+    margin: 0;
+    padding: 0;
+    background: black;
+    overflow: hidden;
+    font-weight: bold;
+}
+
+.clear{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+}
+
+.font{
+    margin: 0;
+    position: absolute;
+    color: white;
+    top: calc(50% - 60px);
+    left: calc(50% - 240px);
+    font-size: 5em;
+}

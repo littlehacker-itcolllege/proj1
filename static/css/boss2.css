@@ -1,6 +1,15 @@
 body {
     margin: 0px;
 }
+
+#wall4-6{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
 #back{
     background-color:gray;
     opacity:0.5;

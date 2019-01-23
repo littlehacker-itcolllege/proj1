@@ -182,6 +182,7 @@ img{
 }
 
 #answer4A{
+    margin-bottom: 30px;
     left: calc(50% - 200px);
     width: 400px;
     cursor: pointer;
@@ -196,8 +197,12 @@ img{
     color: #8B4513;
 }
 
-#answer4B{
+.last{
     margin-top: 30px;
+}
+
+#answer4B{
+    margin-top: 50px;
     left: calc(50% - 200px);
     width: 400px;
     background-color: #8B4513;

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head lang='ja'>
+		<meta charset='UTF-8'>
+		{% load static %}
+		<link rel='stylesheet' type='text/css' href="{% static 'css/opening.css' %}">
+
+		<div class="kyoku"><iframe src="{% static 'sound/op.m4a' %}"></iframe></div>
+    </head>
+	<body >
+
+
+		<div class='opening'>
+            <img id="open" src=''>
+		</div>
+
+		<div class='textboard'>
+			<p class='text1' id='text1'><font color='lightblue'>フェアリー:</font>リト！　ついに魔王を倒したわ！　本当にありがとう！</p>
+			<p class='text2' id='text2'><font color='lightblue'>フェアリー:</font>これで私達の島は平和になる！</p>
+		</div>
+        <script>
+
+			one();
+
+            setTimeout(function(){
+              window.location.href = 'http://localhost:8080/END';
+            }, 20000);
+
+			function one(){
+                document.getElementById("open").src="{% static 'game/chara.gif' %}";
+
+				setTimeout(two,11000);
+			}
+			function two(){
+				document.getElementById("text1").className="text3";
+                document.getElementById("text1").innerHTML="<font color='lightblue'>フェアリー:</font>リト、ここで学んだことは忘れないでね！";
+				document.getElementById("text2").className="text4";
+                document.getElementById("text2").innerHTML="<font color='lightblue'>フェアリー:</font>いずれあなたの将来を照らしてくれるはずよ！";
+
+			}
+						function fourteen(){
+				document.getElementById("open").src="{% static 'game/opening/light-up-pc.gif' %}"
+			}
+
+
+		</script>
+
+	</body>
+</html>
+

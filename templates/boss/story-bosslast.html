@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head lang="ja">
+    <meta charset="UTF-8">
+    <title></title>
+  </head>
+  <body>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static "css/story-boss.css" %}" />
+    <div class="textboard">
+        <p class="text1" id="text1Id"><img src="{% static 'game/fairy.png' %}">魔法のカベがなくなったわ！</p>
+        <p class="text2" id="text2Id"><img src="{% static 'game/fairy.png' %}">ついに魔王との戦いよ！</p>
+        <p class="text3" id="text3Id"><img src="{% static 'game/fairy.png' %}">キーボードの右、左キーで移動、上キーでジャンプ、</p>
+        <p class="text4" id="text4Id"><img src="{% static 'game/fairy.png' %}">下キーを押すと魔力をためられるわ！</p>
+        <p class="text5" id="text5Id"><img src="{% static 'game/fairy.png' %}" >Xキーで攻撃、魔力が溜まっていればZキーで魔力玉を打てるわ</p>
+        <div class="button">
+            <a href="http://localhost:8080/boss2" target="_parent" class="next-button">魔王と戦う!!!</a>
+        </div>
+    </div>
+  </body>
+</html>

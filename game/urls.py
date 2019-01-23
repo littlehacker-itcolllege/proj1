@@ -125,10 +125,22 @@ urlpatterns = [
 
     url(r'^boss/$',views.boss,name='boss'),
     url(r'^boss/start-boss/$',views.start_boss,name='start_boss'),
+    url(r'^boss-second/$',views.boss_second,name='boss-second'),
+
     url(r'^boss/movie-boss/$',views.movie_boss,name='movie-boss'),
     url(r'^boss/story-boss/$',views.story_boss,name='story-boss'),
     url(r'^boss/story-boss2/$',views.story_boss2,name='story-boss2'),
-    url(r'^boss/head-boss/$',views.head_boss,name='head-boss'),
+    url(r'^boss/story-bosslast/$',views.story_bosslast,name='story-bosslast'),
 
-    url(r'^boss2/$',views.boss2,name='boss2')
+    url(r'^boss-second/story-boss3/$',views.story_boss3,name='story-boss3'),
+
+    url(r'^boss/head-boss/$',views.head_boss,name='head-boss'),
+    url(r'^boss-second/head-boss-second/$',views.head_boss_second,name='head-boss-second'),
+
+    url(r'^boss/game-boss/$',views.game_boss,name='game-boss'),
+
+    url(r'^boss2/$',views.boss2,name='boss2'),
+    url(r'^ending/$',views.ending,name='ending'),
+    url(r'^END/$',views.END,name='END')
+
 ]

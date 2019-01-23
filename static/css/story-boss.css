@@ -58,6 +58,44 @@ body{
     animation-iteration-count:1;
     animation-delay: 17s;
 }
+
+.text6 {
+    height: 40px;
+    top: 5px;
+    left: 4px;
+    width: 100%;
+    overflow: hidden;
+    opacity: 0;
+    -webkit-animation: ozDq 6s steps(70, end) forwards;
+    animation-iteration-count:1;
+    animation-delay: 22s;
+}
+
+
+button{
+    position: absolute;
+    width: 100%;
+    text-align: center;
+}
+
+.next-button{
+    text-align: center;
+    position: absolute;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #00bcd4;
+    transition: .4s;
+    left: calc(50% - 64px);
+}
+
+.next-button:hover{
+    background-color: white;
+    color: black;
+}
+
 @-webkit-keyframes ozDq {
     from { width: 0;}
     0% {opacity: 1;}

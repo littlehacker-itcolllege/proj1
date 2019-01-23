@@ -28,6 +28,10 @@
                 document.getElementById("quiz4id").style.visibility="visible";
                 document.getElementById("quiz4id").style.animation="fadeIn 1s ease 1.5s forwards";
             }
+            function right4(){
+                window.location.href='http://localhost:8080/boss2';
+            }
+
       </script>
   </head>
   <body>
@@ -76,8 +80,10 @@
         <div class="quiz4" id="quiz4id">
             <p>問４　パスワードを自分のたんじょうびにするのはただしい？<p>
             <div class="answer4">
-                <p id="answer4A" href="">おぼえやすいので正しい。</a>
-                <p id="answer4B" onclick="right4()">だれかにばれやすいので正しくない。</a>
+                <a id="answer4A" href="">おぼえやすいので正しい。</a><br>
+                <div class='last'>
+                    <a id="answer4B" target="story-boss" href="http://localhost:8080/boss/story-bosslast" >だれかにばれやすいので正しくない。</a>
+                </div>
             </div>
         </div>
 
